@@ -1,0 +1,3 @@
+[submodule "External/cctools"]
+	path = External/cctools
+	url = https://github.com/apple-oss-distributions/cctools

@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F05E778C2CCB26FC002D10B5 /* UEFI.c in Sources */ = {isa = PBXBuildFile; fileRef = F05E778B2CCB26F9002D10B5 /* UEFI.c */; };
+		F08D5F7E2CC0506200F9FD8E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = F08D5F7D2CC0506200F9FD8E /* main.c */; };
+		F08D5F862CC0527500F9FD8E /* Globals.c in Sources */ = {isa = PBXBuildFile; fileRef = F08D5F732CC0500900F9FD8E /* Globals.c */; };
+		F08D5F872CC0527900F9FD8E /* CPUInfo.c in Sources */ = {isa = PBXBuildFile; fileRef = F08D5F742CC0500900F9FD8E /* CPUInfo.c */; };
+		F0CE227B2CC6EE970024FB44 /* EFIGlobals.c in Sources */ = {isa = PBXBuildFile; fileRef = F0CE227A2CC6EE970024FB44 /* EFIGlobals.c */; };
+		F0CE227E2CC6EECB0024FB44 /* ACPIGlobals.c in Sources */ = {isa = PBXBuildFile; fileRef = F0CE227D2CC6EECB0024FB44 /* ACPIGlobals.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F08D5F782CC0506200F9FD8E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F04970182CCA5B8A006AD5B5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F04FBAFA2CCAF7CF00D162AF /* MemoryMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoryMap.h; sourceTree = "<group>"; };
+		F05482512CC72CC300E74550 /* Driver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Driver.h; sourceTree = "<group>"; };
+		F05E77872CCB1F38002D10B5 /* 3BPlus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 3BPlus.h; sourceTree = "<group>"; };
+		F05E778B2CCB26F9002D10B5 /* UEFI.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = UEFI.c; sourceTree = "<group>"; };
+		F06ECAE02CC0A4D50042D474 /* BootArgs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BootArgs.h; sourceTree = "<group>"; };
+		F072682D2CC5A130004D2F6D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F072682E2CC5A1E3004D2F6D /* MemoryMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoryMap.h; sourceTree = "<group>"; };
+		F072682F2CC5A8BE004D2F6D /* Peripherals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Peripherals.h; sourceTree = "<group>"; };
+		F08D5F642CC0500900F9FD8E /* CDBBasicTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDBBasicTypes.h; sourceTree = "<group>"; };
+		F08D5F652CC0500900F9FD8E /* CPUInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUInfo.h; sourceTree = "<group>"; };
+		F08D5F662CC0500900F9FD8E /* CoreDarwinBoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDarwinBoot.h; sourceTree = "<group>"; };
+		F08D5F672CC0500900F9FD8E /* SMBIOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMBIOS.h; sourceTree = "<group>"; };
+		F08D5F682CC0500900F9FD8E /* DeviceTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceTree.h; sourceTree = "<group>"; };
+		F08D5F6B2CC0500900F9FD8E /* Bless.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bless.h; sourceTree = "<group>"; };
+		F08D5F6F2CC0500900F9FD8E /* GUID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GUID.h; sourceTree = "<group>"; };
+		F08D5F702CC0500900F9FD8E /* BootManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BootManager.h; sourceTree = "<group>"; };
+		F08D5F712CC0500900F9FD8E /* EFITypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EFITypes.h; sourceTree = "<group>"; };
+		F08D5F732CC0500900F9FD8E /* Globals.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Globals.c; sourceTree = "<group>"; };
+		F08D5F742CC0500900F9FD8E /* CPUInfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CPUInfo.c; sourceTree = "<group>"; };
+		F08D5F7A2CC0506200F9FD8E /* DarwinBootJS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DarwinBootJS; sourceTree = BUILT_PRODUCTS_DIR; };
+		F08D5F7D2CC0506200F9FD8E /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		F08D5F832CC051E700F9FD8E /* MSR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSR.h; sourceTree = "<group>"; };
+		F08D5F882CC0534200F9FD8E /* ACPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPI.h; sourceTree = "<group>"; };
+		F0CE227A2CC6EE970024FB44 /* EFIGlobals.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = EFIGlobals.c; sourceTree = "<group>"; };
+		F0CE227D2CC6EECB0024FB44 /* ACPIGlobals.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ACPIGlobals.c; sourceTree = "<group>"; };
+		F0CE22802CC6F0630024FB44 /* CPUID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUID.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F08D5F772CC0506200F9FD8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F0419A112CC5F8BD007AE614 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				F05E77842CCB1EDB002D10B5 /* ARM */,
+				F0CE227F2CC6EEEC0024FB44 /* UserSpaceTesting */,
+				F0CE227C2CC6EEBC0024FB44 /* ACPI */,
+				F0CE22792CC6EE7F0024FB44 /* EFI */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		F04FBAF92CCAF7AC00D162AF /* BCM2711 */ = {
+			isa = PBXGroup;
+			children = (
+				F04FBAFA2CCAF7CF00D162AF /* MemoryMap.h */,
+			);
+			path = BCM2711;
+			sourceTree = "<group>";
+		};
+		F05482502CC72C5800E74550 /* CorePlatform */ = {
+			isa = PBXGroup;
+			children = (
+				F05482512CC72CC300E74550 /* Driver.h */,
+			);
+			path = CorePlatform;
+			sourceTree = "<group>";
+		};
+		F05E77842CCB1EDB002D10B5 /* ARM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ARM;
+			sourceTree = "<group>";
+		};
+		F05E77852CCB1F09002D10B5 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				F05E77862CCB1F15002D10B5 /* RPi */,
+			);
+			path = Machine;
+			sourceTree = "<group>";
+		};
+		F05E77862CCB1F15002D10B5 /* RPi */ = {
+			isa = PBXGroup;
+			children = (
+				F05E77872CCB1F38002D10B5 /* 3BPlus.h */,
+			);
+			path = RPi;
+			sourceTree = "<group>";
+		};
+		F08D5F5A2CC04FDA00F9FD8E = {
+			isa = PBXGroup;
+			children = (
+				F072682D2CC5A130004D2F6D /* README.md */,
+				F08D5F752CC0501600F9FD8E /* DarwinBoot */,
+				F08D5F612CC0500900F9FD8E /* CoreDarwinBoot */,
+				F08D5F7B2CC0506200F9FD8E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F08D5F612CC0500900F9FD8E /* CoreDarwinBoot */ = {
+			isa = PBXGroup;
+			children = (
+				F08D5F622CC0500900F9FD8E /* include */,
+				F08D5F722CC0500900F9FD8E /* Sources */,
+				F04970182CCA5B8A006AD5B5 /* README.md */,
+			);
+			path = CoreDarwinBoot;
+			sourceTree = "<group>";
+		};
+		F08D5F622CC0500900F9FD8E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				F05E77852CCB1F09002D10B5 /* Machine */,
+				F05482502CC72C5800E74550 /* CorePlatform */,
+				F08D5F632CC0500900F9FD8E /* CoreDarwinBoot */,
+				F08D5F692CC0500900F9FD8E /* Platform */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		F08D5F632CC0500900F9FD8E /* CoreDarwinBoot */ = {
+			isa = PBXGroup;
+			children = (
+				F06ECAE02CC0A4D50042D474 /* BootArgs.h */,
+				F08D5F642CC0500900F9FD8E /* CDBBasicTypes.h */,
+				F08D5F652CC0500900F9FD8E /* CPUInfo.h */,
+				F08D5F662CC0500900F9FD8E /* CoreDarwinBoot.h */,
+				F08D5F682CC0500900F9FD8E /* DeviceTree.h */,
+			);
+			path = CoreDarwinBoot;
+			sourceTree = "<group>";
+		};
+		F08D5F692CC0500900F9FD8E /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				F08D5F842CC0520E00F9FD8E /* ACPI */,
+				F08D5F6A2CC0500900F9FD8E /* Apple */,
+				F08D5F6C2CC0500900F9FD8E /* SoC */,
+				F08D5F6E2CC0500900F9FD8E /* EFI */,
+				F08D5F852CC0521400F9FD8E /* SMBIOS */,
+				F08D5F822CC0514C00F9FD8E /* x86 */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		F08D5F6A2CC0500900F9FD8E /* Apple */ = {
+			isa = PBXGroup;
+			children = (
+				F08D5F6B2CC0500900F9FD8E /* Bless.h */,
+			);
+			path = Apple;
+			sourceTree = "<group>";
+		};
+		F08D5F6C2CC0500900F9FD8E /* SoC */ = {
+			isa = PBXGroup;
+			children = (
+				F04FBAF92CCAF7AC00D162AF /* BCM2711 */,
+				F08D5F6D2CC0500900F9FD8E /* BCM2835 */,
+			);
+			path = SoC;
+			sourceTree = "<group>";
+		};
+		F08D5F6D2CC0500900F9FD8E /* BCM2835 */ = {
+			isa = PBXGroup;
+			children = (
+				F072682E2CC5A1E3004D2F6D /* MemoryMap.h */,
+				F072682F2CC5A8BE004D2F6D /* Peripherals.h */,
+			);
+			path = BCM2835;
+			sourceTree = "<group>";
+		};
+		F08D5F6E2CC0500900F9FD8E /* EFI */ = {
+			isa = PBXGroup;
+			children = (
+				F08D5F6F2CC0500900F9FD8E /* GUID.h */,
+				F08D5F702CC0500900F9FD8E /* BootManager.h */,
+				F08D5F712CC0500900F9FD8E /* EFITypes.h */,
+			);
+			path = EFI;
+			sourceTree = "<group>";
+		};
+		F08D5F722CC0500900F9FD8E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F0419A112CC5F8BD007AE614 /* Platform */,
+				F08D5F732CC0500900F9FD8E /* Globals.c */,
+				F08D5F742CC0500900F9FD8E /* CPUInfo.c */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		F08D5F752CC0501600F9FD8E /* DarwinBoot */ = {
+			isa = PBXGroup;
+			children = (
+				F092F0822CC1040F00B49131 /* JumpStart */,
+			);
+			path = DarwinBoot;
+			sourceTree = "<group>";
+		};
+		F08D5F7B2CC0506200F9FD8E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F08D5F7A2CC0506200F9FD8E /* DarwinBootJS */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F08D5F822CC0514C00F9FD8E /* x86 */ = {
+			isa = PBXGroup;
+			children = (
+				F08D5F832CC051E700F9FD8E /* MSR.h */,
+				F0CE22802CC6F0630024FB44 /* CPUID.h */,
+			);
+			path = x86;
+			sourceTree = "<group>";
+		};
+		F08D5F842CC0520E00F9FD8E /* ACPI */ = {
+			isa = PBXGroup;
+			children = (
+				F08D5F882CC0534200F9FD8E /* ACPI.h */,
+			);
+			path = ACPI;
+			sourceTree = "<group>";
+		};
+		F08D5F852CC0521400F9FD8E /* SMBIOS */ = {
+			isa = PBXGroup;
+			children = (
+				F08D5F672CC0500900F9FD8E /* SMBIOS.h */,
+			);
+			path = SMBIOS;
+			sourceTree = "<group>";
+		};
+		F092F0822CC1040F00B49131 /* JumpStart */ = {
+			isa = PBXGroup;
+			children = (
+				F08D5F7D2CC0506200F9FD8E /* main.c */,
+			);
+			path = JumpStart;
+			sourceTree = "<group>";
+		};
+		F0CE22792CC6EE7F0024FB44 /* EFI */ = {
+			isa = PBXGroup;
+			children = (
+				F0CE227A2CC6EE970024FB44 /* EFIGlobals.c */,
+				F05E778B2CCB26F9002D10B5 /* UEFI.c */,
+			);
+			path = EFI;
+			sourceTree = "<group>";
+		};
+		F0CE227C2CC6EEBC0024FB44 /* ACPI */ = {
+			isa = PBXGroup;
+			children = (
+				F0CE227D2CC6EECB0024FB44 /* ACPIGlobals.c */,
+			);
+			path = ACPI;
+			sourceTree = "<group>";
+		};
+		F0CE227F2CC6EEEC0024FB44 /* UserSpaceTesting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserSpaceTesting;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F08D5F792CC0506200F9FD8E /* DarwinBootJS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F08D5F7F2CC0506200F9FD8E /* Build configuration list for PBXNativeTarget "DarwinBootJS" */;
+			buildPhases = (
+				F08D5F762CC0506200F9FD8E /* Sources */,
+				F08D5F772CC0506200F9FD8E /* Frameworks */,
+				F08D5F782CC0506200F9FD8E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DarwinBootJS;
+			productName = DarwinBootJS;
+			productReference = F08D5F7A2CC0506200F9FD8E /* DarwinBootJS */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F08D5F5B2CC04FDA00F9FD8E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					F08D5F792CC0506200F9FD8E = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = F08D5F5E2CC04FDA00F9FD8E /* Build configuration list for PBXProject "DarwinBoot" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F08D5F5A2CC04FDA00F9FD8E;
+			productRefGroup = F08D5F7B2CC0506200F9FD8E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F08D5F792CC0506200F9FD8E /* DarwinBootJS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F08D5F762CC0506200F9FD8E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F08D5F862CC0527500F9FD8E /* Globals.c in Sources */,
+				F0CE227B2CC6EE970024FB44 /* EFIGlobals.c in Sources */,
+				F05E778C2CCB26FC002D10B5 /* UEFI.c in Sources */,
+				F0CE227E2CC6EECB0024FB44 /* ACPIGlobals.c in Sources */,
+				F08D5F7E2CC0506200F9FD8E /* main.c in Sources */,
+				F08D5F872CC0527900F9FD8E /* CPUInfo.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F08D5F5F2CC04FDA00F9FD8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/CoreDarwinBoot/include";
+			};
+			name = Debug;
+		};
+		F08D5F602CC04FDA00F9FD8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/CoreDarwinBoot/include";
+			};
+			name = Release;
+		};
+		F08D5F802CC0506200F9FD8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F08D5F812CC0506200F9FD8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F08D5F5E2CC04FDA00F9FD8E /* Build configuration list for PBXProject "DarwinBoot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F08D5F5F2CC04FDA00F9FD8E /* Debug */,
+				F08D5F602CC04FDA00F9FD8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F08D5F7F2CC0506200F9FD8E /* Build configuration list for PBXNativeTarget "DarwinBootJS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F08D5F802CC0506200F9FD8E /* Debug */,
+				F08D5F812CC0506200F9FD8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F08D5F5B2CC04FDA00F9FD8E /* Project object */;
+}

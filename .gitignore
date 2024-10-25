@@ -1,0 +1,5 @@
+Platform/SoC
+.DS_Store
+DarwinBoot.xcodeproj/xcuserdata
+DarwinBoot.xcodeproj/project.xcworkspace
+build

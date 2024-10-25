@@ -1,0 +1,15 @@
+diff --git libstuff/reloc.c libstuff/reloc.c
+index 296ffa2918a5260b323e51ec77235de80c8961f0..5f24a7d3fae24756ecec3a1cbf5fb66bfdb06486 100644
+--- /libstuff/reloc.c
++++ /libstuff/reloc.c
+@@ -163,8 +163,8 @@ uint32_t r_type)
+ 	case CPU_TYPE_ARM64:
+ 	case CPU_TYPE_ARM64_32:
+ 	    return(FALSE);
+-    case CPU_TYPE_RISCV32:
+-        return(FALSE);
++    //case CPU_TYPE_RISCV32:
++        //return(FALSE);
+ 	default:
+ 	    fatal("internal error: reloc_has_pair() called with unknown "
+ 		  "cputype (%u)", cputype);
