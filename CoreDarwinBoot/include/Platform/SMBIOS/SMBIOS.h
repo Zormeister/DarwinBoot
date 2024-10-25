@@ -34,7 +34,17 @@
 struct SMBIOS_ENTRY_POINT_32 {
     char anchor[4];
     UInt8 checksum;
-
+    UInt8 entryLength;
+    UInt8 versionMajor;
+    UInt8 versionMinor;
+    UInt16 structMaxSize;
+    UInt8 entryRev;
+    UInt8 formatted[5];
+    UInt8 intermAnchor[5];
+    UInt8 intermChecksum;
+    UInt16 structTableLength;
+    UInt32 structTableAddr;
+    UInt8 bcdRev;
 };
 
 enum SMBIOS_ENTRY_REVISION {
@@ -54,5 +64,24 @@ struct SMBIOS_ENTRY_POINT_64 {
     UInt32 size;
     UInt64 address;
 };
+
+struct {
+    UInt8 Type;
+    UInt8 Length;
+    UInt16 Handle;
+} typedef SMBIOSTableHeader;
+
+enum {
+    BIOSInfo = 0,
+    SystemInfo,
+    MainboardInfo,
+    ChasisInfo,
+    ProcessorInfo,
+    CacheInfo = 7,
+    SystemSlotInfo = 9,
+    PhysicalMemArray = 16,
+    MemoryDeviceInfo,
+    MemoryMappedAddresses = 19, /* 'Memory Array Mapped Address' */
+} typedef SMBIOSTableType;
 
 #endif
