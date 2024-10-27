@@ -42,9 +42,19 @@ enum VMMVendor {
     VMware,
 };
 
+/*!
+  @function CDBCreateCPUInfo
+  @abstract Allocates a _CDBCPUInfo instance, which is filled in by the Platform source code.
+  @result Returns a CPUInfo handle if the operation was successful
+ */
 CDBCPUInfoHandle CDBCreateCPUInfo(void);
 
-/* CPU core count */
+/*!
+  @function CDBCPUInfoGetCPUCoreCount
+  @abstract Gets the core count from the CPUInfo handle 
+  @param CpuInfo The CPUInfo handle to read from
+  @result Returns the number of cores specified from the CPUInfo instance
+ */
 uint32_t CDBCPUInfoGetCPUCoreCount(CDBCPUInfoHandle CpuInfo);
 
 uint32_t CDBCPUInfoGetCPUThreadCount(CDBCPUInfoHandle CpuInfo);

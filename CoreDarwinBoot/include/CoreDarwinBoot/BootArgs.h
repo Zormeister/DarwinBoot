@@ -157,3 +157,17 @@ struct {
     UInt32 BundlePathAddr;
     UInt32 BundlePathLength;
 } typedef BootKernelExtensionEntry;
+
+/*!
+  @function CDBInitKernelBootArguments
+  @abstract Allocates a local XNUBootArgs instance, which can be accessed by CoreDarwinBoot and other services within the same UEFI Application
+  @result Returns true if the operation was successful
+ */
+extern bool CDBInitKernelBootArguments(void);
+
+/*!
+  @function CDBAddKernelExtensionToBoot
+  @abstract Allocates a BootKernelExtensionEntry instance & adds it to the DeviceTree
+  @result Returns true if the operation was successful
+ */
+extern bool CDBAddKernelExtensionToBoot(const UInt8 *infoPlist, const UInt32 plistSize, const UInt8 *exec, const UInt32 execSize, const char *pathToBundle);
