@@ -36,13 +36,55 @@ struct FlatDTNode {
 /* UEFI hosts can provide Flattened DeviceTree blobs via a configuration table, these DTs are also able to be written to by a running UEFI Application */
 /* TODO: Grab said blobs and translate them for XNU. */
 
-/* Create DT handler. */
-CDBDeviceTree CDBCreateDeviceTree(void);
+/*!
+  @function CDBCreateDeviceTree
+  @abstract Allocates a CDBDeviceTree and sets up the root node, which is stored in Platform code as a global variable.
+  @result Returns true if the operation was successful
+ */
+bool CDBCreateDeviceTree(void);
 
-CDBDTNode CDBDTGetRootNode(CDBDeviceTree dt);
+/*!
+  @function CDBDTGetRootNode
+  @abstract Gets the root node from the DeviceTree object
+  @result Returns the root node
+ */
+CDBDTNode CDBDTGetRootNode(void);
 
-CDBDTNode CDBDTGetNode(const char *nodePath, bool createNodeIfNotFound);
+/*!
+  @function CDBDTGetNode
+  @abstract Scans for the node within the allocated DeviceTree. 
+  @param nodePath Full path to the node requested, eg: /efi/platform or /chosen 
+  @param noNewNode Specifies if a node should be created or not if the node isn't found
+  @result Returns the requested node if it could be found, otherwise returns NULL on failure.
+ */
+CDBDTNode CDBDTGetNode(const char *nodePath, bool noNewNode);
+
+/*!
+  @function CDBDTGetProperty
+  @abstract Gets the requested property from the node specified
+  @param node The DT node to get the property from
+  @param propertyName The name of the property to find
+  @result Returns the requested property if it could be found, otherwise returns NULL.
+ */
 CDBDTProperty CDBDTGetProperty(CDBDTNode node, const char *propertyName);
-bool CDBDTSetNodeProperty(CDBDTNode node, const char *propertyName, const UInt8 *data, UInt32 size);
 
+/*!
+  @function CDBDTSetProperty
+  @abstract Sets the requested property from the node specified
+  @param node The DT node to set the property in
+  @param propertyName The name of the property to set
+  @param data The data to set in the property
+  @param size The size of the data to set in the property
+  @result Returns true if the operation was successful
+ */
+bool CDBDTSetProperty(CDBDTNode node, const char *propertyName, const UInt8 *data, UInt32 size);
+
+/*!
+  @function CDBDTPropertyGetValue
+  @abstract Gets data from the specified DT property
+  @param prop The DT property to get the data from
+  @param valueOut The data from the property as a ptr ptr
+  @param sizeOut The size of the data from the property
+  @result Returns true if the operation was successful
+ */
 bool CDBDTPropertyGetValue(CDBDTProperty prop, UInt8 **valueOut, UInt32 *sizeOut);
