@@ -52,4 +52,5 @@ extern void CDBReleaseMemory(void *p);
 #if PLATFORM_EFI == 1
 extern bool CDBInitializeUEFI(EFI_SYSTEM_TABLE *Sys);
 extern bool CDBGUIDMatches(EFI_GUID * a, EFI_GUID * b);
+extern EFI_CONFIGURATION_TABLE *CDBEFIGetConfigurationTable(EFI_GUID *Guid);
 #endif

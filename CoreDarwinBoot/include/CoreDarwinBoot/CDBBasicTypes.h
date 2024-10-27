@@ -75,6 +75,9 @@ typedef uint64_t UInt64;
 #ifdef __gcc__
 #endif
 
+/* TODO: validate this */
+#define BITMASK(start, end) (~(~0ull << end) << start)
+
 /* should platform config be moved elsewhere? */
 /* like, maybe in Xcode's macro configs but then it becomes convoluted */
 /* x86_64 is pretty straight forward as all devices have transitioned to UEFI */
