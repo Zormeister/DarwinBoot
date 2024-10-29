@@ -118,6 +118,12 @@ enum {
     FirmwareFeaturesHasVLVESA = (1 << 13),
     FirmwareFeaturesHasESCD = (1 << 14),
     FirmwareFeaturesHasCDBoot = (1 << 15),
+    FirmwareFeaturesHasSelectableBoot = (1 << 16),
+    FirmwareFeaturesHasSocketedROM = (1 << 17),
+    FirmwareFeaturesCanBootFromPCMCIA = (1 << 18),
+    FirmwareFeaturesHasEDDSpec = (1 << 19),
+    FirmwareFeaturesHasNEC9800Support = (1 << 20),
+    FirmwareFeaturesHasToshiba1point2MbSupport = (1 << 21),
 };
 
 extern const char *CDBSMBIOSGetString(SMBIOSTableHeader *header, UInt32 stringIdx);
