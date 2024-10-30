@@ -59,7 +59,7 @@ struct {
     UInt8 DebugMode; /* what does this actually do? */
     char CommandLine[XNU_COMMANDLINE_SIZE];
     UInt32 MemoryMapPtr; /* 32-bit pointer/address to/of the memory map. (Physical) */
-    UInt32 MemoryMapSize;
+    UInt32 MemoryMapSize; /* Here's another XNU mishap: The MemMap gets copied over to a single page, which can very quickly be violated by large memory maps, Thx to OpenCorePkg & contributors for this knowledge */
     UInt32 MemoryMapDescSize;
     UInt32 MemoryMapDescVersion;
     XNUVideoArgsV1 VideoArgsV1;
@@ -74,11 +74,11 @@ struct {
     UInt32 KernelSlide; /* i love kernel address sliding- but, how the heck am i meant to even perform KASLR */
     UInt32 PerformanceDataAddress;
     UInt32 PerformanceDataSize;
-    UInt32 KeyStoreDataAddress;
+    UInt32 KeyStoreDataAddress; /* Allegedly the APFS Volume Key sturcture? I don't actually know where to get this from unless I take to apfs.efi */
     UInt32 KeyStoreDataSize;
     UInt64 BootMemoryAddress; /* what does this even mean? EFI Loader Data addr??? */
     UInt64 BootMemorySize;
-    UInt64 PhysicalMemorySize; /* SMBIOS? */
+    UInt64 PhysicalMemorySize; /* UPDATE: it is infact, the SMBIOS mem size. */
     UInt64 FSBFrequency; /* PM timer? I'd need to read OC for this. */
     UInt64 PCIConfigSpaceBaseAddress; /* grab from MCFG table */
     UInt32 PCIConfigSpaceStartBusNumber;

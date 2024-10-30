@@ -14,3 +14,6 @@
  */
 
 #pragma once
+
+#include <Platform/SoC/BCM2835/MemoryMap.h>
+#include <Platform/SoC/BCM2835/Peripherals.h>

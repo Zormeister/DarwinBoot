@@ -55,4 +55,30 @@ enum {
     MachCpuTypeX86_64 = MachCpuTypeI386 | MachAbiX64,
     MachCpuTypeARM = 12,
     MachCpuTypeARM64 = MachCpuTypeARM | MachAbiX64,
+    /* RISC-V when. Come on Apple, I'm waiting */
+};
+
+enum {
+    MachFileTypeObj = 0,
+    MachFileTypePagedExec,
+    MachFileTypeFixedVMLib,
+    MachFileTypeCoreFile,
+    MachFileTypePreloadedExec,
+    MachFileTypeDylib,
+    MachFileTypeDylinker,
+    MachFileTypeBundle,
+    MachFileTypeStaticDylibStub,
+    MachFileTypeDsym,
+    MachFileTypeKextBundle,
+    MachFileTypeFileset,
+    MachFileTypeGPUExec,
+    MachFileTypeGPULibrary,
+};
+
+enum {
+    MachFlagsNoUndRefs = (1 << 0),
+    MachFlagsIncrementalLink = (1 << 1),
+    MachFlagsDyldLink = (1 << 2),
+    MachFlagsBindAtLoad = (1 << 3),
+    MachFlagsPrebound = (1 << 4),
 };

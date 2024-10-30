@@ -73,5 +73,18 @@ struct ACPIBGRTTable {
     UInt32 ImageY;
 };
 
+struct {
+    UInt64 BaseAddress;
+    UInt16 SegmentGroupNum;
+    UInt8 StartBusNumber;
+    UInt8 EndBusNumber;
+    UInt32 Reserved;
+} typedef ACPIMCFGEntry;
+
+struct {
+    ACPITableHeader header;
+    UInt64 Reserved;
+    ACPIMCFGEntry Entries[]; /*  (header.size -= sizeof(ACPITableHeader) + 8) / sizeof(ACPIMCFGEntry) */
+} typedef ACPIMCFGTable;
 
 #endif
