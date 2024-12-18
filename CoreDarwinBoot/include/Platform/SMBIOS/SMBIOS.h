@@ -1,4 +1,4 @@
-// Copyright © 2024 Zormeister. All rights reserved.
+// Copyright © 2024 Zormeister.
 
 /*
  * This file is part of DarwinBoot.

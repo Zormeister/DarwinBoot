@@ -17,25 +17,5 @@
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 #include "MemoryMap.h"
 
-enum {
-    PHYS,
-    VIRT,
-    BUS,
-};
-
-#define UART_COUNT 1
-#define SPI_COUNT 2
-
-static inline uint32_t GET_PERPH_BASE(uint32_t kind) {
-    if (kind == PHYS) {
-        return PERIPHERAL_BASE;
-    } else if (kind == VIRT) {
-        return PERIPHERAL_VIRTUAL_BASE;
-    } else if (kind == BUS) {
-        return PERIPHERAL_BUS_BASE;
-    }
-}
-
-#define AUX_PERPH_BASE(kind) GET_PERPH_BASE((kind)) + 0x215000
-
-#define AUX_IRQ 0x0
+#define NUM_UART 1
+#define NUM_SPI 2

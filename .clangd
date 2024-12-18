@@ -1,9 +1,13 @@
 CompileFlags:
-  Add: 
+  Add:
     - "-std=c17"
     - "-DUNDER_CLANGD=1"
     - "-xc"
     - "-nostdlib"
-    - "-isystem CoreDarwinBoot/include"
+    - "-I../../../../CoreDarwinBoot/include"
+    - "-I../../../CoreDarwinBoot/include"
+    - "-I../../CoreDarwinBoot/include"
+    - "-I../CoreDarwinBoot/include"
+
 Index:
   StandardLibrary: No

@@ -14,22 +14,4 @@
  */
 
 #pragma once
-
-/* BCM2835: the addresses go through the VideoCore & ARM MMU before reaching our phys addrs */
-
-#define ADDRESS_BITS 32
-
-/* physical base? */
-#define KERNEL_VIRTUAL_BASE 0xC0000000
-#define KERNEL_VIRTUAL_TOP  0xEFFFFFFF
-
-#define SDRAM_BASE 0x00000000 /* TODO: workout SDRAM size for BCM2835 targets, or have it specified as part of platform config */
-
-/* bus addresses go through the DMA controller, TODO: figure out how the DMA controller works */
-
-#define PERIPHERAL_BASE         0x20000000
-#define PERIPHERAL_TOP          0x20FFFFFF
-#define PERIPHERAL_VIRTUAL_BASE 0xF2000000
-#define PERIPHERAL_VIRTUAL_TOP  0xF2FFFFFF
-#define PERIPHERAL_BUS_BASE     0x7E000000
-#define PERIPHERAL_BUS_TOP      0x7EFFFFFF
+#include <Platform/SoC/BCM2711/MemoryMap.h>
