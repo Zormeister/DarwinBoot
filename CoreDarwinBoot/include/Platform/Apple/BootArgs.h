@@ -1,4 +1,4 @@
-// Copyright © 2024 Zormeister. All rights reserved.
+// Copyright © 2024 Zormeister.
 
 /*
  * This file is part of DarwinBoot.
@@ -13,13 +13,23 @@
  * You should have received a copy of the GNU General Public License along with DarwinBoot. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include <CoreDarwinBoot/CoreDarwinBoot.h>
+#pragma once
+#include <CoreDarwinBoot/CDBBasicTypes.h>
 
-/* TODO: this. */
-EFI_STATUS EFIMain(EFI_HANDLE Handle, EFI_SYSTEM_TABLE *SystemTable) {
-    if (CDBInitializeUEFI(SystemTable)) {
-        SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
-        SystemTable->ConOut->OutputString(SystemTable->ConOut, L"[DB:JS][M]: hello");
-    }
-    return 0;
-}
+#if TARGET_ARM32 || TARGET_ARM64
+#include "BootArgsARM.h"
+#endif
+
+#if TARGET_X64 || TARGET_IA32
+#include "BootArgsX86.h"
+#endif
+
+/* apparently you can also load Dexts this way, interesting. */
+struct {
+    UInt32 InfoPlistAddr;
+    UInt32 InfoPlistSize;
+    UInt32 ExecAddress;
+    UInt32 ExecSize;
+    UInt32 BundlePathAddr;
+    UInt32 BundlePathLength;
+} typedef BootKernelExtensionEntry;

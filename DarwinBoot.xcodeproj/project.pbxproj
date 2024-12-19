@@ -55,6 +55,10 @@
 		F0CE227A2CC6EE970024FB44 /* EFIGlobals.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = EFIGlobals.c; sourceTree = "<group>"; };
 		F0CE227D2CC6EECB0024FB44 /* ACPIGlobals.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ACPIGlobals.c; sourceTree = "<group>"; };
 		F0CE22802CC6F0630024FB44 /* CPUID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUID.h; sourceTree = "<group>"; };
+		F0D99A262D13A65C0070E5DC /* 5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 5.h; sourceTree = "<group>"; };
+		F0D99A282D13A6EF0070E5DC /* BootArgs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BootArgs.h; sourceTree = "<group>"; };
+		F0D99A2A2D13A7280070E5DC /* BootArgsX86.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BootArgsX86.h; sourceTree = "<group>"; };
+		F0D99A2B2D13A7540070E5DC /* BootArgsARM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BootArgsARM.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				F05E77872CCB1F38002D10B5 /* 3BPlus.h */,
+				F0D99A262D13A65C0070E5DC /* 5.h */,
 			);
 			path = RPi;
 			sourceTree = "<group>";
@@ -178,6 +183,9 @@
 			isa = PBXGroup;
 			children = (
 				F08D5F6B2CC0500900F9FD8E /* Bless.h */,
+				F0D99A282D13A6EF0070E5DC /* BootArgs.h */,
+				F0D99A2B2D13A7540070E5DC /* BootArgsARM.h */,
+				F0D99A2A2D13A7280070E5DC /* BootArgsX86.h */,
 			);
 			path = Apple;
 			sourceTree = "<group>";
@@ -324,6 +332,7 @@
 				TargetAttributes = {
 					F08D5F792CC0506200F9FD8E = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1620;
 					};
 				};
 			};
@@ -436,6 +445,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "CoreDarwinBoot/include/Platform/Apple/DarwinBootJS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -492,6 +504,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "CoreDarwinBoot/include/Platform/Apple/DarwinBootJS-Bridging-Header.h";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};

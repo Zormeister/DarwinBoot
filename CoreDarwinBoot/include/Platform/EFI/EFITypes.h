@@ -39,7 +39,13 @@ typedef void * EFI_EVENT;
 /* 128-bit? */
 typedef UInt64 EFI_STATUS;
 typedef UInt64 EFI_LBA;
+
 typedef UInt64 EFI_TPL;
+
+#define TPL_APPLICATION 4
+#define TPL_CALLBACK 8
+#define TPL_NOTIFY 16
+#define TPL_HIGH_LEVEL 31
 
 typedef UInt64 EFI_PHYSICAL_ADDRESS;
 typedef UInt64 EFI_VIRTUAL_ADDRESS;
@@ -345,6 +351,7 @@ struct {
 #pragma mark EFI_SYSTEM_TABLE
 
 #define EFI_SYSTEM_TABLE_SIGNATURE 0x5453595320494249
+#define EFI_2_110_SYSTEM_TABLE_REVISION ((2<<16) | (110))
 #define EFI_2_100_SYSTEM_TABLE_REVISION ((2<<16) | (100))
 #define EFI_2_90_SYSTEM_TABLE_REVISION ((2<<16) | (90))
 #define EFI_2_80_SYSTEM_TABLE_REVISION ((2<<16) | (80))
@@ -360,7 +367,7 @@ struct {
 #define EFI_1_10_SYSTEM_TABLE_REVISION ((1<<16) | (10))
 #define EFI_1_02_SYSTEM_TABLE_REVISION ((1<<16) | (02))
 #define EFI_SPECIFICATION_VERSION EFI_SYSTEM_TABLE_REVISION
-#define EFI_SYSTEM_TABLE_REVISION EFI_2_100_SYSTEM_TABLE_REVISION
+#define EFI_SYSTEM_TABLE_REVISION EFI_2_110_SYSTEM_TABLE_REVISION
 
 typedef struct _EFI_BOOT_SERVICES EFI_BOOT_SERVICES;
 typedef struct _EFI_RUNTIME_SERVICES EFI_RUNTIME_SERVICES;
@@ -391,6 +398,14 @@ typedef struct _EFI_SYSTEM_TABLE EFI_SYSTEM_TABLE;
 
 struct _EFI_BOOT_SERVICES {
     EFI_TABLE_HEADER Header;
+    
+    /* Task Priority svcs. EFI 1.0+ */
+    EFI_TPL (*RaiseTPL)(EFI_TPL NewTpl);
+    void (*RestoreTPL)(EFI_TPL OldTpl);
+    
+    /* memory svcs */
+    EFI_STATUS (*AllocatePages)(EFI_ALLOCATE_TYPE Type, EFI_MEMORY_TYPE MemoryType, UInt32 NumPages, EFI_PHYSICAL_ADDRESS *AllocatedMem);
+    EFI_STATUS (*FreePages)(EFI_PHYSICAL_ADDRESS MemAddr, UInt32 PageCount);
     
 };
 
