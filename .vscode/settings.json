@@ -1,0 +1,5 @@
+{
+    "files.associations": {
+        "uart1regs.h": "c"
+    }
+}

@@ -4,6 +4,8 @@ CompileFlags:
     - "-DUNDER_CLANGD=1"
     - "-xc"
     - "-nostdlib"
+    - "-I../../../../../../CoreDarwinBoot/include"
+    - "-I../../../../../CoreDarwinBoot/include"
     - "-I../../../../CoreDarwinBoot/include"
     - "-I../../../CoreDarwinBoot/include"
     - "-I../../CoreDarwinBoot/include"

@@ -1,0 +1,51 @@
+// Copyright (C) 2024 Zormeister, Licensed under the GPLv3 or later.
+
+#include <CorePlatform/Serial/Serial.h>
+#include <CorePlatform/Foundation.h>
+
+/* Per SoC headers - usually because the SoC bases are different  */
+/* I should describe the UART1 bases and other peripheral bases in Platfrom/SoC/BCM2711/Platform.c */
+
+#if BCM2835 || BCM2836 || BCM2837
+#include <Platform/SoC/BCM2835/Peripherals.h>
+#elif BCM2711 || BCM2712
+#include <Platform/SoC/BCM2711/Peripherals.h>
+#include <Platform/SoC/BCM2711/Regs/AuxRegs.h>
+#include <Platform/SoC/BCM2711/Regs/UART1Regs.h>
+#endif
+
+/* TODO: everything */
+
+struct BCM2835AuxUARTDriver {
+    SerialDriver base;
+
+    UInt64 MMIOBase;
+    UInt32 (*readReg)(UInt32 reg);
+    void (*writeReg)(UInt32 reg, UInt32 value);
+};
+
+static struct BCM2835AuxUARTDriver bcm2835_aux_uart_drv;
+
+bool bcm2835_aux_uart_is_supported(PlatformDevice *dev) {
+    if (dev->conformsTo("brcm,brcm2835-aux-uart") || dev->conformsTo("aux-uart,bcm2835")) {
+        return true;
+    }
+    return false;
+}
+
+PlatformDriver * bcm2835_aux_uart_create() {
+    return &bcm2835_aux_uart_drv;
+}
+
+void bcm2835_aux_uart_destroy(PlatformDriver *This) {
+
+    return;
+}
+
+struct CorePlatformDriverInfo bcm2835_aux_uart_drv = {
+    "bcm2835-aux-uart",
+    bcm2835_aux_uart_is_supported,
+    bcm2835_aux_uart_create,
+    bcm2835_aux_uart_destroy,
+};
+
