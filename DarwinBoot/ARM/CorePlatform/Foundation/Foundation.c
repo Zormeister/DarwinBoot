@@ -1,6 +1,19 @@
-// Copyright (C) 2024 Zormeister, Licensed under the GPLv3 or later.
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #include <CorePlatform/Foundation.h>
+
+/* TODO: reloc? */
+char BootMessage[] = {
+    "=======================================\n"
+    "::\n"
+    ":: %s for %s, Copyright 2024-2025 Zormeister\n"
+    "::\n"
+    ":: BUILD_TAG: %s\n"
+    "::\n"
+    ":: BUILD_STYLE: %s\n"
+    "::\n"
+    "=======================================\n"
+};
 
 struct CorePlatformRoot {
     UInt32 DeviceCount;
@@ -75,7 +88,7 @@ void FreeMemory(void *mem) {
 bool initialize_memory_allocator(MemoryConfig memcfg) {
     CurrentMemoryConfig.MemBase = memcfg.MemBase;
     CurrentMemoryConfig.MemSize = memcfg.MemSize;
-    PageSize = 4096;
+    PageSize = 4096; // We aren't going to use any other page size - right?
     InitialPage.PageStart = memcfg.MemBase;
     InitialPage.PageEnd = InitialPage.PageStart + InitialPage.PageEnd;
     return true;

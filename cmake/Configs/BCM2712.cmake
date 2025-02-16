@@ -4,6 +4,8 @@ set(CPU_TUNE "cortex-a76")
 set(DRIVER_BCM2835_AUX_UART "YES")
 set(DRIVER_ARM_PL011 "YES")
 
+set(TOOLCHAIN_BUILD_ELF YES)
+
 # QEMU doesn't emulate the PCIe bridge or PWM devices.
 # Is there a way I can fetch the current boot device from the Pi?
 if(NOT DEFINED EMULATED OR NOT EMULATED STREQUAL "YES")

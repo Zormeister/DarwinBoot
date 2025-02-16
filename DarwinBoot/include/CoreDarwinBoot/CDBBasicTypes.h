@@ -1,17 +1,4 @@
-// Copyright © 2024 Zormeister.
-
-/*
- * This file is part of DarwinBoot.
- 
- * DarwinBoot is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
- 
- * DarwinBoot is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- 
- * You should have received a copy of the GNU General Public License along with DarwinBoot. If not, see <https://www.gnu.org/licenses/>.
- */
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
 
@@ -42,7 +29,7 @@ typedef _Bool bool;
 #define false 0
 
 #ifdef __cplusplus
-#if __cplusplus <= 201710L
+#if __cplusplus < 201703L
 #error This project uses C 17, please use C 17 for compilation/your LSP
 #endif
 #endif
@@ -67,6 +54,9 @@ typedef uint16_t wchar_t;
 typedef long long int64_t;
 typedef unsigned long long uint64_t;
 typedef unsigned long long uintptr_t;
+
+// This is annoying because compiler diffs but oh well
+#define WSTRING(str) u##str
 #endif
 
 #ifdef _MSC_VER
@@ -78,8 +68,6 @@ typedef unsigned long long uintptr_t;
 
 #define BUILD_TOOL "MSVC"
 #define COMPILER_VERSION "MSVC"
-
-
 #endif
 
 typedef int64_t SInt64;
@@ -140,4 +128,11 @@ typedef uint64_t UInt64;
 #define CONFIG_RELEASE 1
 #define CONFIG_DEBUG 0
 #define CONFIG_DEVELOPMENT 0
+#endif
+
+#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+
+#define DBSwapBytes16(bytes) ((bytes & 0xFF00) >> 8) |  ((bytes & 0x00FF << 8))
+#define DBSwapBytes32(bytes) ((unsigned int)__builtin_bswap32(bytes))
+
 #endif

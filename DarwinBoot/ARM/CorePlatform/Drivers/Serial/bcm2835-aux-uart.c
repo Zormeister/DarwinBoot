@@ -1,5 +1,6 @@
-// Copyright (C) 2024 Zormeister, Licensed under the GPLv3 or later.
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
+#include "CorePlatform/Driver.h"
 #include <CorePlatform/Serial/Serial.h>
 #include <CorePlatform/Foundation.h>
 
@@ -34,7 +35,7 @@ bool bcm2835_aux_uart_is_supported(PlatformDevice *dev) {
 }
 
 PlatformDriver * bcm2835_aux_uart_create() {
-    return &bcm2835_aux_uart_drv;
+    return (PlatformDriver *)&bcm2835_aux_uart_drv;
 }
 
 void bcm2835_aux_uart_destroy(PlatformDriver *This) {
@@ -42,7 +43,8 @@ void bcm2835_aux_uart_destroy(PlatformDriver *This) {
     return;
 }
 
-struct CorePlatformDriverInfo bcm2835_aux_uart_drv = {
+// now, how 2 get runtime to scan for drivers
+struct CorePlatformDriverInfo bcm2835_aux_uart_drv_info = {
     "bcm2835-aux-uart",
     bcm2835_aux_uart_is_supported,
     bcm2835_aux_uart_create,

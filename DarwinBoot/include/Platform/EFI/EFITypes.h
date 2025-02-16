@@ -1,25 +1,21 @@
-// Copyright © 2024 Zormeister.
-
-/*
- * This file is part of DarwinBoot.
- 
- * DarwinBoot is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
- 
- * DarwinBoot is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- 
- * You should have received a copy of the GNU General Public License along with DarwinBoot. If not, see <https://www.gnu.org/licenses/>.
- */
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
-/* LAST SYNCED: UEFI 2.10 */
+/* LAST SYNCED: UEFI 2.11 */
+
+// Conditionals.
+#if defined (__x86_64__) || defined (__arm64__)
+typedef UInt64 UIntN;
+#elif defined (__i386__) || defined (__arm__)
+typedef UInt32 UIntN;
+#endif
 
 typedef void * EFI_HANDLE;
 typedef void * EFI_EVENT;
+
+typedef void (*EFI_EVENT_NOTIFY)(EFI_EVENT *Event, void *Context);
 
 #define EVT_TIMER                            0x80000000
 #define EVT_RUNTIME                          0x40000000
@@ -45,8 +41,8 @@ typedef UInt64 EFI_TPL;
 #define TPL_NOTIFY 16
 #define TPL_HIGH_LEVEL 31
 
-typedef UInt64 EFI_PHYSICAL_ADDRESS;
-typedef UInt64 EFI_VIRTUAL_ADDRESS;
+typedef UIntN EFI_PHYSICAL_ADDRESS;
+typedef UIntN EFI_VIRTUAL_ADDRESS;
 
 enum EFI_STATUS_CODES {
     EFI_SUCCESS = 0,
@@ -91,6 +87,22 @@ enum EFI_STATUS_CODES {
     EFI_WARN_FILE_SYSTEM = 6,
     EFI_WARN_RESET_REQUIRED = 7,
 };
+
+typedef enum {
+    TimerCancel,
+    TimerPeriodic,
+    TimerRelative,
+} EFI_TIMER_DELAY;
+
+typedef enum {
+    EFI_NATIVE_INTERFACE
+} EFI_INTERFACE_TYPE;
+
+typedef enum {
+    AllHandles,
+    ByRegisterNotify,
+    ByProtocol
+} EFI_LOCATE_SEARCH_TYPE;
 
 struct {
     UInt8 Address[32];
@@ -370,7 +382,6 @@ struct {
 typedef struct _EFI_BOOT_SERVICES EFI_BOOT_SERVICES;
 typedef struct _EFI_RUNTIME_SERVICES EFI_RUNTIME_SERVICES;
 
-// TODO: see if wchar_t is actually defined
 struct _EFI_SYSTEM_TABLE {
     EFI_TABLE_HEADER Header;
     wchar_t * FirmwareVendor;
@@ -404,7 +415,25 @@ struct _EFI_BOOT_SERVICES {
     /* memory svcs */
     EFI_STATUS (*AllocatePages)(EFI_ALLOCATE_TYPE Type, EFI_MEMORY_TYPE MemoryType, UInt32 NumPages, EFI_PHYSICAL_ADDRESS *AllocatedMem);
     EFI_STATUS (*FreePages)(EFI_PHYSICAL_ADDRESS MemAddr, UInt32 PageCount);
-    
+    EFI_STATUS (*GetMemoryMap)(UIntN *MemoryMapSize, EFI_MEMORY_DESCRIPTOR *MemoryMap, UIntN *OutKey, UIntN *DescriptorSize, UInt32 *DescriptorVersion);
+    EFI_STATUS (*AllocatePool)(EFI_MEMORY_TYPE PoolType, UIntN Size, void **Buffer);
+    EFI_STATUS (*FreePool)(void *Buffer);
+
+    /* others */
+    EFI_STATUS (*CreateEvent)(UInt32 Type, EFI_TPL NotifyTpl, EFI_EVENT_NOTIFY NotifyFunction, void *NotifyContext, EFI_EVENT *Event);
+    EFI_STATUS (*SetTimer)(EFI_EVENT Event, EFI_TIMER_DELAY Type, UInt64 TriggerTime);
+    EFI_STATUS (*WaitForEvent)(UIntN NumberOfEvents, EFI_EVENT *Event, UIntN *Index);
+    EFI_STATUS (*SignalEvent)(EFI_EVENT Event);
+    EFI_STATUS (*CloseEvent)(EFI_EVENT Event);
+    EFI_STATUS (*CheckEvent)(EFI_EVENT Event);
+
+    /* Protocol Interfaces */
+    EFI_STATUS (*InstallProtocolInterface)(EFI_HANDLE *Handle, EFI_GUID *Protocol, EFI_INTERFACE_TYPE InterfaceType, void *Interface);
+    EFI_STATUS (*ReinstallProtocolInterface)(EFI_HANDLE Handle, EFI_GUID *Protocol, void *OldInterface, void *NewInterface);
+    EFI_STATUS (*UninstallProtocolInterface)(EFI_HANDLE Handle, EFI_GUID *Protocol, void *Interface);
+    EFI_STATUS (*HandleProtocol)(EFI_HANDLE Handle, EFI_GUID *Protocol, void **Interface);
+    void *Reserved;
+    EFI_STATUS (*RegisterProtocolNotify)(EFI_GUID *Protocol, EFI_EVENT Event, void **Registration);
 };
 
 #define EFI_RUNTIME_SERVICES_SIGNATURE 0x56524553544e5552
@@ -417,10 +446,9 @@ struct _EFI_BOOT_SERVICES {
 
 #define EFI_LOADED_IMAGE_PROTOCOL_REVISION 0x1000
 
-typedef EFI_STATUS (*EFI_IMAGE_UNLOAD)(EFI_HANDLE *ImageHandle);
-
 struct _EFI_LOADED_IMAGE_PROTOCOL {
-    uint32_t Revision;
+    UInt32 Revision;
     EFI_HANDLE ParentHandle;
-
+    EFI_SYSTEM_TABLE *SystemTable;
+    EFI_HANDLE DeviceHandle;
 };

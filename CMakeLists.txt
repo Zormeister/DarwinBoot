@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(DarwinBoot C)
+project(DarwinBoot C ASM)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
@@ -19,6 +19,8 @@ set(ARCH "x86_64")
 endif()
 
 if(ARCH STREQUAL "ARM64")
+
+set(DARWINBOOT_ARM YES)
 
 if(NOT DEFINED BOARD OR SOC)
 message(FATAL_ERROR "No Board or SoC config.")

@@ -1,17 +1,4 @@
-// Copyright © 2024 Zormeister.
-
-/*
- * This file is part of DarwinBoot.
- 
- * DarwinBoot is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
- 
- * DarwinBoot is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- 
- * You should have received a copy of the GNU General Public License along with DarwinBoot. If not, see <https://www.gnu.org/licenses/>.
- */
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
 #include "CDBBasicTypes.h"
@@ -54,21 +41,33 @@ struct FlatDTNode {
 bool CDBCreateDeviceTree(void);
 
 /* FDT */
-struct FDTHeader {
+
+#define FDT_HEADER_MAGIC 0xDEADF00D
+
+struct _FDTHeader {
     UInt32 Magic;
     UInt32 TotalSize;
     UInt32 DTStructOffset;
     UInt32 DTStringsOffset;
     UInt32 MemReservationMapOffset;
+    UInt32 Version;
+    UInt32 LastCompatibleVersion;
+    UInt32 BootCPUPhysID;
+    UInt32 DTStringsSize;
+    UInt32 DTStructureSize;
+} typedef FDTHeader;
 
-};
+struct {
+    UInt64 Base;
+    UInt64 Size;
+} typedef FDTReservedMemEntry;
 
 /*!
  @function CDBCreateDeviceTreeWithFDT
  @abstract Sets up the DeviceTree using a provided DT.
  @param fdt Pointer to the Flattened Device Tree blob.
  */
-bool CDBCreateDeviceTreeWithFDT(struct FDTHeader *fdt);
+bool CDBCreateDeviceTreeWithFDT(FDTHeader *fdt);
 
 /*!
   @function CDBDTGetRootNode

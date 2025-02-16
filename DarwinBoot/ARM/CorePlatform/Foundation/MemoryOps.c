@@ -1,4 +1,4 @@
-// Copyright (C) 2024 Zormeister, Licensed under the GPLv3 or later.
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #include <CorePlatform/Foundation.h>
 
@@ -20,19 +20,20 @@ void ClearMemory(void * ptr, UInt64 size) {
 
 PageMapEntry InitialPage;
 extern PageMapEntry PageMap[];
+extern MemoryRange MemoryRanges[];
 AllocatedMemoryMapEntry FirstAllocation;
 AllocatedMemoryMapEntry *AllocationMap[];
 extern UInt64 MaxNumPages;
 
-PageMapEntry *GetPageMapEntryForAddress(uint64_t address) {
+PageMapEntry GetPageMapEntryForAddress(uint64_t address) {
     PageMapEntry Entry;
     int i = 0;
     while (Entry = PageMap[i], i < MaxNumPages) {
         if (address > Entry.PageStart && address < Entry.PageEnd) {
-            return &Entry;
+            return Entry;
         }
     }
-    return NULL;
+    return Entry;
 }
 
 PageMapEntry *FindEmptyPage() {
@@ -40,6 +41,7 @@ PageMapEntry *FindEmptyPage() {
     int i = 0;
     while (entry = PageMap[i], i < MaxNumPages, i++) {
         if (entry.AvailableSpace == 4096) {
+            // TODO: fix me because this uses the stack address
             return &entry;
         }
     } 
@@ -75,8 +77,8 @@ void FreeMemory(void *mem) {
 
 }
 
-/* our favouries */
-
+/* our favourites */
+// ok i'll fix the typing later - UL vs ULL
 void *malloc(uint64_t size) {
     return AllocateMemory(size);
 }

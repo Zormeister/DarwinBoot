@@ -1,4 +1,4 @@
-// Copyright (C) 2024 Zormeister, Licensed under the GPLv3 or later.
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #include <CoreDarwinBoot/DeviceTree.h>
 
@@ -23,5 +23,6 @@ struct _CDBDTProperty {
 
 bool CDBInitDeviceTree(void) {
     
+
     return true;
 }

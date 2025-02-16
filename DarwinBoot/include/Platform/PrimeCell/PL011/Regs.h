@@ -1,4 +1,4 @@
-// Copyright (C) 2024 Zormeister, Licensed under the GPLv3 or later.
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #define rUART_DATA 0x0
 

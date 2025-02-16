@@ -1,17 +1,4 @@
-// Copyright © 2024 Zormeister.
-
-/*
- * This file is part of DarwinBoot.
- 
- * DarwinBoot is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
- 
- * DarwinBoot is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- 
- * You should have received a copy of the GNU General Public License along with DarwinBoot. If not, see <https://www.gnu.org/licenses/>.
- */
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
 #include "CDBBasicTypes.h"
@@ -31,4 +18,22 @@ extern bool CDBInitKernelBootArguments(void);
  */
 extern bool CDBAddKernelExtensionToBoot(const UInt8 *infoPlist, const UInt32 plistSize, const UInt8 *exec, const UInt32 execSize, const char *pathToBundle);
 
-extern XNUBootArguments *gCurrentBootArgs;
+struct {
+    UInt64 BaseAddress; // This assumes we're purely 64-bit.
+    UInt16 Rotation; // Valid values: 0, 90, 180, 270, 360
+    UInt16 PixelFormat;
+    UInt32 Width;
+    UInt32 Height;
+} typedef CDBVideoInfo;
+
+extern bool CDBBootArgsSetVideoInfo(UInt64 BaseAddress);
+
+#if __x86_64__
+
+struct {
+    UInt64 BaseAddress;
+} typedef CDBPCIInfo;
+
+extern bool CDBBootArgsSetPCIInfo();
+
+#endif

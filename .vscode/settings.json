@@ -1,5 +1,13 @@
 {
     "files.associations": {
         "uart1regs.h": "c"
-    }
+    },
+    "clangd.fallbackFlags": [
+        "-I${workspaceFolder}/DarwinBoot/include",
+        "-I${workspaceFolder}/External/OpenAPFS/include",
+        "-I${workspaceFolder}/External/corecrypto/include",
+        "-DBUILD_DATE=clangd",
+        "-DBUILDER=clangd",
+        "-DBCM2712=1"
+    ]
 }

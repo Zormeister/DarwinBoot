@@ -1,4 +1,4 @@
-// Copyright (C) 2024 Zormeister, Licensed under the GPLv3 or later.
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
@@ -18,7 +18,6 @@ enum _ARM_MIDR_IMPLEMENTER {
     APPLE = 0x61, /* This isn't listed by the ARM docs. */
     INTEL = 0x69,
     AMPERE = 0xC0,
-
 } typedef ARM_MIDR_IMPLEMENTER;
 
 enum _ARM_LTD_PART_NUMBERS {
@@ -42,7 +41,7 @@ enum _ARM_MIDR_ARCHITECTURE {
 
 enum _APPLE_PART_NUMBER {
     Typhoon = 0x2, /* H7 */
-    TyphoonCapri = 0x3, /* H7G - A8X allegedly*/
+    TyphoonCapri = 0x3, /* H7G - A8X allegedly */
     Twister = 0x4, /* H8 */
     TwisterElbaMalta = 0x5, /* H8G, H8M - A9X and the TSMC A9s */
     Hurricane = 0x6, /* H9 */

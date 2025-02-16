@@ -1,3 +1,4 @@
+// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #include <CorePlatform/Driver.h>
 #include <CorePlatform/Foundation.h>
@@ -7,7 +8,6 @@
 #include <Platform/SoC/BCM2711/Regs/UART1Regs.h>
 #include <Platform/SoC/BCM2711/Regs/GPIORegs.h>
 
-/* where should I even put this so that CorePl- actually I can just make a function on startup */
 PlatformDeviceDescriptor platform_devices[] = {
     {"aux,bcm2835", {AUX_BASE}, {0x100}},
     /* Consider UART1 base size 0x40 since the regs only go up to that extent. */
