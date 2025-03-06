@@ -18,7 +18,10 @@
 /* DMA engines use the legacy 32-bit addresses */
 #define DMA_PERIPHERAL_BASE 0x7C000000
 
-#define PERIPHERAL_MMIO_BASE 0xFE000000
+#define PERIPHERAL_MMIO_BASE 0x7E000000
+
+#define FW_MAILBOX_BASE 0x7C013880
+#define RNG_BASE 0x7D208000
 
 /* The Pi loader put the kernel data section at 0x18800000 IIRC. */
 

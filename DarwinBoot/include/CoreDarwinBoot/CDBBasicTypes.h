@@ -57,6 +57,8 @@ typedef unsigned long long uintptr_t;
 
 // This is annoying because compiler diffs but oh well
 #define WSTRING(str) u##str
+
+#define va_list __builtin_va_list
 #endif
 
 #ifdef _MSC_VER
@@ -136,3 +138,5 @@ typedef uint64_t UInt64;
 #define DBSwapBytes32(bytes) ((unsigned int)__builtin_bswap32(bytes))
 
 #endif
+
+#include <builtins.h>

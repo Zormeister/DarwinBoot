@@ -8,6 +8,7 @@
         "-I${workspaceFolder}/External/corecrypto/include",
         "-DBUILD_DATE=clangd",
         "-DBUILDER=clangd",
-        "-DBCM2712=1"
+        "-DBCM2712=1",
+        "-nostdlib"
     ]
 }

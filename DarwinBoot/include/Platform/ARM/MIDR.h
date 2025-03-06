@@ -3,27 +3,28 @@
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 enum _ARM_MIDR_IMPLEMENTER {
-    RESERVED = 0,
+    Reserved = 0,
     ARM = 0x41,
     BCM = 0x42,
-    CAVIUM = 0x43,
+    Cavium = 0x43,
     DEC = 0x44,
-    FUJITSU = 0x46,
-    INFINEON = 0x49,
-    MOTOROLA = 0x4D,
+    Fujitsu = 0x46,
+    Infineon = 0x49,
+    Motorola = 0x4D,
     NVIDIA = 0x4E,
     AMC = 0x50,
-    QCOM = 0x51,
-    MARVELL = 0x56,
-    APPLE = 0x61, /* This isn't listed by the ARM docs. */
-    INTEL = 0x69,
-    AMPERE = 0xC0,
+    Qualcomm = 0x51,
+    Marvell = 0x56,
+    Apple = 0x61, /* This isn't listed by the ARM docs. */
+    Intel = 0x69,
+    Ampere = 0xC0,
 } typedef ARM_MIDR_IMPLEMENTER;
 
 enum _ARM_LTD_PART_NUMBERS {
     ARM810 = 0x810,
     ARM920 = 0x920,
     CortexA72 = 0xD08,
+    CortexA76 = 0xD0B,
 } typedef ARM_LTD_PART_NUMBERS;
 
 /* how 2 get arch from other regs??? */

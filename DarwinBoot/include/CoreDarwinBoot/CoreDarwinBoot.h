@@ -31,8 +31,10 @@
 #define CDB_LOG_POLICY_SPAM (1 << 3)
 #define CDB_LOG_POLICY_DEBUG (1 << 4)
 
-extern void CDBAssert(const char * fmt, ...);
-extern void CDBLog(UInt32 Type, const char *msg, ...);
+/* can clangd piss off - there is no stdlib here */
+void vprintf(const char *fmt, va_list va);
+void printf(const char *fmt, ...);
+
 extern void *CDBAllocateMemory(const UInt32 size);
 extern void CDBReleaseMemory(void *p);
 

@@ -1,5 +1,7 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
+#pragma once
+
 #ifndef __has_builtin
 #define __has_builtin(x) 0
 #endif
@@ -19,6 +21,11 @@
 #ifdef __clang__
 /* GCC alterative tbd */
 #define DBByteSwap64(bytes) (unsigned long long)__builtin_bswap64(bytes)
+
 #endif
 
+#endif
+
+#if __has_builtin(__builtin_vsnprintf)
+#define vsnprintf __builtin_vsnprintf
 #endif

@@ -24,7 +24,6 @@ struct {
 } typedef IRQTable;
 
 struct {
-
 } typedef IRQMgr;
 
 IRQMgr *IRQMgrCreate(IRQTable *Tbl);

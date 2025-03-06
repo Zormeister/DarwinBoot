@@ -38,3 +38,6 @@ struct {
 bool CorePlatformInitialize(MemoryConfig memcfg, PlatformDeviceDescriptor *Devices);
 
 void AddRangeToPageMap(MemoryConfig newcfg);
+
+UInt64 PhysicalAddressToVirutal(UInt64 PA);
+UInt64 VirtualAddressToPhysical(UInt64 VA);
