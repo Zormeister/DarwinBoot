@@ -38,17 +38,17 @@ struct ACPITableHeader {
 
 typedef struct ACPITableHeader ACPITableHeader;
 
-struct ACPIRSDTTable {
+struct {
     ACPITableHeader header;
     UInt32 Entries[];
-};
+} typedef ACPI_RSDT_TABLE;
 
-struct ACPIXSDTTable {
+struct {
     ACPITableHeader header;
     UInt64 Entries[];
-};
+} typedef ACPI_XSDT_TABLE;
 
-struct ACPIBGRTTable {
+struct {
     ACPITableHeader header;
     UInt32 Version;
     UInt8 Status;
@@ -56,7 +56,7 @@ struct ACPIBGRTTable {
     UInt64 ImageAddress;
     UInt32 ImageX;
     UInt32 ImageY;
-};
+} typedef ACPI_BGRT_TABLE;
 
 struct {
     UInt64 BaseAddress;
@@ -64,10 +64,10 @@ struct {
     UInt8 StartBusNumber;
     UInt8 EndBusNumber;
     UInt32 Reserved;
-} typedef ACPIMCFGEntry;
+} typedef ACPI_MCFG_TABLE_ENTRY;
 
 struct {
     ACPITableHeader header;
     UInt64 Reserved;
-    ACPIMCFGEntry Entries[]; /*  (header.size -= sizeof(ACPITableHeader) + 8) / sizeof(ACPIMCFGEntry) */
-} typedef ACPIMCFGTable;
+    ACPI_MCFG_TABLE_ENTRY Entries[]; /*  (header.size -= sizeof(ACPITableHeader) + 8) / sizeof(ACPI_MCFG_TABLE_ENTRY) */
+} typedef ACPI_MCFG_TABLE;

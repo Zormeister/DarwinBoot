@@ -5,12 +5,16 @@
 // Used 
 #include <CorePlatform/Board.h>
 
+#ifndef MAX_CPUS
+#define MAX_CPUS 1
+#endif
+
 struct {
     const char *CoreName;
     UInt32 PartNumber;
-
+    UInt32 VendorNum;
 } typedef CDBARMCPU;
 
 struct _CDBCPUInfo {
-    
+    CDBARMCPU CPUs[MAX_CPUS];
 };

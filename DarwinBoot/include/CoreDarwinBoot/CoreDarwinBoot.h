@@ -11,8 +11,7 @@
 #endif
 
 #if PLATFORM_EFI == 1
-#include <Platform/EFI/EFITypes.h>
-#include <Platform/EFI/GUID.h>
+#include <Platform/EFI/EFI.h>
 #endif
 
 #if PLATFORM_SMBIOS == 1
@@ -31,15 +30,31 @@
 #define CDB_LOG_POLICY_SPAM (1 << 3)
 #define CDB_LOG_POLICY_DEBUG (1 << 4)
 
-/* can clangd piss off - there is no stdlib here */
-void vprintf(const char *fmt, va_list va);
-void printf(const char *fmt, ...);
+void CDBLogv(const char *fmt, va_list va);
+void CDBLog(const char *fmt, ...);
 
 extern void *CDBAllocateMemory(const UInt32 size);
-extern void CDBReleaseMemory(void *p);
+extern void CDBFreeMemory(void *p);
+
+extern void panic(const char *fmt, ...);
+
+// Shooooould be on the EFI Partition and Darwin partition.
+// UEFI on-EFI loader should be on the lookout for bootable partitions.
+#define DARWINBOOT_CONFIG_PATH "/Library/Preferences/SystemConfiguration/com.zormeister.DarwinBoot.plist"
+
+#if AUTORAMDISK_PB
+
+// ProjectBuilder integration?
+// I need to work out how to sign/chunklist DMGs ffs
+#define AUTORAMDISK_PATH "\\Library\\Caches\\com.zormeister.ProjectBuilder\\DarwinRAMDisk.dmg"
+#define AUTORAMDISK_DEV_PATH "\\Library\\Caches\\com.zormeister.ProjectBuilder\\DarwinRAMDisk.development.dmg"
+#else
+#define AUTORAMDISK_PATH "\\com.apple.recovery.boot\\BaseSystem.dmg"
+#define AUTORAMDISK_DEV_PATH "\\com.apple.recovery.boot\\InternalSystem.dmg" // i have no idea if this is actually the case
+#endif
 
 #if PLATFORM_EFI == 1
-extern bool CDBInitializeUEFI(EFI_SYSTEM_TABLE *Sys);
+extern bool CDBInitializeUEFI(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *Sys);
 extern bool CDBGUIDMatches(EFI_GUID * a, EFI_GUID * b);
 extern EFI_CONFIGURATION_TABLE *CDBEFIGetConfigurationTable(EFI_GUID *Guid);
 #endif

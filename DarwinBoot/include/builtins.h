@@ -27,5 +27,10 @@
 #endif
 
 #if __has_builtin(__builtin_vsnprintf)
+/* LIAR. */
 #define vsnprintf __builtin_vsnprintf
+#endif
+
+#if __has_builtin(__builtin_snprintf)
+#define snprintf __builtin_snprintf
 #endif

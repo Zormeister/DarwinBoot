@@ -1,2 +1,0 @@
-
-set(UEFI "YES")

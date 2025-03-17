@@ -26,7 +26,7 @@ struct {
     UInt32 Height;
 } typedef CDBVideoInfo;
 
-extern bool CDBBootArgsSetVideoInfo(UInt64 BaseAddress);
+extern bool CDBBootArgsSetVideoInfo(CDBVideoInfo *VideoInfo);
 
 #if __x86_64__
 

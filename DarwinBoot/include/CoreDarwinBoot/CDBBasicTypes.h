@@ -59,9 +59,13 @@ typedef unsigned long long uintptr_t;
 #define WSTRING(str) u##str
 
 #define va_list __builtin_va_list
+#define va_start __builtin_va_start
+#define va_end __builtin_va_end
+
+#define DID_COMPILER_CHECK 1
 #endif
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) && !defined(DID_COMPILER_CHECK)
 #warning i haven't tested this
 
 typedef long long int64_t;

@@ -14,7 +14,7 @@
 /* UNSIGNED LONG... */
 struct {
     unsigned long BaseAddress;
-    unsigned long DiplayCode;
+    unsigned long DisplayCode;
     unsigned long RowBytes;
     unsigned long Width;
     unsigned long Height;

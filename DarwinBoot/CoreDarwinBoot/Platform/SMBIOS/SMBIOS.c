@@ -2,7 +2,11 @@
 
 #include <CoreDarwinBoot/CoreDarwinBoot.h>
 
+EFI_GUID gSmbiosTableGuid = SMBIOS_TABLE_GUID;
+EFI_GUID gEfiSmbiosV3TableGuid = SMBIOS3_TABLE_GUID;
+
 const char *CDBSMBIOSGetString(SMBIOSTableHeader *header, UInt32 stringIdx) {
     UInt8 *Raw = (UInt8 *)header;
     UInt32 size = header->Length;
+    return NULL;
 }

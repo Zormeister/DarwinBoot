@@ -5,4 +5,4 @@
 
 /* uint32_t per entry -- TODO: iterate in JumpStart, set variable in RuntimeConfig that says 'hi hello we have THIS many entries.' */
 
-#define BOOT_ORDER_VAR L"BootOrder"
+#define BOOT_ORDER_VAR WSTRING("BootOrder")

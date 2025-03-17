@@ -3,3 +3,6 @@ Platform/SoC
 DarwinBoot.xcodeproj/xcuserdata
 DarwinBoot.xcodeproj/project.xcworkspace
 build
+.xmake
+.cache
+tmp
