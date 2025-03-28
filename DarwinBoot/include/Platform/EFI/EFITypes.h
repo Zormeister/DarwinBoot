@@ -210,3 +210,28 @@ struct {
 #define EFI_MEMORY_RUNTIME (1 << 63)
 #define EFI_MEMORY_ISA_VALID (1 << 62)
 #define EFI_MEMORY_ISA_MASK (1 << 44) | (1 << 45) | (1 << 46) | (1 << 47) | (1 << 48) | (1 << 49) | (1 << 50) | (1 << 51) | (1 << 52) | (1 << 53) | (1 << 54) | (1 << 55) | (1 << 56) | (1 << 57) | (1 << 58) | (1 << 59)
+
+struct {
+    UInt16 Year;
+    UInt8 Month;
+    UInt8 Day;
+    UInt8 Hour;
+    UInt8 Minute;
+    UInt8 Second;
+    UInt8 Padding;
+    UInt32 Nanosecond;
+    SInt32 TimeZone;
+    UInt8 Daylight;
+    UInt8 Padding2;
+} typedef EFI_TIME;
+
+#define EFI_TIME_ADJUST_DAYLIGHT 0x1
+#define EFI_TIME_IN_DAYLIGHT 0x2
+
+#define EFI_UNSPECIFIED_TIMEZONE 0x7FF
+
+struct {
+    UInt32 Resolution;
+    UInt32 Accuracy;
+    bool SetsToZero;
+} typedef EFI_TIME_CAPABILITIES;

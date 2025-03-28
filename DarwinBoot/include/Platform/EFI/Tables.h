@@ -1,9 +1,11 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
+#include "builtins.h"
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 #include <Platform/EFI/EFITypes.h>
 #include <Platform/EFI/Protocols/SimpleText.h>
+#include <Platform/EFI/Protocols/DevicePath.h>
 
 #pragma mark EFI_MEMORY_ATTRIBUTES_TABLE
 
@@ -25,6 +27,13 @@ struct {
 #define EFI_DTB_TABLE_GUID \
   {0xb1b621d5, 0xf19c, 0x41a5, \
     {0x83, 0x0b, 0xd9, 0x15, 0x2c, 0x69, 0xaa, 0xe0}}
+
+struct {
+    EFI_HANDLE AgentHandle;
+    EFI_HANDLE ControllerHandle;
+    UInt32 Attributes;
+    UInt32 OpenCount;
+} typedef EFI_OPEN_PROTOCOL_INFORMATION_ENTRY;
 
 #pragma mark EFI_SYSTEM_TABLE
 
@@ -102,7 +111,113 @@ struct _EFI_BOOT_SERVICES {
     EFI_STATUS (*HandleProtocol)(EFI_HANDLE Handle, EFI_GUID *Protocol, void **Interface);
     void *Reserved;
     EFI_STATUS (*RegisterProtocolNotify)(EFI_GUID *Protocol, EFI_EVENT Event, void **Registration);
+    EFI_STATUS (*LocateHandle)(EFI_LOCATE_SEARCH_TYPE SearchType, EFI_GUID *Protocol, void *SearchKey, UIntN *BufferSize, EFI_HANDLE *Buffer);
+    EFI_STATUS (*LocateDevicePath)(EFI_GUID *Protocol, EFI_DEVICE_PATH_PROTOCOL **DevicePath, EFI_HANDLE *Device);
+    EFI_STATUS (*InstallConfigurationTable)(EFI_GUID *GUID, void *Table);
+
+    // UEFI Image Services
+    EFI_STATUS (*LoadImage)(bool BootPolicy, EFI_HANDLE ParentImageHandle, EFI_DEVICE_PATH_PROTOCOL *DevicePath, void *SourceBuffer, UIntN SourceSize, EFI_HANDLE *ImageHandle);
+    EFI_STATUS (*StartImage)(EFI_HANDLE ImageHandle, UIntN *ExitDataSize, wchar_t **ExitData);
+    EFI_STATUS (*Exit)(EFI_HANDLE ImageHandle, EFI_STATUS ExitStatus, UIntN ExitDataSize, wchar_t **ExitData);
+    EFI_STATUS (*UnloadImage)(EFI_HANDLE ImageHandle);
+    EFI_STATUS (*ExitBootServices)(EFI_HANDLE Handle, UIntN MapKey);
+
+    EFI_STATUS (*GetNextMonotonicCount)(UInt64 *Count);
+    EFI_STATUS (*Stall)(UInt64 Microseconds);
+    EFI_STATUS (*SetWatchdogTimer)(UIntN Timeout, UInt64 WatchdogCode, UInt16 DataSize, wchar_t *WatchdogData);
+
+    EFI_STATUS (*ConnectController)(EFI_HANDLE ControllerHandle, EFI_HANDLE DriverImageHandle, EFI_DEVICE_PATH_PROTOCOL *RemainingDevicePath, bool Recursive);
+    EFI_STATUS (*DisconnectController)(EFI_HANDLE ControllerHandle, EFI_HANDLE DriverImageHandle, EFI_HANDLE ChildHandle);
+
+    EFI_STATUS (*OpenProtocol)(EFI_HANDLE Handle, EFI_GUID *Protocol, void **Interface, EFI_HANDLE AgentHandle, EFI_HANDLE ControllerHandle, UInt32 Attributes);
+    EFI_STATUS (*CloseProtocol)(EFI_HANDLE Handle, EFI_GUID *Protocol, EFI_HANDLE AgentHandle, EFI_HANDLE ControllerHandle);
+    EFI_STATUS (*OpenProtocolInformation)(EFI_HANDLE Handle, EFI_GUID *Protocol, EFI_OPEN_PROTOCOL_INFORMATION_ENTRY **EntryBuffer, UIntN *EntryCount);
+
+    EFI_STATUS (*ProtocolsPerHandle)(EFI_HANDLE Handle, EFI_GUID ***ProtocolBuffer, UIntN *ProtocolBufferCount);
+    EFI_STATUS (*LocateHandleBuffer)(EFI_LOCATE_SEARCH_TYPE SearchType, EFI_GUID *Protocol, void *SearchKey, UIntN *NumHandles, EFI_HANDLE **Handles);
+    EFI_STATUS (*LocateProtocol)(EFI_GUID *Protocol, void *Registration, void **Interface);
+    EFI_STATUS (*InstallMultipleProtocolInterfaces)(EFI_HANDLE *Handle, ...);
+    EFI_STATUS (*UninstallMultipleProtocolInterfaces)(EFI_HANDLE Handle, ...);
+
+    EFI_STATUS (*CalculateCrc32)(void *Data, UIntN DataSize, UInt32 *Crc32);
+
+    void (*CopyMem)(void *Destination, void *Source, UIntN Length);
+    void (*SetMem)(void *Buffer, UIntN Size, UInt8 Value);
+    EFI_STATUS (*CreateEventEx)(UInt32 Type, EFI_TPL NotifyTpl, EFI_EVENT_NOTIFY NotifyFunction, const void *NotifyContext, const EFI_GUID *EventGroup, EFI_EVENT *Event);
 };
 
 #define EFI_RUNTIME_SERVICES_SIGNATURE 0x56524553544e5552
 #define EFI_RUNTIME_SERVICES_REVISION EFI_SPECIFICATION_VERSION
+
+enum {
+    EFI_VARIABLE_NON_VOLATILE = 0x00000001,
+    EFI_VARIABLE_BOOTSERVICE_ACCESS = 0x00000002,
+    EFI_VARIABLE_RUNTIME_ACCESS = 0x00000004,
+    EFI_VARIABLE_HARDWARE_ERROR_RECORD = 0x00000008,
+    EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS = 0x00000020,
+    EFI_VARIABLE_APPEND_WRITE = 0x00000040,
+    EFI_VARIABLE_ENHANCED_AUTHENTICATED_ACCESS = 0x00000080,
+};
+
+struct {
+    UInt8 Type;
+    UInt32 IdSize;
+    UInt8 Id[] __counted_by(IdSize);
+} typedef EFI_VARIABLE_AUTHENTICATION_3_CERT_ID;
+
+enum {
+    EfiResetCold,
+    EfiResetWarm,
+    EfiResetShutdown,
+    EfiResetPlatformSpecific
+} typedef EFI_RESET_TYPE;
+
+struct {
+    EFI_GUID CapsuleGuid;
+    UInt32 HeaderSize;
+    UInt32 Flags;
+    UInt32 CapsuleImageSize;
+} typedef EFI_CAPSULE_HEADER;
+
+struct {
+    UInt32 CapsuleArrayNumber;
+    EFI_CAPSULE_HEADER *CapsulePtr[] __counted_by(CapsuleArrayNumber);
+} typedef EFI_CAPSULE_TABLE;
+
+struct {
+    UInt64 Length;
+    union {
+        EFI_PHYSICAL_ADDRESS DataBlock;
+        EFI_PHYSICAL_ADDRESS ContinuationPointer;
+    } Union;
+} typedef EFI_CAPSULE_BLOCK_DESCRIPTOR;
+
+struct _EFI_RUNTIME_SERVICES {
+    EFI_TABLE_HEADER Header;
+
+    EFI_STATUS (*GetTime)(EFI_TIME *Time, EFI_TIME_CAPABILITIES *Capabilities);
+    EFI_STATUS (*SetTime)(EFI_TIME *Time);
+    EFI_STATUS (*GetWakeupTime)(bool *Enabled, bool *Pending, EFI_TIME *Time);
+    EFI_STATUS (*SetWakeupTime)(bool Enabled, EFI_TIME *Time);
+
+    EFI_STATUS (*SetVirtualAddressMap)(UIntN MemoryMapSize, UIntN DescriptorSize, UInt32 DescriptorVersion, EFI_MEMORY_DESCRIPTOR *VirtualMap);
+    EFI_STATUS (*ConvertPointer)(UIntN DebugDisposition, void **Address);
+
+    EFI_STATUS (*GetVariable)(wchar_t *VariableName, EFI_GUID *VendorGuid, UInt32 *Attributes, UIntN *DataSize, void *Data);
+    EFI_STATUS (*GetNextVariableName)(UIntN *VariableNameSize, wchar_t *VariableName, EFI_GUID *VendorGuid);
+    EFI_STATUS (*SetVariable)(wchar_t *VariableName, EFI_GUID *VendorGuid, UInt32 Attributes, UIntN DataSize, void *Data);
+
+    EFI_STATUS (*GetNextHighMonotonicCount)(UInt32 *HighCount);
+    void (*ResetSystem)(EFI_RESET_TYPE ResetType, EFI_STATUS ResetStatus, UIntN DataSize, void *ResetData);
+
+    EFI_STATUS (*UpdateCapsule)(EFI_CAPSULE_HEADER **CapsuleHeaderArray, UIntN CapsuleCount, EFI_PHYSICAL_ADDRESS ScatterGatherList);
+    EFI_STATUS (*QueryCapsuleCapabilities)(EFI_CAPSULE_HEADER **capsuleHeaderArray, UIntN CapsuleCount, UInt64 *MaxCapsuleSize, EFI_RESET_TYPE *ResetType);
+
+    EFI_STATUS (*QueryVariableInfo)(UInt32 Attributes, UInt64 *MaxVariableStorageSize, UInt64 *RemainingVariableStorageSize, UInt64 *MaximumVariableSize);
+};
+
+#define EFI_OPTIONAL_PTR 0x00000001
+
+#define CAPSULE_FLAGS_PERSIST_ACROSS_RESET 0x00010000
+#define CAPSULE_FLAGS_POPULATE_SYSTEM_TABLE 0x00020000
+#define CAPSULE_FLAGS_INITIATE_RESET 0x00040000

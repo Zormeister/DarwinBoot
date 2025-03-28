@@ -6,12 +6,17 @@
 
 /* give us some good old stdint  */
 
-typedef char int8_t;
+typedef __signed char int8_t;
 typedef short int16_t;
 typedef int int32_t;
 typedef unsigned char uint8_t;
 typedef unsigned short uint16_t;
 typedef unsigned int uint32_t;
+
+/* If these ever get used that is */
+typedef unsigned char u_int8_t;
+typedef unsigned short u_int16_t;
+typedef unsigned int u_int32_t;
 
 /* some familar <libkern/OSTypes.h> looks nice */
 typedef int8_t SInt8;
@@ -27,6 +32,13 @@ typedef uint32_t UInt32;
 typedef _Bool bool;
 #define true 1
 #define false 0
+
+/* extras */
+#ifdef __SIZE_TYPE__
+typedef __SIZE_TYPE__ size_t;
+#else
+typedef unsigned long size_t;
+#endif
 
 #ifdef __cplusplus
 #if __cplusplus < 201703L
@@ -53,6 +65,7 @@ typedef uint16_t wchar_t;
 
 typedef long long int64_t;
 typedef unsigned long long uint64_t;
+typedef unsigned long long u_int64_t;
 typedef unsigned long long uintptr_t;
 
 // This is annoying because compiler diffs but oh well
@@ -61,6 +74,7 @@ typedef unsigned long long uintptr_t;
 #define va_list __builtin_va_list
 #define va_start __builtin_va_start
 #define va_end __builtin_va_end
+#define va_copy __builtin_va_copy
 
 #define DID_COMPILER_CHECK 1
 #endif

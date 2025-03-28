@@ -6,6 +6,7 @@ target("UEFI JumpStart")
 
     add_files(
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/Platform/**.c",
+        "$(projectdir)/DarwinBoot/CoreDarwinBoot/libc/*.c",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/*.c",
         "$(projectdir)/DarwinBoot/UEFI/JumpStart/*.c",
 
@@ -24,7 +25,7 @@ target("UEFI JumpStart")
     end
 
     if is_mode("debug") then
-        add_defines("CONFIG_DEBUG=1")
+        add_defines("CONFIG_DEBUG=1", "LIBC_PANIC_ON_NULLPTR")
     end
 
     on_install(function (target)
