@@ -18,9 +18,10 @@
 #include <Platform/SMBIOS/SMBIOS.h>
 #endif
 
-#include "BootArgs.h"
-#include "CPUInfo.h"
-#include "DeviceTree.h"
+#include <CoreDarwinBoot/BootArgs.h>
+#include <CoreDarwinBoot/CPUInfo.h>
+#include <CoreDarwinBoot/DeviceTree.h>
+#include <CoreDarwinBoot/libc_compat.h>
 
 /* STANDARD CoreDarwinBoot FUNCTIONS */
 
@@ -33,7 +34,7 @@
 void CDBLogv(const char *fmt, va_list va);
 void CDBLog(const char *fmt, ...);
 
-extern void *CDBAllocateMemory(const UInt32 size);
+extern void *CDBAllocateMemory(size_t size);
 extern void CDBFreeMemory(void *p);
 
 extern void panic(const char *fmt, ...);

@@ -1,6 +1,3 @@
 [submodule "External/cctools"]
 	path = External/cctools
 	url = https://github.com/apple-oss-distributions/cctools
-[submodule "External/POSIX-UEFI"]
-	path = External/POSIX-UEFI
-	url = https://gitlab.com/bztsrc/posix-uefi.git

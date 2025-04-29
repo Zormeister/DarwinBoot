@@ -3,7 +3,6 @@
 #ifndef __libc_STDARG__
 #define __libc_STDARG__
 
-// we already define va_xxx in CDB
-#include <CoreDarwinBoot/CDBBasicTypes.h>
+#include <CoreDarwinBoot/libc_compat.h>
 
 #endif

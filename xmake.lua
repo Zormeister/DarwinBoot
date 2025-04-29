@@ -1,18 +1,26 @@
-includes("toolchains/*.lua")
-
 add_rules("mode.release", "mode.debug")
 
 if is_plat("uefi") then
 
-set_allowedarchs("x64", "x86", "AArch64")
+    includes("toolchains/uefi.lua")
 
-set_toolchains("uefi")
+    set_allowedarchs("x64", "x86", "AArch64")
 
-includes("targets/UEFI/*.lua")
+    set_toolchains("uefi")
 
-elseif is_arch("arm64", "armv7") then
+    includes("targets/UEFI/*.lua")
 
-includes("configs/*.lua")
-includes("targets/ARM/*.lua")
+elseif is_arch("arm64", "armv7", "armv6", "armv6k") then
+
+    print("=== DarwinBoot ARM ===")
+
+    includes("toolchains/arm-eabi.lua")
+    includes("toolchains/arm-elf.lua")
+
+    includes("configs/*.lua")
+    includes("targets/ARM/*.lua")
+
+    -- this variable is set by the configs. i wanna see if it persists
+    print(build_toolchain)
 
 end

@@ -5,6 +5,45 @@
 
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
+/* ctype.h */
+int isalnum(int c);
+int isalpha(int c);
+int isblank(int c);
+int iscntrl(int c);
+int isdigit(int c);
+int isgraph(int c);
+int islower(int c);
+int isprint(int c);
+int ispunct(int c);
+int isspace(int c);
+int isupper(int c);
+int isxdigit(int c);
+int tolower(int c);
+int toupper(int c);
+
+/* stdarg.h */
+#define va_list __builtin_va_list
+#define va_arg(va, type) __builtin_va_arg((va), type)
+#define va_copy(va1, va2) __builtin_va_copy((va1), (va2))
+#define va_start(va, arg) __builtin_va_start((va), arg)
+#define va_end(va) __builtin_va_end((va))
+
+/* stdio.h */
+int printf(const char *fmt, ...);
+int vprintf(const char *fmt, va_list list);
+
+int snprintf(char *s, size_t n, const char *format, ...);
+int vsnprintf(char *s, size_t n, const char *format, va_list va);
+
+/* stdlib.h */
+int atoi(const char *str);
+long atol(const char *str);
+
+void free(void *mem);
+
+void *malloc(size_t size);
+void *realloc(void *ptr, size_t size);
+
 /* string.h */
 void *memcpy(void *dest, const void *src, size_t n); // done
 void *memset(void *dst, int x, size_t n); // done

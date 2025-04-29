@@ -47,6 +47,5 @@ Boards:
 ### BCM2711
 
 Boards:
-- PI4 | Raspberry Pi 4
 - PI4B | Raspberry Pi 4 Model B
 

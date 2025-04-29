@@ -6,7 +6,7 @@
 static XNUBootArguments *CurrentArguments;
 
 bool CDBInitKernelBootArguments() {
-    CurrentArguments = (XNUBootArguments *)CDBAllocateMemory(sizeof(XNUBootArguments));
+    CurrentArguments = (XNUBootArguments *)malloc(sizeof(XNUBootArguments));
     if (CurrentArguments == NULL) {
         return false;
     }

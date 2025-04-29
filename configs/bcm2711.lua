@@ -11,11 +11,13 @@ if is_plat("bcm2711") then
 
     local board = os.getenv("BOARD")
 
-    add_defines("BOARD_BCM2711_$(board)")
+    add_defines("BOARD_BCM2711_" .. board)
 
-    machine = board
+    machinedir = "RPi"
 
-    output_binary = "ELF"
+    cpu = "cortex-a72"
+
+    build_toolchain = "arm-elf"
 
 elseif is_plat("bcm2711-emulated") then
 
@@ -27,11 +29,11 @@ elseif is_plat("bcm2711-emulated") then
 
     local board = os.getenv("BOARD")
 
-    add_defines("BOARD_BCM2711_$(board)")
+    add_defines("BOARD_BCM2711_" .. board)
 
-    machine = board
+    machinedir = "RPi"
 
-    print(machine)
+    cpu = "cortex-a72"
 
-    output_binary = "ELF"
+    build_toolchain = "arm-elf"
 end

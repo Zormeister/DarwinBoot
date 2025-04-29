@@ -4,13 +4,15 @@
 
 .global _entry
 
-.extern (_panic_halt)
+.extern (platform_init)
+.extern (halt)
+.extern (VMQFlatDT)
 
 // ref: https://wiki.osdev.org/Raspberry_Pi_Bare_Bones#Pi_3,_4
 
 // TODO: everything
 // I need to store the DTB pointer and then jump to the C foundation.
-// AKA: start_64.c @ start
+// AKA: start.c @ start
 
 _entry:
    // Setup stack.
@@ -20,9 +22,9 @@ _entry:
    LDR      x5, = __bss_start
    LDR      w6 = __bss_size
 
-1: CBZ      w6, _panic_halt
+1: CBZ      w6, halt
    STR      xzr, [x5], #8
-   SUB	    w6, w6, #1
-   CBNZ     w6, _panic_halt
+   SUB	   w6, w6, #1
+   CBNZ     w6, halt
 
-2: BL _platform_init
+2: BL platform_init

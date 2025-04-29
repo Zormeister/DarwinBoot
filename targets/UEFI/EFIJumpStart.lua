@@ -8,14 +8,7 @@ target("UEFI JumpStart")
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/Platform/**.c",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/libc/*.c",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/*.c",
-        "$(projectdir)/DarwinBoot/UEFI/JumpStart/*.c",
-
-        "$(projectdir)/External/POSIX-UEFI/uefi/stat.c",
-        "$(projectdir)/External/POSIX-UEFI/uefi/stdlib.c",
-        "$(projectdir)/External/POSIX-UEFI/uefi/stdio.c",
-        "$(projectdir)/External/POSIX-UEFI/uefi/string.c",
-        "$(projectdir)/External/POSIX-UEFI/uefi/time.c",
-        "$(projectdir)/External/POSIX-UEFI/uefi/unistd.c"
+        "$(projectdir)/DarwinBoot/UEFI/JumpStart/*.c"
     )
 
     if is_arch("x64", "x86") then

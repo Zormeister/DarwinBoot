@@ -40,6 +40,12 @@ typedef __SIZE_TYPE__ size_t;
 typedef unsigned long size_t;
 #endif
 
+#ifdef __PTRDIFF_TYPE__
+typedef __PTRDIFF_TYPE__ ptrdiff_t;
+#else
+typedef long ptrdiff_t;
+#endif
+
 #ifdef __cplusplus
 #if __cplusplus < 201703L
 #error This project uses C 17, please use C 17 for compilation/your LSP
@@ -71,11 +77,6 @@ typedef unsigned long long uintptr_t;
 // This is annoying because compiler diffs but oh well
 #define WSTRING(str) u##str
 
-#define va_list __builtin_va_list
-#define va_start __builtin_va_start
-#define va_end __builtin_va_end
-#define va_copy __builtin_va_copy
-
 #define DID_COMPILER_CHECK 1
 #endif
 
@@ -92,6 +93,12 @@ typedef unsigned long long uintptr_t;
 
 typedef int64_t SInt64;
 typedef uint64_t UInt64;
+
+#if __LP64__
+typedef UInt64 UIntN;
+#else
+typedef UInt32 UIntN;
+#endif
 
 /* TODO: validate this */
 #define BITMASK(start, end) (~(~0ull << end) << start)

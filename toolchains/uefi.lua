@@ -3,7 +3,7 @@ toolchain("uefi")
 
     set_toolset("cc", "clang")
     set_toolset("cxx", "clang", "clang++")
-    set_toolset("ld", "lld-link", "lld-link")
+    set_toolset("ld", "lld-link", "lld-link") -- we need the PE/COFF linker. thanks CMake for being a POS
     set_toolset("sh", "clang++", "clang")
     set_toolset("ar", "ar")
     set_toolset("ex", "ar")
@@ -24,8 +24,9 @@ toolchain("uefi")
     end)
 
     on_load(function (toolchain)
-        toolchain:add("cflags", "-nostdlib -nostdlibinc -mabi=ms -target x86_64-pc-win32-coff -fno-stack-protector -fno-stack-clash-protection -fno-strict-aliasing -fno-stack-check -fshort-wchar -mno-red-zone -Wno-incompatible-library-redeclaration -ffreestanding -Wno-builtin-requires-header -Wno-incompatible-library-redeclaration -mno-stack-arg-probe")
-        toolchain:add("includedirs", "$(projectdir)/DarwinBoot/include", "$(projectdir)/External/POSIX-UEFI/uefi")
+        toolchain:add("cflags", "-nostdlib -nostdinc -nolibc -mabi=ms -target x86_64-pc-win32-coff -fno-stack-protector -fno-stack-clash-protection -fno-strict-aliasing -fno-stack-check -fshort-wchar -mno-red-zone -Wno-incompatible-library-redeclaration -ffreestanding -Wno-builtin-requires-header -Wno-incompatible-library-redeclaration -mno-stack-arg-probe")
+        toolchain:add("includedirs", "$(projectdir)/DarwinBoot/include")
 
         toolchain:add("ldflags", "-subsystem:efi_application -nodefaultlib -dll -entry:EFIMain")
     end)
+toolchain_end()

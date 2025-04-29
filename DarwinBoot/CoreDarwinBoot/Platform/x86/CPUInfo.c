@@ -4,6 +4,8 @@
 
 /* thank you oh so very much to the people who work on OpenCorePkg and the AMD Vanilla Patches */
 
+#if TARGET_X64
+
 struct _CDBCPUInfo {
     enum CPUVendor vendor;
     enum VMMVendor vmm;
@@ -15,4 +17,4 @@ struct _CDBCPUInfo {
     bool UsesHSATopology;
 };
 
-
+#endif

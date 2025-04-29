@@ -1,7 +1,7 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include "CorePlatform/Driver.h"
-#include <CorePlatform/Serial/Serial.h>
+#include "Drivers/Driver.h"
+#include <Drivers/Serial.h>
 #include <CorePlatform/Foundation.h>
 
 /* Per SoC headers - usually because the SoC bases are different  */
@@ -28,14 +28,14 @@ struct BCM2835AuxUARTDriver {
 static struct BCM2835AuxUARTDriver bcm2835_aux_uart_drv;
 
 bool bcm2835_aux_uart_is_supported(PlatformDevice *dev) {
-    if (dev->conformsTo("brcm,brcm2835-aux-uart") || dev->conformsTo("aux-uart,bcm2835")) {
+    if (dev->ConformsTo("brcm,brcm2835-aux-uart") || dev->ConformsTo("aux-uart,bcm2835")) {
         return true;
     }
     return false;
 }
 
 PlatformDriver * bcm2835_aux_uart_create() {
-    return (PlatformDriver *)&bcm2835_aux_uart_drv;
+    return (PlatformDriver *)&bcm2835_aux_uart_drv; /* We should only ever have one context. BCM283X + BCM27XX platform should init us. */
 }
 
 void bcm2835_aux_uart_destroy(PlatformDriver *This) {

@@ -5,3 +5,4 @@ build
 .xmake
 .cache
 tmp
+.vscode/compile_commands.json

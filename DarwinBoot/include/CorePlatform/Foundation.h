@@ -1,43 +1,68 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include <CorePlatform/Driver.h>
+#include "CoreDarwinBoot/CDBBasicTypes.h"
+#include <Drivers/Driver.h>
 
-struct {
-    const char * Compatible;
-    UInt32 *RegBases;
-    UInt32 *RegBaseSize;
-    UInt32 NumRegBases; /*  */
-} typedef PlatformDeviceDescriptor;
+enum {
+    PhysicalRange,
+    VirtualRange,
+    BusRange,
+} typedef RangeKind;
 
+/* CPGetDeviceIdentity */
 struct {
-    UInt64 MemBase;
-    UInt64 MemSize;
-} typedef MemoryConfig;
+    UInt32 ChipID;
+    UInt32 BoardID;
+    UInt64 ECID;
+    UInt32 ESEC;
+    UInt32 EPRO;
+    UInt32 SDOM;
+    UInt32 PROD;
+} typedef DeviceIdentity;
 
 struct {
     UInt64 RangeStart;
-    UInt64 RangeVirtualStart;
     UInt64 RangeSize;
+    RangeKind RangeKind;
     const char *RangeName;
 } typedef MemoryRange;
 
-/* PHYSICAL PAGES... */
+#define MAX_DEV_RANGES 10
+
 struct {
-    UInt64 PageStart;
-    UInt64 PageEnd;
-    UInt32 AvailableSpace;
-    UInt32 Rsvd;
-} typedef PageMapEntry; /* 24 bytes per map entry, so... */
-/* 170 entries per page. I don't think a single page would fit 4096 / 8GB of pages map entries. Oof.  */
+    const char * Compatible;
+    UInt32 NumInstances;
+    MemoryRange Ranges[MAX_DEV_RANGES];
+} typedef PlatformDeviceDescriptor;
 
-/* .drivers should get parsed by CorePlatformInitialize at runtime. */
-#define COREPLATFORM_DRIVER __attribute__((section(".drivers"))) 
+/* I feel like that's a sane value- let me know if this should be reduced or increased. */
+#define MAX_MEM_RANGES 20
 
+struct {
+    UInt32 Version;
 
-bool CorePlatformInitialize(MemoryConfig memcfg, PlatformDeviceDescriptor *Devices);
+    /* callbacks */
 
-void AddRangeToPageMap(MemoryConfig newcfg);
+    /* mapper data */
+    MemoryRange AvailableRanges[MAX_MEM_RANGES];
+} typedef PageMapper;
+
+extern PageMapper gMapper;
+
+bool CPInitialize(MemoryRange EarlyMem, PlatformDeviceDescriptor *Devices);
+
+void AddRangeToPageMap(MemoryRange NewRange);
 
 UInt64 PhysicalAddressToVirutal(UInt64 PA);
 UInt64 VirtualAddressToPhysical(UInt64 VA);
+
+/*!
+ * @function CPGetDeviceIdentity
+ *
+ * @abstract This is setup in a similar scheme to the IMG4 identity system
+ * @result Returns the 'identity' of the device.
+ */
+DeviceIdentity *CPGetDeviceIdentity(void);
+
+bool CPSerialDriverAvailable(void);

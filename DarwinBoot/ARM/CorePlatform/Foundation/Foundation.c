@@ -15,6 +15,7 @@ char BootMessage[] = {
     "=======================================\n"
 };
 
+/*
 struct CorePlatformRoot {
     UInt32 DeviceCount;
     PlatformDevice *Devices;
@@ -66,7 +67,7 @@ void * AllocateMemory(UInt64 size) {
     UInt64 LastChunkSize = 0;
     void * out = NULL;
     if (size < PageSize) {
-        /* We don't need to work around any individual bits here, so just allocate after setting the needed page count. */
+        -- We don't need to work around any individual bits here, so just allocate after setting the needed page count. --
         PagesRequired = 1;
         goto alloc;
     } else {
@@ -107,9 +108,11 @@ bool CorePlatformInitialize(MemoryConfig memcfg, PlatformDeviceDescriptor *Devic
     PlatformDeviceDescriptor dev;
     if (initialize_memory_allocator(memcfg) == true) {
         while (dev = Devices[i], dev.Compatible != NULL, i++) {
-            /* Need to implement Malloc n' stuff. */
+            -- Need to implement Malloc n' stuff. --
         }
     }
     
     return true;
 }
+
+*/

@@ -1,11 +1,12 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
+#pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 enum _ARM_MIDR_IMPLEMENTER {
     Reserved = 0,
     ARM = 0x41,
-    BCM = 0x42,
+    Broadcom = 0x42,
     Cavium = 0x43,
     DEC = 0x44,
     Fujitsu = 0x46,

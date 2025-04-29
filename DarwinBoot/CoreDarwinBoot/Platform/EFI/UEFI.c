@@ -40,8 +40,7 @@ bool CDBInitializeUEFI(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
     return true;
 }
 
-void *CDBAllocateMemory(const UInt32 size) {
-    // Hypothetically should never happen.
+void *platform_malloc(size_t size) {
     if (BS == NULL) { return NULL; }
 
     void *outbuffer;
@@ -53,14 +52,15 @@ void *CDBAllocateMemory(const UInt32 size) {
     return outbuffer;
 }
 
+void *CDBAllocateMemory(size_t size) {
+    return platform_malloc(size);
+}
+
 void CDBFreeMemory(void * mem) {
     // Hypothetically should never happen.
     if (BS == NULL) { return; }
     BS->FreePool(mem);
 }
-
-extern unsigned long strlen(const char *s);
-extern int vprintf(const char *restrict, va_list);
 
 void CDBLog(const char *fmt, ...) {
     va_list va;

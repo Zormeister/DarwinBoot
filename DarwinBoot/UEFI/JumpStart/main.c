@@ -4,6 +4,9 @@
 #include <CoreDarwinBoot/CoreDarwinBoot.h>
 #include <Platform/EFI/EFITypes.h>
 
+#define DBOD_PATH WSTRING("\\System\\Library\\CoreServices\\boot.efi")
+#define DBOL_PATH WSTRING("\\EFI\\DarwinBoot\\DarwinBoot.efi")
+
 /* TODO: this. */
 EFI_STATUS EFIMain(EFI_HANDLE Handle, EFI_SYSTEM_TABLE *SystemTable) {
     if (CDBInitializeUEFI(Handle, SystemTable)) {

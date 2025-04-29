@@ -3,14 +3,9 @@
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
-#include <Platform/EFI/BootManager.h>
-#include <Platform/EFI/EFITypes.h>
-#include <Platform/EFI/GUID.h>
-#include <Platform/EFI/Protocols/DevicePath.h>
-#include <Platform/EFI/Protocols/GOP.h>
-#include <Platform/EFI/Protocols/LoadedImage.h>
-#include <Platform/EFI/Protocols/SimpleText.h>
+#include <Platform/EFI/Types.h>
 #include <Platform/EFI/Tables.h>
+#include <Platform/EFI/Protocols.h>
 
 extern EFI_SYSTEM_TABLE *ST;
 extern EFI_BOOT_SERVICES *BS;

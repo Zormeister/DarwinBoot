@@ -1,7 +1,7 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include <Platform/EFI/EFITypes.h>
+#include <Platform/EFI/Types.h>
 
 #define EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID \
   {0x9042a9de,0x23dc,0x4a38,\
@@ -58,7 +58,9 @@ typedef enum {
 } EFI_GRAPHICS_OUTPUT_BLT_OPERATION;   
 
 struct _EFI_GRAPHICS_OUTPUT_PROTOCOL {
-    EFI_STATUS (*QueryMode)(EFI_GRAPHICS_OUTPUT_PROTOCOL *Self, UInt32 ModeNumber, UIntN *SizeOfModeInfo, EFI_GRAPHICS_OUTPUT_MODE_INFORMATION **ModeInfo);
-    EFI_STATUS (*SetMode)(EFI_GRAPHICS_OUTPUT_PROTOCOL *Self, UInt32 ModeNumber);
-    // wip
+    EFI_STATUS (*QueryMode)(EFI_GRAPHICS_OUTPUT_PROTOCOL *This, UInt32 ModeNumber, UIntN *SizeOfModeInfo, EFI_GRAPHICS_OUTPUT_MODE_INFORMATION **ModeInfo);
+    EFI_STATUS (*SetMode)(EFI_GRAPHICS_OUTPUT_PROTOCOL *This, UInt32 ModeNumber);
+    EFI_STATUS (*Blt)(EFI_GRAPHICS_OUTPUT_PROTOCOL *This, EFI_GRAPHICS_OUTPUT_BLT_PIXEL *BltBuffer, EFI_GRAPHICS_OUTPUT_BLT_OPERATION BltOperation,
+                        UIntN SourceX, UIntN SourceY, UIntN DestinationX, UIntN DestinationY, UIntN Width, UIntN Height, UIntN Delta);
+    EFI_GRAPHICS_OUTPUT_PROTOCOL_MODE *Mode;
 };

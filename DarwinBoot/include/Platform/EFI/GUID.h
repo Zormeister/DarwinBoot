@@ -1,7 +1,7 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include "EFITypes.h"
+#include <Platform/EFI/Types.h>
 
 /* RTVars: accessed & written by DarwinBoot for information s*/
 #define COREDARWINBOOT_RUNTIME_VARIABLE_GUID \

@@ -26,20 +26,6 @@
 
 #endif
 
-#if __has_builtin(__builtin_vsnprintf)
-/* LIAR. */
-#define vsnprintf __builtin_vsnprintf
-#endif
-
-#if __has_builtin(__builtin___vsnprintf_chk)
-/* LIAR. */
-#define vsnprintf __builtin_vsnprintf
-#endif
-
-#if __has_builtin(__builtin_snprintf)
-#define snprintf __builtin_snprintf
-#endif
-
 #if __has_attribute(__counted_by__)
 # define __counted_by(member)  __attribute__((__counted_by__(member)))
 #else

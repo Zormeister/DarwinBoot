@@ -2,6 +2,7 @@
 
 #include <CorePlatform/Foundation.h>
 
+/*
 static MemoryConfig CurrentMemoryConfig;
 static UInt32 PageSize;
 
@@ -52,7 +53,7 @@ void * AllocateMemory(UInt64 size) {
     UInt64 LastChunkSize = 0;
     void * out = NULL;
     if (size < PageSize) {
-        /* We don't need to work around any individual bits here, so just allocate after setting the needed page count. */
+        -- We don't need to work around any individual bits here, so just allocate after setting the needed page count. --
         PagesRequired = 1;
         goto alloc;
     } else {
@@ -77,8 +78,9 @@ void FreeMemory(void *mem) {
 
 }
 
-/* our favourites */
+// our favourites
 // ok i'll fix the typing later - UL vs ULL
 void *malloc(uint64_t size) {
     return AllocateMemory(size);
 }
+*/

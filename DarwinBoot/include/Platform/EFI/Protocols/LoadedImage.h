@@ -1,7 +1,7 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include <Platform/EFI/EFITypes.h>
+#include <Platform/EFI/Types.h>
 #include <Platform/EFI/Tables.h>
 #include <Platform/EFI/Protocols/DevicePath.h>
 

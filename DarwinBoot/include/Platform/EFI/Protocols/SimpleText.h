@@ -2,7 +2,7 @@
 
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
-#include <Platform/EFI/EFITypes.h>
+#include <Platform/EFI/Types.h>
 
 #pragma mark EFI_SIMPLE_TEXT_INPUT_PROTOCOL
 
