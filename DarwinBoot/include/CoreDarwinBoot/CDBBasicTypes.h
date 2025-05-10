@@ -1,7 +1,6 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-
 /* tyvm to POSIX-UEFI for the details on how to have an independent libc */
 
 /* give us some good old stdint  */

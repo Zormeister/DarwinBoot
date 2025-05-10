@@ -14,4 +14,9 @@
 
 /* bus addresses go through the DMA controller, TODO: figure out how the DMA controller works */
 
+/* This is the Pi 2 and Pi 3 MMIO base. */
+#if BOARD_BCM2835_PI2
 #define PERIPHERAL_MMIO_BASE 0x3F000000
+#else
+#define PERIPHERAL_MMIO_BASE 0x20000000
+#endif

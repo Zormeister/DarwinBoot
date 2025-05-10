@@ -21,6 +21,19 @@ int isxdigit(int c);
 int tolower(int c);
 int toupper(int c);
 
+/* limits.h */
+
+/* Use compiler definitions. */
+#define CHAR_BIT __CHAR_BIT__
+
+#define SCHAR_MIN -__SCHAR_MAX__ - 1
+#define SCHAR_MAX __SCHAR_MAX__
+
+#define UCHAR_MAX (SCHAR_MAX * 2) + 1
+
+#define INT_MAX __INT_MAX__
+#define UINT_MAX (INT_MAX * 2) + 1
+
 /* stdarg.h */
 #define va_list __builtin_va_list
 #define va_arg(va, type) __builtin_va_arg((va), type)
@@ -45,11 +58,12 @@ void *malloc(size_t size);
 void *realloc(void *ptr, size_t size);
 
 /* string.h */
-void *memcpy(void *dest, const void *src, size_t n); // done
-void *memset(void *dst, int x, size_t n); // done
-int memcmp(const void *b1, const void *b2, size_t n); // how the FUCK do i properly do this
+void *memchr(void *mem, int c, size_t n);
+void *memcpy(void *dest, const void *src, size_t n);
+void *memset(void *dst, int x, size_t n);
+int memcmp(const void *b1, const void *b2, size_t n);
 
-int strncmp(const char *s1, const char *s2, size_t n); // how the FUCK do i properly do thus
+int strncmp(const char *s1, const char *s2, size_t n);
 
 size_t strlen(const char *str);
 

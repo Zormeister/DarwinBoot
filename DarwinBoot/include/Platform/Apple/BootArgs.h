@@ -3,13 +3,13 @@
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
-#if TARGET_ARM32 || TARGET_ARM64
-#include "BootArgsARM.h"
+#if __arm64__ || __arm__
+#include <Platform/Apple/BootArgsARM.h>
 #endif
 
 // How do I disable clang warnings about unused headers?
 #if TARGET_X64 || TARGET_IA32
-#include "BootArgsX86.h"
+#include <Platform/Apple/BootArgsX86.h>
 #endif
 
 /* apparently you can also load Dexts this way, interesting. */

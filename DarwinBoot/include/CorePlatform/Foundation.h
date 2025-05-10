@@ -8,6 +8,7 @@ enum {
     PhysicalRange,
     VirtualRange,
     BusRange,
+    MMIORange,
 } typedef RangeKind;
 
 /* CPGetDeviceIdentity */
@@ -32,8 +33,7 @@ struct {
 
 struct {
     const char * Compatible;
-    UInt32 NumInstances;
-    MemoryRange Ranges[MAX_DEV_RANGES];
+    MemoryRange Range;
 } typedef PlatformDeviceDescriptor;
 
 /* I feel like that's a sane value- let me know if this should be reduced or increased. */
@@ -43,6 +43,13 @@ struct {
     UInt32 Version;
 
     /* callbacks */
+#if __LP64__
+    UInt64 (*PhysicalToVirtualAddress)(UInt64 PhysicalAddress);
+    UInt64 (*VirtualToPhysicalAddress)(UInt64 VirtualAddress);
+#else
+    UInt32 (*PhysicalToVirtualAddress)(UInt32 PhysicalAddress);
+    UInt32 (*VirtualToPhysicalAddress)(UInt32 VirtualAddress);
+#endif
 
     /* mapper data */
     MemoryRange AvailableRanges[MAX_MEM_RANGES];
@@ -66,3 +73,8 @@ UInt64 VirtualAddressToPhysical(UInt64 VA);
 DeviceIdentity *CPGetDeviceIdentity(void);
 
 bool CPSerialDriverAvailable(void);
+
+/* This is needed for BCM2835 Aux UART, we need to interface with the aux controller. */
+PlatformDriver *CPGetDriverHandle(const char *DriverName);
+
+bool CPRegisterDriver(PlatformDriver *Driver);

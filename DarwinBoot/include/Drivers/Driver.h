@@ -36,22 +36,15 @@ struct {
     UInt32 MemSize;
 
     /* callbacks */
-    UInt8 (*ReadReg8)(UInt32 Offset);
-    UInt16 (*ReadReg16)(UInt32 Offset);
-    UInt32 (*ReadReg32)(UInt32 Offset);
+    UInt8 (*ReadReg8)(PlatformDevice *This, UInt32 Offset);
+    UInt16 (*ReadReg16)(PlatformDevice *This, UInt32 Offset);
+    UInt32 (*ReadReg32)(PlatformDevice *This, UInt32 Offset);
 
-    void (*WriteReg8)(UInt32 Offset, UInt8 Value);
-    void (*WriteReg16)(UInt32 Offset, UInt16 Value);
-    void (*WriteReg32)(UInt32 Offset, UInt32 Value);
+    void (*WriteReg8)(PlatformDevice *This, UInt32 Offset, UInt8 Value);
+    void (*WriteReg16)(PlatformDevice *This, UInt32 Offset, UInt16 Value);
+    void (*WriteReg32)(PlatformDevice *This, UInt32 Offset, UInt32 Value);
 } typedef MMIODevice;
 
 #define TO_MMIO_DEVICE(dev) (MMIODevice *)(dev)
 
-bool InitMMIODevice(MMIODevice *Device, UInt64 Address, UInt32 MemSize);
-
-struct CorePlatformDriverInfo {
-    const char *DrvName;
-    bool (*IsSupported)(PlatformDevice *dev);
-    PlatformDriver * (*CreateDriver)(PlatformDevice *dev);
-    void (*DestroyDriver)(PlatformDriver *This);
-};
+bool InitMMIODevice(MMIODevice *Device, UInt64 Address, UInt32 MemSize, const char *Compatible);

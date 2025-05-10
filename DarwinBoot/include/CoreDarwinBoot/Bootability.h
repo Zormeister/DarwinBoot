@@ -11,21 +11,25 @@
  */
 
 enum {
-    BOOTABILITY_FILE_TYPE_UNSPECIFIED = 0,
-    BOOTABILITY_FILE_TYPE_MACH,
-    BOOTABILITY_FILE_TYPE_ELF,
-    BOOTABILITY_FILE_TYPE_IMG4, // Merge with BOOTABILITY_FILE_TYPE_MACH?
-    BOOTABILITY_FILE_TYPE_PECOFF, // PE/COFF - A UEFI image.
+    kBootabilityFileTypeUnspecified = 0,
+    kBootabilityFileTypeMach,   // any Mach-O file.
+    kBootabilityFileTypeELF,    // any ELF32 or ELF64 file.
+    kBootabilityFileTypeIMG4,   // Merge with BOOTABILITY_FILE_TYPE_MACH?
+    kBootabilityFileTypePECOFF, // PE/COFF - A UEFI image.
 } typedef BootabilityFileType;
 
 enum {
-    BOOTABILITY_FILE_SUBTYPE_UNSPECIFIED = 0,
-    BOOTABILITY_FILE_SUBTYPE_FAT, // Mach FAT file.
+    kBootabilityFileSubTypeUnspecified = 0,
+    kBootabilityFileSubTypeMultiArch, // Mach FAT file.
 } typedef BootabilityFileSubType;
 
+/*
+ * how the SHIT does any of the macOS stack get ahold of the correct kernel?
+ */
+
 struct {
-    BootabilityFileType FileType;
-    BootabilityFileSubType FileSubType;
+    BootabilityFileType Type;
+    BootabilityFileSubType SubType;
     const char *FilePath;
     const char *FileName;
 } typedef BootabilityFile;
@@ -36,4 +40,3 @@ struct {
 } typedef BootabilityVolume;
 
 bool BootabilityInit();
-

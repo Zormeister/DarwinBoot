@@ -1,7 +1,8 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include "CDBBasicTypes.h"
+#include <CoreDarwinBoot/CDBBasicTypes.h>
+#include <Platform/FDT/Header.h>
 
 typedef struct _CDBDeviceTree *CDBDeviceTree;
 typedef struct _CDBDTNode *CDBDTNode;
@@ -34,56 +35,31 @@ struct FlatDTNode {
 /* TODO: Grab said blobs and translate them for XNU. */
 
 /*!
-  @function CDBCreateDeviceTree
-  @abstract Allocates a CDBDeviceTree and sets up the root node, which is stored in Platform code as a global variable.
-  @result Returns true if the operation was successful
- */
-bool CDBCreateDeviceTree(void);
-
-/* FDT */
-
-#define FDT_HEADER_MAGIC 0xDEADF00D
-
-struct _FDTHeader {
-    UInt32 Magic;
-    UInt32 TotalSize;
-    UInt32 DTStructOffset;
-    UInt32 DTStringsOffset;
-    UInt32 MemReservationMapOffset;
-    UInt32 Version;
-    UInt32 LastCompatibleVersion;
-    UInt32 BootCPUPhysID;
-    UInt32 DTStringsSize;
-    UInt32 DTStructureSize;
-} typedef FDTHeader;
-
-struct {
-    UInt64 Base;
-    UInt64 Size;
-} typedef FDTReservedMemEntry;
-
-/*!
- @function CDBCreateDeviceTreeWithFDT
+ @function CDBDeviceTreeCreateFromFDT
  @abstract Sets up the DeviceTree using a provided DT.
  @param fdt Pointer to the Flattened Device Tree blob.
  */
-bool CDBCreateDeviceTreeWithFDT(FDTHeader *fdt);
+CDBDeviceTree CDBDeviceTreeCreateFromFDT(FlattenedDTHeader *fdt);
+
+CDBDeviceTree CDBDeviceTreeCreateFromBinary(const UInt8 *Binary);
+
+CDBDeviceTree CDBDeviceTreeCreate(void);
 
 /*!
   @function CDBDTGetRootNode
   @abstract Gets the root node from the DeviceTree object
   @result Returns the root node
  */
-CDBDTNode CDBDTGetRootNode(void);
+CDBDTNode CDBDTGetRootNode(CDBDeviceTree DeviceTree);
 
 /*!
   @function CDBDTGetNode
-  @abstract Scans for the node within the allocated DeviceTree. 
-  @param nodePath Full path to the node requested, eg: /efi/platform or /chosen 
+  @abstract Scans for the node within the allocated DeviceTree.
+  @param nodePath Full path to the node requested, eg: /efi/platform or /chosen
   @param noNewNode Specifies if a node should be created or not if the node isn't found
   @result Returns the requested node if it could be found, otherwise returns NULL on failure.
  */
-CDBDTNode CDBDTGetNode(const char *nodePath, bool noNewNode);
+CDBDTNode CDBDTGetNode(CDBDeviceTree *DeviceTree, const char *nodePath, bool noNewNode);
 
 /*!
   @function CDBDTGetProperty

@@ -3,6 +3,7 @@
 #pragma once
 #include "CDBBasicTypes.h"
 #include <Platform/Apple/BootArgs.h>
+#include <CoreDarwinBoot/DeviceTree.h>
 
 /*!
   @function CDBInitKernelBootArguments
@@ -14,9 +15,12 @@ extern bool CDBInitKernelBootArguments(void);
 /*!
   @function CDBAddKernelExtensionToBoot
   @abstract Allocates a BootKernelExtensionEntry instance & adds it to the DeviceTree
+  @param DeviceTree  The DeviceTree to add the kext to
+  @param InfoPlist   The in-memory copy of the kext's Info.plist file.
+  @param PlistSize   The size of the in-memory copy of the kext's Info.plist file.
   @result Returns true if the operation was successful
  */
-extern bool CDBAddKernelExtensionToBoot(const UInt8 *infoPlist, const UInt32 plistSize, const UInt8 *exec, const UInt32 execSize, const char *pathToBundle);
+extern bool CDBAddKernelExtensionToBoot(CDBDeviceTree *DeviceTree, const UInt8 *InfoPlist, const UInt32 PlistSize, const UInt8 *Exec, const UInt32 ExecSize, const char *PathToBundle);
 
 struct {
     UInt64 BaseAddress; // This assumes we're purely 64-bit.

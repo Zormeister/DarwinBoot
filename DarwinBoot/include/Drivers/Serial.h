@@ -6,8 +6,10 @@
 struct {
     PlatformDriver BaseDrv;
 
-    void (*SendString)(const char *str);
-    UInt32 (*GetBaudRate)(void);
-    void (*SetBaudRate)(UInt32 rate);
-} typedef SerialDriver;
+    UInt32 (*GetBaudRate)(PlatformDriver *drv);
+    void (*SetBaudRate)(PlatformDriver *drv, UInt32 rate);
 
+    /* Callbacks for platform_vprintf */
+    void (*PutC)(PlatformDriver *drv, char c);
+    char (*GetC)(PlatformDriver *drv);
+} typedef SerialDriver;

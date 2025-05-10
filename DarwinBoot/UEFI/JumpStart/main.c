@@ -2,14 +2,14 @@
 
 #include "Platform/EFI/Protocols/DevicePath.h"
 #include <CoreDarwinBoot/CoreDarwinBoot.h>
-#include <Platform/EFI/EFITypes.h>
+#include <Platform/EFI/EFI.h>
 
 #define DBOD_PATH WSTRING("\\System\\Library\\CoreServices\\boot.efi")
 #define DBOL_PATH WSTRING("\\EFI\\DarwinBoot\\DarwinBoot.efi")
 
 /* TODO: this. */
 EFI_STATUS EFIMain(EFI_HANDLE Handle, EFI_SYSTEM_TABLE *SystemTable) {
-    if (CDBInitializeUEFI(Handle, SystemTable)) {
+    if (EFIInitialize(Handle, SystemTable)) {
         CDBLog("[JS][M]: hello");
         EFI_DEVICE_PATH_PROTOCOL *Path = LIP->FilePath;
         CDBLog("[JS][M]: PathType: %d SubType: %d", Path->Type, Path->SubType);

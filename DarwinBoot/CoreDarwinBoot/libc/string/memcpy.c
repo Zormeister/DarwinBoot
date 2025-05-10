@@ -7,13 +7,6 @@
 /* should i do it in 64-bit chunks instead? */
 /* that would make better use of the 64-bit registers on ARM and x86_64, but what about hypothetical ARMv7 ports? */
 void *memcpy(void *dest, const void *src, size_t n) {
-    if (dest == NULL || src == NULL) {
-#ifdef LIBC_PANIC_ON_NULLPTR
-        panic("memcpy: bad values inputted");
-#endif
-        return NULL; 
-    }
-
     uint8_t *dst = dest;
     const uint8_t *source = src;
     for (size_t i = 0; i < n; i++) {

@@ -62,6 +62,22 @@ const char *GetTargetTypeFromBoardRevision(uint32_t revision) {
             return "rpizero2w";
         case 0x13:
             return "kbpi4";
+        case 0x14:
+            return "cmpi4";
+        case 0x15:
+            return "cmpi4s";
+        case 0x17:
+            if (hwrev > 1) {
+                return "rpi5r1"; /* bcm2712d0? */
+            }
+            return "rpi5";
+        case 0x18:
+            return "cmpi5";
+        case 0x19:
+            return "kbpi5";
+        case 0x1a:
+            return "cmpi5l";
+
     }
     return NULL;
 }

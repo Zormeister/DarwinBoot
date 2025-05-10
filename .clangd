@@ -3,6 +3,8 @@ CompileFlags:
     - "-std=c17"
     - "-xc"
     - "-nostdlib"
-  
+    - "-ffreestanding"
+    - "-isystem DarwinBoot/include"
+
 Index:
   StandardLibrary: No

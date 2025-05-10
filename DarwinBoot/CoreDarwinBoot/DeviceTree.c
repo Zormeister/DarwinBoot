@@ -16,13 +16,13 @@ struct _CDBDTNode {
 struct _CDBDTProperty {
     const char *Name;
     enum DTDataType DataType;
-    UInt32 DataSize;
+    size_t DataSize;
     void *Data;
     CDBDTProperty NextProperty;
 };
 
 bool CDBInitDeviceTree(void) {
-    
+
 
     return true;
 }
