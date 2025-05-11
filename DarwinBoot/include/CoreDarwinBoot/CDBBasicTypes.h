@@ -51,7 +51,7 @@ typedef long ptrdiff_t;
 #endif
 #endif
 #if defined (__STDC_VERSION__)
-#if __STDC_VERSION__ < 201710L
+#if __STDC_VERSION__ < 201710L && !__APPLE__
 #error This project uses C 17, please use C 17 for compilation/your LSP
 #endif
 #endif

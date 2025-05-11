@@ -58,7 +58,7 @@ void *malloc(size_t size);
 void *realloc(void *ptr, size_t size);
 
 /* string.h */
-void *memchr(void *mem, int c, size_t n);
+void *memchr(const void *mem, int c, size_t n);
 void *memcpy(void *dest, const void *src, size_t n);
 void *memset(void *dst, int x, size_t n);
 int memcmp(const void *b1, const void *b2, size_t n);

@@ -5,6 +5,8 @@
 // Used 
 #include <CorePlatform/Board.h>
 
+#if defined (CDB_ARCH_ARM)
+
 #ifndef MAX_CPUS
 #define MAX_CPUS 1
 #endif
@@ -18,3 +20,6 @@ struct {
 struct _CDBCPUInfo {
     CDBARMCPU CPUs[MAX_CPUS];
 };
+
+
+#endif

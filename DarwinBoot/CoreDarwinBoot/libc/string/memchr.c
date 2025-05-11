@@ -2,13 +2,12 @@
 
 #include <CoreDarwinBoot/libc_compat.h>
 
-void *memchr(void *mem, int c, size_t n) {
-    uint8_t *u8m = mem;
-    uint8_t c8 = c;
+void *memchr(const void *mem, int c, size_t n) {
+    const uint8_t *u8m = mem;
 
     while (n--) {
         if (*u8m == c) {
-            return u8m;
+            return (void *)u8m;
         } else {
             u8m++;
         }

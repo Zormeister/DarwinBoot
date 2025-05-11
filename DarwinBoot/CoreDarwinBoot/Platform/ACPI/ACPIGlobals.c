@@ -2,6 +2,7 @@
 
 #include <CoreDarwinBoot/CoreDarwinBoot.h>
 #include <Platform/ACPI/ACPI.h>
+#include <Platform/EFI/EFI.h>
 
 EFI_GUID gAcpiEfiConfigurationTableGuid = ACPI_TABLE_GUID;
 EFI_GUID gAcpiV2EfiConfigurationTableGuid = EFI_ACPI_20_TABLE_GUID;

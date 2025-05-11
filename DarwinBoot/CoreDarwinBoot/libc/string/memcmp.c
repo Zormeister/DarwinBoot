@@ -6,7 +6,7 @@
 int memcmp(const void *m1, const void *m2, size_t n) {
     const uint8_t *cursor1 = m1;
     const uint8_t *cursor2 = m2;
-    size_t evaluated;
+    size_t evaluated = 0;
 
     /* Hm. */
     while (evaluated < n) {

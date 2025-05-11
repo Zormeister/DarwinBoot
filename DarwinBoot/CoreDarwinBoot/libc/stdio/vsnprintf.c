@@ -24,7 +24,7 @@ int vsnprintf(char *s, size_t n, const char *format, va_list va) {
                 case 'x': {
                     int arg = va_arg(va, int);
                     int c = arg;
-                    size_t ndigits;
+                    size_t ndigits = 0;
                     while (c >>= 4 && c > 0) {
                         ndigits++;
                     }
@@ -36,7 +36,7 @@ int vsnprintf(char *s, size_t n, const char *format, va_list va) {
                             size_t arg = va_arg(va, size_t);
                             /* ok now how exactly am i supposed to turn 92876289 to a string */
                             size_t c = arg;
-                            size_t ndigits;
+                            size_t ndigits = 0;
                             while (c >>= 4 && c > 0) {
                                 ndigits++;
                             }

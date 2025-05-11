@@ -1,6 +1,5 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
 #include <CoreDarwinBoot/libc_compat.h>
 #include "AllocWatchdog.h"
 #include "stdlib_internal.h"
@@ -36,7 +35,7 @@ bool AllocWDGInit(AllocWatchdog *Wdg) {
 }
 
 static inline size_t AllocWDGFindEmptyEntry(AllocWatchdog *Wdg) {
-    size_t last;
+    size_t last = 0;
 
     for (size_t i = 0; i < Wdg->TotalAllocs; i++) {
         if (Wdg->Allocs[i].Ptr == NULL) {
