@@ -15,6 +15,11 @@ enum {
 
 struct {
     PlatformDriver BaseDrv;
-    
+
     void (*EnableInterrupt)(PlatformDriver *Drv, int Interrupt);
+
 } typedef InterruptControllerDriver;
+
+
+/* !!! TODO !!! */
+bool CPRegisterCPUInterruptController(InterruptControllerDriver *Driver);

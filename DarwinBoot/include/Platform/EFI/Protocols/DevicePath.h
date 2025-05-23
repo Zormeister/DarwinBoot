@@ -32,7 +32,6 @@ enum {
     EFI_ACPI_PATH_SUBTYPE_EXTENDED_DEVICE = 2,
     EFI_ACPI_PATH_SUBTYPE_ADR = 3,
     EFI_ACPI_PATH_SUBTYPE_NVDIMM = 4,
-
 };
 
 struct {
@@ -78,6 +77,9 @@ struct {
 enum {
     EFI_MESSAGED_PATH_SUBTYPE_ATAPI = 1,
     EFI_MESSAGED_PATH_SUBTYPE_SCSI = 2,
+    EFI_MESSAGED_PATH_SUBTYPE_FIBRE_CHANNEL = 3,
+    EFI_MESSAGED_PATH_SUBTYPE_1394 = 4,
+    EFI_MESSAGED_PATH_SUBTYPE_USB = 5,
 };
 
 struct {
@@ -96,3 +98,42 @@ struct {
     UInt16 TargetID;
     UInt16 LogicalUnitNumber;
 } typedef EFI_DEVICE_PATH_MESSAGED_SCSI_PROTOCOL;
+
+struct {
+    UInt8 Type;
+    UInt8 SubType;
+    UInt8 Length[2];
+    UInt32 Reserved;
+    char WorldWideName[8];
+    char LogicalUnitNumber[8];
+} typedef EFI_DEVICE_PATH_MESSAGED_FIBRE_CHANNEL_PROTOCOL;
+
+struct {
+    UInt8 Type;
+    UInt8 SubType;
+    UInt8 Length[2];
+    UInt32 Reserved;
+    char WorldWideName[8];
+    char LogicalUnitNumber[8];
+} typedef EFI_DEVICE_PATH_MESSAGED_FIBRE_CHANNEL_EX_PROTOCOL;
+
+struct {
+    UInt8 Type;
+    UInt8 SubType;
+    UInt8 Length[2];
+    UInt32 Reserved;
+    EFI_GUID GUID;
+} typedef EFI_DEVICE_PATH_MESSAGED_1394_PROTOCOL;
+
+struct {
+    UInt8 Type;
+    UInt8 SubType;
+    UInt8 Length[2];
+    UInt8 ParentPortNum;
+    UInt8 InterfaceNum;
+} typedef EFI_DEVICE_PATH_MESSAGED_USB_PROTOCOL;
+
+/* I genuinely cannot be bothered defining the rest of the Messaged types. */
+
+
+/* Media Paths. Thank god. */
