@@ -8,6 +8,7 @@ I would love to say a huge thank you to:
 - worproject for their Pi 5 UEFI work
 - InSaneDarwin and the rest of the PureDarwin contributors
 - bzxt for POSIX-UEFI
+- Marco Paland for printf library used (see External/printf)
 
 ## What is DarwinBoot?
 DarwinBoot is, as the name implies, a bootloader for Darwin/the XNU kernel.

@@ -1,5 +1,7 @@
 add_rules("mode.release", "mode.debug")
 
+add_sysincludedirs("$(projectdir)")
+
 if is_plat("uefi") then
 
     includes("toolchains/uefi.lua")
@@ -8,6 +10,7 @@ if is_plat("uefi") then
 
     set_toolchains("uefi")
 
+    includes("External/libs.lua")
     includes("targets/UEFI/*.lua")
 
 elseif is_arch("arm64", "armv7", "armv6", "armv6k") then
@@ -18,6 +21,10 @@ elseif is_arch("arm64", "armv7", "armv6", "armv6k") then
     includes("toolchains/arm-elf.lua")
 
     includes("configs/*.lua")
+
+    set_toolchains(build_toolchain)
+
+    includes("External/libs.lua")
     includes("targets/ARM/*.lua")
 
     -- this variable is set by the configs. i wanna see if it persists

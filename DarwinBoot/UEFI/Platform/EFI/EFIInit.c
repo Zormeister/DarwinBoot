@@ -26,9 +26,9 @@ bool EFIInitialize(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
     RT = SystemTable->RuntimeServices;
     /* should i even bother to verify the integrity of the system table */
     SystemTable->ConOut->Reset(SystemTable->ConOut, false);
-    ST->ConOut->OutputString(ST->ConOut, WSTRING("[DB][UEFI]: Initialize has reached console out.\n"));
+    ST->ConOut->OutputString(ST->ConOut, WSTRING("[DB][UEFI]: Initialize has reached console out.\r\n"));
     IM = ImageHandle;
     BS->HandleProtocol(ImageHandle, &LoadedImageProtocol, (void **)&LIP);
-    ST->ConOut->OutputString(ST->ConOut, WSTRING("[DB][UEFI]: Obtained our Loaded Image Protocol instance\n"));
+    ST->ConOut->OutputString(ST->ConOut, WSTRING("[DB][UEFI]: Obtained our Loaded Image Protocol instance\r\n"));
     return true;
-}
+}

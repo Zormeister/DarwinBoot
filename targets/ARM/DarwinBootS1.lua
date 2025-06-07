@@ -2,7 +2,6 @@ includes("../../configs/*.lua")
 
 target("ARMwinBoot")
     set_basename("DarwinBoot.$(platform).$(board).bin")
-    set_toolchains(build_toolchain)
 
     add_files(
         "$(projectdir)/DarwinBoot/ARM/Machine/Common/*_$(arch).s",

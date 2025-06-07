@@ -6,10 +6,13 @@ target("On-Disk Loader")
 
     add_files(
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/Platform/**.c",
-        "$(projectdir)/DarwinBoot/CoreDarwinBoot/libc/*.c",
+        "$(projectdir)/DarwinBoot/CoreDarwinBoot/libc/**.c",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/*.c",
+        "$(projectdir)/DarwinBoot/UEFI/Platform/**.c",
         "$(projectdir)/DarwinBoot/UEFI/DiskBoot/*.c"
     )
+    
+    add_deps("libprintf")
 
     if is_arch("x64", "x86") then
         remove_files("$(projectdir)/DarwinBoot/CoreDarwinBoot/Platform/ARM/*.c")

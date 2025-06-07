@@ -7,11 +7,14 @@
 char BootMessage[] = {
     "=======================================\n"
     "::\n"
+    /*  <Payload> <Board Config> */
     ":: %s for %s, Copyright (C) 2024-2025 Zormeister\n"
     "::\n"
     ":: BUILD_TAG: %s\n"
     "::\n"
     ":: BUILD_STYLE: %s\n"
+    "::\n"
+    ":: CPID: %04x BORD: %02x \n"
     "::\n"
     "=======================================\n"
 };

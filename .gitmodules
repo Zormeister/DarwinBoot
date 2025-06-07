@@ -1,3 +1,6 @@
 [submodule "External/cctools"]
 	path = External/cctools
 	url = https://github.com/apple-oss-distributions/cctools
+[submodule "External/printf"]
+	path = External/printf
+	url = https://github.com/mpaland/printf.git

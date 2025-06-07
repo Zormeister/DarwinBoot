@@ -45,6 +45,12 @@ typedef __PTRDIFF_TYPE__ ptrdiff_t;
 typedef long ptrdiff_t;
 #endif
 
+#ifdef __INTMAX_TYPE__
+typedef __INTMAX_TYPE__ intmax_t;
+#else
+typedef long int intmax_t;
+#endif
+
 #ifdef __cplusplus
 #if __cplusplus < 201703L
 #error This project uses C 17, please use C 17 for compilation/your LSP

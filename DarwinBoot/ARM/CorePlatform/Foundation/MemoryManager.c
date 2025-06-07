@@ -10,6 +10,8 @@ struct {
     MemoryRange *Ranges;
 } typedef MemoryManager;
 
+MemoryManager gMemoryManager;
+
 static MemoryRange KernelMemoryRegion;
 static MemoryRange BootMemoryRegion;
 
@@ -20,5 +22,16 @@ struct MemoryAllocation {
 };
 
 bool CPMemoryManagerInit(MemoryRange *Ranges, size_t NumRanges) {
+    gMemoryManager.Ranges = Ranges;
+    gMemoryManager.NumRanges = NumRanges;
 
+    /* Reserve our memory regions */
+    return true;
 }
+
+/* Platform allocation manager - TODO!!! */
+
+void *platform_malloc(size_t size) {
+    return NULL;
+}
+
