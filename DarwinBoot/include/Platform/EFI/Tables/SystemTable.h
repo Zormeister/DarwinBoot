@@ -37,6 +37,6 @@ struct _EFI_SYSTEM_TABLE {
     EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL *StdErr;
     EFI_RUNTIME_SERVICES *RuntimeServices;
     EFI_BOOT_SERVICES *BootServices;
-    UInt32 NumberOfTableEntries;
+    UInt32 NumberOfConfigurationTables;
     EFI_CONFIGURATION_TABLE *ConfigurationTables;
 } typedef EFI_SYSTEM_TABLE;

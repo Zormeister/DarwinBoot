@@ -12,18 +12,28 @@ enum {
     Serial = 1,
     Video = 2,
 } typedef DriverClass;
+/* ^ TODO: clean this shit out */
 
 struct {
-    const char *DriverName;
-    DriverClass Class;
-    DriverSubClass SubClass;
-} typedef PlatformDriver;
-
-struct {
-    const char *Compatible;
+    const char **Compatible;
+    size_t NumCompatibles;
 
     bool (*ConformsTo)(const char *Compatible);
 } typedef PlatformDevice;
+
+typedef struct _PlatformDriver PlatformDriver;
+
+struct _PlatformDriver {
+    const char *DriverName;
+    DriverClass Class;
+    DriverSubClass SubClass;
+
+    /* Base routines */
+    bool (*Init)(PlatformDriver *This, PlatformDevice *Device);
+    bool (*Shutdown)(PlatformDriver *This);
+};
+
+#define TO_PLATFORM_DRIVER(dev) (PlatformDriver *)(dev)
 
 bool InitPlatformDevice(PlatformDevice *Dev, const char *Compatible);
 

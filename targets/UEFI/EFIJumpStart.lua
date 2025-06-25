@@ -4,6 +4,8 @@ target("UEFI JumpStart")
     set_languages("c17")
     set_kind("binary")
 
+    add_defines("EFIJUMPSTART", "DARWINBOOTEFI")
+
     add_files(
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/Platform/**.c",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/libc/**.c",

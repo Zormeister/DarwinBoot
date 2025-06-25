@@ -14,3 +14,5 @@ uint8_t gLogPolicy = 0;
 
 const char *gCompilerToolsVersion = COMPILER_VERSION;
 const char *gCompilerToolsToolchain = BUILD_TOOL;
+
+/* These are remnants from the old DarwinBoot source code. */

@@ -50,7 +50,7 @@ void platform_init() {
     InitMMIODevice(&AUX, platform_devices[0].Range.RangeStart, platform_devices[0].Range.RangeSize, "aux-controller,bcm2835");
     InitMMIODevice(&UART1, platform_devices[1].Range.RangeStart, platform_devices[1].Range.RangeSize, "aux-uart,bcm2835");
 
-    BCM2835AuxControllerInit(&AuxController, TO_PLATFORM_DEVICE(&AUX));
+    BCM2835AuxControllerInit(TO_PLATFORM_DRIVER(&AuxController), TO_PLATFORM_DEVICE(&AUX));
 
 #endif
 

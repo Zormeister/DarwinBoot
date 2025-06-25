@@ -54,4 +54,4 @@ struct {
 BCM2835AuxController *BCM2835AuxControllerCreate(PlatformDevice *dev);
 
 /* This will initialise any old BCM2835AuxController object, so long as you have a PlatformDevice */
-bool BCM2835AuxControllerInit(BCM2835AuxController *controller, PlatformDevice *dev);
+bool BCM2835AuxControllerInit(PlatformDriver *controller, PlatformDevice *dev);

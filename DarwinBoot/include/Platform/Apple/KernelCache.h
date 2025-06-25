@@ -17,4 +17,4 @@ enum {
     LZSS = 'lzss',
 } typedef KernelCacheCompression;
 
-#define kKernelCacheSignature 'comp'
+#define kKernelCacheCompressedSignature 'comp'

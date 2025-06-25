@@ -3,6 +3,8 @@ includes("../../configs/*.lua")
 target("ARMwinBoot")
     set_basename("DarwinBoot.$(platform).$(board).bin")
 
+    add_defines("ARMSTAGE1", "DARWINBOOTARM")
+
     add_files(
         "$(projectdir)/DarwinBoot/ARM/Machine/Common/*_$(arch).s",
         "$(projectdir)/DarwinBoot/ARM/CorePlatform/Arch/$(arch)/*.s",

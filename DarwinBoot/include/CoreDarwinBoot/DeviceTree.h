@@ -14,17 +14,18 @@ enum DTDataType {
     Integer16,
     Integer32,
     Integer64,
+    Data, /* This represents any binary data. All DT data should be padded to fit a 'chunk' of data */
     String,
     Any,
 };
 
-struct FlatDTProperty {
+struct BinaryDTProperty {
     char name[32];
     UInt32 length;
     /* value sits here. */
 };
 
-struct FlatDTNode {
+struct BinaryDTNode {
     UInt32 NumProperties;
     UInt32 NumChildren;
     /* properties go here */
@@ -41,8 +42,17 @@ struct FlatDTNode {
  */
 CDBDeviceTree CDBDeviceTreeCreateFromFDT(FlattenedDTHeader *fdt);
 
+/*!
+ @function CDBDeviceTreeCreateFromBinary
+ @abstract Sets up the DeviceTree using a provided DT.
+ @param Binary Pointer to the binary DeviceTree, eg: the way Apple stores them.
+ */
 CDBDeviceTree CDBDeviceTreeCreateFromBinary(const UInt8 *Binary);
 
+/*!
+ @function CDBDeviceTreeCreate
+ @abstract Creates a new DeviceTree, useful in the case of x86_64.
+ */
 CDBDeviceTree CDBDeviceTreeCreate(void);
 
 /*!
@@ -90,3 +100,5 @@ bool CDBDTSetProperty(CDBDTNode node, const char *propertyName, const UInt8 *dat
   @result Returns true if the operation was successful
  */
 bool CDBDTPropertyGetValue(CDBDTProperty prop, UInt8 **valueOut, UInt32 *sizeOut);
+
+void CDBDTPrint(CDBDeviceTree DeviceTree);

@@ -10,6 +10,8 @@ EFI_RUNTIME_SERVICES *RT = NULL;
 EFI_HANDLE IM = NULL;
 EFI_LOADED_IMAGE_PROTOCOL *LIP = NULL;
 
+extern void BootupMessageSend(void);
+
 bool EFIInitialize(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
     EFI_GUID LoadedImageProtocol = EFI_LOADED_IMAGE_PROTOCOL_GUID;
 
@@ -26,9 +28,9 @@ bool EFIInitialize(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
     RT = SystemTable->RuntimeServices;
     /* should i even bother to verify the integrity of the system table */
     SystemTable->ConOut->Reset(SystemTable->ConOut, false);
-    ST->ConOut->OutputString(ST->ConOut, WSTRING("[DB][UEFI]: Initialize has reached console out.\r\n"));
+    BootupMessageSend(); /* say our hello */
     IM = ImageHandle;
     BS->HandleProtocol(ImageHandle, &LoadedImageProtocol, (void **)&LIP);
-    ST->ConOut->OutputString(ST->ConOut, WSTRING("[DB][UEFI]: Obtained our Loaded Image Protocol instance\r\n"));
+    CDBLog("UEFI: Grabbed Loaded Image Protocol handle.");
     return true;
 }

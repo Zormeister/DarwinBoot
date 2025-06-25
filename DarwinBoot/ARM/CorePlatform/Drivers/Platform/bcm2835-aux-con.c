@@ -73,7 +73,9 @@ static bool IsPendingIRQ(PlatformDriver *Driver, BCM2835AuxPeripheral Peripheral
 }
 
 /* Exported */
-bool BCM2835AuxControllerInit(BCM2835AuxController *Controller, PlatformDevice *dev) {
+bool BCM2835AuxControllerInit(PlatformDriver *Driver, PlatformDevice *dev) {
+    BCM2835AuxController *Controller = TO_BCM2835_AUX_CONTROLLER(Driver);
+
     Controller->AuxDev = TO_MMIO_DEVICE(dev);
 
     /* I don't think the Aux device can manually toggle itself, and since we have no other clients I doubt anyone else would write to rAUX_ENABLES. */

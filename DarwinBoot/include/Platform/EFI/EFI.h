@@ -22,6 +22,26 @@ extern EFI_LOADED_IMAGE_PROTOCOL *LIP;
  */
 extern bool EFIInitialize(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable);
 
-extern bool EFICompareGUID(EFI_GUID * a, EFI_GUID * b);
+/*!
+ @function EFIGuidMatches
 
-extern EFI_CONFIGURATION_TABLE *CDBEFIGetConfigurationTable(EFI_GUID *Guid);
+ @abstract Compares GUIDs
+
+ @param a   GUID to be compared against
+ @param b   GUID to be compared with
+
+ @result Returns true if the GUIDs are the same.
+ */
+extern bool EFIGuidMatches(EFI_GUID * a, EFI_GUID * b);
+
+
+/*!
+ @function EFIGetConfigurationTable
+
+ @abstract Finds a configuration table from the system table.
+
+ @param Guid   The GUID of the requested table.
+
+ @result Returns the VendorTable field of an EFI_CONFIGURATION_TABLE.
+ */
+extern void *EFIGetConfigurationTable(EFI_GUID *Guid);

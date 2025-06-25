@@ -4,6 +4,8 @@ target("On-Disk Loader")
     set_languages("c17")
     set_kind("binary")
 
+    add_defines("EFIDISKBOOT", "DARWINBOOTEFI")
+
     add_files(
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/Platform/**.c",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/libc/**.c",

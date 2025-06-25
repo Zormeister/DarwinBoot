@@ -99,7 +99,7 @@ typedef unsigned long long uintptr_t;
 typedef int64_t SInt64;
 typedef uint64_t UInt64;
 
-#if __LP64__
+#if defined (__x86_64__) || defined (__arm64__)
 typedef UInt64 UIntN;
 #else
 typedef UInt32 UIntN;
@@ -114,31 +114,21 @@ typedef UInt32 UIntN;
 /* ^ UPDATE: MHandling this in CMake. */
 #if defined (__x86_64__) || defined (_M_AMD64)
 #define CURRENT_ARCH "x86_64"
-#define PLATFORM_EFI 1 /* ZORMEISTER: x86_64 devices purely use UEFI afaik, should be safe to outright define it here */
-#define PLATFORM_SMBIOS 1
-#define PLATFORM_ACPI 1
-#define PLATFORM_X86 1
 #define TARGET_X64 1
-#define TARGET_64_ADDRS 1
 #endif
 
 #if defined (__i386__) || defined (_M_IX86)
 #define CURRENT_ARCH "i386"
-#define PLATFORM_EFI 1 /* mmm, a lot of i386 doesn't have UEFI, but who the heck is booting a UEFI file from a legacy based machine anyways? */
-#define PLATFORM_SMBIOS 1
-#define PLATFORM_ACPI 1
-#define PLATFORM_X86 1
 #define TARGET_IA32 1
 #endif
 
 #if defined (__arm__) || defined (_M_ARM)
 #define CURRENT_ARCH "ARM"
-#define TARGET_ARM32 1
+#define TARGET_ARM32  1
 #endif
 
 #if defined (__arm64__) || defined (_M_ARM64) || defined (__aarch64__)
 #define CURRENT_ARCH "ARM64"
-#define TARGET_64_ADDRS 1
 #define TARGET_ARM64 1
 #endif
 

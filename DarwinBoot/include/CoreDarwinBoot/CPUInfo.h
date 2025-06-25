@@ -1,20 +1,20 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include "CDBBasicTypes.h"
+#include <CoreDarwinBoot/CDBBasicTypes.h>
 
 typedef struct _CDBCPUInfo *CDBCPUInfoHandle;
 
 enum CPUVendor {
     Unknown = 0,
-    #if TARGET_X64 || TARGET_IA32
+    #if defined (__x86_64__) || defined (__x86_64__)
     /* should i even add VIA x86 support here */
     Intel,
     AMD,
     #endif
     /* ARM platform port? IE: ARM w/ no UEFI. */
     /* UEFI ARM? */
-    #if TARGET_ARM32 || TARGET_ARM64
+    #if defined (__arm__) || defined (__arm64__)
     ARM, /* Generic */
     Ampere,
     Broadcom,
