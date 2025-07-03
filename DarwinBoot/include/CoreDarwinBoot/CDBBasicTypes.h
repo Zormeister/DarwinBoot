@@ -1,55 +1,9 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-/* tyvm to POSIX-UEFI for the details on how to have an independent libc */
 
-/* give us some good old stdint  */
-
-typedef __signed char int8_t;
-typedef short int16_t;
-typedef int int32_t;
-typedef unsigned char uint8_t;
-typedef unsigned short uint16_t;
-typedef unsigned int uint32_t;
-
-/* If these ever get used that is */
-typedef unsigned char u_int8_t;
-typedef unsigned short u_int16_t;
-typedef unsigned int u_int32_t;
-
-/* some familar <libkern/OSTypes.h> looks nice */
-typedef int8_t SInt8;
-typedef int16_t SInt16;
-typedef int32_t SInt32;
-typedef uint8_t UInt8;
-typedef uint16_t UInt16;
-typedef uint32_t UInt32;
-
-#define NULL (void *)0
-
-/* and some stdbool */
-typedef _Bool bool;
-#define true 1
-#define false 0
-
-/* extras */
-#ifdef __SIZE_TYPE__
-typedef __SIZE_TYPE__ size_t;
-#else
-typedef unsigned long size_t;
-#endif
-
-#ifdef __PTRDIFF_TYPE__
-typedef __PTRDIFF_TYPE__ ptrdiff_t;
-#else
-typedef long ptrdiff_t;
-#endif
-
-#ifdef __INTMAX_TYPE__
-typedef __INTMAX_TYPE__ intmax_t;
-#else
-typedef long int intmax_t;
-#endif
+/* !!! THIS IS THE BASE HEADER OF THE ENTIRE PROJECT !!! */
+/* All files link back to here, once this header is finalised PLEASE do not change this unless necessary!!! */
 
 #ifdef __cplusplus
 #if __cplusplus < 201703L
@@ -62,44 +16,347 @@ typedef long int intmax_t;
 #endif
 #endif
 
-#ifndef __cplusplus
-typedef uint16_t wchar_t;
-/* I am choosing to ignore compiler directives for the wchar type to be a 32-bit integer. */
-/* Brute forcing it works for UEFI, I don't believe that anything besides HFS will have to touch 16-bit or larger wide strings. */
-#endif
+#if defined (__clang__)
 
-/* LLVM exclusive stuff. */
-#ifdef __clang__
 #define BUILD_TOOL "clang"
 #define COMPILER_VERSION_MAJOR __clang_major__
 #define COMPILER_VERSION_MINOR __clang_minor__
 #define COMPILER_VERSION_PATCH __clang_patchlevel__
-#define COMPILER_VERSION __clang_version__
+#define COMPILER_VERSION __VERSION__
 
-typedef long long int64_t;
-typedef unsigned long long uint64_t;
-typedef unsigned long long u_int64_t;
-typedef unsigned long long uintptr_t;
+#ifdef __INT8_TYPE__
+typedef __INT8_TYPE__ int8_t;
+#define INT8_C(x) __INT8_C(x)
+#define INT8_MAX __INT8_MAX__
+#else
+typedef signed char int16_t;
+#define INT8_C(c) c
+#define INT8_MAX 127
+#endif
 
-// This is annoying because compiler diffs but oh well
+#ifdef __UINT8_TYPE__
+typedef __UINT8_TYPE__ uint8_t;
+#define UINT8_C(x) __UINT8_C(x)
+#define UINT8_MAX __UINT8_MAX__
+#else
+typedef unsigned char uint8_t;
+#define UINT8_C(c) c
+#define UINT8_MAX 255
+#endif
+#ifdef __INT16_TYPE__
+typedef __INT16_TYPE__ int16_t;
+#define INT16_C(x) __INT16_C(x)
+#define INT16_MAX __INT16_MAX__
+#else
+typedef short int16_t;
+#define INT16_C(c) c
+#define INT16_MAX 32767
+#endif
+
+#ifdef __UINT16_TYPE__
+typedef __UINT16_TYPE__ uint16_t;
+#define UINT16_C(x) __UINT16_C(x)
+#define UINT16_MAX __UINT16_MAX__
+#else
+typedef unsigned short uint16_t;
+#define UINT16_C(c) c
+#define UINT16_MAX 65535
+#endif
+
+#ifdef __INT32_TYPE__
+typedef __INT32_TYPE__ int32_t;
+#define INT32_C(x) __INT32_C(x)
+#define INT32_MAX __INT32_MAX__
+#else
+typedef int int32_t;
+#define INT32_C(c) c
+#define INT32_MAX 2147483647
+#endif
+
+#ifdef __UINT32_TYPE__
+typedef __UINT32_TYPE__ uint32_t;
+#define UINT32_C(x) __UINT32_C(x)
+#define UINT32_MAX __UINT32_MAX__
+#else
+typedef unsigned int uint32_t;
+#define UINT32_C(c) c##U
+#define UINT32_MAX 0xFFFFFFFFU
+#endif
+
+#ifdef __INT64_TYPE__
+typedef __INT64_TYPE__ int64_t;
+#define INT64_C(x) __INT64_C(x)
+#define INT64_MAX __INT64_MAX__
+#else
+typedef long long int int64_t;
+#define INT64_C(c) c##LL
+#define INT64_MAX 0x7FFFFFFFFFFFFFFFLL
+#endif
+
+#ifdef __UINT64_TYPE__
+typedef __UINT64_TYPE__ uint64_t;
+#define UINT64_C(x) __UINT64_C(x)
+#define UINT64_MAX __UINT64_MAX__
+#else
+typedef long long unsigned int uint64_t;
+#define UINT64_C(c) c##LL
+#define UINT64_MAX 0xFFFFFFFFFFFFFFFFULL
+#endif
+
+#ifdef __UINTPTR_TYPE__
+typedef __UINTPTR_TYPE__ uintptr_t;
+#define UINTPTR_MAX __UINTPTR_MAX__
+#else
+typedef long long unsigned int uintptr_t;
+#define UINTPTR_MAX 0xFFFFFFFFFFFFFFFFULL
+#endif
+
+#ifdef __INTPTR_TYPE__
+typedef __INTPTR_TYPE__ intptr_t;
+#define INTPTR_MAX __INTPTR_MAX__
+#else
+typedef long long int intptr_t;
+#define INTPTR_MAX 0x7FFFFFFFFFFFFFFFLL
+#endif
+
+#ifdef __SIZE_TYPE__
+typedef __SIZE_TYPE__ size_t;
+#define SIZE_MAX __SIZE_MAX__
+#else
+typedef long long unsigned int size_t;
+#define SIZE_MAX 0xFFFFFFFFFFFFFFFFULL
+#endif
+
+#ifdef __PTRDIFF_TYPE__
+typedef __PTRDIFF_TYPE__ ptrdiff_t;
+#define PTRDIFF_MAX __PTRDIFF_MAX__
+#else
+typedef long ptrdiff_t;
+#define PTRDIFF_MAX 0x7FFFFFFFFFFFFFFFLL
+#endif
+
+#ifdef __INTMAX_TYPE__
+typedef __INTMAX_TYPE__ intmax_t;
+#define INTMAX_C(c) __INTMAX_C(c)
+#define INTMAX_MAX __INTMAX_MAX__
+#else
+typedef long long int intmax_t;
+#define INTMAX_C(c) c##LL
+#define INTMAX_MAX 0x7FFFFFFFFFFFFFFFLL
+#endif
+
+#ifdef __UINTMAX_TYPE__
+typedef __UINTMAX_TYPE__ uintmax_t;
+#define UINTMAX_C(c) __UINTMAX_C(c)
+#define UINTMAX_MAX __UINTMAX_MAX__
+#else
+typedef long long unsigned int uintmax_t;
+#endif
+
+#if !(__WCHAR_WIDTH__ == 16) && __UEFI__
+#error "Wide strings aren't 16-bits wide on UEFI, this is an error!"
+#endif
+
+#ifdef __WCHAR_TYPE__
+typedef __WCHAR_TYPE__ wchar_t;
+#define WCHAR_MAX __WCHAR_MAX__
+#else
+typedef uint16_t wchar_t;
+#define WCHAR_MAX 65535
+#endif
+
 #define WSTRING(str) u##str
 
-#define DID_COMPILER_CHECK 1
+#elif defined (__GNUC__)
+
+/* If for some reason this project is ever built using GCC. */
+
+#define BUILD_TOOL "GCC"
+#define COMPILER_VERSION_MAJOR __GNUC__
+#define COMPILER_VERSION_MINOR __GNUC_MINOR__
+#define COMPILER_VERSION_PATCH __GNUC_PATCHLEVEL__
+#define COMPILER_VERSION __VERSION__
+
+#ifdef __INT8_TYPE__
+typedef __INT8_TYPE__ int8_t;
+#define INT8_C(x) __INT8_C(x)
+#define INT8_MAX __INT8_MAX__
+#else
+typedef signed char int16_t;
+#define INT8_C(c) c
+#define INT8_MAX 127
 #endif
 
-#if defined(_MSC_VER) && !defined(__clang__)
-#warning i haven't tested this
-
-typedef long long int64_t;
-typedef unsigned long long uint64_t;
-typedef unsigned long long uintptr_t;
-
-#define BUILD_TOOL "MSVC"
-#define COMPILER_VERSION "MSVC"
+#ifdef __UINT8_TYPE__
+typedef __UINT8_TYPE__ uint8_t;
+#define UINT8_C(x) __UINT8_C(x)
+#define UINT8_MAX __UINT8_MAX__
+#else
+typedef unsigned char uint8_t;
+#define UINT8_C(c) c
+#define UINT8_MAX 255
+#endif
+#ifdef __INT16_TYPE__
+typedef __INT16_TYPE__ int16_t;
+#define INT16_C(x) __INT16_C(x)
+#define INT16_MAX __INT16_MAX__
+#else
+typedef short int int16_t;
+#define INT16_C(c) c
+#define INT16_MAX 32767
 #endif
 
+#ifdef __UINT16_TYPE__
+typedef __UINT16_TYPE__ uint16_t;
+#define UINT16_C(x) __UINT16_C(x)
+#define UINT16_MAX __UINT16_MAX__
+#else
+typedef unsigned short int uint16_t;
+#define UINT16_C(c) c
+#define UINT16_MAX 65535
+#endif
+
+#ifdef __INT32_TYPE__
+typedef __INT32_TYPE__ int32_t;
+#define INT32_C(x) __INT32_C(x)
+#define INT32_MAX __INT32_MAX__
+#else
+typedef int int32_t;
+#define INT32_C(c) c
+#define INT32_MAX 2147483647
+#endif
+
+#ifdef __UINT32_TYPE__
+typedef __UINT32_TYPE__ uint32_t;
+#define UINT32_C(x) __UINT32_C(x)
+#define UINT32_MAX __UINT32_MAX__
+#else
+typedef unsigned int uint32_t;
+#define UINT32_C(c) c##U
+#define UINT32_MAX 0xFFFFFFFFU
+#endif
+
+#ifdef __INT64_TYPE__
+typedef __INT64_TYPE__ int64_t;
+#define INT64_C(x) __INT64_C(x)
+#define INT64_MAX __INT64_MAX__
+#else
+typedef long int int64_t;
+#define INT64_C(c) c##LL
+#define INT64_MAX 0x7FFFFFFFFFFFFFFFL
+#endif
+
+#ifdef __UINT64_TYPE__
+typedef __UINT64_TYPE__ uint64_t;
+#define UINT64_C(x) __UINT64_C(x)
+#define UINT64_MAX __UINT64_MAX__
+#else
+typedef long unsigned int uint64_t;
+#define UINT64_C(c) c##LL
+#define UINT64_MAX 0xFFFFFFFFFFFFFFFFUL
+#endif
+
+#ifdef __UINTPTR_TYPE__
+typedef __UINTPTR_TYPE__ uintptr_t;
+#define UINTPTR_MAX __UINTPTR_MAX__
+#else
+typedef long unsigned int uintptr_t;
+#define UINTPTR_MAX 0xFFFFFFFFFFFFFFFFUL
+#endif
+
+#ifdef __INTPTR_TYPE__
+typedef __INTPTR_TYPE__ intptr_t;
+#define INTPTR_MAX __INTPTR_MAX__
+#else
+typedef long int intptr_t;
+#define INTPTR_MAX 0x7FFFFFFFFFFFFFFFL
+#endif
+
+#ifdef __SIZE_TYPE__
+typedef __SIZE_TYPE__ size_t;
+#define SIZE_MAX __SIZE_MAX__
+#else
+typedef long unsigned int size_t;
+#define SIZE_MAX 0xFFFFFFFFFFFFFFFFUL
+#endif
+
+#ifdef __PTRDIFF_TYPE__
+typedef __PTRDIFF_TYPE__ ptrdiff_t;
+#define PTRDIFF_MAX __PTRDIFF_MAX__
+#else
+typedef long ptrdiff_t;
+#define PTRDIFF_MAX 0x7FFFFFFFFFFFFFFFL
+#endif
+
+#ifdef __INTMAX_TYPE__
+typedef __INTMAX_TYPE__ intmax_t;
+#define INTMAX_C(c) __INTMAX_C(c)
+#define INTMAX_MAX __INTMAX_MAX__
+#else
+typedef long int intmax_t;
+#define INTMAX_C(c) c##LL
+#define INTMAX_MAX 0x7FFFFFFFFFFFFFFFL
+#endif
+
+#ifdef __UINTMAX_TYPE__
+typedef __UINTMAX_TYPE__ uintmax_t;
+#define UINTMAX_C(c) __UINTMAX_C(c)
+#define UINTMAX_MAX __UINTMAX_MAX__
+#else
+typedef long unsigned int uintmax_t;
+#define UINTMAX_C(c) c##UL
+#define UINTMAX_MAX 0xFFFFFFFFFFFFFFFFUL
+#endif
+
+#if !(__WCHAR_WIDTH__ == 16) && UEFI
+#error "Wide strings aren't 16-bits wide on UEFI, this is an error!"
+#endif
+
+#ifdef __WCHAR_TYPE__
+typedef __WCHAR_TYPE__ wchar_t;
+#define WCHAR_MAX __WCHAR_MAX__
+#else
+typedef uint16_t wchar_t;
+#define WCHAR_MAX 65535
+#endif
+
+#define WSTRING(str) L##str
+
+#endif
+
+/* MacTypes, also the libkern types from XNU. */
+typedef int8_t SInt8;
+typedef int16_t SInt16;
+typedef int32_t SInt32;
+typedef uint8_t UInt8;
+typedef uint16_t UInt16;
+typedef uint32_t UInt32;
 typedef int64_t SInt64;
 typedef uint64_t UInt64;
+
+/* BSD types? Not sure what these are actually called. */
+typedef uint8_t u_int8_t;
+typedef uint16_t u_int16_t;
+typedef uint32_t u_int32_t;
+typedef uint64_t u_int64_t;
+
+#define NULL (void *)0
+
+#if (__STDC_VERSION__ >= 201710L)
+
+/* Use C17's boolean type. */
+typedef _Bool bool;
+#define true 1
+#define false 0
+
+#else
+
+/* Otherwise just treat it like a char. */
+typedef char bool;
+#define true 1
+#define false 0
+
+#endif
 
 #if defined (__x86_64__) || defined (__arm64__)
 typedef UInt64 UIntN;
@@ -107,31 +364,20 @@ typedef UInt64 UIntN;
 typedef UInt32 UIntN;
 #endif
 
-/* TODO: validate this */
-#define BITMASK(start, end) (~(~0ull << end) << start)
-
-/* should platform config be moved elsewhere? */
-/* like, maybe in Xcode's macro configs but then it becomes convoluted */
-/* x86_64 is pretty straight forward as all devices have transitioned to UEFI */
-/* ^ UPDATE: MHandling this in CMake. */
 #if defined (__x86_64__) || defined (_M_AMD64)
-#define CURRENT_ARCH "x86_64"
-#define TARGET_X64 1
+#define TARGET_ARCH "x86_64"
 #endif
 
 #if defined (__i386__) || defined (_M_IX86)
-#define CURRENT_ARCH "i386"
-#define TARGET_IA32 1
+#define TARGET_ARCH "i386"
 #endif
 
 #if defined (__arm__) || defined (_M_ARM)
-#define CURRENT_ARCH "ARM"
-#define TARGET_ARM32  1
+#define TARGET_ARCH "ARM"
 #endif
 
 #if defined (__arm64__) || defined (_M_ARM64) || defined (__aarch64__)
-#define CURRENT_ARCH "ARM64"
-#define TARGET_ARM64 1
+#define TARGET_ARCH "ARM64"
 #endif
 
 #if defined (CONFIG_RELEASE)
@@ -152,13 +398,6 @@ typedef UInt32 UIntN;
 #define CONFIG_RELEASE 1
 #define CONFIG_DEBUG 0
 #define CONFIG_DEVELOPMENT 0
-#endif
-
-#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
-
-#define DBSwapBytes16(bytes) ((bytes & 0xFF00) >> 8) |  ((bytes & 0x00FF << 8))
-#define DBSwapBytes32(bytes) ((unsigned int)__builtin_bswap32(bytes))
-
 #endif
 
 /*
