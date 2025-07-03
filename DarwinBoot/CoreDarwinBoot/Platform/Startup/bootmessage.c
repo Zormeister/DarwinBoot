@@ -14,6 +14,8 @@ const char BootMessage[] = {
     "::\n"
     ":: BUILD_STYLE: %s\n"
     "::\n"
+    ":: COMPILER: %s (%s)\n"
+    "::\n"
     ":: CPID: %04x BORD: %02x \n"
     "::\n"
     "=======================================\n"
@@ -79,6 +81,8 @@ void BootupMessageSend(void) {
         CPGetDeviceIdentity()->ChipID,
         CPGetDeviceIdentity()->BoardID,
 #elif defined(DARWINBOOTEFI)
+        BUILD_TOOL,
+        COMPILER_VERSION,
         0x8664, /* TODO: literally establish x86 constants for IMG4. */
         0xFF
 #endif

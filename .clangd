@@ -5,6 +5,7 @@ CompileFlags:
     - "-nostdlib"
     - "-ffreestanding"
     - "-isystem DarwinBoot/include"
+    - "-isystem ."
 
 Index:
   StandardLibrary: No

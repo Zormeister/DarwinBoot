@@ -6,7 +6,7 @@
 /* vprintf interface - handled by the platform */
 
 /*
- * UEFI: /DarwinBoot/CoreDarwinBoot/Platform/EFI/vprintf.c
+ * UEFI: /DarwinBoot/UEFI/Platform/EFI/malloc.c
  * ARM:  !!! TODO !!!
  */
 extern void *platform_malloc(size_t size);

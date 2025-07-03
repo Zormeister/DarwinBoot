@@ -4,9 +4,9 @@
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 #include <Platform/FDT/Header.h>
 
-typedef struct _CDBDeviceTree *CDBDeviceTree;
-typedef struct _CDBDTNode *CDBDTNode;
-typedef struct _CDBDTProperty *CDBDTProperty;
+typedef struct _CDBDeviceTree *CDBDeviceTreeRef;
+typedef struct _CDBDTNode *CDBDTNodeRef;
+typedef struct _CDBDTProperty *CDBDTPropertyRef;
 
 enum DTDataType {
     Structure = 1,
@@ -40,27 +40,27 @@ struct BinaryDTNode {
  @abstract Sets up the DeviceTree using a provided DT.
  @param fdt Pointer to the Flattened Device Tree blob.
  */
-CDBDeviceTree CDBDeviceTreeCreateFromFDT(FlattenedDTHeader *fdt);
+CDBDeviceTreeRef CDBDeviceTreeCreateFromFDT(FlattenedDTHeader *fdt);
 
 /*!
  @function CDBDeviceTreeCreateFromBinary
  @abstract Sets up the DeviceTree using a provided DT.
  @param Binary Pointer to the binary DeviceTree, eg: the way Apple stores them.
  */
-CDBDeviceTree CDBDeviceTreeCreateFromBinary(const UInt8 *Binary);
+CDBDeviceTreeRef CDBDeviceTreeCreateFromBinary(const UInt8 *Binary);
 
 /*!
  @function CDBDeviceTreeCreate
  @abstract Creates a new DeviceTree, useful in the case of x86_64.
  */
-CDBDeviceTree CDBDeviceTreeCreate(void);
+CDBDeviceTreeRef CDBDeviceTreeCreate(void);
 
 /*!
   @function CDBDTGetRootNode
   @abstract Gets the root node from the DeviceTree object
   @result Returns the root node
  */
-CDBDTNode CDBDTGetRootNode(CDBDeviceTree DeviceTree);
+CDBDTNodeRef CDBDTGetRootNode(CDBDeviceTreeRef DeviceTree);
 
 /*!
   @function CDBDTGetNode
@@ -69,7 +69,7 @@ CDBDTNode CDBDTGetRootNode(CDBDeviceTree DeviceTree);
   @param noNewNode Specifies if a node should be created or not if the node isn't found
   @result Returns the requested node if it could be found, otherwise returns NULL on failure.
  */
-CDBDTNode CDBDTGetNode(CDBDeviceTree *DeviceTree, const char *nodePath, bool noNewNode);
+CDBDTNodeRef CDBDTGetNode(CDBDeviceTreeRef *DeviceTree, const char *nodePath, bool noNewNode);
 
 /*!
   @function CDBDTGetProperty
@@ -78,7 +78,7 @@ CDBDTNode CDBDTGetNode(CDBDeviceTree *DeviceTree, const char *nodePath, bool noN
   @param propertyName The name of the property to find
   @result Returns the requested property if it could be found, otherwise returns NULL.
  */
-CDBDTProperty CDBDTGetProperty(CDBDTNode node, const char *propertyName);
+CDBDTPropertyRef CDBDTNodeGetProperty(CDBDTNodeRef node, const char *propertyName);
 
 /*!
   @function CDBDTSetProperty
@@ -89,7 +89,7 @@ CDBDTProperty CDBDTGetProperty(CDBDTNode node, const char *propertyName);
   @param size The size of the data to set in the property
   @result Returns true if the operation was successful
  */
-bool CDBDTSetProperty(CDBDTNode node, const char *propertyName, const UInt8 *data, UInt32 size);
+bool CDBDTNodeSetProperty(CDBDTNodeRef node, const char *propertyName, const UInt8 *data, UInt32 size);
 
 /*!
   @function CDBDTPropertyGetValue
@@ -99,6 +99,6 @@ bool CDBDTSetProperty(CDBDTNode node, const char *propertyName, const UInt8 *dat
   @param sizeOut The size of the data from the property
   @result Returns true if the operation was successful
  */
-bool CDBDTPropertyGetValue(CDBDTProperty prop, UInt8 **valueOut, UInt32 *sizeOut);
+bool CDBDTPropertyGetValue(CDBDTPropertyRef prop, UInt8 **valueOut, UInt32 *sizeOut);
 
-void CDBDTPrint(CDBDeviceTree DeviceTree);
+void CDBDTPrint(CDBDeviceTreeRef DeviceTree);

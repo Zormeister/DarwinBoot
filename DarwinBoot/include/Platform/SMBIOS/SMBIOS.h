@@ -111,4 +111,3 @@ enum {
     FirmwareFeaturesHasToshiba1point2MbSupport = (1 << 21),
 };
 
-extern const char *CDBSMBIOSGetString(SMBIOSTableHeader *header, UInt32 stringIdx);

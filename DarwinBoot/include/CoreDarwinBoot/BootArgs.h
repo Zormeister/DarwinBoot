@@ -1,26 +1,12 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include "CDBBasicTypes.h"
 #include <Platform/Apple/BootArgs.h>
 #include <CoreDarwinBoot/DeviceTree.h>
 
-/*!
-  @function CDBInitKernelBootArguments
-  @abstract Allocates a local XNUBootArgs instance, which can be accessed by CoreDarwinBoot and other services within the same UEFI Application
-  @result Returns true if the operation was successful
- */
-extern bool CDBInitKernelBootArguments(void);
+typedef struct _CDBBootArgs *CDBBootArgsRef;
 
-/*!
-  @function CDBAddKernelExtensionToBoot
-  @abstract Allocates a BootKernelExtensionEntry instance & adds it to the DeviceTree
-  @param DeviceTree  The DeviceTree to add the kext to
-  @param InfoPlist   The in-memory copy of the kext's Info.plist file.
-  @param PlistSize   The size of the in-memory copy of the kext's Info.plist file.
-  @result Returns true if the operation was successful
- */
-extern bool CDBAddKernelExtensionToBoot(CDBDeviceTree *DeviceTree, const UInt8 *InfoPlist, const UInt32 PlistSize, const UInt8 *Exec, const UInt32 ExecSize, const char *PathToBundle);
+bool CDBBootArgsAppendCommandLine(CDBBootArgsRef Args, const char *BootArgument);
 
 struct {
     UInt64 BaseAddress; // This assumes we're purely 64-bit.
@@ -30,7 +16,7 @@ struct {
     UInt32 Height;
 } typedef CDBVideoInfo;
 
-extern bool CDBBootArgsSetVideoInfo(CDBVideoInfo *VideoInfo);
+extern bool CDBBootArgsSetVideoInfo(CDBBootArgsRef BootArgs, CDBVideoInfo *VideoInfo);
 
 #if __x86_64__
 
@@ -39,5 +25,7 @@ struct {
 } typedef CDBPCIInfo;
 
 extern bool CDBBootArgsSetPCIInfo();
+
+/* WIP - ECAM data served to PE should be grabbed from MCFG. */
 
 #endif

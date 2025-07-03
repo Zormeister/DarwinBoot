@@ -2,7 +2,6 @@
 
 #pragma once
 
-#define BOOT_PLIST_LOCATION "/Library/Preferences/SystemConfiguration/com.apple.Boot.plist"
+#define kBooterConfigPlistPath "/Library/Preferences/SystemConfiguration/com.apple.Boot.plist"
 
-/* should read this at runtime */
-#define SYSTEM_VERSION_PATH "/System/Library/CoreServices/SystemVersion.plist"
+#define kSystemVersionPlistPath "/System/Library/CoreServices/SystemVersion.plist"

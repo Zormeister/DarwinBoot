@@ -11,6 +11,9 @@
 #define MACH_MAGIC_64 0xFEEDFACF
 #define MACH_CIGAM_64 0xCFFAEDFE
 
+typedef UInt32 MachCpuType;
+typedef UInt32 MachCpuSubType;
+
 /* Mach-O header go brrrr */
 struct {
     UInt32 Magic;
@@ -24,8 +27,8 @@ struct {
 
 struct {
     UInt32 Magic;
-    UInt32 CpuType;
-    UInt32 CpuSubType;
+    MachCpuType CpuType;
+    MachCpuSubType CpuSubType;
     UInt32 FileType;
     UInt32 LoadCommandCount;
     UInt32 LoadCommandsSize;
@@ -101,10 +104,10 @@ enum {
     MachFlagsDylibInCache = (1 << 29),
 };
 
-struct MachLoadCommmand {
+struct {
     uint32_t Command;
     uint32_t CommandSize;
-};
+} typedef MachLoadCommand;
 
 typedef enum {
     CmdReqDyld = 0x80000000,
@@ -167,7 +170,7 @@ typedef enum {
 } MachCommand;
 
 struct MachSegment32 {
-    struct MachLoadCommmand base;
+    MachLoadCommand base;
     char SegmentName[16];
     UInt32 VirtualAddress;
     UInt32 VirtualSize;
@@ -180,7 +183,7 @@ struct MachSegment32 {
 };
 
 struct MachSegment64 {
-    struct MachLoadCommmand base;
+    MachLoadCommand base;
     char SegmentName[16];
     UInt64 VirtualAddress;
     UInt64 VirtualSize;
@@ -229,6 +232,13 @@ struct {
     UInt32 Rsvd3;
 } typedef MachSection64;
 
+struct {
+    MachLoadCommand Base;
+    UInt64 VirtualAddress;
+    UInt64 FileOffset;
+    UInt32 FileIDOffset; /* Not even going to bother with the weird __LP64__ define check. I'll handle the weirdness when it happens. */
+    UInt32 Reserved;
+} typedef MachFilesetCommand;
 
 #pragma mark Platform FunctionStarts
 
@@ -243,13 +253,7 @@ union {
     MachOHeader Header32;
 } typedef MachHeader;
 
-typedef struct _PlatformMachContext *AppleMachFile;
+typedef struct _MachFile *MachFileRef;
 
 #define kMachSectionText "__TEXT"
 #define kMachSectionData "__DATA"
-
-#define kPrelinkedSectionText "__PRELINK_DATA"
-
-AppleMachFile *CreateMachContext(MachHeader *Binary);
-
-MachSection *GetMachSegmentByName(AppleMachFile *MachFile, const char *SegmentName);

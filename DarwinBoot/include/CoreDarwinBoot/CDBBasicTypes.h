@@ -64,11 +64,13 @@ typedef long int intmax_t;
 
 #ifndef __cplusplus
 typedef uint16_t wchar_t;
+/* I am choosing to ignore compiler directives for the wchar type to be a 32-bit integer. */
+/* Brute forcing it works for UEFI, I don't believe that anything besides HFS will have to touch 16-bit or larger wide strings. */
 #endif
 
 /* LLVM exclusive stuff. */
 #ifdef __clang__
-#define BUILD_TOOL "LLVM/Clang"
+#define BUILD_TOOL "clang"
 #define COMPILER_VERSION_MAJOR __clang_major__
 #define COMPILER_VERSION_MINOR __clang_minor__
 #define COMPILER_VERSION_PATCH __clang_patchlevel__
@@ -85,7 +87,7 @@ typedef unsigned long long uintptr_t;
 #define DID_COMPILER_CHECK 1
 #endif
 
-#if defined(_MSC_VER) && !defined(DID_COMPILER_CHECK)
+#if defined(_MSC_VER) && !defined(__clang__)
 #warning i haven't tested this
 
 typedef long long int64_t;
@@ -158,5 +160,11 @@ typedef UInt32 UIntN;
 #define DBSwapBytes32(bytes) ((unsigned int)__builtin_bswap32(bytes))
 
 #endif
+
+/*
+ * unfun fact: if this header is renamed to fit the naming scheme of the rest of this directory
+ * the entire project would break. please do not rename this header to just 'BasicTypes.h' unless
+ * you're willing to scour the entire project for header breaks.
+ */
 
 #include <builtins.h>

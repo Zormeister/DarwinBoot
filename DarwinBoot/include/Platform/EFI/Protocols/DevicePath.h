@@ -138,4 +138,45 @@ struct {
 
 /* Media Paths. Thank god. */
 
+enum {
+    EFI_MEDIA_PATH_SUBTYPE_HARD_DRIVE = 1,
+    EFI_MEDIA_PATH_SUBTYPE_CDROM = 2,
+    EFI_MEDIA_PATH_SUBTYPE_VENDOR = 3,
+    EFI_MEDIA_PATH_SUBTYPE_FILE_PATH = 4,
+};
 
+struct {
+    UInt8 Type;
+    UInt8 SubType;
+    UInt8 Length[2];
+    UInt32 PartitionNumber;
+    EFI_LBA StartingLBA;
+    UInt64 PartitionSize;
+    char PartitionSignature[16];
+    UInt8 PartitionFormat;
+    UInt8 SignatureType;
+} typedef EFI_DEVICE_PATH_MEDIA_HD_PROTOCOL;
+
+struct {
+    UInt8 Type;
+    UInt8 SubType;
+    UInt8 Length[2];
+    UInt32 BootEntry;
+    EFI_PHYSICAL_ADDRESS PartitionStart;
+    UInt64 PartitionSize;
+} typedef EFI_DEVICE_PATH_MEDIA_CDROM_PROTOCOL;
+
+struct {
+    UInt8 Type;
+    UInt8 SubType;
+    UInt8 Length[2];
+    EFI_GUID VendorGUID;
+    uint8_t VendorData[];
+} typedef EFI_DEVICE_PATH_MEDIA_VENDOR_PROTOCOL;
+
+struct {
+    UInt8 Type;
+    UInt8 SubType;
+    UInt8 Length[2];
+    wchar_t Path[];
+} typedef EFI_DEVICE_PATH_MEDIA_FILE_PATH_PROTOCOL;

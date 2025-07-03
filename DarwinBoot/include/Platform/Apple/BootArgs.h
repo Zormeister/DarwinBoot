@@ -8,7 +8,7 @@
 #endif
 
 // How do I disable clang warnings about unused headers?
-#if TARGET_X64 || TARGET_IA32
+#if __x86_64__ || __i386__
 #include <Platform/Apple/BootArgsX86.h>
 #endif
 
