@@ -22,7 +22,7 @@ const char BootMessage[] = {
 };
 
 #if defined(DARWINBOOTEFI)
-#define BOARD_CONFIG CURRENT_ARCH
+#define BOARD_CONFIG TARGET_ARCH
 
 #if defined(EFIJUMPSTART)
 #define PAYLOAD_CONFIG "DarwinBoot EFI JumpStart"

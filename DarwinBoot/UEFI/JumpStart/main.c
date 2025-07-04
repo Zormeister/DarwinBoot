@@ -8,6 +8,8 @@
 #define DBOD_PATH WSTRING("\\System\\Library\\CoreServices\\boot.efi")
 #define DBOL_PATH WSTRING("\\EFI\\DarwinBoot\\DarwinBoot.efi")
 
+extern EFI_STATUS LoadNextLoader(EFI_DEVICE_PATH_PROTOCOL *DevicePath);
+
 /* TODO: this. */
 EFI_STATUS EFIMain(EFI_HANDLE Handle, EFI_SYSTEM_TABLE *SystemTable) {
     if (EFIInitialize(Handle, SystemTable)) {
@@ -19,7 +21,8 @@ EFI_STATUS EFIMain(EFI_HANDLE Handle, EFI_SYSTEM_TABLE *SystemTable) {
             ST->ConOut->OutputString(ST->ConOut, DP->Path);
             ST->ConOut->OutputString(ST->ConOut, WSTRING("\r\n"));
         }
-        panic("[JS]: I need this so I can see my results");
+        panic("stall");
+        return LoadNextLoader(LIP->FilePath);
     }
     return 0;
 }

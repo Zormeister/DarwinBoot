@@ -11,6 +11,7 @@ extern EFI_SYSTEM_TABLE *ST;
 extern EFI_BOOT_SERVICES *BS;
 extern EFI_RUNTIME_SERVICES *RT;
 extern EFI_LOADED_IMAGE_PROTOCOL *LIP;
+extern EFI_HANDLE IH;
 
 /*!
  @function EFIInitialize
@@ -45,3 +46,13 @@ extern bool EFIGuidMatches(EFI_GUID * a, EFI_GUID * b);
  @result Returns the VendorTable field of an EFI_CONFIGURATION_TABLE.
  */
 extern void *EFIGetConfigurationTable(EFI_GUID *Guid);
+
+enum {
+    kEFIEncodeFlagsNone = 0x0,
+    kEFIEncodeInvertSlashes = (1 << 0), /* change ever '/' to a '\' and vice versa */
+};
+
+extern void EFIWideStringToASCII(const wchar_t *WideString, char **AsciiOut, UInt32 Flags);
+
+extern void EFIASCIIToWideString(const char *String, wchar_t **WcharOut, UInt32 Flags);
+

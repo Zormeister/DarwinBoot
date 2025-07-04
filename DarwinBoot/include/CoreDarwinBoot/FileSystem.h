@@ -31,10 +31,38 @@ typedef struct _CDBFileRef *CDBFileRef;
  */
 CDBFileSystemRef CDBFileSystemGetBootVolume(void);
 
-bool CDBFileSystemIsBootable(CDBFileSystemRef FileSystem);
+bool CDBFileSystemIsBootable(CDBFileSystemRef FileSystem); /* TODO: Tie this in with Bootability? */
 
-/* TODO: Alternative names. */
-CDBFileRef CDBFileSystemCreateFileRef(CDBFileSystemRef FileSystem, const char *Path);
+const char *CDBFileSystemGetName(CDBFileSystemRef FileSystem);
+
+bool CDBFileSystemFileExists(CDBFileSystemRef FileSystem, const char *FilePath);
+
+enum {
+    kCDBFileModeRead = (1 << 0),
+    kCDBFileModeWrite = (1 << 1),
+    kCDBFileModeCreate = (1 << 2),
+};
+
+
+enum {
+    kCDBFileFlagsReadOnly = (1 << 0),
+    kCDBFileFlagsHiddenFile = (1 << 1),
+    kCDBFileFlagsDirectory = (1 << 2),
+};
+
+enum {
+    kCDBFileSuccess = 0,
+
+    kCDBFileIntenalError = 1,
+    kCDBFileBufferTooSmall = 2,
+    kCDBFileNotPermitted = 3,
+};
+
+CDBFileRef CDBFileSystemOpenFile(CDBFileSystemRef FileSystem, const char *Path, UInt32 Mode);
 
 #pragma mark CoreDarwinBoot File functions
+
+int CDBFileRead(CDBFileRef File, void **Buffer, size_t *BufferSize);
+int CDBFileWrite(CDBFileRef File, void *Buffer, size_t BufferSize);
+void CDBFileClose(CDBFileRef File);
 

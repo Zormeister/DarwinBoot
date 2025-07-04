@@ -3,13 +3,13 @@
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
-#if __LP64__
+#if __x86_64__ || __arm64__
 typedef UInt64 EFI_STATUS;
 #else
 typedef UInt32 EFI_STATUS;
 #endif
 
-#if __LP64__
+#if __x86_64__ || __arm64__
 #define EFI_HIGH_BIT (0x80000000000000)
 #else
 #define EFI_HIGH_BIT (0x80000000)
