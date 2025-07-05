@@ -3,13 +3,8 @@
 #pragma once
 #include <CoreDarwinBoot/BootArgs.h>
 #include <CoreDarwinBoot/CPUInfo.h>
+#include <CoreDarwinBoot/CoreRoutines.h>
 #include <CoreDarwinBoot/DeviceTree.h>
+#include <CoreDarwinBoot/FileSystem.h>
 #include <CoreDarwinBoot/libc_compat.h>
 
-void CDBLogv(const char *fmt, va_list va);
-void CDBLog(const char *fmt, ...);
-
-//extern void *CDBAllocateMemory(size_t size);
-//extern void CDBFreeMemory(void *p);
-
-extern void panic(const char *fmt, ...);

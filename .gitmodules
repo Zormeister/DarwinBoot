@@ -4,3 +4,6 @@
 [submodule "External/printf"]
 	path = External/printf
 	url = https://github.com/mpaland/printf.git
+[submodule "External/corecrypto"]
+	path = External/corecrypto
+	url = https://github.com/Zormeister/corecrypto.git

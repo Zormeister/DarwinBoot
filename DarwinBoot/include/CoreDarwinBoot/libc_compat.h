@@ -4,6 +4,21 @@
 #define __LIBC_COMPAT__
 
 #include <CoreDarwinBoot/CDBBasicTypes.h>
+#include <CoreDarwinBoot/CoreRoutines.h>
+
+/* assert.h */
+#ifndef NDEBUG
+
+#define assert(...) \
+    if ((__VA_ARGS__) == 0) { \
+        panic("ASSERT FAIL: %s:%d: %s %s", __FILE__, __LINE__, __PRETTY_FUNCTION__, #__VA_ARGS__); \
+    }
+
+#else
+
+#define assert(...) (void)0
+
+#endif
 
 /* ctype.h */
 int isalnum(int c);
@@ -44,6 +59,12 @@ int toupper(int c);
 /* stdio.h */
 int printf(const char *fmt, ...);
 int vprintf(const char *fmt, va_list list);
+
+#define stderr 0
+#define stdin  0
+#define stderr 0
+
+#define fprintf(fd, fmt, ...) printf(fmt, __VA_ARGS__)
 
 int snprintf(char *s, size_t n, const char *format, ...);
 int vsnprintf(char *s, size_t n, const char *format, va_list va);

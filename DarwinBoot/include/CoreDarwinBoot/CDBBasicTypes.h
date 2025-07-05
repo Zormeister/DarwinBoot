@@ -28,95 +28,155 @@
 typedef __INT8_TYPE__ int8_t;
 #define INT8_C(x) __INT8_C(x)
 #define INT8_MAX __INT8_MAX__
+#define PRId8 __INT8_FMTd__
+#define PRIi8 __INT8_FMTi__
 #else
 typedef signed char int16_t;
 #define INT8_C(c) c
 #define INT8_MAX 127
+#define PRId8 "hhd"
+#define PRIi8 "hhi"
 #endif
 
 #ifdef __UINT8_TYPE__
 typedef __UINT8_TYPE__ uint8_t;
 #define UINT8_C(x) __UINT8_C(x)
 #define UINT8_MAX __UINT8_MAX__
+#define PRIo8 __UINT8_FMTo__
+#define PRIu8 __UINT8_FMTu__
+#define PRIx8 __UINT8_FMTx__
+#define PRIX8 __UINT8_FMTX__
 #else
 typedef unsigned char uint8_t;
 #define UINT8_C(c) c
 #define UINT8_MAX 255
+#define PRIo8 "hho"
+#define PRIu8 "hhu"
+#define PRIx8 "hhx"
+#define PRIX8 "hhX"
 #endif
 #ifdef __INT16_TYPE__
 typedef __INT16_TYPE__ int16_t;
 #define INT16_C(x) __INT16_C(x)
 #define INT16_MAX __INT16_MAX__
+#define PRId16 __INT16_FMTd__
+#define PRIi16 __INT16_FMTi__
 #else
 typedef short int16_t;
 #define INT16_C(c) c
 #define INT16_MAX 32767
+#define PRId16 "hd"
+#define PRIi16 "hi"
 #endif
 
 #ifdef __UINT16_TYPE__
 typedef __UINT16_TYPE__ uint16_t;
 #define UINT16_C(x) __UINT16_C(x)
 #define UINT16_MAX __UINT16_MAX__
+#define PRIo16 __UINT16_FMTo__
+#define PRIu16 __UINT16_FMTu__
+#define PRIx16 __UINT16_FMTx__
+#define PRIX16 __UINT16_FMTX__
 #else
 typedef unsigned short uint16_t;
 #define UINT16_C(c) c
 #define UINT16_MAX 65535
+#define PRIo16 "ho"
+#define PRIu16 "hu"
+#define PRIx16 "hx"
+#define PRIX16 "hX"
 #endif
 
 #ifdef __INT32_TYPE__
 typedef __INT32_TYPE__ int32_t;
 #define INT32_C(x) __INT32_C(x)
 #define INT32_MAX __INT32_MAX__
+#define PRId32 __INT32_FMTd__
+#define PRIi32 __INT32_FMTi__
 #else
 typedef int int32_t;
 #define INT32_C(c) c
 #define INT32_MAX 2147483647
+#define PRId32 "d"
+#define PRIi32 "i"
 #endif
 
 #ifdef __UINT32_TYPE__
 typedef __UINT32_TYPE__ uint32_t;
 #define UINT32_C(x) __UINT32_C(x)
 #define UINT32_MAX __UINT32_MAX__
+#define PRIo32 __UINT32_FMTo__
+#define PRIu32 __UINT32_FMTu__
+#define PRIx32 __UINT32_FMTx__
+#define PRIX32 __UINT32_FMTX__
 #else
 typedef unsigned int uint32_t;
 #define UINT32_C(c) c##U
 #define UINT32_MAX 0xFFFFFFFFU
+#define PRIo32 "o"
+#define PRIu32 "u"
+#define PRIx32 "x"
+#define PRIX32 "X"
 #endif
 
 #ifdef __INT64_TYPE__
 typedef __INT64_TYPE__ int64_t;
 #define INT64_C(x) __INT64_C(x)
 #define INT64_MAX __INT64_MAX__
+#define PRId64 __INT64_FMTd__
+#define PRIi64 __INT64_FMTi__
 #else
 typedef long long int int64_t;
 #define INT64_C(c) c##LL
 #define INT64_MAX 0x7FFFFFFFFFFFFFFFLL
+#define PRId64 "lld"
+#define PRIi64 "lli"
 #endif
 
 #ifdef __UINT64_TYPE__
 typedef __UINT64_TYPE__ uint64_t;
 #define UINT64_C(x) __UINT64_C(x)
 #define UINT64_MAX __UINT64_MAX__
+#define PRIo64 __UINT64_FMTo__
+#define PRIu64 __UINT64_FMTu__
+#define PRIx64 __UINT64_FMTx__
+#define PRIX64 __UINT64_FMTX__
 #else
 typedef long long unsigned int uint64_t;
 #define UINT64_C(c) c##LL
 #define UINT64_MAX 0xFFFFFFFFFFFFFFFFULL
+#define PRIo64 "llo"
+#define PRIu64 "llu"
+#define PRIx64 "llx"
+#define PRIX64 "llX"
 #endif
 
 #ifdef __UINTPTR_TYPE__
 typedef __UINTPTR_TYPE__ uintptr_t;
 #define UINTPTR_MAX __UINTPTR_MAX__
+#define PRIoPTR __UINTPTR_FMTo__
+#define PRIuPTR __UINTPTR_FMTu__
+#define PRIxPTR __UINTPTR_FMTx__
+#define PRIXPTR __UINTPTR_FMTX__
 #else
 typedef long long unsigned int uintptr_t;
 #define UINTPTR_MAX 0xFFFFFFFFFFFFFFFFULL
+#define PRIoPTR "llo"
+#define PRIuPTR "llu"
+#define PRIxPTR "llx"
+#define PRIXPTR "llX"
 #endif
 
 #ifdef __INTPTR_TYPE__
 typedef __INTPTR_TYPE__ intptr_t;
 #define INTPTR_MAX __INTPTR_MAX__
+#define PRIdPTR __INTPTR_FMTd__
+#define PRIiPTR __INTPTR_FMTi__
 #else
 typedef long long int intptr_t;
 #define INTPTR_MAX 0x7FFFFFFFFFFFFFFFLL
+#define PRIdPTR "lld"
+#define PRIiPTR "lli"
 #endif
 
 #ifdef __SIZE_TYPE__
@@ -139,18 +199,32 @@ typedef long ptrdiff_t;
 typedef __INTMAX_TYPE__ intmax_t;
 #define INTMAX_C(c) __INTMAX_C(c)
 #define INTMAX_MAX __INTMAX_MAX__
+#define PRIdMAX __INTMAX_FMTd__
+#define PRIiMAX __INTMAX_FMTi__
 #else
 typedef long long int intmax_t;
 #define INTMAX_C(c) c##LL
 #define INTMAX_MAX 0x7FFFFFFFFFFFFFFFLL
+#define PRIdMAX "lld"
+#define PRIiMAX "lli"
 #endif
 
 #ifdef __UINTMAX_TYPE__
 typedef __UINTMAX_TYPE__ uintmax_t;
 #define UINTMAX_C(c) __UINTMAX_C(c)
 #define UINTMAX_MAX __UINTMAX_MAX__
+#define PRIoMAX __UINTMAX_FMTo__
+#define PRIuMAX __UINTMAX_FMTu__
+#define PRIxMAX __UINTMAX_FMTx__
+#define PRIXMAX __UINTMAX_FMTX__
 #else
 typedef long long unsigned int uintmax_t;
+#define UINTMAX_C(c) c#ULL
+#define UINTMAX_MAX 0xFFFFFFFFFFFFFFFFULL
+#define PRIoMAX "llo"
+#define PRIuMAX "llu"
+#define PRIxMAX "llx"
+#define PRIXMAX "llX"
 #endif
 
 #if !(__WCHAR_WIDTH__ == 16) && __UEFI__
@@ -196,6 +270,14 @@ typedef unsigned char uint8_t;
 #define UINT8_C(c) c
 #define UINT8_MAX 255
 #endif
+
+#define PRId8 "hhd"
+#define PRIi8 "hhi"
+#define PRIo8 "hho"
+#define PRIu8 "hhu"
+#define PRIx8 "hhx"
+#define PRIX8 "hhX"
+
 #ifdef __INT16_TYPE__
 typedef __INT16_TYPE__ int16_t;
 #define INT16_C(x) __INT16_C(x)
@@ -215,6 +297,13 @@ typedef unsigned short int uint16_t;
 #define UINT16_C(c) c
 #define UINT16_MAX 65535
 #endif
+
+#define PRId16 "hd"
+#define PRIi16 "hi"
+#define PRIo16 "ho"
+#define PRIu16 "hu"
+#define PRIx16 "hx"
+#define PRIX16 "hX"
 
 #ifdef __INT32_TYPE__
 typedef __INT32_TYPE__ int32_t;
@@ -236,6 +325,13 @@ typedef unsigned int uint32_t;
 #define UINT32_MAX 0xFFFFFFFFU
 #endif
 
+#define PRId32 "d"
+#define PRIi32 "i"
+#define PRIo32 "o"
+#define PRIu32 "u"
+#define PRIx32 "x"
+#define PRIX32 "X"
+
 #ifdef __INT64_TYPE__
 typedef __INT64_TYPE__ int64_t;
 #define INT64_C(x) __INT64_C(x)
@@ -256,6 +352,13 @@ typedef long unsigned int uint64_t;
 #define UINT64_MAX 0xFFFFFFFFFFFFFFFFUL
 #endif
 
+#define PRId64 "ld"
+#define PRIi64 "li"
+#define PRIo64 "lo"
+#define PRIu64 "lu"
+#define PRIx64 "lx"
+#define PRIX64 "lX"
+
 #ifdef __UINTPTR_TYPE__
 typedef __UINTPTR_TYPE__ uintptr_t;
 #define UINTPTR_MAX __UINTPTR_MAX__
@@ -271,6 +374,13 @@ typedef __INTPTR_TYPE__ intptr_t;
 typedef long int intptr_t;
 #define INTPTR_MAX 0x7FFFFFFFFFFFFFFFL
 #endif
+
+#define PRIdPTR "ld"
+#define PRIiPTR "li"
+#define PRIoPTR "lo"
+#define PRIuPTR "lu"
+#define PRIxPTR "lx"
+#define PRIXPTR "lX"
 
 #ifdef __SIZE_TYPE__
 typedef __SIZE_TYPE__ size_t;
@@ -307,6 +417,13 @@ typedef long unsigned int uintmax_t;
 #define UINTMAX_C(c) c##UL
 #define UINTMAX_MAX 0xFFFFFFFFFFFFFFFFUL
 #endif
+
+#define PRIdMAX "ld"
+#define PRIiMAX "li"
+#define PRIoMAX "lo"
+#define PRIuMAX "lu"
+#define PRIxMAX "lx"
+#define PRIXMAX "lX"
 
 #if !(__WCHAR_WIDTH__ == 16) && UEFI
 #error "Wide strings aren't 16-bits wide on UEFI, this is an error!"

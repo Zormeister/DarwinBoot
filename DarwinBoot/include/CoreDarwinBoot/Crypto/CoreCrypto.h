@@ -34,17 +34,11 @@
  *
  */
 
-#if __arm__ || __arm64__
-#define IBOOT 1
-#endif
+#define CORECRYPTO_AVAILABLE __has_include(<corecrypto/cc.h>)
 
-#if __x86_64__ || __i386__
-// What's the bet that they use corecrypto for the UEFI Crypto Services?
-#define EFI 1
-#endif
+#if CORECRYPTO_AVAILABLE
 
-#define WOOPS_WE_DONT_HAVE_IT_PULLED_IN_YET 1
-
-#ifndef WOOPS_WE_DONT_HAVE_IT_PULLED_IN_YET
 #include <corecrypto/cc.h>
-#endif
+#include <corecrypto/ccdigest.h>
+
+#endif /* CORECRYPTO_AVAILABLE */
