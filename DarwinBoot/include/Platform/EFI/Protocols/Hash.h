@@ -23,7 +23,7 @@
   {0xcaa4381e,0x750c,0x4770, \
     {0xb8,0x70,0x7a,0x23,0xb4,0xe4,0x21,0x30}}
 
-#define EFI_HASH_ALGORTIHM_MD5_GUID \
+#define EFI_HASH_ALGORITHM_MD5_GUID \
   {0xaf7c79c,0x65b5,0x4319, \
     {0xb0,0xae,0x44,0xec,0x48,0x4e,0x4a,0xd7}}
 
@@ -34,6 +34,16 @@
 #define EFI_HASH_PROTOCOL_GUID \
   {0xc5184932,0xdba5,0x46db,\
     {0xa5,0xba,0xcc,0x0b,0xda,0x9c,0x14,0x35}}
+
+extern EFI_GUID gEfiHashServiceBindingProtocolGuid;
+extern EFI_GUID gEfiHashProtocolGuid;
+
+extern EFI_GUID gEfiHashAlgorithmSha1Guid;
+extern EFI_GUID gEfiHashAlgorithmSha224Guid;
+extern EFI_GUID gEfiHashAlgorithmSha256Guid;
+extern EFI_GUID gEfiHashAlgorithmSha384Guid;
+extern EFI_GUID gEfiHashAlgorithmSha512Guid;
+extern EFI_GUID gEfiHashAlgorithmMd5Guid;
 
 typedef UInt8 EFI_MD5_HASH[16];
 typedef UInt8 EFI_SHA1_HASH[20];
@@ -65,6 +75,9 @@ struct _EFI_HASH_PROTOCOL {
 #define EFI_HASH2_PROTOCOL_GUID \
   {0x55b1d734,0xc5e1,0x49db, \
     {0x96,0x47,0xb1,0x6a,0xfb,0xe,0x30,0x5b}}
+
+extern EFI_GUID gEfiHash2ServiceBindingProtocolGuid;
+extern EFI_GUID gEfiHash2ProtocolGuid;
 
 typedef UInt8 EFI_MD5_HASH2[16];
 typedef UInt8 EFI_SHA1_HASH2[20];

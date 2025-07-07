@@ -3,9 +3,4 @@
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
-struct {
-    UInt32 Data1;
-    UInt16 Data2;
-    UInt16 Data3;
-    UInt8 Data4[8];
-} typedef EFI_GUID;
+typedef guid_t EFI_GUID;

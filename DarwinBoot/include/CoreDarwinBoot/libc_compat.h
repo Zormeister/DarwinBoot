@@ -7,6 +7,8 @@
 #include <CoreDarwinBoot/CoreRoutines.h>
 
 /* assert.h */
+#define static_assert(...) _Static_assert(__VA_ARGS__)
+
 #ifndef NDEBUG
 
 #define assert(...) \

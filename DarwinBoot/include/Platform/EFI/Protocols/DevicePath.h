@@ -7,6 +7,8 @@
   {0x09576e91,0x6d3f,0x11d2,\
     {0x8e,0x39,0x00,0xa0,0xc9,0x69,0x72,0x3b}}
 
+extern EFI_GUID gEfiDevicePathProtocolGuid;
+
 enum {
     EFI_DEVICE_PATH_TYPE_HARDWARE = 1,
     EFI_DEVICE_PATH_TYPE_ACPI,
@@ -143,6 +145,8 @@ enum {
     EFI_MEDIA_PATH_SUBTYPE_CDROM = 2,
     EFI_MEDIA_PATH_SUBTYPE_VENDOR = 3,
     EFI_MEDIA_PATH_SUBTYPE_FILE_PATH = 4,
+    EFI_MEDIA_PATH_SUBTYPE_MEDIA_PROTOCOL = 5,
+    EFI_MEDIA_PATH_SUBTYPE_RAM_DISK = 9,
 };
 
 struct {
@@ -180,3 +184,41 @@ struct {
     UInt8 Length[2];
     wchar_t Path[];
 } typedef EFI_DEVICE_PATH_MEDIA_FILE_PATH_PROTOCOL;
+
+struct {
+    UInt8 Type;
+    UInt8 SubType;
+    UInt8 Length[2];
+    EFI_GUID ProtocolGUID;
+} typedef EFI_DEVICE_PATH_MEDIA_PROTOCOL_PATH_PROTOCOL;
+
+struct {
+    UInt8 Type;
+    UInt8 SubType;
+    UInt8 Length[2];
+    EFI_PHYSICAL_ADDRESS StartingAddress;
+    EFI_PHYSICAL_ADDRESS EndingAddress;
+    EFI_GUID DiskType;
+    UInt16 DiskInstance;
+} typedef EFI_DEVICE_PATH_MEDIA_RAM_DISK_PROTOCOL;
+
+#define EFI_VIRTUAL_DISK_GUID \
+  {0x77ab535a,0x45fc,0x624b,\
+    {0x55,0x60,0xf7,0xb2,0x81,0xd1,0xf9,0x6e}}
+
+#define EFI_VIRTUAL_CD_GUID \
+  {0x3d5abd30,0x4175,0x87ce,\
+    {0x6d,0x64,0xd2,0xad,0xe5,0x23,0xc4,0xbb}}
+
+#define EFI_PERSISTENT_VIRTUAL_DISK_GUID \
+  {0x5cea02c9,0x4d07,0x69d3,\
+    {0x26,0x9f,0x44,0x96,0xfb,0xe0,0x96,0xf9}}
+
+#define EFI_PERSISTENT_VIRTUAL_CD_GUID \
+  {0x08018188,0x42cd,0xbb48,\
+    {0x10,0x0f,0x53,0x87,0xd5,0x3d,0xed,0x3d}}
+
+extern EFI_GUID gEfiVirtualDiskGuid;
+extern EFI_GUID gEfiVirtualCdGuid;
+extern EFI_GUID gEfiPersistentVirtualDiskGuid;
+extern EFI_GUID gEfiPersistentVirtualCdGuid;

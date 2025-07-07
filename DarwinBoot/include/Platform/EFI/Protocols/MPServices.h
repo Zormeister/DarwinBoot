@@ -8,6 +8,8 @@
   {0x3fdda605,0xa76e,0x4f46, \
     {0xad,0x29,0x12,0xf4,0x53,0x1b,0x3d,0x08}}
 
+extern EFI_GUID gEfiMpServicesProtocolGuid;
+
 typedef struct _EFI_MP_SERVICES_PROTOCOL EFI_MP_SERVICES_PROTOCOL;
 
 typedef struct {

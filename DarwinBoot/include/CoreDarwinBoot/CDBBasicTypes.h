@@ -2,6 +2,12 @@
 
 #pragma once
 
+/*
+ * unfun fact: if this header is renamed to fit the naming scheme of the rest of this directory
+ * the entire project would break. please do not rename this header to just 'BasicTypes.h' unless
+ * you're willing to scour the entire project for header breaks.
+ */
+
 /* !!! THIS IS THE BASE HEADER OF THE ENTIRE PROJECT !!! */
 /* All files link back to here, once this header is finalised PLEASE do not change this unless necessary!!! */
 
@@ -445,10 +451,10 @@ typedef uint16_t wchar_t;
 typedef int8_t SInt8;
 typedef int16_t SInt16;
 typedef int32_t SInt32;
+typedef int64_t SInt64;
 typedef uint8_t UInt8;
 typedef uint16_t UInt16;
 typedef uint32_t UInt32;
-typedef int64_t SInt64;
 typedef uint64_t UInt64;
 
 /* BSD types? Not sure what these are actually called. */
@@ -474,6 +480,15 @@ typedef char bool;
 #define false 0
 
 #endif
+
+#define __packed __attribute__((packed))
+#define PACKED __packed
+
+#define __db_type_must_be_of_size(type, size) _Static_assert(sizeof(type) == size, #type " is not of the correct size.")
+
+/* Better name for this macro? */
+#define STRUCT_SIZE_CHECK(type, size) __db_type_must_be_of_size(struct type, size)
+#define TYPE_SIZE_CHECK(type, size) __db_type_must_be_of_size(type, size)
 
 #if defined (__x86_64__) || defined (__arm64__)
 typedef UInt64 UIntN;
@@ -517,10 +532,18 @@ typedef UInt32 UIntN;
 #define CONFIG_DEVELOPMENT 0
 #endif
 
-/*
- * unfun fact: if this header is renamed to fit the naming scheme of the rest of this directory
- * the entire project would break. please do not rename this header to just 'BasicTypes.h' unless
- * you're willing to scour the entire project for header breaks.
- */
+
+#pragma mark Non-Standard Types
+
+/* This mirrors the definition of a GUID in UEFI. */
+typedef struct {
+    UInt32 Data1;
+    UInt16 Data2;
+    UInt16 Data3;
+    UInt8 Data4[8];
+} guid_t;
+
+typedef uint8_t uuid_t[16];
+
 
 #include <builtins.h>

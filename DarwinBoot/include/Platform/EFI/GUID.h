@@ -26,4 +26,3 @@ extern EFI_GUID gSmbiosTableGuid;
 
 extern EFI_GUID gEfiSmbiosV3TableGuid;
 
-extern EFI_GUID gEfiLoadedImageProtocolGuid;

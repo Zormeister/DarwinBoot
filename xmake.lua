@@ -1,6 +1,6 @@
 add_rules("mode.release", "mode.debug")
 
-add_sysincludedirs("$(projectdir)")
+add_sysincludedirs("$(projectdir)", "$(projectdir)/External/corecrypto/include")
 
 if is_plat("uefi") then
 
