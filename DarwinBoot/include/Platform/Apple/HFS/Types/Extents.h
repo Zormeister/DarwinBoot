@@ -1,7 +1,7 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include <CoreDarwinBoot/CDBBasicTypes.h>
+#include <Platform/Apple/HFS/Types/Catalog.h>
 
 struct {
     UInt16 StartBlock;
@@ -26,7 +26,7 @@ typedef struct {
     UInt16 KeyLength;
     UInt8 ForkType;
     UInt8 pad;
-    UInt32 FileID;
+    HFSCatalogNodeID FileID;
     UInt32 StartBlock;
 } __packed HFSPlusExtentKey;
 

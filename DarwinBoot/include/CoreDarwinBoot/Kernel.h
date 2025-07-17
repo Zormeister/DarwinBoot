@@ -22,7 +22,7 @@ bool CDBKernelIsFileset(CDBKernelRef);
 bool CDBKernelLoadExtensionsFromVolume(CDBKernelRef Kernel, CDBDeviceTreeRef DeviceTree, const char *pathFromRoot);
 
 UInt32 CDBKernelGetMajorVersion(CDBKernelRef Kernel);
-/* ^ TODO: Extend <Platform/Apple/MachO.h> */
+/* ^ TODO: Extend <Platform/Apple/MachO.h> to allow symbol lookup + linking for pre-boot binaries. */
 
 /*
  * @typedef   Kernel Preflight Callback

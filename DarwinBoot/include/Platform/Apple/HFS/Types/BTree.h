@@ -46,3 +46,13 @@ enum {
     kReservedBTreeType = 255
 };
 
+enum {
+    kHFSBinaryCompare = 0xBC,
+    kHFSCaseFolding = 0xCF,
+};
+
+enum {
+    kBTBadCloseMask = 0x1,
+    kBTBigKeysMask = 0x2,
+    kBTVariableIndexKeysMask = 0x4
+};

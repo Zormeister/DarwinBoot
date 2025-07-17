@@ -93,4 +93,11 @@ size_t strlen(const char *str);
 /* wchar.h */
 size_t wcslen(const wchar_t *wstr);
 
+/* errno.h */
+typedef int errno_t;
+
+#define EPERM 1
+#define ENOENT 2
+
+
 #endif

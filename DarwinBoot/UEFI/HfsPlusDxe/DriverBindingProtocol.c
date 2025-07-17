@@ -1,6 +1,5 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include "Platform/EFI/Types/Status.h"
 #include <Platform/Apple/HFS/Types/VolumeHeader.h>
 #include <Platform/EFI/Protocols/DriverBinding.h>
 #include <Platform/EFI/EFI.h>
@@ -8,7 +7,7 @@
 
 EFI_GUID gAppleHfsPartitionGuid = {0x48465300, 0x0000, 0x11AA, {0xAA, 0x11, 0x00, 0x30,0x65, 0x43, 0xEC, 0xAC}};
 
-EFI_STATUS HfsDriverBindingSupported(EFI_DRIVER_BINDING_PROTOCOL *This, EFI_HANDLE ControllerHandle, EFI_DEVICE_PATH_PROTOCOL *DP) {
+EFI_STATUS HfsPlusDriverBindingSupported(EFI_DRIVER_BINDING_PROTOCOL *This, EFI_HANDLE ControllerHandle, EFI_DEVICE_PATH_PROTOCOL *DP) {
     EFI_BLOCK_IO_PROTOCOL *BlkIO = NULL;
     EFI_PARTITION_INFO_PROTOCOL *PartitionInfo = NULL;
     EFI_STATUS status = EFI_SUCCESS;
@@ -26,7 +25,7 @@ EFI_STATUS HfsDriverBindingSupported(EFI_DRIVER_BINDING_PROTOCOL *This, EFI_HAND
                                 This->DriverBindingHandle, ControllerHandle, EFI_OPEN_PROTOCOL_BY_DRIVER);
 
     if (status) {
-        goto read_first_block;
+        goto read_volume_header;
     }
 
     if (PartitionInfo->Type == PARTITION_TYPE_GPT) {
@@ -41,10 +40,12 @@ EFI_STATUS HfsDriverBindingSupported(EFI_DRIVER_BINDING_PROTOCOL *This, EFI_HAND
         }
     }
 
-read_first_block:
+read_volume_header:
     /* Even if the GUIDs are the same, make sure the block header is actually an HFS+ header. */
-    void *buffer = malloc(BlkIO->Media->BlockSize);
-    BlkIO->ReadBlocks(BlkIO, BlkIO->Media->MediaID, 0, BlkIO->Media->BlockSize, buffer);
+
+    /* Allocate a buffer of 2048 so I can get the header after the offset. */
+    void *buffer = malloc(2048);
+    BlkIO->ReadBlocks(BlkIO, BlkIO->Media->MediaID, 0, 2048, buffer);
 
     HFSVolumeHeader *VH = (HFSVolumeHeader *)(buffer + kHFSVolumeHeaderOffset);
     status = EFI_UNSUPPORTED;
@@ -59,7 +60,7 @@ read_first_block:
 }
 
 EFI_DRIVER_BINDING_PROTOCOL gHfsPlusDxeDriverBindingProtocol = {
-    &HfsDriverBindingSupported,
+    &HfsPlusDriverBindingSupported,
     NULL,
     NULL,
     0x10,

@@ -20,3 +20,10 @@ struct {
 typedef UInt32 HFSFourCharCode;
 typedef HFSFourCharCode HFSOSType;
 
+struct {
+    HFSOSType FileType;
+    HFSOSType FileCreator;
+    UInt16 FinderFlags;
+    HFSPoint Location;
+    UInt16 Reserved;
+} typedef HFSFileInfo;

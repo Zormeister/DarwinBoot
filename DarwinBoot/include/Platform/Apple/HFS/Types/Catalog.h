@@ -26,3 +26,7 @@ struct HFSPlusCatalogKey {
     HFSUniStr255 NodeName;
 };
 typedef struct HFSPlusCatalogKey HFSPlusCatalogKey;
+
+enum {
+    kHFSPlusCatalogMinNodeSize = 4096,
+};
