@@ -11,9 +11,9 @@
 #include <stdlib.h>
 
 #if CORECRYPTO_AVAILABLE
-#include <corecrypto/ccmd5.h>
-#include <corecrypto/ccsha1.h>
-#include <corecrypto/ccsha2.h>
+    #include <corecrypto/ccmd5.h>
+    #include <corecrypto/ccsha1.h>
+    #include <corecrypto/ccsha2.h>
 
 //
 // CoreCrypto hashing services
@@ -22,7 +22,7 @@
 extern const struct ccdigest_info *CcDigestGetHashFromGuid(const EFI_GUID *Algorithm);
 extern UIntN CcDigestGetHashSizeFromGuid(const EFI_GUID *Algorithm);
 
-#pragma mark Hash Protocol
+    #pragma mark Hash Protocol
 
 EFI_STATUS CcHashProtocolGetHashSize(const EFI_HASH_PROTOCOL *This, const EFI_GUID *HashGuid, UIntN *HashSize)
 {
@@ -66,12 +66,12 @@ EFI_STATUS CcHashProtocolHash(const EFI_HASH_PROTOCOL *This, const EFI_GUID *Has
     return EFI_SUCCESS;
 }
 
-#pragma mark Hash Binding Service
+    #pragma mark Hash Binding Service
 
 EFI_SERVICE_BINDING_PROTOCOL gCoreCryptoDxeHashBindingProtocol;
 
-// I hope this doesn't ever become an issue.
-#define kCoreCryptoHashBindingMagic 0x63636431
+    // I hope this doesn't ever become an issue.
+    #define kCoreCryptoHashBindingMagic 0x63636431
 
 struct {
     UInt32 Magic;

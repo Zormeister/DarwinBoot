@@ -38,7 +38,7 @@
 
 #if CORECRYPTO_AVAILABLE
 
-#include <corecrypto/cc.h>
-#include <corecrypto/ccdigest.h>
+    #include <corecrypto/cc.h>
+    #include <corecrypto/ccdigest.h>
 
 #endif /* CORECRYPTO_AVAILABLE */

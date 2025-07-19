@@ -22,29 +22,29 @@ const char BootMessage[] = {
 };
 
 #if defined(DARWINBOOTEFI)
-#define BOARD_CONFIG TARGET_ARCH
+    #define BOARD_CONFIG TARGET_ARCH
 
-#if defined(EFIJUMPSTART)
-#define PAYLOAD_CONFIG "DarwinBoot EFI JumpStart"
-#elif defined(EFIDISKBOOT)
-#define PAYLOAD_CONFIG "DarwinBoot EFI Loader"
-#else
-#error Unknown Configuration for UEFI
-#endif
+    #if defined(EFIJUMPSTART)
+        #define PAYLOAD_CONFIG "DarwinBoot EFI JumpStart"
+    #elif defined(EFIDISKBOOT)
+        #define PAYLOAD_CONFIG "DarwinBoot EFI Loader"
+    #else
+        #error Unknown Configuration for UEFI
+    #endif
 
 #elif defined(DARWINBOOTARM)
 
-#if defined(ARMSTAGE1)
-#define PAYLOAD_CONFIG "DarwinBoot Stage1"
+    #if defined(ARMSTAGE1)
+        #define PAYLOAD_CONFIG "DarwinBoot Stage1"
+    #else
+        #error Unknown Configuration for ARM
+    #endif
 #else
-#error Unknown Configuration for ARM
-#endif
-#else
-#error Unknown Configuration
+    #error Unknown Configuration
 #endif
 
 #ifndef BUILD_TAG
-#define BUILD_TAG "localbuild"
+    #define BUILD_TAG "localbuild"
 #endif
 
 /* Will Darwin support i386 again, like, ever? */
@@ -73,6 +73,7 @@ const char BootMessage[] = {
  * IDGAF about conforming to their IMG4 standards though.
  * i can configure and sign my IMG4s myself tyvm.
  * i just need to embed the right CAs smh
+ *
  */
 void BootupMessageSend(void)
 {

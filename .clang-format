@@ -1,9 +1,18 @@
+# init
 BasedOnStyle: WebKit
+
+# Width, preferably 4 spaces as before.
 IndentWidth: 4
+
 IndentCaseBlocks: false
 IndentCaseLabels: true
+
+# & + * should be aligned with the variable name
+ReferenceAlignment: Right
 PointerAlignment: Right
+
 SpaceAroundPointerQualifiers: Both
+
 AlignTrailingComments: true
 SpaceBeforeParensOptions:
   AfterIfMacros: true
@@ -15,3 +24,5 @@ AllowShortIfStatementsOnASingleLine: WithoutElse
 BraceWrapping:
   AfterEnum: true
   AfterExternBlock: true
+
+IndentPPDirectives: BeforeHash

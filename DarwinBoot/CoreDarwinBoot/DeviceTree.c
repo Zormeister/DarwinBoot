@@ -1,6 +1,5 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include "CoreDarwinBoot/CDBBasicTypes.h"
 #include <CoreDarwinBoot/DeviceTree.h>
 #include <stdlib.h>
 #include <string.h>
@@ -25,11 +24,11 @@ struct _CDBDTProperty {
 };
 
 #if __x86_64__ || __i386__
-#define kRootNodeName    "/"
-#define kRootNodeNameLen 2
+    #define kRootNodeName    "/"
+    #define kRootNodeNameLen 2
 #elif __arm64__ || __arm64__
-#define kRootNodeName    "device-tree"
-#define kRootNodeNameLen 12
+    #define kRootNodeName    "device-tree"
+    #define kRootNodeNameLen 12
 #endif
 
 CDBDeviceTreeRef CDBDeviceTreeCreate(void)

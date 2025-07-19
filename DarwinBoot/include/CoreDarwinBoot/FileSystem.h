@@ -17,7 +17,7 @@
  */
 
 typedef struct _CDBFileSystem *CDBFileSystemRef;
-typedef struct _CDBFileRef *CDBFileRef;
+typedef struct _CDBFile *CDBFileRef;
 
 /*
  * This function has different outputs depending on which stage of the loading process DarwinBoot is in.

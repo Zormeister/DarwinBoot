@@ -6,9 +6,9 @@
 #include <CoreDarwinBoot/Crypto/CoreCrypto.h>
 
 #if CORECRYPTO_AVAILABLE
-#include <corecrypto/ccmd5.h>
-#include <corecrypto/ccsha1.h>
-#include <corecrypto/ccsha2.h>
+    #include <corecrypto/ccmd5.h>
+    #include <corecrypto/ccsha1.h>
+    #include <corecrypto/ccsha2.h>
 
 //
 // Shared logic between both instances of Hash Protocol.
@@ -52,6 +52,6 @@ UIntN CcDigestGetHashSizeFromGuid(EFI_GUID *Algorithm)
     return 0;
 }
 
-#pragma mark Hash Protocol
+    #pragma mark Hash Protocol
 
 #endif

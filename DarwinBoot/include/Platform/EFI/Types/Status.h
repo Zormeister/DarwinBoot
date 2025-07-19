@@ -10,9 +10,9 @@ typedef UInt32 EFI_STATUS;
 #endif
 
 #if __x86_64__ || __arm64__
-#define EFI_HIGH_BIT (0x80000000000000)
+    #define EFI_HIGH_BIT (0x80000000000000)
 #else
-#define EFI_HIGH_BIT (0x80000000)
+    #define EFI_HIGH_BIT (0x80000000)
 #endif
 
 #define EFI_ERROR(code) (EFI_HIGH_BIT | (code))

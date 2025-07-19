@@ -7,9 +7,9 @@
 
 #if defined(CDB_ARCH_ARM)
 
-#ifndef MAX_CPUS
-#define MAX_CPUS 1
-#endif
+    #ifndef MAX_CPUS
+        #define MAX_CPUS 1
+    #endif
 
 struct {
     const char *CoreName;

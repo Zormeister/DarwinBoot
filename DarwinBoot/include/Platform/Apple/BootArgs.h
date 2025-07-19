@@ -4,12 +4,12 @@
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 #if __arm64__ || __arm__
-#include <Platform/Apple/BootArgsARM.h>
+    #include <Platform/Apple/BootArgsARM.h>
 #endif
 
 // How do I disable clang warnings about unused headers?
 #if __x86_64__ || __i386__
-#include <Platform/Apple/BootArgsX86.h>
+    #include <Platform/Apple/BootArgsX86.h>
 #endif
 
 /* apparently you can also load Dexts this way, interesting. */

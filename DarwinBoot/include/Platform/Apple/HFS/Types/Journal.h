@@ -8,6 +8,5 @@ struct {
     UInt32 DeviceSignature[8];
     UInt64 Offset;
     UInt64 Size;
-    UInt32 Reserved[32];    
+    UInt32 Reserved[32];
 } __packed typedef HFSJournalInfoBlock;
-

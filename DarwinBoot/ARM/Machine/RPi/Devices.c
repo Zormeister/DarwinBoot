@@ -4,16 +4,16 @@
 #include <Drivers/Driver.h>
 
 #if BCM2835 || BCM2836
-#include <Platform/SoC/BCM2835/MemoryMap.h>
+    #include <Platform/SoC/BCM2835/MemoryMap.h>
 #elif BCM2837
-#include <Platform/SoC/BCM2837/MemoryMap.h>
+    #include <Platform/SoC/BCM2837/MemoryMap.h>
 #elif BCM2711 || BCM2712
-#include <Platform/SoC/BCM2711/MemoryMap.h>
-#include <Platform/SoC/BCM2711/Peripherals.h>
+    #include <Platform/SoC/BCM2711/MemoryMap.h>
+    #include <Platform/SoC/BCM2711/Peripherals.h>
 #else
-/* In the event we don't actually have any set SoC, default to 2711 for clangd's sake. */
-#include <Platform/SoC/BCM2711/MemoryMap.h>
-#include <Platform/SoC/BCM2711/Peripherals.h>
+    /* In the event we don't actually have any set SoC, default to 2711 for clangd's sake. */
+    #include <Platform/SoC/BCM2711/MemoryMap.h>
+    #include <Platform/SoC/BCM2711/Peripherals.h>
 #endif
 
 /* where should I even put this so that CorePl- actually I can just make a function on startup */

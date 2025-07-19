@@ -6,16 +6,16 @@
 #define EARLY_BOOT_LOG 1
 
 #if BCM2712
-#include <Platform/SoC/BCM2712/MemoryMap.h>
+    #include <Platform/SoC/BCM2712/MemoryMap.h>
 #elif BCM2711
-#include <Platform/SoC/BCM2711/MemoryMap.h>
+    #include <Platform/SoC/BCM2711/MemoryMap.h>
 #else
-#include <Platform/SoC/BCM2712/MemoryMap.h>
+    #include <Platform/SoC/BCM2712/MemoryMap.h>
 #endif
 
 #if EARLY_BOOT_LOG
-#include <Drivers/Platform/BCM2835AuxController.h>
-#include <Drivers/Serial/BCM2835AuxUART.h>
+    #include <Drivers/Platform/BCM2835AuxController.h>
+    #include <Drivers/Serial/BCM2835AuxUART.h>
 #endif
 
 void *gProvidedDT;

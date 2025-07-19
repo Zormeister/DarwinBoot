@@ -11,14 +11,14 @@
 
 #ifndef NDEBUG
 
-#define assert(...)                                                                                \
-    if ((__VA_ARGS__) == 0) {                                                                      \
-        panic("ASSERT FAIL: %s:%d: %s %s", __FILE__, __LINE__, __PRETTY_FUNCTION__, #__VA_ARGS__); \
-    }
+    #define assert(...)                                                                                \
+        if ((__VA_ARGS__) == 0) {                                                                      \
+            panic("ASSERT FAIL: %s:%d: %s %s", __FILE__, __LINE__, __PRETTY_FUNCTION__, #__VA_ARGS__); \
+        }
 
 #else
 
-#define assert(...) (void)0
+    #define assert(...) (void)0
 
 #endif
 

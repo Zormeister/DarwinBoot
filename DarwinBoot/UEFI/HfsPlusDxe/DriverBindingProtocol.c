@@ -5,7 +5,9 @@
 #include <Platform/EFI/Protocols/DriverBinding.h>
 #include <stdlib.h>
 
-EFI_GUID gAppleHfsPartitionGuid = { 0x48465300, 0x0000, 0x11AA, { 0xAA, 0x11, 0x00, 0x30, 0x65, 0x43, 0xEC, 0xAC } };
+EFI_GUID gAppleHfsPartitionGuid = {
+    0x48465300, 0x0000, 0x11AA, { 0xAA, 0x11, 0x00, 0x30, 0x65, 0x43, 0xEC, 0xAC }
+};
 
 EFI_STATUS HfsPlusDriverBindingSupported(EFI_DRIVER_BINDING_PROTOCOL *This, EFI_HANDLE ControllerHandle, EFI_DEVICE_PATH_PROTOCOL *DP)
 {
