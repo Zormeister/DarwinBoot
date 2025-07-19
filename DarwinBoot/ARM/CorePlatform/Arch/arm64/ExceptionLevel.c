@@ -6,7 +6,8 @@ static bool read_el = false;
 
 ARMExceptionLevel gCurrentExceptionLevel = Unsupported;
 
-ARMExceptionLevel ArchGetExceptionLevel() {
+ARMExceptionLevel ArchGetExceptionLevel()
+{
     if (!read_el) {
         uint32_t tmp = __builtin_arm_rsr("CurrentEL");
     }

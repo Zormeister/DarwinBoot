@@ -4,7 +4,7 @@
 #include <Platform/Apple/MachO.h>
 
 #define kPlatformNameLen 64
-#define kRootPathLen 256
+#define kRootPathLen     256
 
 #define kPrelinkedKernelPath "/System/Library/PrelinkedKernels/prelinkedkernel"
 #define kImmutableKernelPath "/System/Library/PrelinkedKernels/immutablekernel"
@@ -43,6 +43,3 @@ struct {
 #define kBuiltinStartSection "__kmod_start"
 #define kBuiltinInitSection  "__kmod_init"
 #define kBuildinTermSection  "__kmod_term"
-
-
-

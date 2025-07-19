@@ -1,7 +1,7 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include <CoreDarwinBoot/FileSystem.h>
 #include <CoreDarwinBoot/CoreDarwinBoot.h>
+#include <CoreDarwinBoot/FileSystem.h>
 #include <Platform/EFI/EFI.h>
 #include <Platform/EFI/Protocols/File.h>
 #include <Platform/EFI/Protocols/SimpleFileSystem.h>
@@ -47,10 +47,10 @@ static CDBFileSystemRef _fileSystems[kMaxFileSystems]; // This is a large variab
  */
 CDBFileSystemRef CDBFileSystemGetBootVolume(void) { return _bootVolume; }
 
-
 #pragma mark CDBFileSystemOpenFile
 
-CDBFileRef CDBFileSystemOpenFile(CDBFileSystemRef FileSystem, const char *Path, UInt32 Mode) {
+CDBFileRef CDBFileSystemOpenFile(CDBFileSystemRef FileSystem, const char *Path, UInt32 Mode)
+{
     UInt32 EFIFileMode;
     wchar_t *FilePath;
     EFI_FILE_PROTOCOL *File;
@@ -80,8 +80,8 @@ CDBFileRef CDBFileSystemOpenFile(CDBFileSystemRef FileSystem, const char *Path, 
     return NULL;
 }
 
-
-static CDBFileSystemRef UEFIFileSystemCreate(EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Protocol) {
+static CDBFileSystemRef UEFIFileSystemCreate(EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Protocol)
+{
     if (Protocol) {
         CDBFileSystemRef newFS = (CDBFileSystemRef)malloc(sizeof(struct _CDBFileSystem));
         EFI_STATUS status = Protocol->OpenVolume(Protocol, &newFS->RootFile);
@@ -121,13 +121,15 @@ static CDBFileSystemRef UEFIFileSystemCreate(EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Pr
     }
 }
 
-void UEFIFileSystemFree(CDBFileSystemRef FSRef) {
+void UEFIFileSystemFree(CDBFileSystemRef FSRef)
+{
     free(FSRef->FileSystemName);
     free(FSRef->FSInfo);
     free(FSRef);
 }
 
-void UEFIFileSystemInit(void) {
+void UEFIFileSystemInit(void)
+{
     EFI_HANDLE Handles[kMaxFileSystems];
     EFI_GUID Guid = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID;
     UIntN HandleSize = 0;
@@ -147,8 +149,8 @@ void UEFIFileSystemInit(void) {
 
     /* TODO: Can someone PLEASE give me a direction on how to enumerate the available FSes. I can't find shit. */
 
-    //BS->LocateHandle(AllHandles, &Guid, NULL, &HandleSize, Handles);
-    //CDBLog("FS: HandleSize is 0x%x, (%d)", HandleSize, HandleSize);
+    // BS->LocateHandle(AllHandles, &Guid, NULL, &HandleSize, Handles);
+    // CDBLog("FS: HandleSize is 0x%x, (%d)", HandleSize, HandleSize);
 
     /*
     NumHandles = HandleSize / sizeof(EFI_HANDLE);

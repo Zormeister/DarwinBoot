@@ -5,8 +5,8 @@
 #include <Platform/EFI/Types.h>
 
 #define EFI_MP_SERVICES_PROTOCOL_GUID \
-  {0x3fdda605,0xa76e,0x4f46, \
-    {0xad,0x29,0x12,0xf4,0x53,0x1b,0x3d,0x08}}
+    { 0x3fdda605, 0xa76e, 0x4f46,     \
+        { 0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08 } }
 
 extern EFI_GUID gEfiMpServicesProtocolGuid;
 
@@ -31,8 +31,8 @@ typedef union {
     EFI_CPU_PHYSICAL_LOCATION2 Location2;
 } EXTENDED_PROCESSOR_INFORMATION;
 
-#define PROCESSOR_AS_BSP_BIT 0x1
-#define PROCESSOR_ENABLED_BIT 0x2
+#define PROCESSOR_AS_BSP_BIT        0x1
+#define PROCESSOR_ENABLED_BIT       0x2
 #define PROCESSOR_HEALTH_STATUS_BIT 0x4
 
 typedef struct {
@@ -44,7 +44,7 @@ typedef struct {
 
 #define END_OF_CPU_LIST 0xffffffff
 
-typedef void (*EFI_AP_PROCEDURE) (void *Argument);
+typedef void (*EFI_AP_PROCEDURE)(void *Argument);
 
 struct _EFI_MP_SERVICES_PROTOCOL {
     EFI_STATUS (*GetNumberOfProcessors)(EFI_MP_SERVICES_PROTOCOL *This, UIntN *NProc, UIntN *NProcEnabled);

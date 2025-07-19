@@ -16,20 +16,20 @@ struct HFSPlusBSDInfo {
     } Special;
 } typedef HFSPlusBSDInfo;
 
-#define HFS_SF_ARCHIVED 0x01
+#define HFS_SF_ARCHIVED  0x01
 #define HFS_SF_IMMUTABLE 0x02
-#define HFS_SF_APPEND 0x04
+#define HFS_SF_APPEND    0x04
 
-#define HFS_UF_NODUMP 0x01
+#define HFS_UF_NODUMP    0x01
 #define HFS_UF_IMMUTABLE 0x02
-#define HFS_UF_APPEND 0x04
-#define HFS_UF_OPAQUE 0x08
+#define HFS_UF_APPEND    0x04
+#define HFS_UF_OPAQUE    0x08
 
-#define HFS_S_IFREG 0x8000
-#define HFS_S_IFLNK 0xA000
+#define HFS_S_IFREG  0x8000
+#define HFS_S_IFLNK  0xA000
 #define HFS_S_IFSOCK 0xC000
-#define HFS_S_IFWHT 0xE000
-#define HFS_S_IFMT 0xF000
+#define HFS_S_IFWHT  0xE000
+#define HFS_S_IFMT   0xF000
 
 #define HFS_S_IFIFO 0x1000
 #define HFS_S_IFCHR 0x2000
@@ -52,6 +52,5 @@ struct HFSPlusBSDInfo {
 
 #define HFS_S_IRWXO 0x7
 #define HFS_S_IROTH 0x4
-#define HFS_S_IWOTH 0x2    
+#define HFS_S_IWOTH 0x2
 #define HFS_S_IXOTH 0x1
-

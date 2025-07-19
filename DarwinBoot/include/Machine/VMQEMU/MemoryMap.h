@@ -9,5 +9,3 @@
 
 /* QEMU dumps to a blob and decleares the whole region usable. I'm going to shift the base established by the allocator. */
 #define FDT_SIZE 0x40000000ULL
-
-

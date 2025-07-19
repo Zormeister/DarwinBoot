@@ -20,6 +20,5 @@ struct {
 
 } typedef InterruptControllerDriver;
 
-
 /* !!! TODO !!! */
 bool CPRegisterCPUInterruptController(InterruptControllerDriver *Driver);

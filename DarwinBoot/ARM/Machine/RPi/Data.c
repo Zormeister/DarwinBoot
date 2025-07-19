@@ -3,7 +3,8 @@
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 #include <CorePlatform/Foundation.h>
 
-UInt32 GetCPIDFromBoardRev(UInt32 rev) {
+UInt32 GetCPIDFromBoardRev(UInt32 rev)
+{
     UInt32 cpu = (rev >> 12) & 0x7; /* 3-bit field. */
     switch (cpu) {
         case 0x0:
@@ -22,7 +23,8 @@ UInt32 GetCPIDFromBoardRev(UInt32 rev) {
 }
 
 /* honestly we could convert the model identifier from the field provided by the devicetree */
-const char *GetTargetTypeFromBoardRevision(uint32_t revision) {
+const char *GetTargetTypeFromBoardRevision(uint32_t revision)
+{
     uint32_t hwrev = revision & 0x7;
     uint32_t product = (revision >> 4) & 0xFF;
     switch (product) {
@@ -77,7 +79,6 @@ const char *GetTargetTypeFromBoardRevision(uint32_t revision) {
             return "kbpi5";
         case 0x1a:
             return "cmpi5l";
-
     }
     return NULL;
 }

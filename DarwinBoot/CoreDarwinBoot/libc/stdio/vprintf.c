@@ -5,6 +5,7 @@
 
 #undef vprintf
 
-int vprintf(const char *fmt, va_list list) {
+int vprintf(const char *fmt, va_list list)
+{
     return vprintf_(fmt, list);
 }

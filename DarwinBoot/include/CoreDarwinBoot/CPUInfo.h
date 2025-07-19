@@ -49,7 +49,7 @@ CDBCPUInfoRef CDBCreateCPUInfo(void);
 
 /*!
   @function CDBCPUInfoGetCPUCoreCount
-  @abstract Gets the core count from the CPUInfo Ref 
+  @abstract Gets the core count from the CPUInfo Ref
   @param CpuInfo The CPUInfo Ref to read from
   @result Returns the number of cores specified from the CPUInfo instance
  */

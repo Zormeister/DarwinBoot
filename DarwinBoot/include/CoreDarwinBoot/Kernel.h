@@ -7,7 +7,7 @@
 /*
  * @group     Kernel Ref
  *
- * @abstract  This represents the kernel, 
+ * @abstract  This represents the kernel,
  */
 typedef struct _CDBKernel *CDBKernelRef;
 
@@ -31,5 +31,3 @@ typedef void (*KernelPreflightCallback)(void *Context);
 
 typedef void __attribute__((sysv_abi)) (*XNUKernelMainFunc)(XNUBootArguments *kernel_args);
 /* ^ I believe this is the function signature? Someone please correct me before I'm wrong. */
-
-

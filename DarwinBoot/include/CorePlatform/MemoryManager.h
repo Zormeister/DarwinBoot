@@ -9,10 +9,10 @@
 #define MEMMAN_LARGE_REGIONS 1
 
 #if MEMMAN_LARGE_REGIONS
-#define kKernelRegionSize 0x02000000 /* 32M */
+#define kKernelRegionSize  0x02000000 /* 32M */
 #define kBootMemRegionSize 0x08000000 /* 128M */
 #else
-#define kKernelRegionSize 0x01000000 /* 16M */
+#define kKernelRegionSize  0x01000000 /* 16M */
 #define kBootMemRegionSize 0x04000000 /* 64M */
 #endif
 

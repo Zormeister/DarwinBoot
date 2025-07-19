@@ -5,7 +5,7 @@
 
 /*
  * At it's heart, CoreDarwinBoot is designed to be as versatile as possible.
- * 
+ *
  * This becomes a challenge when handling boot files.
  *
  * Design goals:
@@ -43,7 +43,6 @@ enum {
     kCDBFileModeCreate = (1 << 2),
 };
 
-
 enum {
     kCDBFileFlagsReadOnly = (1 << 0),
     kCDBFileFlagsHiddenFile = (1 << 1),
@@ -65,4 +64,3 @@ CDBFileRef CDBFileSystemOpenFile(CDBFileSystemRef FileSystem, const char *Path, 
 int CDBFileRead(CDBFileRef File, void **Buffer, size_t *BufferSize);
 int CDBFileWrite(CDBFileRef File, void *Buffer, size_t BufferSize);
 void CDBFileClose(CDBFileRef File);
-

@@ -6,7 +6,8 @@
 
 extern void _putchar(char);
 
-void CDBLog(const char *fmt, ...) {
+void CDBLog(const char *fmt, ...)
+{
     va_list list;
 
     va_start(list, fmt);
@@ -15,7 +16,8 @@ void CDBLog(const char *fmt, ...) {
     va_end(list);
 }
 
-void panic(const char *fmt, ...) {
+void panic(const char *fmt, ...)
+{
     va_list list;
 
     va_start(list, fmt);

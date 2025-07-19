@@ -7,12 +7,14 @@
 #include <string.h>
 #include <wchar.h>
 
-bool EFIGuidMatches(EFI_GUID *a, EFI_GUID *b) {
+bool EFIGuidMatches(EFI_GUID *a, EFI_GUID *b)
+{
     /* would it be more efficient if i just compared each field */
     return (memcmp(a, b, sizeof(EFI_GUID)) == 0);
 }
 
-void *EFIGetConfigurationTable(EFI_GUID *Guid) {
+void *EFIGetConfigurationTable(EFI_GUID *Guid)
+{
     for (size_t i = 0; i < ST->NumberOfConfigurationTables; i++) {
         if (EFIGuidMatches(&ST->ConfigurationTables[i].VendorGuid, Guid)) {
             return ST->ConfigurationTables[i].VendorTable;
@@ -22,7 +24,8 @@ void *EFIGetConfigurationTable(EFI_GUID *Guid) {
     return NULL;
 }
 
-void EFIWideStringToASCII(const wchar_t *WideString, char **AsciiOut, UInt32 Flags) {
+void EFIWideStringToASCII(const wchar_t *WideString, char **AsciiOut, UInt32 Flags)
+{
     size_t widelen = wcslen(WideString);
     bool invertSlashes = Flags & kEFIEncodeInvertSlashes;
 
@@ -45,7 +48,8 @@ void EFIWideStringToASCII(const wchar_t *WideString, char **AsciiOut, UInt32 Fla
     *AsciiOut = buffer;
 }
 
-void EFIASCIIToWideString(const char *String, wchar_t **WcharOut, UInt32 Flags) {
+void EFIASCIIToWideString(const char *String, wchar_t **WcharOut, UInt32 Flags)
+{
     size_t pathlen = strlen(String);
     bool invertSlashes = Flags & kEFIEncodeInvertSlashes;
 

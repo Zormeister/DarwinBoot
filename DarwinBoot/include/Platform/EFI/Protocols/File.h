@@ -12,8 +12,8 @@ typedef struct {
     void *Buffer;
 } EFI_FILE_IO_TOKEN;
 
-#define EFI_FILE_PROTOCOL_REVISION 0x00010000
-#define EFI_FILE_PROTOCOL_REVISION2 0x00020000
+#define EFI_FILE_PROTOCOL_REVISION        0x00010000
+#define EFI_FILE_PROTOCOL_REVISION2       0x00020000
 #define EFI_FILE_PROTOCOL_LATEST_REVISION EFI_FILE_PROTOCOL_REVISION2
 
 typedef struct _EFI_FILE_PROTOCOL EFI_FILE_PROTOCOL;
@@ -55,9 +55,9 @@ enum {
     EFI_FILE_VALID_ATTR = 0x37,
 };
 
-#define EFI_FILE_INFO_ID \
-   {0x09576e92,0x6d3f,0x11d2,\
-    {0x8e,0x39,0x00,0xa0,0xc9,0x69,0x72,0x3b}}
+#define EFI_FILE_INFO_ID          \
+    { 0x09576e92, 0x6d3f, 0x11d2, \
+        { 0x8e, 0x39, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b } }
 
 struct {
     UInt64 Size;
@@ -70,10 +70,9 @@ struct {
     wchar_t FileName[];
 } typedef EFI_FILE_INFO;
 
-
-#define EFI_FILE_SYSTEM_INFO_ID \
-   {0x09576e93,0x6d3f,0x11d2, \
-    {0x8e,0x39,0x00,0xa0,0xc9,0x69,0x72,0x3b}}
+#define EFI_FILE_SYSTEM_INFO_ID   \
+    { 0x09576e93, 0x6d3f, 0x11d2, \
+        { 0x8e, 0x39, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b } }
 
 struct {
     UInt64 Size;
@@ -84,12 +83,10 @@ struct {
     wchar_t VolumeName[];
 } typedef EFI_FILE_SYSTEM_INFO;
 
-
-#define EFI_FILE_SYSTEM_VOLUME_LABEL_ID \
-   {0xdb47d7d3,0xfe81,0x11d3,0x9a35,\
-    {0x00,0x90,0x27,0x3f,0xC1,0x4d}}
+#define EFI_FILE_SYSTEM_VOLUME_LABEL_ID   \
+    { 0xdb47d7d3, 0xfe81, 0x11d3, 0x9a35, \
+        { 0x00, 0x90, 0x27, 0x3f, 0xC1, 0x4d } }
 
 struct {
     wchar_t VolumeName[];
 } typedef EFI_FILE_SYSTEM_VOLUME_LABEL;
-

@@ -1,7 +1,7 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include <CorePlatform/Foundation.h>
 #include <CoreDarwinBoot/libc_compat.h>
+#include <CorePlatform/Foundation.h>
 
 /* TODO: reloc? */
 const char BootMessage[] = {
@@ -74,8 +74,9 @@ const char BootMessage[] = {
  * i can configure and sign my IMG4s myself tyvm.
  * i just need to embed the right CAs smh
  */
-void BootupMessageSend(void) {
-    printf(BootMessage, PAYLOAD_CONFIG, BOARD_CONFIG, BUILD_TAG, CURRENT_CONFIG, 
+void BootupMessageSend(void)
+{
+    printf(BootMessage, PAYLOAD_CONFIG, BOARD_CONFIG, BUILD_TAG, CURRENT_CONFIG,
 #if defined(DARWINBOOTARM)
         /* TODO:  */
         CPGetDeviceIdentity()->ChipID,

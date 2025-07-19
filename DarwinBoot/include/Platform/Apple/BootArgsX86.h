@@ -40,39 +40,39 @@ struct {
 struct {
     UInt16 Revision;
     UInt16 Version;
-    UInt8 EFIMode; /* 32 for IA32 EFI, 64 for X64 EFI */
+    UInt8 EFIMode;   /* 32 for IA32 EFI, 64 for X64 EFI */
     UInt8 DebugMode; /* what does this actually do? */
     char CommandLine[XNU_COMMANDLINE_SIZE];
-    UInt32 MemoryMapPtr; /* 32-bit pointer/address to/of the memory map. (Physical) */
+    UInt32 MemoryMapPtr;  /* 32-bit pointer/address to/of the memory map. (Physical) */
     UInt32 MemoryMapSize; /* Here's another XNU mishap: The MemMap gets copied over to a single page, which can very quickly be violated by large memory maps, Thx to OpenCorePkg & contributors for this knowledge */
     UInt32 MemoryMapDescSize;
     UInt32 MemoryMapDescVersion;
     XNUVideoArgsV1 VideoArgsV1;
     UInt32 DeviceTreePtr; /* 32-bit pointer/address to/of the DT. (Physical) */
     UInt32 DeviceTreeSize;
-    UInt32 KernelAddress; /* Allegedly the start of __TEXT? */
-    UInt32 KernelSize; /* Allegedly __TEXT size + __DATA size + EFI? how does this even work? Should I consult old Clover/Chameleon? */
+    UInt32 KernelAddress;                   /* Allegedly the start of __TEXT? */
+    UInt32 KernelSize;                      /* Allegedly __TEXT size + __DATA size + EFI? how does this even work? Should I consult old Clover/Chameleon? */
     UInt32 EFIRuntimeSvcsPhysicalPageStart; /* "physical address of defragmented runtime pages" */
     UInt32 EFIRuntimeSvcsPhysicalPageCount;
     UInt32 EFIRuntimeSvcsVirtualPageStart; /* "virtual address of defragmented runtime pages" */
-    UInt32 EFISystemTablePtr; /* "physical address of system table in runtime area" */
-    UInt32 KernelSlide; /* i love kernel address sliding- but, how the heck am i meant to even perform KASLR */
+    UInt32 EFISystemTablePtr;              /* "physical address of system table in runtime area" */
+    UInt32 KernelSlide;                    /* i love kernel address sliding- but, how the heck am i meant to even perform KASLR */
     UInt32 PerformanceDataAddress;
     UInt32 PerformanceDataSize;
     UInt32 KeyStoreDataAddress; /* Allegedly the APFS Volume Key sturcture? I don't actually know where to get this from unless I take to apfs.efi */
     UInt32 KeyStoreDataSize;
     UInt64 BootMemoryAddress; /* what does this even mean? EFI Loader Data addr??? */
     UInt64 BootMemorySize;
-    UInt64 PhysicalMemorySize; /* UPDATE: it is infact, the SMBIOS mem size. */
-    UInt64 FSBFrequency; /* PM timer? I'd need to read OC for this. */
+    UInt64 PhysicalMemorySize;        /* UPDATE: it is infact, the SMBIOS mem size. */
+    UInt64 FSBFrequency;              /* PM timer? I'd need to read OC for this. */
     UInt64 PCIConfigSpaceBaseAddress; /* grab from MCFG table */
     UInt32 PCIConfigSpaceStartBusNumber;
     UInt32 PCIConfigSpaceEndBusNumber;
-    UInt32 CSRActiveConfig; /* System Integrity Protection - active config */
-    UInt32 CSRCapabilities; /* caps? where do i find the values for these */
-    UInt32 BootSMCPLimit; /* This is read via AppleSmc in the MacEFI ROM/Mac UEFIs, so it's not applicable to us */
+    UInt32 CSRActiveConfig;        /* System Integrity Protection - active config */
+    UInt32 CSRCapabilities;        /* caps? where do i find the values for these */
+    UInt32 BootSMCPLimit;          /* This is read via AppleSmc in the MacEFI ROM/Mac UEFIs, so it's not applicable to us */
     UInt16 BootProgressMeterStart; /* what */
-    UInt16 BootProgressMeterEnd; /* what */
+    UInt16 BootProgressMeterEnd;   /* what */
     XNUVideoArgs VideoArgs;
     UInt64 KCHeadersVirtualAddress; /* VAddr of the filesets? or just of the whole file? */
     /* ARV, which i believe stands for Authenticated Root Volume, is the new snapshot sealing feature from macOS Big Sur */

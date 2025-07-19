@@ -2,7 +2,8 @@
 
 #include <CoreDarwinBoot/libc_compat.h>
 
-size_t wcslen(const wchar_t *str) {
+size_t wcslen(const wchar_t *str)
+{
     size_t ret = 0;
     const wchar_t *string = str;
 

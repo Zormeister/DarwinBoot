@@ -3,16 +3,16 @@
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
-#define SMBIOS_TABLE_GUID \
-  {0xeb9d2d31,0x2d88,0x11d3,\
-   {0x9a,0x16,0x00,0x90,0x27,0x3f,0xc1,0x4d}}
+#define SMBIOS_TABLE_GUID         \
+    { 0xeb9d2d31, 0x2d88, 0x11d3, \
+        { 0x9a, 0x16, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d } }
 
-#define SMBIOS3_TABLE_GUID \
-  {0xf2fd1544, 0x9794, 0x4a2c,\
-    {0x99,0x2e,0xe5,0xbb,0xcf,0x20,0xe3,0x94}}
+#define SMBIOS3_TABLE_GUID        \
+    { 0xf2fd1544, 0x9794, 0x4a2c, \
+        { 0x99, 0x2e, 0xe5, 0xbb, 0xcf, 0x20, 0xe3, 0x94 } }
 
 /* LAST SYNC: SMBIOS 3.8.0 */
-      
+
 #define SMBIOS_ANCHOR_64 "_SM3_"
 #define SMBIOS_ANCHOR_32 "_SM_"
 
@@ -38,7 +38,7 @@ enum SMBIOS_ENTRY_REVISION {
 };
 
 struct SMBIOS_ENTRY_POINT_64 {
-    char anchor[5]; 
+    char anchor[5];
     UInt8 checksum;
     UInt8 entryLength;
     UInt8 versionMajor;
@@ -71,13 +71,13 @@ enum {
 
 struct {
     SMBIOSTableHeader header;
-    UInt8 FirmwareVersion; /* string */
-    UInt16 BIOSLocation; /* always zero for UEFI */
-    UInt8 FirmwareReleaseDate; /* string */
-    UInt8 FirmwareROMSize;  /* size = fwInfoTbl->FirmwareROMSize * 64KiB, 0xFF == 16MiB or larger */
-    UInt64 FirmwareFeatures; /* 'characteristics' */
-    UInt8 FirmwareFeaturesExt; /* extension bytes, vers 2.1+ */
-    UInt8 FirmwareFeaturesExt2; /* extension byte 2, vers 2.3+ */
+    UInt8 FirmwareVersion;           /* string */
+    UInt16 BIOSLocation;             /* always zero for UEFI */
+    UInt8 FirmwareReleaseDate;       /* string */
+    UInt8 FirmwareROMSize;           /* size = fwInfoTbl->FirmwareROMSize * 64KiB, 0xFF == 16MiB or larger */
+    UInt64 FirmwareFeatures;         /* 'characteristics' */
+    UInt8 FirmwareFeaturesExt;       /* extension bytes, vers 2.1+ */
+    UInt8 FirmwareFeaturesExt2;      /* extension byte 2, vers 2.3+ */
     UInt8 PlatformFirmwareVersMajor; /* 2.4+  from here */
     UInt8 PlatformFirmwareVersMinor;
     UInt8 ECFirmwareVersMajor;
@@ -86,7 +86,7 @@ struct {
 } typedef SMBIOSFirmwareInfoTable;
 
 #define EXTENDEDROMSIZE_UNIT_SHIFT (14)
-#define EXTENDEDROMSIZE_SIZE_MASK BITMASK(0, 13)
+#define EXTENDEDROMSIZE_SIZE_MASK  BITMASK(0, 13)
 
 enum {
     /* bits 0 to 2 are unk/rsvd */
@@ -110,4 +110,3 @@ enum {
     FirmwareFeaturesHasNEC9800Support = (1 << 20),
     FirmwareFeaturesHasToshiba1point2MbSupport = (1 << 21),
 };
-

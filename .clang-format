@@ -1,0 +1,17 @@
+BasedOnStyle: WebKit
+IndentWidth: 4
+IndentCaseBlocks: false
+IndentCaseLabels: true
+PointerAlignment: Right
+SpaceAroundPointerQualifiers: Both
+AlignTrailingComments: true
+SpaceBeforeParensOptions:
+  AfterIfMacros: true
+
+AlignConsecutiveMacros: Consecutive
+InsertBraces: true
+AllowShortBlocksOnASingleLine: Always
+AllowShortIfStatementsOnASingleLine: WithoutElse
+BraceWrapping:
+  AfterEnum: true
+  AfterExternBlock: true

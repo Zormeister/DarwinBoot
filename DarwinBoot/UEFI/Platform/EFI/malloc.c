@@ -4,8 +4,11 @@
 #include <Platform/EFI/EFI.h>
 #include <Platform/EFI/Protocols/LoadedImage.h>
 
-void *platform_malloc(size_t size) {
-    if (BS == NULL) { return NULL; }
+void *platform_malloc(size_t size)
+{
+    if (BS == NULL) {
+        return NULL;
+    }
 
     void *outbuffer;
     EFI_STATUS status = BS->AllocatePool(EfiLoaderData, size, &outbuffer);

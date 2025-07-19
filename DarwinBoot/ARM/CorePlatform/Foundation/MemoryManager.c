@@ -17,11 +17,12 @@ static MemoryRange BootMemoryRegion;
 
 // I have a stupid idea.
 struct MemoryAllocation {
-    size_t size; /* Keep track of the size of the data. If this gets overridden I'm cooked. */
+    size_t size;    /* Keep track of the size of the data. If this gets overridden I'm cooked. */
     uint8_t data[]; /* THE data. */
 };
 
-bool CPMemoryManagerInit(MemoryRange *Ranges, size_t NumRanges) {
+bool CPMemoryManagerInit(MemoryRange *Ranges, size_t NumRanges)
+{
     gMemoryManager.Ranges = Ranges;
     gMemoryManager.NumRanges = NumRanges;
 
@@ -31,7 +32,7 @@ bool CPMemoryManagerInit(MemoryRange *Ranges, size_t NumRanges) {
 
 /* Platform allocation manager - TODO!!! */
 
-void *platform_malloc(size_t size) {
+void *platform_malloc(size_t size)
+{
     return NULL;
 }
-

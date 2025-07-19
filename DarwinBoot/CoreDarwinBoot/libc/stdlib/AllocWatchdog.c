@@ -1,8 +1,8 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include <CoreDarwinBoot/libc_compat.h>
 #include "AllocWatchdog.h"
 #include "stdlib_internal.h"
+#include <CoreDarwinBoot/libc_compat.h>
 
 /*
  * God this reminds me of the old days...
@@ -16,13 +16,14 @@ AllocWatchdog gMemWDG;
 /* Arbitrary value. WDG can handle itself. */
 #define CAPACITY_INCREMENT 30
 
-bool AllocWDGInit(AllocWatchdog *Wdg) {
+bool AllocWDGInit(AllocWatchdog *Wdg)
+{
     Wdg->Revision = 1;
     /* Avoid roping into ourself by using the stdlib internal call. */
     Wdg->Allocs = platform_malloc(sizeof(AllocWDGAlloc) * CAPACITY_INCREMENT);
     if (Wdg->Allocs == NULL) {
-        /* 
-         * We have failed to establish ourselves. 
+        /*
+         * We have failed to establish ourselves.
          * We can either commit suicide (panic) or
          * gracefully exit.
          */
@@ -34,7 +35,8 @@ bool AllocWDGInit(AllocWatchdog *Wdg) {
     return true;
 }
 
-static inline size_t AllocWDGFindEmptyEntry(AllocWatchdog *Wdg) {
+static inline size_t AllocWDGFindEmptyEntry(AllocWatchdog *Wdg)
+{
     size_t last = 0;
 
     for (size_t i = 0; i < Wdg->TotalAllocs; i++) {
@@ -55,15 +57,19 @@ static inline size_t AllocWDGFindEmptyEntry(AllocWatchdog *Wdg) {
     return last++;
 }
 
-bool AllocWDGAdd(AllocWatchdog *Wdg, void *Ptr, size_t Size) {
-    if (Ptr == NULL) { return false; }
+bool AllocWDGAdd(AllocWatchdog *Wdg, void *Ptr, size_t Size)
+{
+    if (Ptr == NULL) {
+        return false;
+    }
     size_t next = AllocWDGFindEmptyEntry(Wdg);
     Wdg->Allocs[next].Ptr = Ptr;
     Wdg->Allocs[next].Size = Size;
     return true;
 };
 
-size_t AllocWDGFindSize(AllocWatchdog *Wdg, void *Ptr) {
+size_t AllocWDGFindSize(AllocWatchdog *Wdg, void *Ptr)
+{
     for (size_t i = 0; i < Wdg->TotalAllocs; i++) {
         if (Wdg->Allocs[i].Ptr == Ptr) {
             return Wdg->Allocs[i].Size;
@@ -73,8 +79,11 @@ size_t AllocWDGFindSize(AllocWatchdog *Wdg, void *Ptr) {
     return 0;
 };
 
-void AllocWDGRemove(AllocWatchdog *Wdg, void *Ptr) {
-    if (Ptr == NULL) { return; }
+void AllocWDGRemove(AllocWatchdog *Wdg, void *Ptr)
+{
+    if (Ptr == NULL) {
+        return;
+    }
     for (size_t i = 0; i < Wdg->TotalAllocs; i++) {
         if (Wdg->Allocs[i].Ptr == Ptr) {
             Wdg->Allocs[i].Ptr = NULL;
@@ -83,8 +92,11 @@ void AllocWDGRemove(AllocWatchdog *Wdg, void *Ptr) {
     }
 };
 
-void AllocWDGReplace(AllocWatchdog *Wdg, void *Old, void *New, size_t NewSize) {
-    if (Old == NULL || New == NULL) { return; }
+void AllocWDGReplace(AllocWatchdog *Wdg, void *Old, void *New, size_t NewSize)
+{
+    if (Old == NULL || New == NULL) {
+        return;
+    }
     for (size_t i = 0; i < Wdg->TotalAllocs; i++) {
         if (Wdg->Allocs[i].Ptr == Old) {
             Wdg->Allocs[i].Ptr = New;
@@ -93,7 +105,8 @@ void AllocWDGReplace(AllocWatchdog *Wdg, void *Old, void *New, size_t NewSize) {
     }
 }
 
-void AllocWDGShutdown(AllocWatchdog *Wdg) {
+void AllocWDGShutdown(AllocWatchdog *Wdg)
+{
     /* This SHOULD be called prior to jumping to the kernel- call this approximately right before shutting down the platform freeing svcs */
     platform_free(Wdg->Allocs);
     Wdg->TotalAllocs = 0;

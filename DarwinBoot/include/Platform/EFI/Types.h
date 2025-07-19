@@ -14,5 +14,5 @@
 #include <Platform/EFI/Types/Misc.h>
 #include <Platform/EFI/Types/Network.h>
 #include <Platform/EFI/Types/Status.h>
-#include <Platform/EFI/Types/Time.h>
 #include <Platform/EFI/Types/TaskPriorityLevel.h>
+#include <Platform/EFI/Types/Time.h>

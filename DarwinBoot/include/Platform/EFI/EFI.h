@@ -3,9 +3,9 @@
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
-#include <Platform/EFI/Types.h>
-#include <Platform/EFI/Tables.h>
 #include <Platform/EFI/Protocols.h>
+#include <Platform/EFI/Tables.h>
+#include <Platform/EFI/Types.h>
 
 extern EFI_SYSTEM_TABLE *ST;
 extern EFI_BOOT_SERVICES *BS;
@@ -33,8 +33,7 @@ extern bool EFIInitialize(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable)
 
  @result Returns true if the GUIDs are the same.
  */
-extern bool EFIGuidMatches(EFI_GUID * a, EFI_GUID * b);
-
+extern bool EFIGuidMatches(EFI_GUID *a, EFI_GUID *b);
 
 /*!
  @function EFIGetConfigurationTable
@@ -55,4 +54,3 @@ enum {
 extern void EFIWideStringToASCII(const wchar_t *WideString, char **AsciiOut, UInt32 Flags);
 
 extern void EFIASCIIToWideString(const char *String, wchar_t **WcharOut, UInt32 Flags);
-

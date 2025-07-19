@@ -19,4 +19,3 @@ struct {
     UInt64 Reserved;
     MCFGTableEntry Entries[]; /*  (header.size -= sizeof(ACPITableHeader) + 8) / sizeof(ACPI_MCFG_TABLE_ENTRY) */
 } typedef ACPI_MCFG_TABLE;
-

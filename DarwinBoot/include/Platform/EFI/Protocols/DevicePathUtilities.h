@@ -1,12 +1,12 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include <Platform/EFI/Types.h>
 #include <Platform/EFI/Protocols/DevicePath.h>
+#include <Platform/EFI/Types.h>
 
 #define EFI_DEVICE_PATH_UTILITIES_PROTOCOL_GUID \
-  {0x379be4e,0xd706,0x437d, \
-    {0xb0,0x37,0xed,0xb8,0x2f,0xb7,0x72,0xa4}}
+    { 0x379be4e, 0xd706, 0x437d,                \
+        { 0xb0, 0x37, 0xed, 0xb8, 0x2f, 0xb7, 0x72, 0xa4 } }
 
 extern EFI_GUID gEfiDevicePathUtilitiesProtocolGuid;
 

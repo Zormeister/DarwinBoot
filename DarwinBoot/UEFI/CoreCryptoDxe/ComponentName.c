@@ -2,7 +2,8 @@
 
 #include <Platform/EFI/Protocols/ComponentName.h>
 
-EFI_STATUS CoreCryptoGetDriverName(EFI_COMPONENT_NAME2_PROTOCOL *This, const char *Language, wchar_t **DriverName) {
+EFI_STATUS CoreCryptoGetDriverName(EFI_COMPONENT_NAME2_PROTOCOL *This, const char *Language, wchar_t **DriverName)
+{
     if (Language == NULL || DriverName == NULL) {
         return EFI_INVALID_PARAMETER;
     }
@@ -10,8 +11,8 @@ EFI_STATUS CoreCryptoGetDriverName(EFI_COMPONENT_NAME2_PROTOCOL *This, const cha
     return EFI_SUCCESS;
 }
 
-EFI_STATUS CoreCryptoGetControllerName(EFI_COMPONENT_NAME2_PROTOCOL *This, EFI_HANDLE ControllerHandle, 
-                                    EFI_HANDLE ChildHandle, const char *Language, wchar_t **DriverName)
+EFI_STATUS CoreCryptoGetControllerName(EFI_COMPONENT_NAME2_PROTOCOL *This, EFI_HANDLE ControllerHandle,
+    EFI_HANDLE ChildHandle, const char *Language, wchar_t **DriverName)
 {
     return EFI_UNSUPPORTED;
 }

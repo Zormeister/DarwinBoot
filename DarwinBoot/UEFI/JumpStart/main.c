@@ -11,7 +11,8 @@
 extern EFI_STATUS LoadNextLoader(EFI_DEVICE_PATH_PROTOCOL *DevicePath);
 
 /* TODO: this. */
-EFI_STATUS EFIMain(EFI_HANDLE Handle, EFI_SYSTEM_TABLE *SystemTable) {
+EFI_STATUS EFIMain(EFI_HANDLE Handle, EFI_SYSTEM_TABLE *SystemTable)
+{
     if (EFIInitialize(Handle, SystemTable)) {
         CDBLog("[JS][M]: hello");
         EFI_DEVICE_PATH_PROTOCOL *Path = LIP->FilePath;

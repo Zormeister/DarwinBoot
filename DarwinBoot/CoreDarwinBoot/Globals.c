@@ -5,7 +5,8 @@
 const char *gCompilerToolsVersion = COMPILER_VERSION;
 const char *gCompilerToolsToolchain = BUILD_TOOL;
 
-bool CDBIsDevelopment(void) {
+bool CDBIsDevelopment(void)
+{
 #if CONFIG_DEVELOPMENT || CONFIG_DEBUG
     return true;
 #else

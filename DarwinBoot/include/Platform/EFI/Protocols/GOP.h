@@ -4,8 +4,8 @@
 #include <Platform/EFI/Types.h>
 
 #define EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID \
-  {0x9042a9de,0x23dc,0x4a38,\
-    {0x96,0xfb,0x7a,0xde,0xd0,0x80,0x51,0x6a}}
+    { 0x9042a9de, 0x23dc, 0x4a38,         \
+        { 0x96, 0xfb, 0x7a, 0xde, 0xd0, 0x80, 0x51, 0x6a } }
 
 extern EFI_GUID gEfiGraphicsOutputProtocolGuid;
 
@@ -13,7 +13,7 @@ struct {
     UInt32 RedMask;
     UInt32 GreenMask;
     UInt32 BlueMask;
-    UInt32 ReservedMask; 
+    UInt32 ReservedMask;
 } typedef EFI_PIXEL_BITMASK;
 
 typedef enum {
@@ -57,12 +57,12 @@ typedef enum {
     EfiBltBufferToVideo,
     EfiBltVideoToVideo,
     EfiGraphicsOutputBltOperationMax
-} EFI_GRAPHICS_OUTPUT_BLT_OPERATION;   
+} EFI_GRAPHICS_OUTPUT_BLT_OPERATION;
 
 struct _EFI_GRAPHICS_OUTPUT_PROTOCOL {
     EFI_STATUS (*QueryMode)(EFI_GRAPHICS_OUTPUT_PROTOCOL *This, UInt32 ModeNumber, UIntN *SizeOfModeInfo, EFI_GRAPHICS_OUTPUT_MODE_INFORMATION **ModeInfo);
     EFI_STATUS (*SetMode)(EFI_GRAPHICS_OUTPUT_PROTOCOL *This, UInt32 ModeNumber);
     EFI_STATUS (*Blt)(EFI_GRAPHICS_OUTPUT_PROTOCOL *This, EFI_GRAPHICS_OUTPUT_BLT_PIXEL *BltBuffer, EFI_GRAPHICS_OUTPUT_BLT_OPERATION BltOperation,
-                        UIntN SourceX, UIntN SourceY, UIntN DestinationX, UIntN DestinationY, UIntN Width, UIntN Height, UIntN Delta);
+        UIntN SourceX, UIntN SourceY, UIntN DestinationX, UIntN DestinationY, UIntN Width, UIntN Height, UIntN Delta);
     EFI_GRAPHICS_OUTPUT_PROTOCOL_MODE *Mode;
 };

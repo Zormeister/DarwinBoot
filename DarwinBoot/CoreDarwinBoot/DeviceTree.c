@@ -25,14 +25,15 @@ struct _CDBDTProperty {
 };
 
 #if __x86_64__ || __i386__
-#define kRootNodeName "/"
+#define kRootNodeName    "/"
 #define kRootNodeNameLen 2
 #elif __arm64__ || __arm64__
-#define kRootNodeName "device-tree"
+#define kRootNodeName    "device-tree"
 #define kRootNodeNameLen 12
 #endif
 
-CDBDeviceTreeRef CDBDeviceTreeCreate(void) {
+CDBDeviceTreeRef CDBDeviceTreeCreate(void)
+{
     CDBDeviceTreeRef newDeviceTree = (CDBDeviceTreeRef)malloc(sizeof(struct _CDBDeviceTree));
 
     /* Allocate the root node. */
@@ -42,7 +43,8 @@ CDBDeviceTreeRef CDBDeviceTreeCreate(void) {
     return newDeviceTree;
 }
 
-CDBDTPropertyRef CDBDTNodeGetProperty(CDBDTNodeRef node, const char *propertyName) {
+CDBDTPropertyRef CDBDTNodeGetProperty(CDBDTNodeRef node, const char *propertyName)
+{
     CDBDTPropertyRef prop = node->FirstProperty;
     while (prop != NULL) {
         if (strncmp(prop->Name, propertyName, strlen(prop->Name)) == 0) {
@@ -54,7 +56,8 @@ CDBDTPropertyRef CDBDTNodeGetProperty(CDBDTNodeRef node, const char *propertyNam
     return NULL;
 }
 
-bool CDBDTNodeSetProperty(CDBDTNodeRef node, const char *propertyName, const UInt8 *data, UInt32 size) {
+bool CDBDTNodeSetProperty(CDBDTNodeRef node, const char *propertyName, const UInt8 *data, UInt32 size)
+{
     CDBDTPropertyRef ref = CDBDTNodeGetProperty(node, propertyName);
 
     if (ref) {

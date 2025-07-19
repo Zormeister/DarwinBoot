@@ -1,9 +1,9 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #include "Platform/EFI/Types/Status.h"
+#include <Platform/EFI/EFI.h>
 #include <Platform/EFI/Protocols/Hash.h>
 #include <Platform/EFI/Protocols/ServiceBinding.h>
-#include <Platform/EFI/EFI.h>
 
 /* I only use this header for CORECRYPTO_AVAILABLE */
 #include <CoreDarwinBoot/Crypto/CoreCrypto.h>
@@ -24,7 +24,8 @@ extern UIntN CcDigestGetHashSizeFromGuid(const EFI_GUID *Algorithm);
 
 #pragma mark Hash Protocol
 
-EFI_STATUS CcHashProtocolGetHashSize(const EFI_HASH_PROTOCOL *This, const EFI_GUID *HashGuid, UIntN *HashSize) {
+EFI_STATUS CcHashProtocolGetHashSize(const EFI_HASH_PROTOCOL *This, const EFI_GUID *HashGuid, UIntN *HashSize)
+{
     if (HashGuid == NULL || HashSize == NULL) {
         return EFI_INVALID_PARAMETER;
     }
@@ -38,12 +39,12 @@ EFI_STATUS CcHashProtocolGetHashSize(const EFI_HASH_PROTOCOL *This, const EFI_GU
     return EFI_SUCCESS;
 }
 
-EFI_STATUS CcHashProtocolHash(const EFI_HASH_PROTOCOL *This, const EFI_GUID *HashGuid, 
-                                bool Extend, const UInt8 *Message, UInt64 MessageSize,
-                                EFI_HASH_OUTPUT *Hash)
+EFI_STATUS CcHashProtocolHash(const EFI_HASH_PROTOCOL *This, const EFI_GUID *HashGuid,
+    bool Extend, const UInt8 *Message, UInt64 MessageSize,
+    EFI_HASH_OUTPUT *Hash)
 {
     const struct ccdigest_info *di;
-    
+
     if (HashGuid == NULL || Message == NULL || Hash == NULL) {
         return EFI_INVALID_PARAMETER;
     }
@@ -79,7 +80,8 @@ struct {
 
 /* How NOT to implement a Service Binding Protocol: */
 
-EFI_STATUS CoreCryptoHashBindingCreateChild(EFI_SERVICE_BINDING_PROTOCOL *This, EFI_HANDLE *Child) {
+EFI_STATUS CoreCryptoHashBindingCreateChild(EFI_SERVICE_BINDING_PROTOCOL *This, EFI_HANDLE *Child)
+{
     //
     // Create a handle for UEFI.
     //
@@ -100,7 +102,8 @@ EFI_STATUS CoreCryptoHashBindingCreateChild(EFI_SERVICE_BINDING_PROTOCOL *This, 
     return EFI_SUCCESS;
 };
 
-EFI_STATUS CoreCryptoHashBindingDestroyChild(EFI_SERVICE_BINDING_PROTOCOL *This, EFI_HANDLE *Child) {
+EFI_STATUS CoreCryptoHashBindingDestroyChild(EFI_SERVICE_BINDING_PROTOCOL *This, EFI_HANDLE *Child)
+{
     CC_HASH_HANDLE *Hndl = (CC_HASH_HANDLE *)Child;
 
     /* Quickly check if we exist */

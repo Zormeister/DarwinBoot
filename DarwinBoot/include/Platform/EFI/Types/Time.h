@@ -18,7 +18,7 @@ struct {
 } typedef EFI_TIME;
 
 #define EFI_TIME_ADJUST_DAYLIGHT 0x1
-#define EFI_TIME_IN_DAYLIGHT 0x2
+#define EFI_TIME_IN_DAYLIGHT     0x2
 
 #define EFI_UNSPECIFIED_TIMEZONE 0x7FF
 

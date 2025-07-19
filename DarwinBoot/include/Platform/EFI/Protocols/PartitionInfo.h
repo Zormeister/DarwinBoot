@@ -4,20 +4,20 @@
 #include <Platform/EFI/Types.h>
 
 #define EFI_PARTITION_INFO_PROTOCOL_GUID \
-  {0x8cf2f62c, 0xbc9b, 0x4821, \
-    {0x80,0x8d,0xec,0x9e,0xc4,0x21,0xa1,0xa0}}
+    { 0x8cf2f62c, 0xbc9b, 0x4821,        \
+        { 0x80, 0x8d, 0xec, 0x9e, 0xc4, 0x21, 0xa1, 0xa0 } }
 
 extern EFI_GUID gEfiPartitionInfoProtocolGuid;
 
 #define EFI_PARTITION_INFO_PROTOCOL_REVISION 0x0001000
-#define PARTITION_TYPE_OTHER 0x00
-#define PARTITION_TYPE_MBR 0x01
-#define PARTITION_TYPE_GPT 0x02
+#define PARTITION_TYPE_OTHER                 0x00
+#define PARTITION_TYPE_MBR                   0x01
+#define PARTITION_TYPE_GPT                   0x02
 
 #define EFI_MBR_PARTITION_OSTYPE_SYSTEM_PARTITION 0xEF
-#define EFI_MBR_PARTITION_OSTYPE_PMBR 0xEE
+#define EFI_MBR_PARTITION_OSTYPE_PMBR             0xEE
 
-/* 
+/*
  * This header was built for 64-bit architectures.
  *
  * That is to say, I have no idea how a 32-bit environment would handle my code.
@@ -74,12 +74,11 @@ typedef struct {
     char PartitionName[72];
 } __packed EFI_GPT_PARTITION_ENTRY;
 
-#define EFI_GPT_PARTITION_REQUIRED_PARTITON 0x00000001
-#define EFI_GPT_PARTITION_NO_BLOCK_IO 0x00000002
+#define EFI_GPT_PARTITION_REQUIRED_PARTITON    0x00000001
+#define EFI_GPT_PARTITION_NO_BLOCK_IO          0x00000002
 #define EFI_GPT_PARTITION_LEGACY_BIOS_BOOTABLE 0x00000004
 
 TYPE_SIZE_CHECK(EFI_GPT_PARTITION_ENTRY, 128);
-
 
 typedef struct {
     UInt32 Revision;
@@ -91,4 +90,3 @@ typedef struct {
         EFI_GPT_PARTITION_ENTRY GPT;
     } Info;
 } __packed EFI_PARTITION_INFO_PROTOCOL;
-

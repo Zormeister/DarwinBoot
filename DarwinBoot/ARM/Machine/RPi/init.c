@@ -22,12 +22,10 @@ void *gProvidedDT;
 
 /* will fix later */
 MemoryRange MemRanges[] = {
-    {
-        SDRAM_BASE + 0x180000,
+    { SDRAM_BASE + 0x180000,
         SDRAM_BASE_SIZE,
         PhysicalRange,
-        "SDRAM"
-    },
+        "SDRAM" },
 };
 
 extern void halt() __attribute__((noreturn));
@@ -42,7 +40,8 @@ BCM2835AuxController AuxController;
 BCM2835AuxUART SerialUART;
 #endif
 
-void platform_init() {
+void platform_init()
+{
 #if EARLY_BOOT_LOG
     /* Here we are, C land. Now, let's setup our early serial driver. */
 

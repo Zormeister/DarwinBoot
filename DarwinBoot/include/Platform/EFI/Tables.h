@@ -11,4 +11,3 @@
 #include <Platform/EFI/Tables/MemoryAttributesTable.h>
 #include <Platform/EFI/Tables/RuntimeServices.h>
 #include <Platform/EFI/Tables/SystemTable.h>
-

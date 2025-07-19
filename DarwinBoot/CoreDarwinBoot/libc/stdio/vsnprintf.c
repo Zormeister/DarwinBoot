@@ -6,6 +6,7 @@
 #undef vsnprintf
 
 /* I'm not even going to bother with floating point types. */
-int vsnprintf(char *s, size_t n, const char *format, va_list va) {
+int vsnprintf(char *s, size_t n, const char *format, va_list va)
+{
     return vsnprintf_(s, n, format, va);
 }

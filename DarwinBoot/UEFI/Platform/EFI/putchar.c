@@ -6,7 +6,8 @@
 #include <Platform/EFI/EFI.h>
 #include <Platform/EFI/Protocols/LoadedImage.h>
 
-void _putchar(char character) {
+void _putchar(char character)
+{
     wchar_t wide[3];
     if (character == '\n' || character == '\r') {
         wide[0] = WSTRING('\r');

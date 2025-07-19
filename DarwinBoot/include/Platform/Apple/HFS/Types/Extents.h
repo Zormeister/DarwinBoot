@@ -29,4 +29,3 @@ typedef struct {
     HFSCatalogNodeID FileID;
     UInt32 StartBlock;
 } __packed HFSPlusExtentKey;
-

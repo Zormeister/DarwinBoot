@@ -14,7 +14,8 @@
 // Shared logic between both instances of Hash Protocol.
 //
 
-const struct ccdigest_info *CcDigestGetHashFromGuid(EFI_GUID *Algorithm) {
+const struct ccdigest_info *CcDigestGetHashFromGuid(EFI_GUID *Algorithm)
+{
     if (EFIGuidMatches(&gEfiHashAlgorithmSha1Guid, Algorithm)) {
         return ccsha1_di();
     } else if (EFIGuidMatches(&gEfiHashAlgorithmSha224Guid, Algorithm)) {
@@ -32,7 +33,8 @@ const struct ccdigest_info *CcDigestGetHashFromGuid(EFI_GUID *Algorithm) {
     return NULL;
 }
 
-UIntN CcDigestGetHashSizeFromGuid(EFI_GUID *Algorithm) {
+UIntN CcDigestGetHashSizeFromGuid(EFI_GUID *Algorithm)
+{
     if (EFIGuidMatches(&gEfiHashAlgorithmSha1Guid, Algorithm)) {
         return ccsha1_di()->output_size;
     } else if (EFIGuidMatches(&gEfiHashAlgorithmSha224Guid, Algorithm)) {
@@ -51,7 +53,5 @@ UIntN CcDigestGetHashSizeFromGuid(EFI_GUID *Algorithm) {
 }
 
 #pragma mark Hash Protocol
-
-
 
 #endif

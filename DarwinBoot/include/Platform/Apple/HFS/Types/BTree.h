@@ -21,7 +21,6 @@ typedef struct {
 
 TYPE_SIZE_CHECK(BTNodeDescriptor, 14);
 
-
 typedef struct {
     UInt16 TreeDepth;
     UInt32 RootNode;

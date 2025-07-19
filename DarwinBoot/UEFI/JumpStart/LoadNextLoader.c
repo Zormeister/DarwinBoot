@@ -7,7 +7,8 @@
 #define ONDISK_PATH WSTRING("\\System\\Library\\CoreServices\\boot.efi")
 #define ONESP_PATH  WSTRING("\\EFI\\DarwinBoot\\DarwinBoot.efi")
 
-EFI_STATUS LoadNextLoader(EFI_DEVICE_PATH_PROTOCOL *DevicePath) {
+EFI_STATUS LoadNextLoader(EFI_DEVICE_PATH_PROTOCOL *DevicePath)
+{
     /* hm. */
     CDBFileSystemRef FS = CDBFileSystemGetBootVolume();
 

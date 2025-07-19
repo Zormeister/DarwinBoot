@@ -2,7 +2,8 @@
 
 #include <CoreDarwinBoot/libc_compat.h>
 
-void *memchr(const void *mem, int c, size_t n) {
+void *memchr(const void *mem, int c, size_t n)
+{
     const uint8_t *u8m = mem;
 
     while (n--) {

@@ -4,6 +4,7 @@
 #include <Platform/EFI/EFI.h>
 #include <Platform/EFI/Protocols/LoadedImage.h>
 
-void platform_free(void *mem) {
+void platform_free(void *mem)
+{
     ST->BootServices->FreePool(mem);
 }

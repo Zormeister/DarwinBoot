@@ -1,12 +1,12 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include <Platform/EFI/Types.h>
 #include <Platform/EFI/Protocols/DevicePath.h>
+#include <Platform/EFI/Types.h>
 
 #define EFI_DRIVER_BINDING_PROTOCOL_GUID \
-  {0x18A031AB,0xB443,0x4D1A,\
-   {0xA5,0xC0,0x0C,0x09,0x26,0x1E,0x9F,0x71}}
+    { 0x18A031AB, 0xB443, 0x4D1A,        \
+        { 0xA5, 0xC0, 0x0C, 0x09, 0x26, 0x1E, 0x9F, 0x71 } }
 
 extern EFI_GUID gEfiDriverBindingProtocolGuid;
 
@@ -20,4 +20,3 @@ struct _EFI_DRIVER_BINDING_PROTOCOL {
     EFI_HANDLE ImageHandle;
     EFI_HANDLE DriverBindingHandle;
 };
-

@@ -5,7 +5,8 @@
 /* This is literally just memcmp's logic but const char *'d. */
 /* Let me know if this ever needs changing. */
 
-int strncmp(const char *m1, const char *m2, size_t n) {
+int strncmp(const char *m1, const char *m2, size_t n)
+{
     const char *cursor1 = m1;
     const char *cursor2 = m2;
     size_t evaluated = 0;

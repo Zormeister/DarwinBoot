@@ -7,7 +7,7 @@
 
 /* do note that every field here is stored in big endian. and i mean everything. */
 
-#define kMKextMagic 0x4D4B5854 // 'MKXT'
+#define kMKextMagic     0x4D4B5854 // 'MKXT'
 #define kMKextSignature 0x4D4F5358 // 'MOSX'
 
 #define kMKextVersion1 0x01008000

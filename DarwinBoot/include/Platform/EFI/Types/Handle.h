@@ -3,4 +3,4 @@
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
-typedef void * EFI_HANDLE;
+typedef void *EFI_HANDLE;

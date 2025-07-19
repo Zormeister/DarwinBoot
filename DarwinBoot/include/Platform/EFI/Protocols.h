@@ -13,8 +13,8 @@
 #include <Platform/EFI/Protocols/File.h>
 #include <Platform/EFI/Protocols/GOP.h>
 #include <Platform/EFI/Protocols/Hash.h>
-#include <Platform/EFI/Protocols/LoadedImage.h>
 #include <Platform/EFI/Protocols/LoadFile.h>
+#include <Platform/EFI/Protocols/LoadedImage.h>
 #include <Platform/EFI/Protocols/MPServices.h>
 #include <Platform/EFI/Protocols/PartitionInfo.h>
 #include <Platform/EFI/Protocols/RAMDisk.h>

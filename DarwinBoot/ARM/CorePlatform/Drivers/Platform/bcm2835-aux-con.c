@@ -2,7 +2,8 @@
 
 #include <Drivers/Platform/BCM2835AuxController.h>
 
-static bool IsPeripheralEnabled(PlatformDriver *Driver, BCM2835AuxPeripheral Peripheral) {
+static bool IsPeripheralEnabled(PlatformDriver *Driver, BCM2835AuxPeripheral Peripheral)
+{
     BCM2835AuxController *Controller = TO_BCM2835_AUX_CONTROLLER(Driver);
     switch (Peripheral) {
         case BCM2835AuxPeripheralUART:
@@ -14,11 +15,12 @@ static bool IsPeripheralEnabled(PlatformDriver *Driver, BCM2835AuxPeripheral Per
     }
 }
 
-static void EnablePeripheral(PlatformDriver *Driver, BCM2835AuxPeripheral Peripheral, bool enable) {
+static void EnablePeripheral(PlatformDriver *Driver, BCM2835AuxPeripheral Peripheral, bool enable)
+{
     BCM2835AuxController *Controller = TO_BCM2835_AUX_CONTROLLER(Driver);
     switch (Peripheral) {
         case BCM2835AuxPeripheralUART: {
-            if  ((Controller->EnabledState & AUX_ENABLES__ENABLE_UART1) && enable) {
+            if ((Controller->EnabledState & AUX_ENABLES__ENABLE_UART1) && enable) {
                 return;
             } else {
                 if (enable) {
@@ -31,7 +33,7 @@ static void EnablePeripheral(PlatformDriver *Driver, BCM2835AuxPeripheral Periph
             }
         }
         case BCM2835AuxPeripheralSPI1: {
-            if  ((Controller->EnabledState & AUX_ENABLES__ENABLE_SPI1) && enable) {
+            if ((Controller->EnabledState & AUX_ENABLES__ENABLE_SPI1) && enable) {
                 return;
             } else {
                 if (enable) {
@@ -44,7 +46,7 @@ static void EnablePeripheral(PlatformDriver *Driver, BCM2835AuxPeripheral Periph
             }
         }
         case BCM2835AuxPeripheralSPI2: {
-            if  ((Controller->EnabledState & AUX_ENABLES__ENABLE_SPI2) && enable) {
+            if ((Controller->EnabledState & AUX_ENABLES__ENABLE_SPI2) && enable) {
                 return;
             } else {
                 if (enable) {
@@ -59,7 +61,8 @@ static void EnablePeripheral(PlatformDriver *Driver, BCM2835AuxPeripheral Periph
     }
 }
 
-static bool IsPendingIRQ(PlatformDriver *Driver, BCM2835AuxPeripheral Peripheral) {
+static bool IsPendingIRQ(PlatformDriver *Driver, BCM2835AuxPeripheral Peripheral)
+{
     BCM2835AuxController *Controller = TO_BCM2835_AUX_CONTROLLER(Driver);
     UInt32 irq = Controller->AuxDev->ReadReg32(TO_PLATFORM_DEVICE(Controller->AuxDev), rAUX_IRQ);
     switch (Peripheral) {
@@ -73,7 +76,8 @@ static bool IsPendingIRQ(PlatformDriver *Driver, BCM2835AuxPeripheral Peripheral
 }
 
 /* Exported */
-bool BCM2835AuxControllerInit(PlatformDriver *Driver, PlatformDevice *dev) {
+bool BCM2835AuxControllerInit(PlatformDriver *Driver, PlatformDevice *dev)
+{
     BCM2835AuxController *Controller = TO_BCM2835_AUX_CONTROLLER(Driver);
 
     Controller->AuxDev = TO_MMIO_DEVICE(dev);

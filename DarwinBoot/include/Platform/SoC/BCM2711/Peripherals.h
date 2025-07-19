@@ -1,11 +1,11 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include <CoreDarwinBoot/CDBBasicTypes.h>
 #include "MemoryMap.h"
+#include <CoreDarwinBoot/CDBBasicTypes.h>
 
 #define NUM_UART 5
-#define NUM_SPI 6
+#define NUM_SPI  6
 
 #define UART1_BASE AUX_BASE + 0x40
 
@@ -29,16 +29,16 @@
 #define UART4_BASE UART_BASE(4)
 #define UART5_BASE UART_BASE(5)
 
-#define DMA0_BASE DMA_BASE(0)
-#define DMA1_BASE DMA_BASE(1)
-#define DMA2_BASE DMA_BASE(2)
-#define DMA3_BASE DMA_BASE(3)
-#define DMA4_BASE DMA_BASE(4)
-#define DMA5_BASE DMA_BASE(5)
-#define DMA6_BASE DMA_BASE(6)
-#define DMA7_BASE DMA_BASE(7)
-#define DMA8_BASE DMA_BASE(8)
-#define DMA9_BASE DMA_BASE(9)
+#define DMA0_BASE  DMA_BASE(0)
+#define DMA1_BASE  DMA_BASE(1)
+#define DMA2_BASE  DMA_BASE(2)
+#define DMA3_BASE  DMA_BASE(3)
+#define DMA4_BASE  DMA_BASE(4)
+#define DMA5_BASE  DMA_BASE(5)
+#define DMA6_BASE  DMA_BASE(6)
+#define DMA7_BASE  DMA_BASE(7)
+#define DMA8_BASE  DMA_BASE(8)
+#define DMA9_BASE  DMA_BASE(9)
 #define DMA10_BASE DMA_BASE(10)
 #define DMA11_BASE DMA_BASE(11)
 #define DMA12_BASE DMA_BASE(12)

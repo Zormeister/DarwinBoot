@@ -11,8 +11,8 @@
 
 #ifndef NDEBUG
 
-#define assert(...) \
-    if ((__VA_ARGS__) == 0) { \
+#define assert(...)                                                                                \
+    if ((__VA_ARGS__) == 0) {                                                                      \
         panic("ASSERT FAIL: %s:%d: %s %s", __FILE__, __LINE__, __PRETTY_FUNCTION__, #__VA_ARGS__); \
     }
 
@@ -48,15 +48,15 @@ int toupper(int c);
 
 #define UCHAR_MAX (SCHAR_MAX * 2) + 1
 
-#define INT_MAX __INT_MAX__
+#define INT_MAX  __INT_MAX__
 #define UINT_MAX (INT_MAX * 2) + 1
 
 /* stdarg.h */
-#define va_list __builtin_va_list
-#define va_arg(va, type) __builtin_va_arg((va), type)
+#define va_list           __builtin_va_list
+#define va_arg(va, type)  __builtin_va_arg((va), type)
 #define va_copy(va1, va2) __builtin_va_copy((va1), (va2))
 #define va_start(va, arg) __builtin_va_start((va), arg)
-#define va_end(va) __builtin_va_end((va))
+#define va_end(va)        __builtin_va_end((va))
 
 /* stdio.h */
 int printf(const char *fmt, ...);
@@ -96,8 +96,32 @@ size_t wcslen(const wchar_t *wstr);
 /* errno.h */
 typedef int errno_t;
 
-#define EPERM 1
+/* These mirror XNU's <sys/errno.h> */
+#define EPERM  1
 #define ENOENT 2
 
+/* Do ESRCH and EINTR really apply here? The bootloader is a single-threaded application. */
+
+#define EIO     5
+#define ENXIO   6
+#define E2BIG   7
+#define ENOEXEC 8
+#define EBADF   9
+
+/* Skip ECHILD */
+
+#define EDLK   11
+#define ENOMEM 12
+#define EACCES 13
+#define EFAULT 14
+
+#define EBUSY  16
+#define EEXIST 17
+
+#define ENOTDIR 20
+#define EISDIR  21
+#define EINVAL  22
+
+#define ENOSPC 28
 
 #endif

@@ -2,7 +2,8 @@
 
 #include <CoreDarwinBoot/libc_compat.h>
 
-void *memset(void *dest, int x, size_t n) {
+void *memset(void *dest, int x, size_t n)
+{
     uint8_t *dst = dest;
     for (size_t i = 0; i < n; i++) {
         dst[i] = x; // what if i told you sizeof(char) < sizeof(int)

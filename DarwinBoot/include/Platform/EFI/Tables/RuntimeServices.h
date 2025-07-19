@@ -1,11 +1,11 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include <Platform/EFI/Types.h>
 #include <Platform/EFI/Tables/Header.h>
+#include <Platform/EFI/Types.h>
 
 #define EFI_RUNTIME_SERVICES_SIGNATURE 0x56524553544e5552
-#define EFI_RUNTIME_SERVICES_REVISION EFI_SPECIFICATION_VERSION
+#define EFI_RUNTIME_SERVICES_REVISION  EFI_SPECIFICATION_VERSION
 
 enum {
     EFI_VARIABLE_NON_VOLATILE = 0x00000001,

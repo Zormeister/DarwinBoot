@@ -72,7 +72,6 @@ const char *BootabilityVolumeGetPath(BootabilityVolumeRef Volume);
  */
 void BootabilityVolumeIterateFiles(BootabilityVolumeRef Volume, BootabilityVolumeIteratorCallback Callback);
 
-
 /*!
  * @group      Bootability Context
  *
@@ -92,4 +91,3 @@ BootabilityContextRef BootabilityContextCreate(void);
 BootabilityContextRef BootabilityContextCreateWithOptions(UInt32 Options);
 
 /* ^ This creates a context using local system data. */
-

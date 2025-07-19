@@ -31,7 +31,6 @@
 #endif
 #endif
 
-
 // No compression impl yet, so I'll have to use a raw DMG until I decide the time is right
 enum {
     kDMGChunkTypeCompressed = 0x80000000,
@@ -46,7 +45,7 @@ enum {
     kDMGChunkTypeBZip2Compressed = kDMGChunkTypeCompressed | 6,
 
     /* Others */
-    kDMGChunkTypeComment = 0x7FFFFFFE,  /* what does this actually mean */
+    kDMGChunkTypeComment = 0x7FFFFFFE, /* what does this actually mean */
     kDMGChunkTypeLastChunk = 0xFFFFFFFF,
 };
 

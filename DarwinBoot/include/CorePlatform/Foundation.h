@@ -32,7 +32,7 @@ struct {
 #define MAX_DEV_RANGES 10
 
 struct {
-    const char * Compatible;
+    const char *Compatible;
     MemoryRange Range;
 } typedef PlatformDeviceDescriptor;
 

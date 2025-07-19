@@ -5,7 +5,8 @@
 
 #undef printf
 
-int printf(const char *fmt, ...) {
+int printf(const char *fmt, ...)
+{
     va_list list;
     va_start(list, fmt);
     int ret = vprintf(fmt, list);

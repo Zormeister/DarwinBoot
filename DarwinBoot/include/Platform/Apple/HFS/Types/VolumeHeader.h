@@ -13,11 +13,10 @@
 #define kHFSXSigWord 0x4858
 
 #define kHFSPlusVersion 4
-#define kHFSXVersion 5
+#define kHFSXVersion    5
 
-#define kHFSMountVersion 0x31302E3O
+#define kHFSMountVersion     0x31302E3O
 #define kHFSPlusMountVersion 0x4846534A
-
 
 struct HFSVolumeHeader {
     UInt16 Signature;

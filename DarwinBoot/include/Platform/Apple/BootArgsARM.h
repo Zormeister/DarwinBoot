@@ -6,9 +6,9 @@
 /* man wtf why */
 #define XNU_COMMANDLINE_SIZE 256
 
-#define DISPLAYPARAMS_DEPTH_SHIFT (0)
-#define DISPLAYPARAMS_ROTATION_SHIFT (8)
-#define DISPLAYPARAMS_SCALE_SHIFT (16)
+#define DISPLAYPARAMS_DEPTH_SHIFT      (0)
+#define DISPLAYPARAMS_ROTATION_SHIFT   (8)
+#define DISPLAYPARAMS_SCALE_SHIFT      (16)
 #define DISPLAYPARAMS_BOOTROTATE_SHIFT (24)
 
 /* UNSIGNED LONG... */
@@ -26,12 +26,12 @@ struct {
 struct {
     UInt16 Revision;
     UInt16 Version;
-    UInt32 VirtualBase; /* Kernel address - Virtual */
-    UInt32 PhysicalBase; /* Kernel address - Physical */
-    UInt32 MemorySize; /* I don't actually know what this referse to, maximum Virtual mem space? */
+    UInt32 VirtualBase;     /* Kernel address - Virtual */
+    UInt32 PhysicalBase;    /* Kernel address - Physical */
+    UInt32 MemorySize;      /* I don't actually know what this referse to, maximum Virtual mem space? */
     UInt32 TopOfKernelData; /* "Highest physical address used in kernel data area", This essentially just means 'where does our __DATA segment end?' */
     XNUVideoArgs VideoArgs;
-    UInt32 MachineType; /* ??? */
+    UInt32 MachineType;  /* ??? */
     void *DeviceTreePtr; /* i assume this helps with native addressing, in the event that the DT is outside of a 32-bit address */
     UInt32 DeviceTreeSize;
     char CommandLine[XNU_COMMANDLINE_SIZE];

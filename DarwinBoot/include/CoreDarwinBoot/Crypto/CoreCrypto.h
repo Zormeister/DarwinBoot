@@ -24,7 +24,7 @@
  *   run of NM. I have yet to see any of these variances in the wild of studying
  *   the various DeviceTree files of Apple Silicon Macs.
  *
- * - libimg4 (Darwin 19) makes references to not only RSA, but also Elliptic Curve based 
+ * - libimg4 (Darwin 19) makes references to not only RSA, but also Elliptic Curve based
  *   signatures, I have zero idea if any of the EC signatures made it to production units,
  *   but you never know with our beloved fruit company.
  *

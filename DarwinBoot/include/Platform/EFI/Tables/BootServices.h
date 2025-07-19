@@ -1,12 +1,12 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include <Platform/EFI/Types.h>
-#include <Platform/EFI/Tables/Header.h>
 #include <Platform/EFI/Protocols/DevicePath.h>
+#include <Platform/EFI/Tables/Header.h>
+#include <Platform/EFI/Types.h>
 
 #define EFI_BOOT_SERVICES_SIGNATURE 0x56524553544f4f42
-#define EFI_BOOT_SERVICES_REVISION EFI_SPECIFICATION_VERSION
+#define EFI_BOOT_SERVICES_REVISION  EFI_SPECIFICATION_VERSION
 
 enum {
     EFI_OPEN_PROTOCOL_BY_HANDLE_PROTOCOL = 0x1,
@@ -19,11 +19,11 @@ enum {
 
 struct _EFI_BOOT_SERVICES {
     EFI_TABLE_HEADER Header;
-    
+
     /* Task Priority svcs. EFI 1.0+ */
     EFI_TPL (*RaiseTPL)(EFI_TPL NewTpl);
     void (*RestoreTPL)(EFI_TPL OldTpl);
-    
+
     /* memory svcs */
     EFI_STATUS (*AllocatePages)(EFI_ALLOCATE_TYPE Type, EFI_MEMORY_TYPE MemoryType, UInt32 NumPages, EFI_PHYSICAL_ADDRESS *AllocatedMem);
     EFI_STATUS (*FreePages)(EFI_PHYSICAL_ADDRESS MemAddr, UInt32 PageCount);

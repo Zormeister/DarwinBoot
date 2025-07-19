@@ -16,7 +16,8 @@ extern void UEFIFileSystemInit(void);
 
 #define INIT_FILESYSTEM_SERVICES !UEFI_DXE
 
-bool EFIInitialize(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable) {
+bool EFIInitialize(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable)
+{
     EFI_GUID LoadedImageProtocol = EFI_LOADED_IMAGE_PROTOCOL_GUID;
 
     /* we can't exactly scream for help right now, */

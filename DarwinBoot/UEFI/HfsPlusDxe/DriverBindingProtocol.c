@@ -1,19 +1,20 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #include <Platform/Apple/HFS/Types/VolumeHeader.h>
-#include <Platform/EFI/Protocols/DriverBinding.h>
 #include <Platform/EFI/EFI.h>
+#include <Platform/EFI/Protocols/DriverBinding.h>
 #include <stdlib.h>
 
-EFI_GUID gAppleHfsPartitionGuid = {0x48465300, 0x0000, 0x11AA, {0xAA, 0x11, 0x00, 0x30,0x65, 0x43, 0xEC, 0xAC}};
+EFI_GUID gAppleHfsPartitionGuid = { 0x48465300, 0x0000, 0x11AA, { 0xAA, 0x11, 0x00, 0x30, 0x65, 0x43, 0xEC, 0xAC } };
 
-EFI_STATUS HfsPlusDriverBindingSupported(EFI_DRIVER_BINDING_PROTOCOL *This, EFI_HANDLE ControllerHandle, EFI_DEVICE_PATH_PROTOCOL *DP) {
+EFI_STATUS HfsPlusDriverBindingSupported(EFI_DRIVER_BINDING_PROTOCOL *This, EFI_HANDLE ControllerHandle, EFI_DEVICE_PATH_PROTOCOL *DP)
+{
     EFI_BLOCK_IO_PROTOCOL *BlkIO = NULL;
     EFI_PARTITION_INFO_PROTOCOL *PartitionInfo = NULL;
     EFI_STATUS status = EFI_SUCCESS;
 
-    status = BS->OpenProtocol(ControllerHandle, &gEfiBlockIoProtocolGuid, (void **)&BlkIO, 
-                                This->DriverBindingHandle, ControllerHandle, EFI_OPEN_PROTOCOL_BY_DRIVER);
+    status = BS->OpenProtocol(ControllerHandle, &gEfiBlockIoProtocolGuid, (void **)&BlkIO,
+        This->DriverBindingHandle, ControllerHandle, EFI_OPEN_PROTOCOL_BY_DRIVER);
     if (status) {
         /* No EFI block I/O. */
         BS->CloseProtocol(ControllerHandle, &gEfiBlockIoProtocolGuid, This->DriverBindingHandle, ControllerHandle);
@@ -21,8 +22,8 @@ EFI_STATUS HfsPlusDriverBindingSupported(EFI_DRIVER_BINDING_PROTOCOL *This, EFI_
     }
 
     /* Additionally, check that the drive has an HFS+ GUID. */
-    status = BS->OpenProtocol(ControllerHandle, &gEfiPartitionInfoProtocolGuid, (void **)&PartitionInfo, 
-                                This->DriverBindingHandle, ControllerHandle, EFI_OPEN_PROTOCOL_BY_DRIVER);
+    status = BS->OpenProtocol(ControllerHandle, &gEfiPartitionInfoProtocolGuid, (void **)&PartitionInfo,
+        This->DriverBindingHandle, ControllerHandle, EFI_OPEN_PROTOCOL_BY_DRIVER);
 
     if (status) {
         goto read_volume_header;

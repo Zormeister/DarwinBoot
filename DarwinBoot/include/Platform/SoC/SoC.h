@@ -11,4 +11,3 @@
 #if BCM2712
 #include <Platform/SoC/BCM2712/Board.h>
 #endif
-

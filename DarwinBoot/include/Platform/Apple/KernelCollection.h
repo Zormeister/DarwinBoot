@@ -3,8 +3,8 @@
 #pragma once
 #include <Platform/Apple/MachO.h>
 
-#define kBootKernelCollectionPath "/System/Library/KernelCollections/BootKernelCollection.kc"
-#define kSystemKernelCollectionPath "/System/Library/KernelCollections/SystemKernelCollection.kc"
+#define kBootKernelCollectionPath      "/System/Library/KernelCollections/BootKernelCollection.kc"
+#define kSystemKernelCollectionPath    "/System/Library/KernelCollections/SystemKernelCollection.kc"
 #define kAuxiliaryKernelCollectionPath "/Library/KernelCollections/AuxiliaryKernelCollection.kc"
 
 /* KernelCollections aren't overtly special, they follow the Mach-O format directly */
