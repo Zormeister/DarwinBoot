@@ -1,7 +1,8 @@
-includes("../../toolchains/uefi.lua")
+includes("../../toolchains/uefi-dxe.lua")
 
-target("On-Disk Loader")
-    set_basename("boot.efi")
+target("CoreCrypto UEFI DXE driver")
+    set_toolchains("uefi-dxe")
+    set_basename("CoreCryptoDxe.efi")
     add_includedirs("$(projectdir)/DarwinBoot/include")
     set_languages("c17")
     set_kind("binary")
@@ -13,10 +14,11 @@ target("On-Disk Loader")
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/libc/**.c",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/*.c",
         "$(projectdir)/DarwinBoot/UEFI/Platform/**.c",
-        "$(projectdir)/DarwinBoot/UEFI/DiskBoot/*.c"
+        "$(projectdir)/DarwinBoot/UEFI/CoreCryptoDxe/*.c"
     )
     
     add_deps("libprintf")
+    add_deps("libcorecrypto_darwinboot")
 
     if is_arch("x64", "x86") then
         remove_files("$(projectdir)/DarwinBoot/CoreDarwinBoot/Platform/ARM/*.c")
@@ -29,5 +31,5 @@ target("On-Disk Loader")
     end
 
     on_install(function (target)
-        os.cp(target:targetfile(), path.join(target:installdir(), "System/Library/CoreServices/", target:basename()))
+        os.cp(target:targetfile(), path.join(target:installdir(), "DarwinBoot/Drivers/", target:basename()))
     end)

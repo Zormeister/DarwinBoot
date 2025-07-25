@@ -1,3 +1,5 @@
+includes("../../toolchains/uefi.lua")
+
 target("UEFI JumpStart")
     set_basename("BOOT$(arch).efi")
     add_includedirs("$(projectdir)/DarwinBoot/include")

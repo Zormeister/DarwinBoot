@@ -64,7 +64,7 @@ int vprintf(const char *fmt, va_list list);
 
 #define stderr 0
 #define stdin  0
-#define stderr 0
+#define stdout 0
 
 #define fprintf(fd, fmt, ...) printf(fmt, __VA_ARGS__)
 
@@ -122,6 +122,22 @@ typedef int errno_t;
 #define EISDIR  21
 #define EINVAL  22
 
+#define EFBIG  27
 #define ENOSPC 28
+
+#define EROFS  30
+
+#define ENOTEMPTY 66
+
+#define ESTALE 70
+
+#define ENOSYS 78
+
+#define EAUTH     80
+#define ENEEDAUTH 81
+
+#define EBADEXEC  85
+
+#define EILSEQ 92
 
 #endif

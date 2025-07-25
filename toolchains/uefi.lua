@@ -3,16 +3,16 @@ toolchain("uefi")
 
     set_toolset("cc", "clang")
     set_toolset("cxx", "clang", "clang++")
-    set_toolset("ld", "lld-link", "lld-link") -- we need the PE/COFF linker. thanks CMake for being a POS
+    set_toolset("ld", "lld-link", "lld-link") -- Use LLVM's PE/COFF linker
     set_toolset("sh", "clang++", "clang")
-    set_toolset("ar", "ar")
-    set_toolset("ex", "ar")
+    set_toolset("ar", "llvm-ar") -- Use the LLVM archiver, this makes the project buildable on Windows.
+    set_toolset("ex", "llvm-ar")
     set_toolset("strip", "strip")
     set_toolset("mm", "clang")
     set_toolset("mxx", "clang", "clang++")
     set_toolset("as", "clang")
 
-    add_defines("UEFI")
+    add_defines("UEFI", "UEFI_DXE=1")
 
     on_check(function (toolchain)
         local ret = import("lib.detect.find_tool")("lld-link")
