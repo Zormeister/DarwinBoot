@@ -81,7 +81,7 @@ void BootabilityVolumeIterateFiles(BootabilityVolumeRef Volume, BootabilityVolum
  */
 typedef struct _BootabilityContext *BootabilityContextRef;
 
-#define kBootabilityFilterArchs (1 << 0) /* Filter by architecture. */
+// #define kBootabilityFilterArchs (1 << 0) /* Filter by architecture. */
 #define kBootabilityMachOnly    (1 << 1) /* Only register Mach images. */
 #define kBootabilityImg4Only    (1 << 2) /* Only register IMG4 images. */
 #define kBootabilityElfOnly     (1 << 3) /* Only register ELF images. */
@@ -90,4 +90,3 @@ typedef struct _BootabilityContext *BootabilityContextRef;
 BootabilityContextRef BootabilityContextCreate(void);
 BootabilityContextRef BootabilityContextCreateWithOptions(UInt32 Options);
 
-/* ^ This creates a context using local system data. */

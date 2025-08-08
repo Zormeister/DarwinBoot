@@ -73,7 +73,6 @@ const char BootMessage[] = {
  * IDGAF about conforming to their IMG4 standards though.
  * i can configure and sign my IMG4s myself tyvm.
  * i just need to embed the right CAs smh
- *
  */
 void BootupMessageSend(void)
 {
