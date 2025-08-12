@@ -5,6 +5,7 @@
 #include <Platform/EFI/Protocols/DriverBinding.h>
 #include <stdlib.h>
 
+// at least i think this is the GUID?
 EFI_GUID gAppleHfsPartitionGuid = {
     0x48465300, 0x0000, 0x11AA, { 0xAA, 0x11, 0x00, 0x30, 0x65, 0x43, 0xEC, 0xAC }
 };

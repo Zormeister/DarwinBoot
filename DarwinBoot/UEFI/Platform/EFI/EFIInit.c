@@ -14,6 +14,8 @@ extern void BootupMessageSend(void);
 
 extern void UEFIFileSystemInit(void);
 
+// don't startup filesystem services in DXEs, it'd be a waste of resources (and time). 
+// corecryptodxe + hfsplusdxe shouldn't need to access filesystems
 #define INIT_FILESYSTEM_SERVICES !UEFI_DXE
 
 bool EFIInitialize(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable)

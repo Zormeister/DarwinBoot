@@ -69,3 +69,6 @@ EFI_GUID gEfiSimpleTextOutputProtocolGuid = EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL_GUID
 
 #include <Platform/EFI/Protocols/Timestamp.h>
 EFI_GUID gEfiTimestampProtocolGuid = EFI_TIMESTAMP_PROTOCOL_GUID;
+
+#include <Platform/DarwinBoot/EFI/CoreCrypto.h>
+EFI_GUID gEfiCoreCryptoProtocolGuid = EFI_CORECRYPTO_PROTOCOL_GUID;

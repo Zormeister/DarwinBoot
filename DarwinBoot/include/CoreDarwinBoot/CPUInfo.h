@@ -38,6 +38,8 @@ enum {
     kVMMVendorBhyve,
     kVMMVendorHyperV,
     kVMMVendorVMware,
+    kVMMVendorVirtualBox,
+    kVMMVendorKVM,
 } typedef VMMVendor;
 
 /*!

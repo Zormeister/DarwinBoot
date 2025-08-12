@@ -10,8 +10,24 @@ typedef enum : UInt8 {
     kSMBIOSBaseboardBoardTypeOther = 0x2,
     kSMBIOSBaseboardBoardTypeServerBlade = 0x3,
     kSMBIOSBaseboardBoardTypeConnectivitySwitch = 0x4,
-    
+    kSMBIOSBaseboardBoardTypeSystemManagementModule = 0x5,
+    kSMBIOSBaseboardBoardTypeProcessorModule = 0x6,
+    kSMBIOSBaseboardBoardTypeIOModule = 0x7,
+    kSMBIOSBaseboardBoardTypeMemoryModule = 0x8,
+    kSMBIOSBaseboardBoardTypeDaughterBoard = 0x9,
+    kSMBIOSBaseboardBoardTypeMotherboard = 0xA,
+    kSMBIOSBaseboardBoardTypeProcessorAndMemoryModule = 0xB,
+    kSMBIOSBaseboardBoardTypeProcessorAndIOModule = 0xC,
+    kSMBIOSBaseboardBoardTypeInterconnectBoard = 0xD,
 } SMBIOSBaseboardBoardType;
+
+enum {
+    kSMBIOSBaseboardFlagIsHosting = (1 << 0),
+    kSMBIOSBaseboardFlagRequireDaughterBoard = (1 << 1),
+    kSMBIOSBaseboardFlagIsRemoveable = (1 << 2),
+    kSMBIOSBaseboardFlagIsReplaceable = (1 << 3),
+    kSMBIOSBaseboardFlagIsHotSwappable = (1 << 4),
+};
 
 typedef struct {
     SMBIOSTableHeader Header;

@@ -12,3 +12,7 @@
         { 0x99, 0x2e, 0xe5, 0xbb, 0xcf, 0x20, 0xe3, 0x94 } }
 
 #include <Platform/SMBIOS/Types/FirmwareInfo.h>
+#include <Platform/SMBIOS/Types/SystemInfo.h>
+#include <Platform/SMBIOS/Types/BaseboardInfo.h>
+#include <Platform/SMBIOS/Types/ChassisInfo.h>
+#include <Platform/SMBIOS/Types/ProcessorInfo.h>

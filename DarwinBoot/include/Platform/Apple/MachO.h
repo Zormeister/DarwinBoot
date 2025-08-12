@@ -240,8 +240,6 @@ struct {
     UInt32 Reserved;
 } typedef MachFilesetCommand;
 
-#pragma mark Platform FunctionStarts
-
 union {
     MachSection32 Sect32;
     MachSection64 Sect64;

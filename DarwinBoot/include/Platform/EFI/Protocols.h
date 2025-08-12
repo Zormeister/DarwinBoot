@@ -19,5 +19,6 @@
 #include <Platform/EFI/Protocols/PartitionInfo.h>
 #include <Platform/EFI/Protocols/RAMDisk.h>
 #include <Platform/EFI/Protocols/RNG.h>
+#include <Platform/EFI/Protocols/ServiceBinding.h>
 #include <Platform/EFI/Protocols/SimpleFileSystem.h>
 #include <Platform/EFI/Protocols/SimpleText.h>

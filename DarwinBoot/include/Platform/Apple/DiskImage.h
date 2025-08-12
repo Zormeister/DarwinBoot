@@ -25,7 +25,7 @@
     #endif
 #elif __arm__
     #if __ARM_ARCH__ == 6
-        #define kUpdateRamdiskName "armv6SURamdisk.smg"
+        #define kUpdateRamdiskName "armv6SURamdisk.dmg"
     #elif __ARM_ARCH__ == 7
         #define kUpdateRamdiskName "armv7SURamdisk.dmg"
     #endif
@@ -58,20 +58,6 @@ enum {
 };
 
 struct {
-    UInt32 ChunkType;
-    UInt32 ChunkComment;
-    UInt64 SectorNumber;
-    UInt64 SectorCount;
-    UInt64 CompressedOffset;
-    UInt64 CompressedLength;
-} typedef AppleDiskImageChunk;
-
-struct {
     UInt32 Magic;
-
-} typedef AppleChunklistHeader;
-
-struct {
-    UInt32 Magic;
-
+    // wip
 } typedef AppleDiskImageTrailer;

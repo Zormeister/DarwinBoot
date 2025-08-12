@@ -2,21 +2,39 @@
 
 #pragma once
 
+//
+// CDBBasicTypes:
+// The name is a little misleading, this header serves as a giga-header for:
+//  - libc/C Standard types
+//  - CPU-related macros
+//  - Non-standard types, eg: uuid_t (and DarwinBoot's guid_t)
+//  - Additionally, it covers macros from <inttypes.h
+//  - MacTypes (or libkern/IOKit) type names
+//  - BSD-style type names
+//  - Boolean type (_Bool for C17, uses a char for lower C standards, however I have heard about C23)
+//
+
 /*
  * unfun fact: if this header is renamed to fit the naming scheme of the rest of this directory
  * the entire project would break. please do not rename this header to just 'BasicTypes.h' unless
  * you're willing to scour the entire project for header breaks.
  */
 
-/* !!! THIS IS THE BASE HEADER OF THE ENTIRE PROJECT !!! */
-/* All files link back to here, once this header is finalised PLEASE do not change this unless necessary!!! */
-
+// 
+// clangd was annoying. But I do wonder if I should've written this in C++ sometimes.
+// Maybe C was the better choice anyways. More room to accidentally violate the laws of programming.
+//
 #ifdef __cplusplus
     #if __cplusplus < 201703L
         #error This project uses C 17, please use C 17 for compilation/your LSP
     #endif
 #endif
 #if defined(__STDC_VERSION__)
+    //
+    // Context for the !__APPLE__ check is that macOS Catalina doesn't have C17.
+    // The way I've rewritten this header though, I don't think it would be impossible to backport
+    // DarwinBoot to an earlier C standard.
+    //
     #if __STDC_VERSION__ < 201710L && !__APPLE__
         #error This project uses C 17, please use C 17 for compilation/your LSP
     #endif
@@ -470,7 +488,13 @@ typedef uint64_t u_int64_t;
 
 #define NULL (void *)0
 
-#if (__STDC_VERSION__ >= 201710L)
+#if (__STDC_VERSION__ >= 202311)
+
+    //
+    // C23 defines a boolean type, thus we don't need to do anything.
+    //
+
+#elif (__STDC_VERSION__ >= 201710L)
 
     /* Use C17's boolean type. */
     typedef _Bool bool;
@@ -503,20 +527,64 @@ typedef uint64_t u_int64_t;
 
 // clang-format on
 
-#if defined(__x86_64__) || defined(_M_AMD64)
-    #define TARGET_ARCH "x86_64"
-#endif
-
-#if defined(__i386__) || defined(_M_IX86)
-    #define TARGET_ARCH "i386"
-#endif
-
-#if defined(__arm__) || defined(_M_ARM)
-    #define TARGET_ARCH "ARM"
-#endif
-
-#if defined(__arm64__) || defined(_M_ARM64) || defined(__aarch64__)
-    #define TARGET_ARCH "ARM64"
+//
+// We don't rely on __has_target_os or other related stuff.
+//
+#if __has_builtin(__is_target_arch)
+    #if __is_target_arch(arm)
+        #define TARGET_CPU_ARM    1
+        #define TARGET_CPU_ARM64  0
+        #define TARGET_CPU_I386   0
+        #define TARGET_CPU_X86_64 0
+        #define TARGET_CPU_STRING "ARM"
+    #elif __is_target_arch(arm64) || __is_target_arch(arm64e) || __is_target_arch(arm64_32)
+        #define TARGET_CPU_ARM    0
+        #define TARGET_CPU_ARM64  1
+        #define TARGET_CPU_I386   0
+        #define TARGET_CPU_X86_64 0
+        #define TARGET_CPU_STRING "ARM64"
+    #elif __is_target_arch(i386)
+        #define TARGET_CPU_ARM    0
+        #define TARGET_CPU_ARM64  0
+        #define TARGET_CPU_I386   1
+        #define TARGET_CPU_X86_64 0
+        #define TARGET_CPU_STRING "i386"
+    #elif __is_target_arch(x86_64)
+        #define TARGET_CPU_ARM    0
+        #define TARGET_CPU_ARM64  0
+        #define TARGET_CPU_I386   0
+        #define TARGET_CPU_X86_64 1
+        #define TARGET_CPU_STRING "x86_64"
+    #endif
+#else
+    //
+    // If that isn't available, use the old fashioned method.
+    //
+    #if defined(__arm__) || defined(_M_ARM)
+        #define TARGET_CPU_ARM    1
+        #define TARGET_CPU_ARM64  0
+        #define TARGET_CPU_I386   0
+        #define TARGET_CPU_X86_64 0
+        #define TARGET_CPU_STRING "ARM"
+    #elif defined(__arm64__) || defined(_M_ARM64) || defined(__aarch64__)
+        #define TARGET_CPU_ARM    0
+        #define TARGET_CPU_ARM64  1
+        #define TARGET_CPU_I386   0
+        #define TARGET_CPU_X86_64 0
+        #define TARGET_CPU_STRING "ARM64"
+    #elif defined(__i386__) || defined(_M_IX86)
+        #define TARGET_CPU_ARM    0
+        #define TARGET_CPU_ARM64  0
+        #define TARGET_CPU_I386   1
+        #define TARGET_CPU_X86_64 0
+        #define TARGET_CPU_STRING "i386"
+    #elif defined(__x86_64__) || defined(_M_AMD64)
+        #define TARGET_CPU_ARM    0
+        #define TARGET_CPU_ARM64  0
+        #define TARGET_CPU_I386   0
+        #define TARGET_CPU_X86_64 1
+        #define TARGET_CPU_STRING "x86_64"
+    #endif
 #endif
 
 #ifndef CURRENT_CONFIG

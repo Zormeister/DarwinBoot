@@ -12,7 +12,7 @@ struct {
 enum {
     FirmwareInfo = 0,
     SystemInfo,
-    MainboardInfo,
+    BaseboardInfo,
     ChasisInfo,
     ProcessorInfo,
     CacheInfo = 7,

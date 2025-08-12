@@ -15,7 +15,11 @@ CDBKernelRef CDBKernelCreateFromBinary(const UInt8 *Binary, size_t BinarySize);
 
 /* IsCached == true when the kernel is wrapped in a prelinkedkernel or kernel collection. */
 bool CDBKernelIsCached(CDBKernelRef);
+
+/* IsPrelinked -> is the kernel packaged in a prelinkedkernel format, or does it use the prelinkedkernel format */
 bool CDBKernelIsPrelinked(CDBKernelRef);
+
+/* IsFileset -> is the kernel packaged into a KernelCollection || does the kernel use the Fileset format */
 bool CDBKernelIsFileset(CDBKernelRef);
 
 /* This creates entries for the DeviceTree, whch the kernel will load in KLDBootstrap.  */

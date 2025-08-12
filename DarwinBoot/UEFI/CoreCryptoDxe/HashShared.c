@@ -3,7 +3,7 @@
 #include <Platform/EFI/EFI.h>
 
 /* I only use this header for CORECRYPTO_AVAILABLE */
-#include <CoreDarwinBoot/Crypto/CoreCrypto.h>
+#include <CoreDarwinBoot/Crypto.h>
 
 #if CORECRYPTO_AVAILABLE
     #include <corecrypto/ccmd5.h>

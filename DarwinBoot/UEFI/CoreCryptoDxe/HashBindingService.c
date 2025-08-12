@@ -6,7 +6,7 @@
 #include <Platform/EFI/Protocols/ServiceBinding.h>
 
 /* I only use this header for CORECRYPTO_AVAILABLE */
-#include <CoreDarwinBoot/Crypto/CoreCrypto.h>
+#include <CoreDarwinBoot/Crypto.h>
 #include <corecrypto/ccdigest.h>
 #include <stdlib.h>
 
