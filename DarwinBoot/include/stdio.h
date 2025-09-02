@@ -3,6 +3,6 @@
 #ifndef __libc_STDIO__
 #define __libc_STDIO__
 
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 #endif

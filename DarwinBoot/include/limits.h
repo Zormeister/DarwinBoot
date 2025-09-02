@@ -3,6 +3,6 @@
 #ifndef __libc_LIMITS__
 #define __libc_LIMITS__
 
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 #endif

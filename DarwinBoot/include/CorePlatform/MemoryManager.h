@@ -5,7 +5,7 @@
 
 /* MemoryManager!!! */
 
-/* Enables large memory seegments.  */
+/* Enables large memory segments.  */
 #define MEMMAN_LARGE_REGIONS 1
 
 #if MEMMAN_LARGE_REGIONS

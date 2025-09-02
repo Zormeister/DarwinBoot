@@ -3,6 +3,10 @@
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
+CDB_API_BEGIN
+
 void CDBLog(const char *fmt, ...);
 
-extern void panic(const char *fmt, ...);
+void panic(const char *fmt, ...);
+
+CDB_API_END

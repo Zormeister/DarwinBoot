@@ -26,7 +26,8 @@ bool CPMemoryManagerInit(MemoryRange *Ranges, size_t NumRanges)
     gMemoryManager.Ranges = Ranges;
     gMemoryManager.NumRanges = NumRanges;
 
-    /* Reserve our memory regions */
+    /* Reserve our memory regions here */
+    
     return true;
 }
 

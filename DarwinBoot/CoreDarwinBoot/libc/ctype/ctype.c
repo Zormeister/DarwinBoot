@@ -1,6 +1,6 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 /* This is based on ASCII- I doubt I'd interact with unicode here. */
 

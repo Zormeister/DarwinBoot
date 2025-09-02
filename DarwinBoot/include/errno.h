@@ -3,6 +3,6 @@
 #ifndef __libc_ERRNO__
 #define __libc_ERRNO__
 
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 #endif

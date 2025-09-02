@@ -3,6 +3,6 @@
 #ifndef __libc_STRING__
 #define __libc_STRING__
 
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 #endif

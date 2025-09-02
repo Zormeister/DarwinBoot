@@ -2,7 +2,7 @@ toolchain("arm-elf")
     set_kind("standalone")
 
     set_toolset("cc", "clang")
-    set_toolset("cxx", "clang", "clang++")
+    set_toolset("cxx", "clang++", "clang++")
     set_toolset("ld", "ld.lld", "ld.lld")
     set_toolset("sh", "clang++", "clang")
     set_toolset("ar", "ar")

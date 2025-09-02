@@ -26,7 +26,7 @@
 //
 #ifdef __cplusplus
     #if __cplusplus < 201703L
-        #error This project uses C 17, please use C 17 for compilation/your LSP
+        #error This project uses C++ 17, please use C++ 17 for compilation/your LSP
     #endif
 #endif
 #if defined(__STDC_VERSION__)
@@ -261,11 +261,15 @@
     #endif
 
     #ifdef __WCHAR_TYPE__
-        typedef __WCHAR_TYPE__ wchar_t;
-        #define WCHAR_MAX      __WCHAR_MAX__
+        #if !__cplusplus
+            typedef __WCHAR_TYPE__ wchar_t;
+            #define WCHAR_MAX      __WCHAR_MAX__
+        #endif
     #else
-        typedef uint16_t wchar_t;
-        #define WCHAR_MAX 65535
+        #if !__cplusplus
+            typedef uint16_t wchar_t;
+            #define WCHAR_MAX 65535
+        #endif
     #endif
 
     #define WSTRING(str) u##str
@@ -459,11 +463,15 @@
     #endif
 
     #ifdef __WCHAR_TYPE__
-        typedef __WCHAR_TYPE__ wchar_t;
-        #define WCHAR_MAX      __WCHAR_MAX__
+        #if !__cplusplus
+            typedef __WCHAR_TYPE__ wchar_t;
+            #define WCHAR_MAX      __WCHAR_MAX__
+        #endif
     #else
-        typedef uint16_t wchar_t;
-        #define WCHAR_MAX 65535
+        #if !__cplusplus
+            typedef uint16_t wchar_t;
+            #define WCHAR_MAX 65535
+        #endif
     #endif
 
     #define WSTRING(str) L##str
@@ -501,7 +509,7 @@ typedef uint64_t u_int64_t;
     #define true  1
     #define false 0
 
-#else
+#elif !__cplusplus
 
     /* Otherwise just treat it like a char. */
     typedef char bool;
@@ -519,11 +527,17 @@ typedef uint64_t u_int64_t;
 #define STRUCT_SIZE_CHECK(type, size) __db_type_must_be_of_size(struct type, size)
 #define TYPE_SIZE_CHECK(type, size)   __db_type_must_be_of_size(type, size)
 
-#if defined(__x86_64__) || defined(__arm64__)
-    typedef UInt64 UIntN;
+#if __cplusplus
+#define __BEGIN_DECLS extern "C" {
+#define __END_DECLS }
 #else
-    typedef UInt32 UIntN;
+#define __BEGIN_DECLS
+#define __END_DECLS
 #endif
+
+/* This is to account for the fact C++ is now supported in the project. */
+#define CDB_API_BEGIN __BEGIN_DECLS
+#define CDB_API_END __END_DECLS
 
 // clang-format on
 
@@ -537,24 +551,36 @@ typedef uint64_t u_int64_t;
         #define TARGET_CPU_I386   0
         #define TARGET_CPU_X86_64 0
         #define TARGET_CPU_STRING "ARM"
+        #define TARGET_CPU_ADDRESS_SIZE 32
     #elif __is_target_arch(arm64) || __is_target_arch(arm64e) || __is_target_arch(arm64_32)
         #define TARGET_CPU_ARM    0
         #define TARGET_CPU_ARM64  1
         #define TARGET_CPU_I386   0
         #define TARGET_CPU_X86_64 0
         #define TARGET_CPU_STRING "ARM64"
+
+        //
+        // arm64_32 is ARM64, but with 32-bit pointers.
+        //
+        #if __is_target_arch(arm64_32)
+            #define TARGET_CPU_ADDRESS_SIZE 32
+        #else
+            #define TARGET_CPU_ADDRESS_SIZE 64
+        #endif
     #elif __is_target_arch(i386)
         #define TARGET_CPU_ARM    0
         #define TARGET_CPU_ARM64  0
         #define TARGET_CPU_I386   1
         #define TARGET_CPU_X86_64 0
         #define TARGET_CPU_STRING "i386"
+        #define TARGET_CPU_ADDRESS_SIZE 32
     #elif __is_target_arch(x86_64)
         #define TARGET_CPU_ARM    0
         #define TARGET_CPU_ARM64  0
         #define TARGET_CPU_I386   0
         #define TARGET_CPU_X86_64 1
         #define TARGET_CPU_STRING "x86_64"
+        #define TARGET_CPU_ADDRESS_SIZE 64
     #endif
 #else
     //
@@ -587,6 +613,14 @@ typedef uint64_t u_int64_t;
     #endif
 #endif
 
+#if TARGET_CPU_X86_64 || TARGET_CPU_ARM64
+    typedef UInt64 UIntN;
+#else
+    typedef UInt32 UIntN;
+#endif
+
+#pragma mark - Target feature macros
+
 #ifndef CURRENT_CONFIG
     #define CONFIG_RELEASE     1
     #define CONFIG_DEBUG       0
@@ -595,15 +629,18 @@ typedef uint64_t u_int64_t;
 
 #if defined(CONFIG_RELEASE) && CONFIG_RELEASE == 1
     #define CURRENT_CONFIG "RELEASE"
+    #define RELEASE        1
 #endif
 
 /* have the same optimizations as RELEASE but have DEBUG prints */
 #if defined(CONFIG_DEVELOPMENT) && CONFIG_DEVELOPMENT == 1
     #define CURRENT_CONFIG "DEVELOPMENT"
+    #define DEVELOPMENT    1
 #endif
 
 #if defined(CONFIG_DEBUG) && CONFIG_DEBUG == 1
     #define CURRENT_CONFIG "DEBUG"
+    #define DEBUG          1
 #endif
 
 #pragma mark - Non-Standard Types
@@ -617,6 +654,19 @@ typedef struct {
 } guid_t;
 
 typedef uint8_t uuid_t[16];
+
+#if TARGET_CPU_ADDRESS_SIZE == 64
+typedef uint64_t virtual_address_t;
+typedef uint64_t physical_address_t;
+#elif TARGET_CPU_ADDRESS_SIZE == 32
+typedef uint32_t virtual_address_t;
+typedef uint32_t physical_address_t;
+#else
+#error "Unsupported CPU address size."
+#endif
+
+typedef virtual_address_t CDBVirtualAddress;
+typedef physical_address_t CDBPhysicalAddress;
 
 #pragma mark - Built-in Macros and Types
 
@@ -649,6 +699,10 @@ typedef uint8_t uuid_t[16];
 
 #if __has_builtin(__builtin_bswap64)
     #define bswap64(x) __builtin_bswap64(x)
+#endif
+
+#if __DARWINBOOT_CXX_REARCH__
+#define COREPLATFORM_CXX 1
 #endif
 
 #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__

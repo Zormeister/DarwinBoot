@@ -3,6 +3,6 @@
 #ifndef __libc_INTTYPES__
 #define __libc_INTTYPES__
 
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 #endif

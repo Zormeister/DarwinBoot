@@ -3,6 +3,6 @@
 #ifndef __libc_ASSERT__
 #define __libc_ASSERT__
 
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 #endif

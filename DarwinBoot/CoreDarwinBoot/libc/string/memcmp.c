@@ -1,6 +1,6 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 /* Ref for the return values is https://cplusplus.com/reference/cstring/memcmp/ */
 int memcmp(const void *m1, const void *m2, size_t n)

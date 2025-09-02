@@ -1,7 +1,7 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#ifndef __LIBC_COMPAT__
-#define __LIBC_COMPAT__
+#ifndef __LIBC__
+#define __LIBC__
 
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 #include <CoreDarwinBoot/CoreRoutines.h>
@@ -21,6 +21,8 @@
     #define assert(...) (void)0
 
 #endif
+
+CDB_API_BEGIN
 
 /* ctype.h */
 int isalnum(int c);
@@ -92,6 +94,8 @@ size_t strlen(const char *str);
 
 /* wchar.h */
 size_t wcslen(const wchar_t *wstr);
+
+CDB_API_END
 
 /* errno.h */
 typedef int errno_t;

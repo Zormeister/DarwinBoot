@@ -3,14 +3,15 @@ includes("../../toolchains/uefi.lua")
 target("On-Disk Loader")
     set_basename("boot.efi")
     add_includedirs("$(projectdir)/DarwinBoot/include")
-    set_languages("c17")
+    set_languages("c17", "c++17")
     set_kind("binary")
 
     add_defines("EFIDISKBOOT", "DARWINBOOTEFI")
 
     add_files(
-        "$(projectdir)/DarwinBoot/CoreDarwinBoot/Platform/**.c",
+        "$(projectdir)/DarwinBoot/CoreDarwinBoot/**.c",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/libc/**.c",
+        "$(projectdir)/DarwinBoot/CoreDarwinBoot/libcxxabi/*.cpp",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/*.c",
         "$(projectdir)/DarwinBoot/UEFI/Platform/**.c",
         "$(projectdir)/DarwinBoot/UEFI/DiskBoot/*.c"

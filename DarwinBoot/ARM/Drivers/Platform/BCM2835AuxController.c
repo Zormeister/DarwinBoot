@@ -86,9 +86,9 @@ bool BCM2835AuxControllerInit(PlatformDriver *Driver, PlatformDevice *dev)
     Controller->EnabledState = Controller->AuxDev->ReadReg32(TO_PLATFORM_DEVICE(Controller->AuxDev), rAUX_ENABLES);
 
     /* Populate callbacks. */
-    Controller->IsPeripheralEnabled = IsPeripheralEnabled;
-    Controller->EnablePeripheral = EnablePeripheral;
-    Controller->IsPendingIRQ = IsPendingIRQ;
+    Controller->IsPeripheralEnabled = &IsPeripheralEnabled;
+    Controller->EnablePeripheral = &EnablePeripheral;
+    Controller->IsPendingIRQ = &IsPendingIRQ;
 
     Controller->Driver.DriverName = "BCM2835AuxController"; /* there should only ever be one of us. */
     Controller->Driver.Class = 0;

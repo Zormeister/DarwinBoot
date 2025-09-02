@@ -3,6 +3,6 @@
 #ifndef __libc_MALLOC__
 #define __libc_MALLOC__
 
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 #endif

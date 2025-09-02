@@ -3,6 +3,6 @@
 #ifndef __libc_WCHAR__
 #define __libc_WCHAR__
 
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 #endif

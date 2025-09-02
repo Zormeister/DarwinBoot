@@ -3,21 +3,11 @@
 #pragma once
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 #include <Platform/FDT/Header.h>
+#include <errno.h>
 
 typedef struct _CDBDeviceTree *CDBDeviceTreeRef;
 typedef struct _CDBDTNode *CDBDTNodeRef;
 typedef struct _CDBDTProperty *CDBDTPropertyRef;
-
-enum DTDataType {
-    Structure = 1,
-    Integer8,
-    Integer16,
-    Integer32,
-    Integer64,
-    Data, /* This represents any binary data. All DT data should be padded to fit a 'chunk' of data */
-    String,
-    Any,
-};
 
 struct BinaryDTProperty {
     char name[32];
@@ -54,6 +44,21 @@ CDBDeviceTreeRef CDBDeviceTreeCreateFromBinary(const UInt8 *Binary);
  @abstract Creates a new DeviceTree, useful in the case of x86_64.
  */
 CDBDeviceTreeRef CDBDeviceTreeCreate(void);
+
+/*!
+ * @function CDBDeviceTreeFlatten
+ *
+ * @param    DeviceTree
+ * The DeviceTree to flatten.
+ *
+ * @param    Buffer
+ * The buffer to write the flattened DeviceTree to.
+ *
+ * @param    BufferSize
+ * The size of the buffer.
+ */
+errno_t CDBDeviceTreeFlatten(CDBDeviceTreeRef DeviceTree, void *Buffer, size_t *BufferSize);
+
 
 /*!
   @function CDBDTGetRootNode

@@ -1,7 +1,6 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #pragma once
-#include "CoreDarwinBoot/CDBBasicTypes.h"
 #include <Drivers/Driver.h>
 
 enum {
@@ -43,13 +42,8 @@ struct {
     UInt32 Version;
 
     /* callbacks */
-#if __LP64__
-    UInt64 (*PhysicalToVirtualAddress)(UInt64 PhysicalAddress);
-    UInt64 (*VirtualToPhysicalAddress)(UInt64 VirtualAddress);
-#else
-    UInt32 (*PhysicalToVirtualAddress)(UInt32 PhysicalAddress);
-    UInt32 (*VirtualToPhysicalAddress)(UInt32 VirtualAddress);
-#endif
+    CDBVirtualAddress (*PhysicalToVirtualAddress)(CDBPhysicalAddress PhysicalAddress);
+    CDBPhysicalAddress (*VirtualToPhysicalAddress)(CDBVirtualAddress VirtualAddress);
 
     /* mapper data */
     MemoryRange AvailableRanges[MAX_MEM_RANGES];
@@ -60,9 +54,6 @@ extern PageMapper gMapper;
 bool CPInitialize(MemoryRange EarlyMem, PlatformDeviceDescriptor *Devices);
 
 void AddRangeToPageMap(MemoryRange NewRange);
-
-UInt64 PhysicalAddressToVirutal(UInt64 PA);
-UInt64 VirtualAddressToPhysical(UInt64 VA);
 
 /*!
  * @function CPGetDeviceIdentity

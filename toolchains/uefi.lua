@@ -2,7 +2,7 @@ toolchain("uefi")
     set_kind("standalone")
 
     set_toolset("cc", "clang")
-    set_toolset("cxx", "clang", "clang++")
+    set_toolset("cxx", "clang++", "clang++")
     set_toolset("ld", "lld-link", "lld-link") -- Use LLVM's PE/COFF linker
     set_toolset("sh", "clang++", "clang")
     set_toolset("ar", "llvm-ar") -- Use the LLVM archiver, this makes the project buildable on Windows.
@@ -25,6 +25,7 @@ toolchain("uefi")
 
     on_load(function (toolchain)
         toolchain:add("cflags", "-nostdlib -nostdinc -nolibc -mabi=ms -target x86_64-pc-win32-coff -fno-stack-protector -fno-stack-clash-protection -fno-strict-aliasing -fno-stack-check -fshort-wchar -mno-red-zone -Wno-incompatible-library-redeclaration -ffreestanding -Wno-builtin-requires-header -Wno-incompatible-library-redeclaration -mno-stack-arg-probe")
+        toolchain:add("cxxflags", "-nostdlib -nostdinc -mabi=ms -target x86_64-pc-win32-coff -fno-stack-protector -fno-stack-clash-protection -fno-strict-aliasing -fno-stack-check -fshort-wchar -mno-red-zone -Wno-incompatible-library-redeclaration -ffreestanding -Wno-builtin-requires-header -Wno-incompatible-library-redeclaration -mno-stack-arg-probe -fno-exceptions")
         toolchain:add("includedirs", "$(projectdir)/DarwinBoot/include")
 
         toolchain:add("ldflags", "-subsystem:efi_application -nodefaultlib -dll -entry:EFIMain")

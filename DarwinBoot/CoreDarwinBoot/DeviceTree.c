@@ -17,7 +17,6 @@ struct _CDBDTNode {
 
 struct _CDBDTProperty {
     const char *Name;
-    enum DTDataType DataType;
     size_t DataSize;
     void *Data;
     CDBDTPropertyRef NextProperty;
@@ -26,7 +25,7 @@ struct _CDBDTProperty {
 #if __x86_64__ || __i386__
     #define kRootNodeName    "/"
     #define kRootNodeNameLen 2
-#elif __arm64__ || __arm64__
+#elif __arm64__ || __arm__
     #define kRootNodeName    "device-tree"
     #define kRootNodeNameLen 12
 #endif

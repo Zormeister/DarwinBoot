@@ -2,7 +2,7 @@
 
 #include "AllocWatchdog.h"
 #include "stdlib_internal.h"
-#include <CoreDarwinBoot/libc_compat.h>
+#include <CoreDarwinBoot/libc.h>
 
 /*
  * God this reminds me of the old days...

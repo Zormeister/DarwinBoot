@@ -9,9 +9,9 @@ if is_plat("bcm2712") then
         "DRIVER_BCM2835_PWM"
     )
 
-    local board = os.getenv("BOARD")
+    -- local board = os.getenv("BOARD")
 
-    add_defines("BOARD_BCM2712_" .. board)
+    -- add_defines("BOARD_BCM2712_" .. board)
 
     machinedir = "RPi"
 

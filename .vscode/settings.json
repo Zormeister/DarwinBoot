@@ -4,7 +4,6 @@
     },
     "clangd.fallbackFlags": [
         "-I${workspaceFolder}/DarwinBoot/include",
-        "-I${workspaceFolder}/External/OpenAPFS/include",
         "-I${workspaceFolder}/External/corecrypto/include",
         "-DBUILD_DATE=clangd",
         "-DBUILDER=clangd",

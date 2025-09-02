@@ -1,6 +1,7 @@
 includes("../../configs/*.lua")
 
 target("ARMwinBoot")
+    set_languages("c17", "c++17")
     set_basename("DarwinBoot.$(platform).$(board).bin")
 
     add_defines("ARMSTAGE1", "DARWINBOOTARM")
@@ -9,7 +10,8 @@ target("ARMwinBoot")
         "$(projectdir)/DarwinBoot/ARM/Machine/Common/*_$(arch).s",
         "$(projectdir)/DarwinBoot/ARM/CorePlatform/Arch/$(arch)/*.s",
         "$(projectdir)/DarwinBoot/ARM/CorePlatform/Arch/$(arch)/*.c",
-        "$(projectdir)/DarwinBoot/ARM/CorePlatform/Drivers/**.c",
+        "$(projectdir)/DarwinBoot/ARM/Drivers/**.c*",
+        "$(projectdir)/DarwinBoot/ARM/**.cpp",
         "$(projectdir)/DarwinBoot/ARM/Machine/" ..machinedir.. "/*.s",
         "$(projectdir)/DarwinBoot/ARM/Machine/" ..machinedir.. "/*.c",
         -- "$(projectdir)/DarwinBoot/CoreDarwinBoot/Platform/**.c",
