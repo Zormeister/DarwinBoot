@@ -85,7 +85,7 @@ namespace CoreDarwinBoot {
             Type m_type;
         };
 
-        void oneshot(Type digestType, const void *pData, size_t size, void *pDigest);
+        static void oneshot(Type digestType, const void *pData, size_t size, void *pDigest);
     }
 
 }

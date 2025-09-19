@@ -52,6 +52,4 @@ UIntN CcDigestGetHashSizeFromGuid(EFI_GUID *Algorithm)
     return 0;
 }
 
-    #pragma mark Hash Protocol
-
 #endif

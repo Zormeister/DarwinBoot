@@ -2,7 +2,6 @@
 
 #pragma once
 #include <CoreDarwinBoot/BootArgs.h>
-#include <CoreDarwinBoot/CPUInfo.h>
 #include <CoreDarwinBoot/CoreRoutines.h>
 #include <CoreDarwinBoot/DeviceTree.h>
 #include <CoreDarwinBoot/FileSystem.h>

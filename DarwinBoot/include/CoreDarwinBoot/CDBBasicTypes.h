@@ -1,18 +1,19 @@
 // Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __COREDARWINBOOT_BASICTYPES__
+#define __COREDARWINBOOT_BASICTYPES__
 
-//
-// CDBBasicTypes:
-// The name is a little misleading, this header serves as a giga-header for:
-//  - libc/C Standard types
-//  - CPU-related macros
-//  - Non-standard types, eg: uuid_t (and DarwinBoot's guid_t)
-//  - Additionally, it covers macros from <inttypes.h
-//  - MacTypes (or libkern/IOKit) type names
-//  - BSD-style type names
-//  - Boolean type (_Bool for C17, uses a char for lower C standards, however I have heard about C23)
-//
+/*!
+ * @group Basic Types
+ * The name is a little misleading, this header serves as a giga-header for:
+ *  - libc/C Standard types
+ *  - CPU-related macros
+ *  - Non-standard types, eg: uuid_t (and DarwinBoot's guid_t)
+ *  - Additionally, it covers macros from <inttypes.h>
+ *  - MacTypes (or libkern/IOKit) type names
+ *  - BSD-style type names
+ *  - Boolean type (_Bool for C17, uses a char for lower C standards, however I have heard about C23)
+ */
 
 /*
  * unfun fact: if this header is renamed to fit the naming scheme of the rest of this directory
@@ -20,10 +21,6 @@
  * you're willing to scour the entire project for header breaks.
  */
 
-// 
-// clangd was annoying. But I do wonder if I should've written this in C++ sometimes.
-// Maybe C was the better choice anyways. More room to accidentally violate the laws of programming.
-//
 #ifdef __cplusplus
     #if __cplusplus < 201703L
         #error This project uses C++ 17, please use C++ 17 for compilation/your LSP
@@ -742,3 +739,17 @@ typedef physical_address_t CDBPhysicalAddress;
     #define OSSwapLittleToHostInt64(x) bswap64(x)
 
 #endif
+
+/*! 
+ * @define CDB_OBJECT_DEFINE
+ * The macro to define a CoreDarwinBoot object.
+ */
+#define CDB_OBJECT_DEFINE(obj) typedef struct _CDB##obj *CDB##obj##Ref
+
+#if __cplusplus
+    #define CDB_EXPORT extern "C"
+#else
+    #define CDB_EXPORT extern
+#endif
+
+#endif /* __COREDARWINBOOT_BASICTYPES__ */

@@ -6,7 +6,9 @@
 using namespace CorePlatform;
 
 CDevice::CDevice(const char **ppCompatibleID, size_t numCompatibles) : IDevice(ppCompatibleID, numCompatibles)
-{}
+{
+    /* Nothing else to do that isn't handled in IDevice::IDevice */
+}
 
 bool CDevice::matchesCompatible(const char *pCompatibleID)
 {

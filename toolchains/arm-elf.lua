@@ -24,7 +24,39 @@ toolchain("arm-elf")
     end)
 
     on_load(function (toolchain)
-        toolchain:add("cflags", "-nostdlib -nostdlibinc -target $(arch)-pc-elf -fno-stack-protector -fno-stack-clash-protection -fno-strict-aliasing -fno-stack-check -fshort-wchar -mno-red-zone -Wno-incompatible-library-redeclaration -ffreestanding -Wno-builtin-requires-header -Wno-incompatible-library-redeclaration -mno-stack-arg-probe")
+        toolchain:add("cflags", 
+                      "-nostdlib",
+                      "-nostdlibinc",
+                      "-target $(arch)-pc-elf",
+                      "-fno-stack-protector", 
+                      "-fno-stack-clash-protection", 
+                      "-fno-strict-aliasing", 
+                      "-fno-stack-check", 
+                      "-fshort-wchar", 
+                      "-mno-red-zone", 
+                      "-Wno-incompatible-library-redeclaration", 
+                      "-ffreestanding", 
+                      "-Wno-builtin-requires-header", 
+                      "-Wno-incompatible-library-redeclaration", 
+                      "-mno-stack-arg-probe")
+
+        toolchain:add("cxxflags", 
+                      "-nostdlib",
+                      "-nostdlibinc",
+                      "-target $(arch)-pc-elf",
+                      "-fno-stack-protector", 
+                      "-fno-stack-clash-protection", 
+                      "-fno-strict-aliasing", 
+                      "-fno-stack-check", 
+                      "-fshort-wchar", 
+                      "-mno-red-zone", 
+                      "-Wno-incompatible-library-redeclaration", 
+                      "-ffreestanding", 
+                      "-Wno-builtin-requires-header", 
+                      "-Wno-incompatible-library-redeclaration", 
+                      "-mno-stack-arg-probe",
+                      "-fno-exceptions")
+
         toolchain:add("asflags", "-target $(arch)-pc-elf")
         toolchain:add("includedirs", "$(projectdir)/DarwinBoot/include")
     end)

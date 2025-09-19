@@ -23,5 +23,6 @@ namespace CorePlatform {
         protected:
         volatile UInt8 *fRegisters;
         physical_address_t fAddress;
+        size_t fMemorySize;
     };
 }

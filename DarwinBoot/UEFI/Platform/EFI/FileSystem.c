@@ -12,10 +12,10 @@
 #define kMaxFileSystems 64
 
 #if CONFIG_DEVELOPMENT || CONFIG_DEBUG
-    #define DBG_TRACE(msg, ...) CDBLog("FS(%s): " msg, __FUNCTION__, __VA_ARGS__)
+    #define DBG_TRACE(msg, args...) CDBLog("FS(%s): " msg, __FUNCTION__, ##args)
 #else
     /* if/when DarwinBoot reaches production, make this not print. */
-    #define DBG_TRACE(msg, ...) CDBLog("FS(%s): " msg, __FUNCTION__, __VA_ARGS__)
+    #define DBG_TRACE(msg, args...) CDBLog("FS(%s): " msg, __FUNCTION__, ##args)
 #endif
 
 struct _CDBFileSystem {

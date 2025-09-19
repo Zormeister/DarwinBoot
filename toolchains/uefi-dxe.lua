@@ -24,8 +24,44 @@ toolchain("uefi-dxe")
     end)
 
     on_load(function (toolchain)
-        toolchain:add("cflags", "-nostdlib -nostdinc -nolibc -mabi=ms -target x86_64-pc-win32-coff -fno-stack-protector -fno-stack-clash-protection -fno-strict-aliasing -fno-stack-check -fshort-wchar -mno-red-zone -Wno-incompatible-library-redeclaration -ffreestanding -Wno-builtin-requires-header -Wno-incompatible-library-redeclaration -mno-stack-arg-probe")
-        toolchain:add("cxxflags", "-nostdlib -nostdinc -mabi=ms -target x86_64-pc-win32-coff -fno-stack-protector -fno-stack-clash-protection -fno-strict-aliasing -fno-stack-check -fshort-wchar -mno-red-zone -Wno-incompatible-library-redeclaration -ffreestanding -Wno-builtin-requires-header -Wno-incompatible-library-redeclaration -mno-stack-arg-probe -fno-exceptions")
+        toolchain:add("cflags", 
+                      "-nostdlib", 
+                      "-nostdinc", 
+                      "-nolibc", 
+                      "-mabi=ms", 
+                      "-target x86_64-pc-win32-coff", 
+                      "-fno-stack-protector", 
+                      "-fno-stack-clash-protection", 
+                      "-fno-strict-aliasing", 
+                      "-fno-stack-check", 
+                      "-fshort-wchar", 
+                      "-mno-red-zone", 
+                      "-Wno-incompatible-library-redeclaration", 
+                      "-ffreestanding", 
+                      "-Wno-builtin-requires-header", 
+                      "-Wno-incompatible-library-redeclaration", 
+                      "-mno-stack-arg-probe")
+
+        toolchain:add("cxxflags", 
+                      "-nostdlib", 
+                      "-nostdinc", 
+                      "-nolibc", 
+                      "-mabi=ms", 
+                      "-target x86_64-pc-win32-coff", 
+                      "-fno-stack-protector", 
+                      "-fno-stack-clash-protection", 
+                      "-fno-strict-aliasing", 
+                      "-fno-stack-check", 
+                      "-fshort-wchar", 
+                      "-mno-red-zone", 
+                      "-Wno-incompatible-library-redeclaration", 
+                      "-ffreestanding", 
+                      "-Wno-builtin-requires-header", 
+                      "-Wno-incompatible-library-redeclaration", 
+                      "-mno-stack-arg-probe",
+                      "-fno-exceptions",
+                     "-isystem $(projectdir)/DarwinBoot/include/libcxx/")
+        
         toolchain:add("includedirs", "$(projectdir)/DarwinBoot/include")
 
         toolchain:add("ldflags", "-subsystem:efi_boot_service_driver -nodefaultlib -dll -entry:EFIMain")
