@@ -1,7 +1,9 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/CDBBasicTypes.h>
+#ifndef __COREDARWINBOOT_CRYPTO_HPP__
+#define __COREDARWINBOOT_CRYPTO_HPP__
+
+#include <CoreDarwinBoot/Base.hpp>
 
 /*
  * What in the grand FUCK do we need corecrypto for?
@@ -38,9 +40,6 @@
 
 #if CORECRYPTO_AVAILABLE
 
-    //
-    // If the corecrypto project is available, include it here.
-    //
 extern "C" {
     #include <corecrypto/cc.h>
     #include <corecrypto/ccaes.h>
@@ -56,7 +55,7 @@ extern "C" {
 
 #if __cplusplus
 
-namespace CoreDarwinBoot {
+namespace CDB {
 
     namespace Digest {
 
@@ -91,3 +90,5 @@ namespace CoreDarwinBoot {
 }
 
 #endif
+
+#endif /* __COREDARWINBOOT_CRYPTO_HPP__ */

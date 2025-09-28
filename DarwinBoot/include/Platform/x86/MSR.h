@@ -1,6 +1,7 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_X86_MSR_H__
+#define __PLATFORM_X86_MSR_H__
 
 /* 64-bit */
 #define MSR_P5_TSC 0x00000010
@@ -15,3 +16,5 @@
 
 #define MSR_AMD_HW_CONFIG      0xC0010015
 #define AMD_HW_CONFIG_TSC_LOCK (1 << 21)
+
+#endif /* __PLATFORM_X86_MSR_H__ */

@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_PARTITIONINFO_H__
+#define __PLATFORM_EFI_PROTOCOLS_PARTITIONINFO_H__
+
 #include <Platform/EFI/Types.h>
 
 #define EFI_PARTITION_INFO_PROTOCOL_GUID \
@@ -90,3 +92,5 @@ typedef struct {
         EFI_GPT_PARTITION_ENTRY GPT;
     } Info;
 } __packed EFI_PARTITION_INFO_PROTOCOL;
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_PARTITIONINFO_H__ */

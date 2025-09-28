@@ -1,7 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
+#include <stdlib.h>
+#include <string.h>
 #include "AllocWatchdog.h"
-#include <CoreDarwinBoot/libc.h>
 
 void *realloc(void *ptr, size_t size)
 {

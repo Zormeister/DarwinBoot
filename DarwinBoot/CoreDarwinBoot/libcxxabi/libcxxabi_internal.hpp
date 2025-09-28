@@ -1,9 +1,9 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #ifndef __LIBCXXABI_INTERNAL__
 #define __LIBCXXABI_INTERNAL__
 
-#include <CoreDarwinBoot/libcxxabi.h>
+#include <libcxxabi.h>
 
 namespace __cxxabiv1 {
 

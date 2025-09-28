@@ -1,7 +1,9 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <Platform/Apple/MachO.h>
+#ifndef __PLATFORM_APPLE_MKEXT_H__
+#define __PLATFORM_APPLE_MKEXT_H__
+
+#include <Platform/Apple/Mach.h>
 
 /* ah mkexts. the original kext collections. */
 
@@ -53,3 +55,5 @@ struct {
     UInt32 FullSize;
     UInt8 Data[];
 } typedef MKextFileV2;
+
+#endif /* __PLATFORM_APPLE_MKEXT_H__ */

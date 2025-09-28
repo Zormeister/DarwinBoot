@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_SMBIOS_TYPES_TABLEHEADER_H__
+#define __PLATFORM_SMBIOS_TYPES_TABLEHEADER_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 struct {
@@ -21,3 +23,5 @@ enum {
     MemoryDeviceInfo,
     MemoryMappedAddresses = 19, /* 'Memory Array Mapped Address' */
 } typedef SMBIOSType;
+
+#endif /* __PLATFORM_SMBIOS_TYPES_TABLEHEADER_H__ */

@@ -1,6 +1,6 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include <CoreDarwinBoot/libc.h>
+#include <string.h>
 
 /* This is literally just memcmp's logic but const char *'d. */
 /* Let me know if this ever needs changing. */

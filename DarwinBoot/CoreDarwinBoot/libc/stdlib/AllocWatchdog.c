@@ -1,8 +1,9 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #include "AllocWatchdog.h"
 #include "stdlib_internal.h"
-#include <CoreDarwinBoot/libc.h>
+#include <stdlib.h>
+#include <string.h>
 
 /*
  * God this reminds me of the old days...

@@ -1,7 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/CDBBasicTypes.h>
+#ifndef __PLATFORM_SMBIOS_TYPES_SYSTEMINFO_H__
+#define __PLATFORM_SMBIOS_TYPES_SYSTEMINFO_H__
+
 #include <Platform/SMBIOS/Types/EntryPoint.h>
 #include <Platform/SMBIOS/Types/TableHeader.h>
 
@@ -28,3 +29,4 @@ struct {
     SMBIOSString SystemFamily;
 } PACKED typedef SMBIOSSystemInfoTable;
 
+#endif /* __PLATFORM_SMBIOS_TYPES_SYSTEMINFO_H__ */

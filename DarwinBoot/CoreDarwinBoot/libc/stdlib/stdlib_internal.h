@@ -1,7 +1,9 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/libc.h>
+#ifndef __STLIB_INTERNAL_H__
+#define __STLIB_INTERNAL_H__
+
+#include <stdlib.h>
 
 /* vprintf interface - handled by the platform */
 
@@ -11,3 +13,5 @@
  */
 extern void *platform_malloc(size_t size);
 extern void platform_free(void *mem);
+
+#endif /* __STLIB_INTERNAL_H__ */

@@ -1,6 +1,9 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_MPSERVICES_H__
+#define __PLATFORM_EFI_PROTOCOLS_MPSERVICES_H__
+
+#include "Platform/EFI/Types/Event.h"
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 #include <Platform/EFI/Types.h>
 
@@ -49,4 +52,23 @@ typedef void (*EFI_AP_PROCEDURE)(void *Argument);
 struct _EFI_MP_SERVICES_PROTOCOL {
     EFI_STATUS (*GetNumberOfProcessors)(EFI_MP_SERVICES_PROTOCOL *This, UIntN *NProc, UIntN *NProcEnabled);
     EFI_STATUS (*GetProcessorInfo)(EFI_MP_SERVICES_PROTOCOL *This, UIntN *Processor, EFI_PROCESSOR_INFORMATION *InfoBuffer);
+    EFI_STATUS (*StartupAllAPs)(EFI_MP_SERVICES_PROTOCOL *This, 
+                                EFI_AP_PROCEDURE Procedure, 
+                                bool SingleThread, 
+                                EFI_EVENT WaitEvent, 
+                                UIntN Timeout, 
+                                void *ProcedureArgument,
+                                UIntN **FailedProcessorList);
+    EFI_STATUS (*StartupThisAP)(EFI_MP_SERVICES_PROTOCOL *This,
+                                EFI_AP_PROCEDURE Procedure,
+                                UIntN ProcessorNumber,
+                                EFI_EVENT WaitEvent,
+                                UIntN Timeout,
+                                void *ProcedureArgument,
+                                bool *Finished);
+    EFI_STATUS (*SwitchBSP)(EFI_MP_SERVICES_PROTOCOL *This, UIntN ProcessorNumber, bool EnableOldBSP);
+    EFI_STATUS (*EnableDisableAP)(EFI_MP_SERVICES_PROTOCOL *This, UIntN ProcessorNumber, bool EnableAP, UInt32 *HealthFlag);
+    EFI_STATUS (*WhoAmI)(EFI_MP_SERVICES_PROTOCOL *This, UIntN *ProcessorNumber);
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_MPSERVICES_H__ */

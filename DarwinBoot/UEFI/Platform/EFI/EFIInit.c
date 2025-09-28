@@ -10,10 +10,6 @@ EFI_RUNTIME_SERVICES *RT = NULL;
 EFI_HANDLE IH = NULL;
 EFI_LOADED_IMAGE_PROTOCOL *LIP = NULL;
 
-extern void BootupMessageSend(void);
-
-extern void UEFIFileSystemInit(void);
-
 // don't startup filesystem services in DXEs, it'd be a waste of resources (and time). 
 // corecryptodxe + hfsplusdxe shouldn't need to access filesystems
 #define INIT_FILESYSTEM_SERVICES !UEFI_DXE
@@ -35,12 +31,7 @@ bool EFIInitialize(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable)
     RT = SystemTable->RuntimeServices;
     /* should i even bother to verify the integrity of the system table */
     SystemTable->ConOut->Reset(SystemTable->ConOut, false);
-    BootupMessageSend(); /* say our hello */
     IH = ImageHandle;
     BS->HandleProtocol(ImageHandle, &LoadedImageProtocol, (void **)&LIP);
-    CDBLog("UEFI: Grabbed Loaded Image Protocol handle.");
-#if INIT_FILESYSTEM_SERVICES
-    UEFIFileSystemInit();
-#endif
     return true;
 }

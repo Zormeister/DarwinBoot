@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_DISKIO_H__
+#define __PLATFORM_EFI_PROTOCOLS_DISKIO_H__
+
 #include <Platform/EFI/Types.h>
 
 #define EFI_DISK_IO_PROTOCOL_GUID \
@@ -41,3 +43,5 @@ struct _EFI_DISK_IO2_PROTOCOL {
     EFI_STATUS (*WriteDiskEx)(EFI_DISK_IO2_PROTOCOL *This, UInt32 MediaID, UInt64 Offset, EFI_DISK_IO2_TOKEN *Token, UIntN BufferSize, void *Buffer);
     EFI_STATUS (*FlushDiskEx)(EFI_DISK_IO2_PROTOCOL *This, EFI_DISK_IO2_TOKEN *Token);
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_DISKIO_H__ */

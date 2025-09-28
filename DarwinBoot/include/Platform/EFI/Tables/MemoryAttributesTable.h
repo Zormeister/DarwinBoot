@@ -1,6 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_TABLES_MEMORYATTRIBUTESTABLE_H__
+#define __PLATFORM_EFI_TABLES_MEMORYATTRIBUTESTABLE_H__
+
 #include <Platform/EFI/Types.h>
 
 #define EFI_MEMORY_ATTRIBUTES_TABLE_GUID \
@@ -16,3 +18,5 @@ struct {
 } typedef EFI_MEMORY_ATTRIBUTES_TABLE;
 
 #define EFI_MEMORY_ATTRIBUTES_FLAGS_RT_FORWARD_CONTROL_FLOW_GUARD 0x1
+
+#endif /* __PLATFORM_EFI_TABLES_MEMORYATTRIBUTESTABLE_H__ */

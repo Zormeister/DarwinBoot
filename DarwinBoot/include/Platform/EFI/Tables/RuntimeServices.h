@@ -1,6 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_TABLES_RUNTIMESERVICES_H__
+#define __PLATFORM_EFI_TABLES_RUNTIMESERVICES_H__
+
 #include <Platform/EFI/Tables/Header.h>
 #include <Platform/EFI/Types.h>
 
@@ -42,3 +44,5 @@ struct _EFI_RUNTIME_SERVICES {
 } typedef EFI_RUNTIME_SERVICES;
 
 #define EFI_OPTIONAL_PTR 0x00000001
+
+#endif /* __PLATFORM_EFI_TABLES_RUNTIMESERVICES_H__ */

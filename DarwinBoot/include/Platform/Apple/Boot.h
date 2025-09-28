@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_APPLE_BOOT_H__
+#define __PLATFORM_APPLE_BOOT_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 /*
@@ -50,3 +52,4 @@
 #define kFirmwareExtensionImage4 ".img4"
 #define kFirmwareExtensionImage3 ".img3"
 
+#endif /* __PLATFORM_APPLE_BOOT_H__ */

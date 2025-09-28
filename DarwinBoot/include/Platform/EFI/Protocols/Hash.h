@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_HASH_H__
+#define __PLATFORM_EFI_PROTOCOLS_HASH_H__
+
 #include <Platform/EFI/Types.h>
 
 #define EFI_HASH_ALGORITHM_SHA1_GUID \
@@ -88,7 +90,7 @@ typedef UInt8 EFI_SHA512_HASH2[64];
 
 typedef union {
     EFI_MD5_HASH2 Md5Hash;
-    EFI_SHA1_HASH2 sSha1Hash;
+    EFI_SHA1_HASH2 Sha1Hash;
     EFI_SHA224_HASH2 Sha224Hash;
     EFI_SHA256_HASH2 Sha256Hash;
     EFI_SHA384_HASH2 Sha384Hash;
@@ -104,3 +106,5 @@ struct _EFI_HASH2_PROTOCOL {
     EFI_STATUS (*HashUpdate)(const EFI_HASH2_PROTOCOL *This, const UInt8 *Message, UInt64 MessageSize);
     EFI_STATUS (*HashFinal)(const EFI_HASH2_PROTOCOL *This, const EFI_HASH2_OUTPUT *Hash);
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_HASH_H__ */

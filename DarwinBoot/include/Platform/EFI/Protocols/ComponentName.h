@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_COMPONENTNAME_H__
+#define __PLATFORM_EFI_PROTOCOLS_COMPONENTNAME_H__
+
 #include <Platform/EFI/Types.h>
 
 #define EFI_COMPONENT_NAME2_PROTOCOL_GUID \
@@ -17,3 +19,5 @@ struct _EFI_COMPONENT_NAME2_PROTOCOL {
         EFI_HANDLE ChildHandle, const char *Language, wchar_t **DriverName);
     const char *SupportedLanguages;
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_COMPONENTNAME_H__ */

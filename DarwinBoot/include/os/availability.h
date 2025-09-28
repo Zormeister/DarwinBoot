@@ -1,9 +1,9 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
 #ifndef __os_availability__
 #define __os_availability__
 
-#include <CoreDarwinBoot/libc.h>
+#include <CoreDarwinBoot/CDBBasicTypes.h>
 
 #define __API_AVAILABLE(...)
 #define __API_UNAVAIALABLE(...)

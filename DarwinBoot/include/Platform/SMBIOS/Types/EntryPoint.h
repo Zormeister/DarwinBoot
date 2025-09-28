@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_SMBIOS_TYPES_ENTRYPOINT_H__
+#define __PLATFORM_SMBIOS_TYPES_ENTRYPOINT_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 #define SMBIOS_ANCHOR_64 "_SM3_"
@@ -46,3 +48,5 @@ typedef union {
     SMBIOS_ENTRY_POINT_32 Entry32;
     SMBIOS_ENTRY_POINT_64 Entry64;
 } SMBIOSEntryPoint;
+
+#endif /* __PLATFORM_SMBIOS_TYPES_ENTRYPOINT_H__ */

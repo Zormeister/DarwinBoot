@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_RAMDISK_H__
+#define __PLATFORM_EFI_PROTOCOLS_RAMDISK_H__
+
 #include <Platform/EFI/Protocols/DevicePath.h>
 #include <Platform/EFI/Types.h>
 
@@ -16,3 +18,5 @@ struct _EFI_RAM_DISK_PROTOCOL {
     EFI_STATUS (*Register)(UInt64 RamDiskBase, UInt64 RamDiskSize, EFI_GUID *RamDiskType, EFI_DEVICE_PATH_PROTOCOL *ParentDevicePath, EFI_DEVICE_PATH_PROTOCOL **DevicePath);
     EFI_STATUS (*Unregister)(EFI_DEVICE_PATH_PROTOCOL *DevicePath);
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_RAMDISK_H__ */

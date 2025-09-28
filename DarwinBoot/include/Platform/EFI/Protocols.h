@@ -1,7 +1,7 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/CDBBasicTypes.h>
+#ifndef __PLATFORM_EFI_PROTOCOLS_H__
+#define __PLATFORM_EFI_PROTOCOLS_H__
 
 #include <Platform/EFI/Protocols/BlockIO.h>
 #include <Platform/EFI/Protocols/ComponentName.h>
@@ -22,3 +22,5 @@
 #include <Platform/EFI/Protocols/ServiceBinding.h>
 #include <Platform/EFI/Protocols/SimpleFileSystem.h>
 #include <Platform/EFI/Protocols/SimpleText.h>
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_H__ */

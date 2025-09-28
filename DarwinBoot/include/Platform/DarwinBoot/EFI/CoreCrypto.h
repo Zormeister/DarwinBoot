@@ -1,8 +1,15 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/Crypto.h>
+#ifndef __PLATFORM_DARWINBOOT_EFI_CORECRYPTO_H__
+#define __PLATFORM_DARWINBOOT_EFI_CORECRYPTO_H__
+
 #include <Platform/EFI/Types.h>
+#include <corecrypto/ccaes.h>
+#include <corecrypto/ccrng.h>
+#include <corecrypto/ccsha1.h>
+#include <corecrypto/ccsha2.h>
+
+CDB_API_BEGIN
 
 //
 // an access interface for clients of CoreCryptoDxe.
@@ -57,3 +64,7 @@ struct _CORECRYPTO_PROTOCOL {
 
     EFI_STATUS (*GetFunctionInterface)(CORECRYPTO_PROTOCOL *This, CORECRYPTO_FUNCTIONS **Functions);
 };
+
+CDB_API_END
+
+#endif /* __PLATFORM_DARWINBOOT_EFI_CORECRYPTO_H__ */

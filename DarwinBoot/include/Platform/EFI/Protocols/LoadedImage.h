@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_LOADEDIMAGE_H__
+#define __PLATFORM_EFI_PROTOCOLS_LOADEDIMAGE_H__
+
 #include <Platform/EFI/Protocols/DevicePath.h>
 #include <Platform/EFI/Tables.h>
 #include <Platform/EFI/Types.h>
@@ -36,3 +38,5 @@ struct _EFI_LOADED_IMAGE_PROTOCOL {
     EFI_MEMORY_TYPE ImageDataType;
     EFI_STATUS (*Unload)(EFI_LOADED_IMAGE_PROTOCOL *This);
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_LOADEDIMAGE_H__ */

@@ -1,6 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_TYPES_CAPSULE_H__
+#define __PLATFORM_EFI_TYPES_CAPSULE_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 #include <Platform/EFI/Types/Address.h>
 #include <Platform/EFI/Types/GUID.h>
@@ -23,3 +25,5 @@ struct {
 #define CAPSULE_FLAGS_PERSIST_ACROSS_RESET  0x00010000
 #define CAPSULE_FLAGS_POPULATE_SYSTEM_TABLE 0x00020000
 #define CAPSULE_FLAGS_INITIATE_RESET        0x00040000
+
+#endif /* __PLATFORM_EFI_TYPES_CAPSULE_H__ */

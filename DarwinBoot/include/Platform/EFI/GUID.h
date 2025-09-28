@@ -1,6 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_GUID_H__
+#define __PLATFORM_EFI_GUID_H__
+
 #include <Platform/EFI/Types.h>
 
 /* RTVars: accessed & written by DarwinBoot for information s*/
@@ -25,3 +27,5 @@ extern EFI_GUID gAcpiV2EfiConfigurationTableGuid;
 extern EFI_GUID gSmbiosTableGuid;
 
 extern EFI_GUID gEfiSmbiosV3TableGuid;
+
+#endif /* __PLATFORM_EFI_GUID_H__ */

@@ -69,10 +69,6 @@ Once both LLVM and MSVC are added to the PATH, you are now ready to build Darwin
 
 ## Building
 
-DarwinBoot has different configurations depending on the 'platform' it will be ran on.
-
-For a comprehensive list of available targets, see [TARGETS.md](TARGETS.md)
-
 The xmake scripts use the 'platform' variable to adjust for the hardware and environment, see the files in the configs folder for reference.
 
 ### UEFI
@@ -97,34 +93,6 @@ DarwinBoot's lua scripts will accept the architectures of:
 - `AArch64` (ARM64)
 
 However, these architectures aren't inherently supported, building and using them is at your own risk.
-
-### DarwinBoot ARM/ARM64/Standalone
-
-DarwinBoot ARM, also known as 'ARMwinBoot' in various pieces of the source code, is just as easily compiled as the UEFI version of DarwinBoot
-
-To do so, you'll want to know which platform you're compiling for.
-
-This is as easy as:
-- Selecting a target from [TARGETS.md](TARGETS.md)
-- Inuptting the name in all lowercase letters
-
-Run the following commands to build the standalone version of DarwinBoot:
-
-```
-xmake f -p <Platform Target> -a <Architecture>
-
-xmake
-
-xmake install -o <DSTROOT>
-```
-
-Where Platform Target is the specific target such as `bcm2712` or `integratorcp`, Architecture is the specific architeture to compile for and DSTROOT is the root of where the binaries should be installed.
-
-Valid architecture for DarwinBoot ARM are:
-- `arm64` (64-bit ARMv8.x and ARMv9.x)
-- `armv7` (32-bit ARMv7)
-- `armv6k` (32-bit ARMv6k)
-- `armv6` (32-bit ARMv6)
 
 ## Installing
 

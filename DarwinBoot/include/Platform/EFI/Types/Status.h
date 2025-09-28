@@ -1,6 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_TYPES_STATUS_H__
+#define __PLATFORM_EFI_TYPES_STATUS_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 #if __x86_64__ || __arm64__
@@ -60,3 +62,5 @@ enum EFI_STATUS_CODES {
     EFI_WARN_FILE_SYSTEM = 6,
     EFI_WARN_RESET_REQUIRED = 7,
 };
+
+#endif /* __PLATFORM_EFI_TYPES_STATUS_H__ */

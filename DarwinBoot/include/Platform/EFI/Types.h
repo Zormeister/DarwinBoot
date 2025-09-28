@@ -1,9 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/CDBBasicTypes.h>
+#ifndef __PLATFORM_EFI_TYPES_H__
+#define __PLATFORM_EFI_TYPES_H__
 
-/* include every type we have */
 #include <Platform/EFI/Types/Address.h>
 #include <Platform/EFI/Types/Capsule.h>
 #include <Platform/EFI/Types/Event.h>
@@ -16,3 +15,5 @@
 #include <Platform/EFI/Types/Status.h>
 #include <Platform/EFI/Types/TaskPriorityLevel.h>
 #include <Platform/EFI/Types/Time.h>
+
+#endif /* __PLATFORM_EFI_TYPES_H__ */

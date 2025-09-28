@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_DEVICEPATHUTILITIES_H__
+#define __PLATFORM_EFI_PROTOCOLS_DEVICEPATHUTILITIES_H__
+
 #include <Platform/EFI/Protocols/DevicePath.h>
 #include <Platform/EFI/Types.h>
 
@@ -22,3 +24,5 @@ struct _EFI_DEVICE_PATH_UTILITIES_PROTOCOL {
     bool (*IsDevicePathMultiInstance)(const EFI_DEVICE_PATH_PROTOCOL *DevicePath);
     EFI_DEVICE_PATH_PROTOCOL *(*CreateDeviceNode)(UInt8 NodeType, UInt8 NodeSubType, UInt16 NodeLength);
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_DEVICEPATHUTILITIES_H__ */

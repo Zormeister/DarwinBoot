@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_DEVICEPATH_H__
+#define __PLATFORM_EFI_PROTOCOLS_DEVICEPATH_H__
+
 #include <Platform/EFI/Types.h>
 
 #define EFI_DEVICE_PATH_PROTOCOL_GUID \
@@ -221,3 +223,5 @@ extern EFI_GUID gEfiVirtualDiskGuid;
 extern EFI_GUID gEfiVirtualCdGuid;
 extern EFI_GUID gEfiPersistentVirtualDiskGuid;
 extern EFI_GUID gEfiPersistentVirtualCdGuid;
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_DEVICEPATH_H__ */

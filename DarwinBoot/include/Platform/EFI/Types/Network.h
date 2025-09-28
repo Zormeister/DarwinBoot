@@ -1,6 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_TYPES_NETWORK_H__
+#define __PLATFORM_EFI_TYPES_NETWORK_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 struct {
@@ -19,3 +21,5 @@ union {
     EFI_IPv4_ADDRESS IPv4;
     EFI_IPv6_ADDRESS IPv6;
 } typedef EFI_IP_ADDRESS;
+
+#endif /* __PLATFORM_EFI_TYPES_NETWORK_H__ */

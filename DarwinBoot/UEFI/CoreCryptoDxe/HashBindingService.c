@@ -1,12 +1,10 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include "Platform/EFI/Types/Status.h"
 #include <Platform/EFI/EFI.h>
 #include <Platform/EFI/Protocols/Hash.h>
 #include <Platform/EFI/Protocols/ServiceBinding.h>
 
 /* I only use this header for CORECRYPTO_AVAILABLE */
-#include <CoreDarwinBoot/Crypto.h>
 #include <corecrypto/ccdigest.h>
 #include <stdlib.h>
 

@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_RNG_H__
+#define __PLATFORM_EFI_PROTOCOLS_RNG_H__
+
 #include <Platform/EFI/Types.h>
 
 #define EFI_RNG_PROTOCOL_GUID     \
@@ -41,3 +43,5 @@ struct _EFI_RNG_PROTOCOL {
     EFI_STATUS (*GetInfo)(EFI_RNG_PROTOCOL *This, UIntN *RNGAlgorithmListSize, EFI_RNG_ALGORITHM *RNGAlgorithmList);
     EFI_STATUS (*GetRNG)(EFI_RNG_PROTOCOL *This, EFI_RNG_ALGORITHM RNGAlgorithm, UIntN RNGValueLength, UInt8 *RNGValue);
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_RNG_H__ */

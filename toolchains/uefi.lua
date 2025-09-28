@@ -17,7 +17,7 @@ toolchain("uefi")
     on_check(function (toolchain)
         local ret = import("lib.detect.find_tool")("lld-link")
         if ret then
-            return import("lib.detect.find_tool")("clang")
+            return import("lib.detect.find_tool")("clang++")
         else
             return nil
         end

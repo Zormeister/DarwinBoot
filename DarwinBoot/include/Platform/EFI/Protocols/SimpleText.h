@@ -1,7 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/CDBBasicTypes.h>
+#ifndef __PLATFORM_EFI_PROTOCOLS_SIMPLETEXT_H__
+#define __PLATFORM_EFI_PROTOCOLS_SIMPLETEXT_H__
+
 #include <Platform/EFI/Types.h>
 
 #pragma mark EFI_SIMPLE_TEXT_INPUT_PROTOCOL
@@ -134,3 +135,5 @@ struct _EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL {
 
 #define ARROW_UP   0x2191
 #define ARROW_DOWN 0x2193
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_SIMPLETEXT_H__ */

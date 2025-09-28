@@ -1,8 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include "CoreDarwinBoot/CDBBasicTypes.h"
-#include "Platform/EFI/Types/Status.h"
+#ifndef __PLATFORM_EFI_PROTOCOLS_FILE_H__
+#define __PLATFORM_EFI_PROTOCOLS_FILE_H__
+
 #include <Platform/EFI/Types.h>
 
 typedef struct {
@@ -90,3 +90,5 @@ struct {
 struct {
     wchar_t VolumeName[];
 } typedef EFI_FILE_SYSTEM_VOLUME_LABEL;
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_FILE_H__ */

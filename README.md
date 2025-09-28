@@ -26,27 +26,8 @@ Contributions to this project are welcome with open arms!
 
 DarwinBoot uses XMake to build.
 
-UEFI targets are fairly simple, however the following packages are required:
+The following packages are required:
 - Arch: `clang`, `lld`
 
 Then, run `xmake f -p uefi -a x64`, then run `xmake`
 It should then build DarwinBoot's UEFI components and files.
-
-### ARM Targets:
-
-The ARM port of DarwinBoot currently is focused on two targets:
-- BCM2712 (Raspberry Pi 5 to be specific, BCM2712D0 has not been accounted for yet)
-- VMQEMU (The generic QEMU virtual platform)
-
-## Valid XMake targets
-
-### BCM2712
-
-Boards:
-- PI5 | Raspberry Pi 5
-
-### BCM2711
-
-Boards:
-- PI4B | Raspberry Pi 4 Model B
-

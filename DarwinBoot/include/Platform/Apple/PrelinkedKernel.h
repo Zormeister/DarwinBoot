@@ -1,7 +1,9 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <Platform/Apple/MachO.h>
+#ifndef __PLATFORM_APPLE_PRELINKEDKERNEL_H__
+#define __PLATFORM_APPLE_PRELINKEDKERNEL_H__
+
+#include <Platform/Apple/Mach.h>
 
 #define kPlatformNameLen 64
 #define kRootPathLen     256
@@ -43,3 +45,5 @@ struct {
 #define kBuiltinStartSection "__kmod_start"
 #define kBuiltinInitSection  "__kmod_init"
 #define kBuildinTermSection  "__kmod_term"
+
+#endif /* __PLATFORM_APPLE_PRELINKEDKERNEL_H__ */

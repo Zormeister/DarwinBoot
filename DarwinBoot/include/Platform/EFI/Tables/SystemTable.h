@@ -1,6 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_TABLES_SYSTEMTABLE_H__
+#define __PLATFORM_EFI_TABLES_SYSTEMTABLE_H__
+
 #include <Platform/EFI/Protocols/SimpleText.h>
 #include <Platform/EFI/Tables/BootServices.h>
 #include <Platform/EFI/Tables/ConfigurationTable.h>
@@ -40,3 +42,5 @@ struct _EFI_SYSTEM_TABLE {
     UInt32 NumberOfConfigurationTables;
     EFI_CONFIGURATION_TABLE *ConfigurationTables;
 } typedef EFI_SYSTEM_TABLE;
+
+#endif /* __PLATFORM_EFI_TABLES_SYSTEMTABLE_H__ */

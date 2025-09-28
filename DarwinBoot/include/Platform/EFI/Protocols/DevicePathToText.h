@@ -1,6 +1,8 @@
 // Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_DEVICEPATHTOTEXT_H__
+#define __PLATFORM_EFI_PROTOCOLS_DEVICEPATHTOTEXT_H__
+
 #include <Platform/EFI/Protocols/DevicePath.h>
 #include <Platform/EFI/Types.h>
 
@@ -16,3 +18,5 @@ struct _EFI_DEVICE_PATH_TO_TEXT_PROTOCOL {
     wchar_t *(*ConvertDeviceNodeToText)(const EFI_DEVICE_PATH_PROTOCOL *DeviceNode, bool DisplayOnly, bool AllowShortcuts);
     wchar_t *(*ConvertDevicePathToText)(const EFI_DEVICE_PATH_PROTOCOL *DeviceNode, bool DisplayOnly, bool AllowShortcuts);
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_DEVICEPATHTOTEXT_H__ */

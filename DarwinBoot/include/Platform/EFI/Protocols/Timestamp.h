@@ -1,7 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/CDBBasicTypes.h>
+#ifndef __PLATFORM_EFI_PROTOCOLS_TIMESTAMP_H__
+#define __PLATFORM_EFI_PROTOCOLS_TIMESTAMP_H__
+
 #include <Platform/EFI/Types.h>
 
 #define EFI_TIMESTAMP_PROTOCOL_GUID \
@@ -21,3 +22,5 @@ struct _EFI_TIMESTAMP_PROTOCOL {
     UInt64 (*GetTimestamp)(void);
     EFI_STATUS (*GetProperties)(EFI_TIMESTAMP_PROPERTIES *Properties);
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_TIMESTAMP_H__ */

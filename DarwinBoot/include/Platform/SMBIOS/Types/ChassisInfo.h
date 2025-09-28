@@ -1,7 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/CDBBasicTypes.h>
+#ifndef __PLATFORM_SMBIOS_TYPES_CHASSISINFO_H__
+#define __PLATFORM_SMBIOS_TYPES_CHASSISINFO_H__
+
 #include <Platform/SMBIOS/Types/EntryPoint.h>
 #include <Platform/SMBIOS/Types/TableHeader.h>
 
@@ -92,3 +93,5 @@ typedef struct {
     SMBIOSChassisContainedElement ContainedElements[] __counted_by(ContainedElementCount);
     // SMBIOSString SKUNumber;
 } SMBIOSChassisInfo;
+
+#endif /* __PLATFORM_SMBIOS_TYPES_CHASSISINFO_H__ */

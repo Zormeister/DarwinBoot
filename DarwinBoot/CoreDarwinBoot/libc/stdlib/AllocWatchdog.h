@@ -1,7 +1,9 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/libc.h>
+#ifndef __STLIB_ALLOC_WATCHDOG_H__
+#define __STLIB_ALLOC_WATCHDOG_H__
+
+#include <stdio.h>
 
 /* !!! THIS IS A PRIVATE INTERFACE USED BY LIBC !!! */
 
@@ -25,3 +27,5 @@ size_t AllocWDGFindSize(AllocWatchdog *Wdg, void *Ptr);
 void AllocWDGRemove(AllocWatchdog *Wdg, void *Ptr);
 void AllocWDGReplace(AllocWatchdog *Wdg, void *Old, void *New, size_t NewSize);
 void AllocWDGShutdown(AllocWatchdog *Wdg);
+
+#endif /* __STLIB_ALLOC_WATCHDOG_H__ */

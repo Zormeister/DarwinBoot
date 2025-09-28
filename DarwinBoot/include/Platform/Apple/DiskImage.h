@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_APPLE_DISKIMAGE_H__
+#define __PLATFORM_APPLE_DISKIMAGE_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 // I CANNOT say enough thank yous to the OpenCorePkg contributors, Goldfish, vit, downloadfritz,
@@ -10,26 +12,6 @@
 
 #define kRecoveryBootFilesPath "com.apple.recovery.boot"
 #define kBaseSystemRamDiskName "BaseSystem.dmg"
-
-// These values are actually half-truths. x86_64SURamdisk and arm64eSURamdisk are real.
-// The rest aren't.
-#if __x86_64__
-    #define kUpdateRamdiskName "x86_64SURamdisk.dmg"
-#elif __i386__
-    #define kUpdateRamdiskName "i386SURamdisk.dmg"
-#elif __arm64__
-    #if PLATFORM_HAS_PAC /* PAC on non-Apple ARM might be a challenge. But I'm interested. */
-        #define kUpdateRamdiskName "arm64eSURamdisk.dmg"
-    #else
-        #define kUpdateRamdiskName "arm64SURamdisk.dmg"
-    #endif
-#elif __arm__
-    #if __ARM_ARCH__ == 6
-        #define kUpdateRamdiskName "armv6SURamdisk.dmg"
-    #elif __ARM_ARCH__ == 7
-        #define kUpdateRamdiskName "armv7SURamdisk.dmg"
-    #endif
-#endif
 
 // No compression impl yet, so I'll have to use a raw DMG until I decide the time is right
 enum {
@@ -61,3 +43,5 @@ struct {
     UInt32 Magic;
     // wip
 } typedef AppleDiskImageTrailer;
+
+#endif /* __PLATFORM_APPLE_DISKIMAGE_H__ */

@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_SIMPLEFILESYSTEM_H__
+#define __PLATFORM_EFI_PROTOCOLS_SIMPLEFILESYSTEM_H__
+
 #include <Platform/EFI/Protocols/File.h>
 
 #define EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID \
@@ -18,3 +20,5 @@ struct _EFI_SIMPLE_FILE_SYSTEM_PROTOCOL {
 
     EFI_STATUS (*OpenVolume)(EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *This, EFI_FILE_PROTOCOL **Root);
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_SIMPLEFILESYSTEM_H__ */

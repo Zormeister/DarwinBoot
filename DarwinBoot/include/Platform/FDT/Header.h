@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_FDT_HEADER_H__
+#define __PLATFORM_FDT_HEADER_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 #define FLATTENED_DEVICETREE_MAGIC 0xD00DFEED
@@ -17,3 +19,5 @@ struct {
     UInt32 DTStringsSize;
     UInt32 DTStructureSize;
 } typedef FlattenedDTHeader;
+
+#endif /* __PLATFORM_FDT_HEADER_H__ */

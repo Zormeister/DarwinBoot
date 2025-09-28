@@ -1,8 +1,14 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
-#include <CoreDarwinBoot/BootArgs.h>
-#include <CoreDarwinBoot/CoreRoutines.h>
-#include <CoreDarwinBoot/DeviceTree.h>
-#include <CoreDarwinBoot/FileSystem.h>
-#include <CoreDarwinBoot/libc.h>
+#ifndef __COREDARWINBOOT_COREDARWINBOOT_H__
+#define __COREDARWINBOOT_COREDARWINBOOT_H__
+
+#include <CoreDarwinBoot/CDBBasicTypes.h>
+#include <panic.h>
+
+#if __cplusplus
+    #include <CoreDarwinBoot/Base.hpp>
+    #include <CoreDarwinBoot/DeviceTree.hpp>
+#endif
+
+#endif /* __COREDARWINBOOT_COREDARWINBOOT_H__ */

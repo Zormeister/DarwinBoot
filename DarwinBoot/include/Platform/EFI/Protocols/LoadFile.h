@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_LOADFILE_H__
+#define __PLATFORM_EFI_PROTOCOLS_LOADFILE_H__
+
 #include <Platform/EFI/Protocols/DevicePath.h>
 #include <Platform/EFI/Types.h>
 
@@ -23,3 +25,5 @@ struct _EFI_LOAD_FILE_PROTOCOL {
 extern EFI_GUID gEfiLoadFile2ProtocolGuid;
 
 typedef EFI_LOAD_FILE_PROTOCOL EFI_LOAD_FILE2_PROTOCOL;
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_LOADFILE_H__ */

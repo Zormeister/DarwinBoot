@@ -1,6 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_ACPI_TABLES_HEADER_H__
+#define __PLATFORM_ACPI_TABLES_HEADER_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 struct {
@@ -13,4 +15,6 @@ struct {
     UInt32 OEMRevision;
     UInt32 CreatorID;
     UInt32 CreatorRevision;
-} typedef ACPITableHeader;
+} typedef ACPI_TABLE_HEADER;
+
+#endif /* __PLATFORM_ACPI_TABLES_HEADER_H__ */

@@ -1,6 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_TYPES_MISC_H__
+#define __PLATFORM_EFI_TYPES_MISC_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 #include <Platform/EFI/Types/Handle.h>
 
@@ -39,3 +41,5 @@ struct {
     UInt32 IdSize;
     UInt8 Id[] __counted_by(IdSize);
 } typedef EFI_VARIABLE_AUTHENTICATION_3_CERT_ID;
+
+#endif /* __PLATFORM_EFI_TYPES_MISC_H__ */

@@ -1,9 +1,9 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#include <CoreDarwinBoot/CoreRoutines.h>
 #include <Platform/DarwinBoot/EFI/CoreCrypto.h>
 #include <Platform/EFI/EFI.h>
 #include <string.h>
+#include <panic.h>
 
 //
 // Why do we need shims on UEFI?
@@ -28,9 +28,12 @@ static bool UEFICryptoGetNativeProtocols(void)
     //
     // Locate the Hash2 protocol.
     //
+
+#if 0
     if (BS->LocateProtocol(&gEfiHash2ServiceBindingProtocolGuid, NULL, (void **)&Hash2Binding)) {
         return false;
     }
+#endif
 
     //
     // Initialise the RNG.
@@ -48,6 +51,7 @@ bool UEFICryptoInitShims(void)
     //
     // Step 1. Check if we have CoreCryptoDxe available to us.
     //
+#if 0
     if (BS->LocateProtocol(&gEfiCoreCryptoProtocolGuid, NULL, (void **)&CryptoProtocol)) {
         //
         // This moves onto using the native services.
@@ -57,9 +61,9 @@ bool UEFICryptoInitShims(void)
 
     Status = CryptoProtocol->GetFunctionInterface(CryptoProtocol, &EfiCoreCryptoFunctions);
     if (Status) {
-        CDBLog("Crypto(%s): Failed to open the volume, (0x%llX)", __FUNCTION__, (Status & ~EFI_HIGH_BIT));
         return false;
     }
+#endif
 
     return true;
 }
@@ -89,6 +93,7 @@ static int ccrng_efi_generate_timestamp(struct ccrng_state *rng, size_t outlen, 
     EFI_TIME_CAPABILITIES TimeCaps;
     uint8_t final[CCSHA256_OUTPUT_SIZE];
 
+#if 0
     RT->GetTime(&Time, NULL);
 
     while (outlen >= CCSHA256_OUTPUT_SIZE) {
@@ -104,6 +109,7 @@ static int ccrng_efi_generate_timestamp(struct ccrng_state *rng, size_t outlen, 
         memcpy(out, final, outlen);
         memset(final, 0, sizeof(final));
     }
+#endif
 
     return CCERR_OK;
 }
@@ -123,9 +129,11 @@ static int ccrng_efi_generate(struct ccrng_state *rng, size_t outlen, void *out)
 static void ccrng_efi_init()
 {
     if (ccrng_efi_shim_rng.initialized == false) {
+#if 0
         if (BS->LocateProtocol(&gEfiRngProtocolGuid, NULL, (void **)&ccrng_efi_shim_rng.rng_protocol)) {
             panic("ccrng_efi_init: No system RNG protocol.");
         }
+#endif
 
         ccrng_efi_shim_rng.generate = &ccrng_efi_generate;
         ccrng_efi_shim_rng.initialized = true;

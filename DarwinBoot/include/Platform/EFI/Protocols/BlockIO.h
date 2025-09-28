@@ -1,7 +1,11 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_BLOCKIO_H__
+#define __PLATFORM_EFI_PROTOCOLS_BLOCKIO_H__
+
 #include <Platform/EFI/Types.h>
+
+CDB_API_BEGIN
 
 #define EFI_BLOCK_IO_PROTOCOL_GUID \
     { 0x964e5b21, 0x6459, 0x11d2,  \
@@ -66,3 +70,7 @@ struct _EFI_BLOCK_IO2_PROTOCOL {
     EFI_STATUS (*WriteBlocks)(EFI_BLOCK_IO2_PROTOCOL *This, UInt32 MediaID, EFI_LBA LBA, EFI_BLOCK_IO2_TOKEN *Token, UIntN BufferSize, void *Buffer);
     EFI_STATUS (*FlushAllBlocks)(EFI_BLOCK_IO2_PROTOCOL *This, EFI_BLOCK_IO2_TOKEN *Token);
 };
+
+CDB_API_END
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_BLOCKIO_H__ */

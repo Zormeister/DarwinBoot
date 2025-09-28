@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_GOP_H__
+#define __PLATFORM_EFI_PROTOCOLS_GOP_H__
+
 #include <Platform/EFI/Types.h>
 
 #define EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID \
@@ -66,3 +68,5 @@ struct _EFI_GRAPHICS_OUTPUT_PROTOCOL {
         UIntN SourceX, UIntN SourceY, UIntN DestinationX, UIntN DestinationY, UIntN Width, UIntN Height, UIntN Delta);
     EFI_GRAPHICS_OUTPUT_PROTOCOL_MODE *Mode;
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_GOP_H__ */

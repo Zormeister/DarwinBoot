@@ -1,6 +1,8 @@
-// Copyright (C) 2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_EFI_PROTOCOLS_DRIVERBINDING_H__
+#define __PLATFORM_EFI_PROTOCOLS_DRIVERBINDING_H__
+
 #include <Platform/EFI/Protocols/DevicePath.h>
 #include <Platform/EFI/Types.h>
 
@@ -20,3 +22,5 @@ struct _EFI_DRIVER_BINDING_PROTOCOL {
     EFI_HANDLE ImageHandle;
     EFI_HANDLE DriverBindingHandle;
 };
+
+#endif /* __PLATFORM_EFI_PROTOCOLS_DRIVERBINDING_H__ */

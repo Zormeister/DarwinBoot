@@ -1,6 +1,8 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#pragma once
+#ifndef __PLATFORM_SMBIOS_SMBIOS_H__
+#define __PLATFORM_SMBIOS_SMBIOS_H__
+
 #include <CoreDarwinBoot/CDBBasicTypes.h>
 
 #define SMBIOS_TABLE_GUID         \
@@ -16,3 +18,5 @@
 #include <Platform/SMBIOS/Types/BaseboardInfo.h>
 #include <Platform/SMBIOS/Types/ChassisInfo.h>
 #include <Platform/SMBIOS/Types/ProcessorInfo.h>
+
+#endif /* __PLATFORM_SMBIOS_SMBIOS_H__ */

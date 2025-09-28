@@ -1,10 +1,11 @@
-// Copyright (C) 2024-2025 Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
+// Copyright (C) 2024-2025 Samuel Zormeister, All rights reserved. Licensed under the BSD-3 Clause License.
 
-#ifndef __COREDARWINBOOT_BASICTYPES__
-#define __COREDARWINBOOT_BASICTYPES__
+#ifndef __COREDARWINBOOT_BASICTYPES_H__
+#define __COREDARWINBOOT_BASICTYPES_H__
 
 /*!
  * @group Basic Types
+ *
  * The name is a little misleading, this header serves as a giga-header for:
  *  - libc/C Standard types
  *  - CPU-related macros
@@ -23,17 +24,16 @@
 
 #ifdef __cplusplus
     #if __cplusplus < 201703L
-        #error This project uses C++ 17, please use C++ 17 for compilation/your LSP
+        /*
+         * clangd can be fussy when it comes to this; i'll let C++ standard errors slide.
+         */
+        #warning This project uses C++ 17, please use C++ 17 for compilation/your LSP
     #endif
 #endif
+
 #if defined(__STDC_VERSION__)
-    //
-    // Context for the !__APPLE__ check is that macOS Catalina doesn't have C17.
-    // The way I've rewritten this header though, I don't think it would be impossible to backport
-    // DarwinBoot to an earlier C standard.
-    //
     #if __STDC_VERSION__ < 201710L && !__APPLE__
-        #error This project uses C 17, please use C 17 for compilation/your LSP
+        #warning This project uses C 17, please use C 17 for compilation/your LSP
     #endif
 #endif
 
@@ -43,7 +43,6 @@
 
 // clang-format off
 #if defined(__clang__)
-
     #define BUILD_TOOL             "clang"
     #define COMPILER_VERSION_MAJOR __clang_major__
     #define COMPILER_VERSION_MINOR __clang_minor__
@@ -270,209 +269,8 @@
     #endif
 
     #define WSTRING(str) u##str
-
-#elif defined(__GNUC__)
-
-/* If for some reason this project is ever built using GCC. */
-
-    #define BUILD_TOOL             "GCC"
-    #define COMPILER_VERSION_MAJOR __GNUC__
-    #define COMPILER_VERSION_MINOR __GNUC_MINOR__
-    #define COMPILER_VERSION_PATCH __GNUC_PATCHLEVEL__
-    #define COMPILER_VERSION       __VERSION__
-
-    #ifdef __INT8_TYPE__
-        typedef __INT8_TYPE__ int8_t;
-        #define INT8_C(x)     __INT8_C(x)
-        #define INT8_MAX      __INT8_MAX__
-    #else
-        typedef signed char int16_t;
-        #define INT8_C(c)   c
-        #define INT8_MAX    127
-    #endif
-
-    #ifdef __UINT8_TYPE__
-        typedef __UINT8_TYPE__ uint8_t;
-        #define UINT8_C(x)     __UINT8_C(x)
-        #define UINT8_MAX      __UINT8_MAX__
-    #else
-        typedef unsigned char uint8_t;
-        #define UINT8_C(c)    c
-        #define UINT8_MAX     255
-    #endif
-
-    #define PRId8 "hhd"
-    #define PRIi8 "hhi"
-    #define PRIo8 "hho"
-    #define PRIu8 "hhu"
-    #define PRIx8 "hhx"
-    #define PRIX8 "hhX"
-
-    #ifdef __INT16_TYPE__
-        typedef __INT16_TYPE__ int16_t;
-        #define INT16_C(x)     __INT16_C(x)
-        #define INT16_MAX      __INT16_MAX__
-    #else
-        typedef short int int16_t;
-        #define INT16_C(c) c
-        #define INT16_MAX  32767
-    #endif
-
-    #ifdef __UINT16_TYPE__
-        typedef __UINT16_TYPE__ uint16_t;
-        #define UINT16_C(x)     __UINT16_C(x)
-        #define UINT16_MAX      __UINT16_MAX__
-    #else
-        typedef unsigned short int uint16_t;
-        #define UINT16_C(c)        c
-        #define UINT16_MAX         65535
-    #endif
-
-    #define PRId16 "hd"
-    #define PRIi16 "hi"
-    #define PRIo16 "ho"
-    #define PRIu16 "hu"
-    #define PRIx16 "hx"
-    #define PRIX16 "hX"
-
-    #ifdef __INT32_TYPE__
-        typedef __INT32_TYPE__ int32_t;
-        #define INT32_C(x)     __INT32_C(x)
-        #define INT32_MAX      __INT32_MAX__
-    #else
-        typedef int int32_t;
-        #define INT32_C(c) c
-        #define INT32_MAX  2147483647
-    #endif
-
-    #ifdef __UINT32_TYPE__
-        typedef __UINT32_TYPE__ uint32_t;
-        #define UINT32_C(x)     __UINT32_C(x)
-        #define UINT32_MAX      __UINT32_MAX__
-    #else
-        typedef unsigned int uint32_t;
-        #define UINT32_C(c)  c##U
-        #define UINT32_MAX   0xFFFFFFFFU
-    #endif
-
-    #define PRId32 "d"
-    #define PRIi32 "i"
-    #define PRIo32 "o"
-    #define PRIu32 "u"
-    #define PRIx32 "x"
-    #define PRIX32 "X"
-
-    #ifdef __INT64_TYPE__
-        typedef __INT64_TYPE__ int64_t;
-        #define INT64_C(x)     __INT64_C(x)
-        #define INT64_MAX      __INT64_MAX__
-    #else
-        typedef long int int64_t;
-        #define INT64_C(c) c##LL
-        #define INT64_MAX  0x7FFFFFFFFFFFFFFFL
-    #endif
-
-    #ifdef __UINT64_TYPE__
-        typedef __UINT64_TYPE__ uint64_t;
-        #define UINT64_C(x)     __UINT64_C(x)
-        #define UINT64_MAX      __UINT64_MAX__
-    #else
-        typedef long unsigned int uint64_t;
-        #define UINT64_C(c)       c##LL
-        #define UINT64_MAX        0xFFFFFFFFFFFFFFFFUL
-    #endif
-
-    #define PRId64 "ld"
-    #define PRIi64 "li"
-    #define PRIo64 "lo"
-    #define PRIu64 "lu"
-    #define PRIx64 "lx"
-    #define PRIX64 "lX"
-
-    #ifdef __UINTPTR_TYPE__
-        typedef __UINTPTR_TYPE__ uintptr_t;
-        #define UINTPTR_MAX      __UINTPTR_MAX__
-    #else
-        typedef long unsigned int uintptr_t;
-        #define UINTPTR_MAX       0xFFFFFFFFFFFFFFFFUL
-    #endif
-
-    #ifdef __INTPTR_TYPE__
-        typedef __INTPTR_TYPE__ intptr_t;
-        #define INTPTR_MAX      __INTPTR_MAX__
-    #else
-        typedef long int intptr_t;
-        #define INTPTR_MAX 0x7FFFFFFFFFFFFFFFL
-    #endif
-
-    #define PRIdPTR "ld"
-    #define PRIiPTR "li"
-    #define PRIoPTR "lo"
-    #define PRIuPTR "lu"
-    #define PRIxPTR "lx"
-    #define PRIXPTR "lX"
-
-    #ifdef __SIZE_TYPE__
-        typedef __SIZE_TYPE__ size_t;
-        #define SIZE_MAX      __SIZE_MAX__
-    #else
-        typedef long unsigned int size_t;
-        #define SIZE_MAX          0xFFFFFFFFFFFFFFFFUL
-    #endif
-
-    #ifdef __PTRDIFF_TYPE__
-        typedef __PTRDIFF_TYPE__ ptrdiff_t;
-        #define PTRDIFF_MAX      __PTRDIFF_MAX__
-    #else
-        typedef long int ptrdiff_t;
-        #define PTRDIFF_MAX 0x7FFFFFFFFFFFFFFFL
-    #endif
-
-    #ifdef __INTMAX_TYPE__
-        typedef __INTMAX_TYPE__ intmax_t;
-        #define INTMAX_C(c)     __INTMAX_C(c)
-        #define INTMAX_MAX      __INTMAX_MAX__
-    #else
-        typedef long int intmax_t;
-        #define INTMAX_C(c) c##LL
-        #define INTMAX_MAX  0x7FFFFFFFFFFFFFFFL
-    #endif
-
-    #ifdef __UINTMAX_TYPE__
-        typedef __UINTMAX_TYPE__ uintmax_t;
-        #define UINTMAX_C(c)     __UINTMAX_C(c)
-        #define UINTMAX_MAX      __UINTMAX_MAX__
-    #else
-        typedef long unsigned int uintmax_t;
-        #define UINTMAX_C(c)      c##UL
-        #define UINTMAX_MAX       0xFFFFFFFFFFFFFFFFUL
-    #endif
-
-    #define PRIdMAX "ld"
-    #define PRIiMAX "li"
-    #define PRIoMAX "lo"
-    #define PRIuMAX "lu"
-    #define PRIxMAX "lx"
-    #define PRIXMAX "lX"
-
-    #if !(__WCHAR_WIDTH__ == 16) && UEFI
-        #error "Wide strings aren't 16-bits wide whilst we are configured for UEFI, this is bad!"
-    #endif
-
-    #ifdef __WCHAR_TYPE__
-        #if !__cplusplus
-            typedef __WCHAR_TYPE__ wchar_t;
-            #define WCHAR_MAX      __WCHAR_MAX__
-        #endif
-    #else
-        #if !__cplusplus
-            typedef uint16_t wchar_t;
-            #define WCHAR_MAX 65535
-        #endif
-    #endif
-
-    #define WSTRING(str) L##str
-
+#else
+    #error "Unsupported compiler is being used!"
 #endif
 
 /* MacTypes, also the libkern types from XNU. */
@@ -642,7 +440,7 @@ typedef uint64_t u_int64_t;
 
 #pragma mark - Non-Standard Types
 
-/* This mirrors the definition of a GUID in UEFI. */
+/* This mirrors the definition of a GUID in UEFI, to enable compatibility across the CoreDarwinBoot layer. */
 typedef struct {
     UInt32 Data1;
     UInt16 Data2;
@@ -698,10 +496,6 @@ typedef physical_address_t CDBPhysicalAddress;
     #define bswap64(x) __builtin_bswap64(x)
 #endif
 
-#if __DARWINBOOT_CXX_REARCH__
-#define COREPLATFORM_CXX 1
-#endif
-
 #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 
     #define OSSwapBigToHostInt16(x) bswap16(x)
@@ -739,12 +533,6 @@ typedef physical_address_t CDBPhysicalAddress;
     #define OSSwapLittleToHostInt64(x) bswap64(x)
 
 #endif
-
-/*! 
- * @define CDB_OBJECT_DEFINE
- * The macro to define a CoreDarwinBoot object.
- */
-#define CDB_OBJECT_DEFINE(obj) typedef struct _CDB##obj *CDB##obj##Ref
 
 #if __cplusplus
     #define CDB_EXPORT extern "C"
