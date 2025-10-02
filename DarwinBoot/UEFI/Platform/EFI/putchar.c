@@ -18,5 +18,6 @@ void _putchar(char character)
         wide[1] = 0;
         wide[2] = 0;
     }
-    ST->ConOut->OutputString(ST->ConOut, wide);
+
+    // ST->ConOut->OutputString(ST->ConOut, wide);
 }

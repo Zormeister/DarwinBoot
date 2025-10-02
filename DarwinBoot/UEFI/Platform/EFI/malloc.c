@@ -6,6 +6,7 @@
 
 void *platform_malloc(size_t size)
 {
+    /*
     if (BS == NULL) {
         return NULL;
     }
@@ -17,4 +18,6 @@ void *platform_malloc(size_t size)
         return NULL;
     }
     return outbuffer;
+    */
+    return NULL;
 }

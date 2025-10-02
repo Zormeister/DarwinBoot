@@ -6,5 +6,5 @@
 
 void platform_free(void *mem)
 {
-    ST->BootServices->FreePool(mem);
+    //ST->BootServices->FreePool(mem);
 }

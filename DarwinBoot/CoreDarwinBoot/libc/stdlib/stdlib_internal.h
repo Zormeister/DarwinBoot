@@ -5,12 +5,6 @@
 
 #include <stdlib.h>
 
-/* vprintf interface - handled by the platform */
-
-/*
- * UEFI: /DarwinBoot/UEFI/Platform/EFI/malloc.c
- * ARM:  !!! TODO !!!
- */
 extern void *platform_malloc(size_t size);
 extern void platform_free(void *mem);
 

@@ -9,10 +9,10 @@ target("UEFI JumpStart")
     add_defines("EFIJUMPSTART", "DARWINBOOTEFI")
 
     add_files(
-        "$(projectdir)/DarwinBoot/CoreDarwinBoot/**.c",
+        "$(projectdir)/DarwinBoot/CoreDarwinBoot/**.c*",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/libc/**.c",
         "$(projectdir)/DarwinBoot/CoreDarwinBoot/libcxxabi/*.cpp",
-        "$(projectdir)/DarwinBoot/CoreDarwinBoot/*.c",
+        "$(projectdir)/DarwinBoot/CoreDarwinBoot/*.c*",
         "$(projectdir)/DarwinBoot/UEFI/Platform/**.c",
         "$(projectdir)/DarwinBoot/UEFI/JumpStart/*.c"
     )

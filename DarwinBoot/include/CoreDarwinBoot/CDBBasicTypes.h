@@ -160,7 +160,12 @@
 
     #ifdef __UINT64_TYPE__
         typedef __UINT64_TYPE__ uint64_t;
-        #define UINT64_C(x)     __UINT64_C(x)
+        /* I don't think clang provides this in v19, circa my attempt at building on Kali Linux. */
+        #if __clang_major__ < 20
+            #define UINT64_C(x)     x##ULL
+        #else
+            #define UINT64_C(x)     __UINT64_C(x)
+        #endif
         #define UINT64_MAX      __UINT64_MAX__
         #define PRIo64          __UINT64_FMTo__
         #define PRIu64          __UINT64_FMTu__
@@ -438,6 +443,25 @@ typedef uint64_t u_int64_t;
     #define DEBUG          1
 #endif
 
+/*!
+ * @group Configuration
+ *
+ * @const __COREDARWINBOOT_CFG_MINIMAL__
+ * This determines whether or not the full runtime is initialised or whether or not subsystems are left uninitialised
+ * Should be useful for DXE drivers which won't interact too heavily with the CDB runtime.
+ *
+ * @const __COREDARWINBOOT_CFG_UEFI__
+ * This is to allow for any weird behaviour specific to the UEFI platform to be dealt with.
+ */
+
+#if defined (UEFI_DXE)
+    #define __COREDARWINBOOT_CFG_MINIMAL__ 1
+    #define __COREDARWINBOOT_CFG_UEFI__    1
+#elif defined (UEFI)
+    #define __COREDARWINBOOT_CFG_MINIMAL__ 0
+    #define __COREDARWINBOOT_CFG_UEFI__    1
+#endif
+
 #pragma mark - Non-Standard Types
 
 /* This mirrors the definition of a GUID in UEFI, to enable compatibility across the CoreDarwinBoot layer. */
@@ -459,6 +483,8 @@ typedef uint32_t physical_address_t;
 #else
 #error "Unsupported CPU address size."
 #endif
+
+typedef virtual_address_t address_t;
 
 typedef virtual_address_t CDBVirtualAddress;
 typedef physical_address_t CDBPhysicalAddress;

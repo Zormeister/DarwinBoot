@@ -14,7 +14,7 @@ int vprintf(const char *fmt, va_list list);
 #define stdin  0
 #define stdout 0
 
-#define fprintf(fd, fmt, ...) printf(fmt, __VA_ARGS__)
+#define fprintf(fd, fmt, args...) printf(fmt, ##args)
 
 int snprintf(char *s, size_t n, const char *format, ...);
 int vsnprintf(char *s, size_t n, const char *format, va_list va);
